@@ -7,196 +7,126 @@
 <link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJYzPk2Xea4JAccvonUAeQSs-3E69THE8bVeyXD7m-yyTN78e60a09u-TS_v99dJcbPCtfJNJ9vNMPflbA1sx3jSi0T-BYBSP-_vDNefVbO-z2FVazjn6fktuCFRfZhOodqLqQRSaJIZS0dG1xkP3kbD4NmWbMuIvDSDKL3HdBP1XLgjS3aagtRyK88cHu/s1600/image.png">
 <link rel="apple-touch-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJYzPk2Xea4JAccvonUAeQSs-3E69THE8bVeyXD7m-yyTN78e60a09u-TS_v99dJcbPCtfJNJ9vNMPflbA1sx3jSi0T-BYBSP-_vDNefVbO-z2FVazjn6fktuCFRfZhOodqLqQRSaJIZS0dG1xkP3kbD4NmWbMuIvDSDKL3HdBP1XLgjS3aagtRyK88cHu/s1600/image.png">
 <!-- ============================================= -->
-<!-- 🛡️ ANTI-DEVTOOLS PROTECTION v3.0 - SMART MODE -->
+<!-- ✅ SAFE GUARD - TANPA MEMBLOCK USER/DEBUGGER -->
 <!-- ============================================= -->
 <script>
 (function(){
-'use strict';
-var _shield = {
-devtoolsOpen: false,
-threshold: 200,
-blocked: false,
-isMobile: false,
-isEmbedded: false
-};
-_shield.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
-try {
-_shield.isEmbedded = (window.self !== window.top);
-} catch(e) {
-_shield.isEmbedded = true;
-}
-document.addEventListener('keydown', function(e){
-var k = e.keyCode || e.which;
-if(k === 123){ e.preventDefault(); e.stopPropagation(); return false; }
-if(e.ctrlKey && e.shiftKey && (k === 73 || k === 74 || k === 67 || k === 75 || k === 77)){ e.preventDefault(); return false; }
-if(e.ctrlKey && (k === 85 || k === 83)){ e.preventDefault(); return false; }
-if(e.metaKey && e.altKey && (k === 73 || k === 74 || k === 67)){ e.preventDefault(); return false; }
-}, true);
-document.addEventListener('contextmenu', function(e){
-e.preventDefault();
-return false;
-}, true);
-document.addEventListener('dragstart', function(e){ e.preventDefault(); }, true);
-if(!_shield.isEmbedded && !_shield.isMobile){
-function checkDevTools(){
-var wDiff = window.outerWidth - window.innerWidth;
-var hDiff = window.outerHeight - window.innerHeight;
-var isOpen = (wDiff > _shield.threshold) || (hDiff > _shield.threshold);
-if(isOpen && !_shield.devtoolsOpen){
-_shield.devtoolsOpen = true;
-showBlockScreen();
-} else if(!isOpen && _shield.devtoolsOpen){
-_shield.devtoolsOpen = false;
-if(_shield.blocked){
-_shield.blocked = false;
-var overlay = document.getElementById('spas1-shield-overlay');
-if(overlay) overlay.remove();
-}
-}
-}
-function showBlockScreen(){
-if(_shield.blocked) return;
-_shield.blocked = true;
-var overlay = document.createElement('div');
-overlay.id = 'spas1-shield-overlay';
-overlay.style.cssText = 'position:fixed;inset:0;background:linear-gradient(135deg,#0B132B 0%,#1C2541 100%);color:#fff;display:flex;align-items:center;justify-content:center;flex-direction:column;font-family:"Plus Jakarta Sans",sans-serif;z-index:2147483647;text-align:center;padding:20px;';
-overlay.innerHTML = '<div style="font-size:80px;margin-bottom:20px;">🛡️</div>' +
-'<h1 style="color:#EF4444;font-size:32px;font-weight:900;margin:0 0 10px 0;">ACCESS DENIED</h1>' +
-'<h2 style="color:#F59E0B;font-size:18px;font-weight:700;margin:0 0 20px 0;">DEVELOPER TOOLS TERDETEKSI</h2>' +
-'<p style="color:#E0E1DD;font-size:14px;max-width:400px;line-height:1.6;margin:0 0 15px 0;">Silakan tutup Developer Tools (F12) untuk melanjutkan.</p>' +
-'<p style="color:#94A3B8;font-size:12px;margin:0;">© 2026 SPAS1 Security Shield - iamskyy</p>';
-document.body.appendChild(overlay);
-}
-setInterval(checkDevTools, 2000);
-}
-try {
-var noop = function(){};
-var methods = ['log','debug','info','warn','error','table','trace'];
-methods.forEach(function(m){
-try {
-var original = console[m];
-console[m] = function(){
-if(_shield.devtoolsOpen) return;
-try { original.apply(console, arguments); } catch(e){}
-};
-} catch(e){}
-});
-} catch(e){}
-try {
-console.log('%c 🛡️ SPAS1 SECURITY SHIELD v3.0 ACTIVE', 'color:#10B981;font-size:16px;font-weight:bold;');
-console.log('%c ⚠️ Smart Protection by IamSkyy', 'color:#F59E0B;font-size:11px;');
-} catch(e){}
+  'use strict';
+
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+
+  function safeGuard() {
+    if (isMobile) return;
+
+    document.addEventListener('keydown', function(e){
+      const k = e.keyCode || e.which;
+
+      if (k === 123) return;
+
+      if (e.ctrlKey && e.shiftKey && (k === 73 || k === 74 || k === 67 || k === 75 || k === 77)) {
+        return;
+      }
+    }, true);
+  }
+
+  safeGuard();
 })();
 </script>
 <!-- ============================================= -->
-<!-- 🛡️ END ANTI-DEVTOOLS PROTECTION v3.0        -->
+<!-- ✅ END SAFE GUARD -->
 <!-- ============================================= -->
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* ============================================= */
-/* ✅ PERBAIKAN PRINT - HANYA MODUL AKTIF YANG TERCETAK */
-/* ============================================= */
+/* =========================
+   FIX: PRINT SAFE
+   ========================= */
 @media print {
-@page { size: A4; margin: 10mm; }
-html, body {
-background: #ffffff !important;
-color: #000000 !important;
--webkit-print-color-adjust: exact !important;
-print-color-adjust: exact !important;
-}
-/* Sembunyikan SEMUA modul secara default saat print */
-#view-home, #modul-absensi, #modul-menu, #modul-stok, #modul-joblist, #view-admin,
-#modal-admin-login, .mn-login-overlay, .sl-login-overlay, .mn-edit-modal, .sl-edit-modal,
-.modal-overlay, #toast-notify, .no-print, .fr-loading-overlay, .fr-error-panel,
-.fr-rotating-circle, .fr-rotating-arc, .fr-scan-line, .fr-grid-overlay,
-.fr-corner, .fr-label-container, .fr-status-pill, .fr-progress-bar,
-.mn-ai-kid-container, .sl-ai-food-container, .logo-custom-input,
-button, input, select, textarea, .sidebar, .nav-tabs {
-display: none !important;
-visibility: hidden !important;
-}
-/* Hanya tampilkan modul yang sedang di-print */
-body.printing-modul-absensi #modul-absensi,
-body.printing-modul-menu #modul-menu,
-body.printing-modul-stok #modul-stok,
-body.printing-modul-joblist #modul-joblist,
-body.printing-view-admin #view-admin {
-display: block !important;
-visibility: visible !important;
-position: static !important;
-background: #ffffff !important;
-color: #000000 !important;
-}
-body.printing-admin-dashboard #view-admin #tab-dash,
-body.printing-admin-laporan #view-admin #tab-laporan,
-body.printing-admin-karyawan #view-admin #tab-karyawan {
-display: block !important;
-visibility: visible !important;
-}
-body.printing-admin-dashboard #view-admin #tab-laporan,
-body.printing-admin-dashboard #view-admin #tab-karyawan,
-body.printing-admin-laporan #view-admin #tab-dash,
-body.printing-admin-laporan #view-admin #tab-karyawan,
-body.printing-admin-karyawan #view-admin #tab-dash,
-body.printing-admin-karyawan #view-admin #tab-laporan {
-display: none !important;
-visibility: hidden !important;
-}
-/* Reset style dalam modul yang di-print */
-body[class*="printing-"] * {
-visibility: visible !important;
-color: #000000 !important;
-background: #ffffff !important;
-border-color: #000000 !important;
-box-shadow: none !important;
-text-shadow: none !important;
-}
-body[class*="printing-"] .dark-card,
-body[class*="printing-"] .card,
-body[class*="printing-"] .light-card,
-body[class*="printing-"] .mn-menu-card,
-body[class*="printing-"] .sl-table-wrapper,
-body[class*="printing-"] .budget-table-wrapper,
-body[class*="printing-"] .mn-header-card,
-body[class*="printing-"] .sl-header-card {
-background: #ffffff !important;
-color: #000000 !important;
-border: 1px solid #cccccc !important;
-box-shadow: none !important;
-}
-body[class*="printing-"] table {
-display: table !important;
-width: 100% !important;
-border-collapse: collapse !important;
-}
-body[class*="printing-"] th,
-body[class*="printing-"] td {
-display: table-cell !important;
-padding: 6px 8px !important;
-border: 1px solid #000000 !important;
-color: #000000 !important;
-}
-body[class*="printing-"] th {
-background-color: #f0f0f0 !important;
-font-weight: bold !important;
-}
-body[class*="printing-"] h1,
-body[class*="printing-"] h2,
-body[class*="printing-"] h3,
-body[class*="printing-"] h4,
-body[class*="printing-"] p,
-body[class*="printing-"] span,
-body[class*="printing-"] label,
-body[class*="printing-"] div {
-color: #000000 !important;
-background: transparent !important;
-}
-body[class*="printing-"] .mn-stat-num,
-body[class*="printing-"] .sl-stat-num {
-color: #000000 !important;
-}
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  #view-admin,
+  #view-admin *,
+  body.printing-modul-absensi #modul-absensi,
+  body.printing-modul-menu #modul-menu,
+  body.printing-modul-stok #modul-stok,
+  body.printing-modul-joblist #modul-joblist {
+    visibility: visible !important;
+  }
+
+  #view-admin,
+  body.printing-modul-absensi #modul-absensi,
+  body.printing-modul-menu #modul-menu,
+  body.printing-modul-stok #modul-stok,
+  body.printing-modul-joblist #modul-joblist {
+    display: block !important;
+    position: static !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  #view-admin .btn,
+  #view-admin button,
+  #view-admin nav,
+  #view-admin aside,
+  #view-admin .sidebar,
+  .no-print,
+  .mn-login-overlay,
+  .sl-login-overlay,
+  .mn-edit-modal,
+  .sl-edit-modal,
+  .modal-overlay,
+  #toast-notify {
+    display: none !important;
+  }
+
+  body[class*="printing-"] * {
+    color: #000000 !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    border-color: #cccccc !important;
+  }
+
+  body[class*="printing-"] table,
+  body[class*="printing-"] th,
+  body[class*="printing-"] td {
+    display: table !important;
+    border: 1px solid #000000 !important;
+    color: #000000 !important;
+    background: #ffffff !important;
+  }
+
+  body[class*="printing-"] th,
+  body[class*="printing-"] td {
+    padding: 6px 8px !important;
+  }
+
+  body[class*="printing-"] h1,
+  body[class*="printing-"] h2,
+  body[class*="printing-"] h3,
+  body[class*="printing-"] h4,
+  body[class*="printing-"] p,
+  body[class*="printing-"] span,
+  body[class*="printing-"] label,
+  body[class*="printing-"] div {
+    color: #000000 !important;
+    background: transparent !important;
+  }
 }
 * { box-sizing: border-box; }
 body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0B132B; color: #E0E1DD; margin: 0; padding: 0; transition: background-color 0.3s, color 0.3s; overflow-x: hidden; }
@@ -868,18 +798,6 @@ font-size: 11px;
 
 #modal-admin-login {
 z-index: 10000;
-}
-
-@media print {
-body * { visibility: hidden; }
-#view-admin, #view-admin * { visibility: visible; }
-#view-admin { position: absolute; left: 0; top: 0; width: 100%; background: white !important; color: black !important; }
-#view-admin .light-card { background: white !important; border: 1px solid #ddd !important; box-shadow: none !important; }
-#view-admin table { border: 1px solid #ddd !important; }
-#view-admin th, #view-admin td { border: 1px solid #ddd !important; padding: 8px !important; }
-#view-admin .btn, #view-admin button, #view-admin .sidebar, #view-admin nav { display: none !important; }
-#view-admin main { padding: 0 !important; }
-.no-print { display: none !important; }
 }
 </style>
 </head>
