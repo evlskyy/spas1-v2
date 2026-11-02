@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>SPAS1 Ver 2.0 - Yayasan Bidadari Indonesia Gemilang</title>
 <link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJYzPk2Xea4JAccvonUAeQSs-3E69THE8bVeyXD7m-yyTN78e60a09u-TS_v99dJcbPCtfJNJ9vNMPflbA1sx3jSi0T-BYBSP-_vDNefVbO-z2FVazjn6fktuCFRfZhOodqLqQRSaJIZS0dG1xkP3kbD4NmWbMuIvDSDKL3HdBP1XLgjS3aagtRyK88cHu/s1600/image.png">
 <link rel="apple-touch-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJYzPk2Xea4JAccvonUAeQSs-3E69THE8bVeyXD7m-yyTN78e60a09u-TS_v99dJcbPCtfJNJ9vNMPflbA1sx3jSi0T-BYBSP-_vDNefVbO-z2FVazjn6fktuCFRfZhOodqLqQRSaJIZS0dG1xkP3kbD4NmWbMuIvDSDKL3HdBP1XLgjS3aagtRyK88cHu/s1600/image.png">
@@ -39,94 +40,108 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* =========================
-   FIX: PRINT SAFE
-   ========================= */
+/* ============================================= */
+/* ✅ PERBAIKAN PRINT - HANYA MODUL AKTIF YANG TERCETAK */
+/* ============================================= */
 @media print {
-  @page {
-    size: A4;
-    margin: 10mm;
-  }
-
-  html, body {
-    background: #ffffff !important;
-    color: #000000 !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-
-  body * {
-    visibility: hidden !important;
-  }
-
-  #view-admin,
-  #view-admin *,
-  body.printing-modul-absensi #modul-absensi,
-  body.printing-modul-menu #modul-menu,
-  body.printing-modul-stok #modul-stok,
-  body.printing-modul-joblist #modul-joblist {
-    visibility: visible !important;
-  }
-
-  #view-admin,
-  body.printing-modul-absensi #modul-absensi,
-  body.printing-modul-menu #modul-menu,
-  body.printing-modul-stok #modul-stok,
-  body.printing-modul-joblist #modul-joblist {
-    display: block !important;
-    position: static !important;
-    background: #ffffff !important;
-    color: #000000 !important;
-  }
-
-  #view-admin .btn,
-  #view-admin button,
-  #view-admin nav,
-  #view-admin aside,
-  #view-admin .sidebar,
-  .no-print,
-  .mn-login-overlay,
-  .sl-login-overlay,
-  .mn-edit-modal,
-  .sl-edit-modal,
-  .modal-overlay,
-  #toast-notify {
-    display: none !important;
-  }
-
-  body[class*="printing-"] * {
-    color: #000000 !important;
-    background: #ffffff !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-    border-color: #cccccc !important;
-  }
-
-  body[class*="printing-"] table,
-  body[class*="printing-"] th,
-  body[class*="printing-"] td {
-    display: table !important;
-    border: 1px solid #000000 !important;
-    color: #000000 !important;
-    background: #ffffff !important;
-  }
-
-  body[class*="printing-"] th,
-  body[class*="printing-"] td {
-    padding: 6px 8px !important;
-  }
-
-  body[class*="printing-"] h1,
-  body[class*="printing-"] h2,
-  body[class*="printing-"] h3,
-  body[class*="printing-"] h4,
-  body[class*="printing-"] p,
-  body[class*="printing-"] span,
-  body[class*="printing-"] label,
-  body[class*="printing-"] div {
-    color: #000000 !important;
-    background: transparent !important;
-  }
+@page { size: A4; margin: 10mm; }
+html, body {
+background: #ffffff !important;
+color: #000000 !important;
+-webkit-print-color-adjust: exact !important;
+print-color-adjust: exact !important;
+}
+/* Sembunyikan SEMUA modul secara default saat print */
+#view-home, #modul-absensi, #modul-menu, #modul-stok, #modul-joblist, #view-admin,
+#modal-admin-login, .mn-login-overlay, .sl-login-overlay, .mn-edit-modal, .sl-edit-modal,
+.modal-overlay, #toast-notify, .no-print, .fr-loading-overlay, .fr-error-panel,
+.fr-rotating-circle, .fr-rotating-arc, .fr-scan-line, .fr-grid-overlay,
+.fr-corner, .fr-label-container, .fr-status-pill, .fr-progress-bar,
+.mn-ai-kid-container, .sl-ai-food-container, .logo-custom-input,
+button, input, select, textarea, .sidebar, .nav-tabs {
+display: none !important;
+visibility: hidden !important;
+}
+/* Hanya tampilkan modul yang sedang di-print */
+body.printing-modul-absensi #modul-absensi,
+body.printing-modul-menu #modul-menu,
+body.printing-modul-stok #modul-stok,
+body.printing-modul-joblist #modul-joblist,
+body.printing-view-admin #view-admin {
+display: block !important;
+visibility: visible !important;
+position: static !important;
+background: #ffffff !important;
+color: #000000 !important;
+}
+body.printing-admin-dashboard #view-admin #tab-dash,
+body.printing-admin-laporan #view-admin #tab-laporan,
+body.printing-admin-karyawan #view-admin #tab-karyawan {
+display: block !important;
+visibility: visible !important;
+}
+body.printing-admin-dashboard #view-admin #tab-laporan,
+body.printing-admin-dashboard #view-admin #tab-karyawan,
+body.printing-admin-laporan #view-admin #tab-dash,
+body.printing-admin-laporan #view-admin #tab-karyawan,
+body.printing-admin-karyawan #view-admin #tab-dash,
+body.printing-admin-karyawan #view-admin #tab-laporan {
+display: none !important;
+visibility: hidden !important;
+}
+/* Reset style dalam modul yang di-print */
+body[class*="printing-"] * {
+visibility: visible !important;
+color: #000000 !important;
+background: #ffffff !important;
+border-color: #000000 !important;
+box-shadow: none !important;
+text-shadow: none !important;
+}
+body[class*="printing-"] .dark-card,
+body[class*="printing-"] .card,
+body[class*="printing-"] .light-card,
+body[class*="printing-"] .mn-menu-card,
+body[class*="printing-"] .sl-table-wrapper,
+body[class*="printing-"] .budget-table-wrapper,
+body[class*="printing-"] .mn-header-card,
+body[class*="printing-"] .sl-header-card {
+background: #ffffff !important;
+color: #000000 !important;
+border: 1px solid #cccccc !important;
+box-shadow: none !important;
+}
+body[class*="printing-"] table {
+display: table !important;
+width: 100% !important;
+border-collapse: collapse !important;
+}
+body[class*="printing-"] th,
+body[class*="printing-"] td {
+display: table-cell !important;
+padding: 6px 8px !important;
+border: 1px solid #000000 !important;
+color: #000000 !important;
+}
+body[class*="printing-"] th {
+background-color: #f0f0f0 !important;
+font-weight: bold !important;
+}
+body[class*="printing-"] h1,
+body[class*="printing-"] h2,
+body[class*="printing-"] h3,
+body[class*="printing-"] h4,
+body[class*="printing-"] p,
+body[class*="printing-"] span,
+body[class*="printing-"] label,
+body[class*="printing-"] div {
+color: #000000 !important;
+background: transparent !important;
+}
+body[class*="printing-"] .mn-stat-num,
+body[class*="printing-"] .sl-stat-num {
+color: #000000 !important;
+}
 }
 * { box-sizing: border-box; }
 body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0B132B; color: #E0E1DD; margin: 0; padding: 0; transition: background-color 0.3s, color 0.3s; overflow-x: hidden; }
@@ -799,6 +814,18 @@ font-size: 11px;
 #modal-admin-login {
 z-index: 10000;
 }
+
+@media print {
+body * { visibility: hidden; }
+#view-admin, #view-admin * { visibility: visible; }
+#view-admin { position: absolute; left: 0; top: 0; width: 100%; background: white !important; color: black !important; }
+#view-admin .light-card { background: white !important; border: 1px solid #ddd !important; box-shadow: none !important; }
+#view-admin table { border: 1px solid #ddd !important; }
+#view-admin th, #view-admin td { border: 1px solid #ddd !important; padding: 8px !important; }
+#view-admin .btn, #view-admin button, #view-admin .sidebar, #view-admin nav { display: none !important; }
+#view-admin main { padding: 0 !important; }
+.no-print { display: none !important; }
+}
 </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between">
@@ -883,7 +910,7 @@ z-index: 10000;
 <div class="whatsapp-tooltip">
 💬 Need Help? Terror Me!
 </div>
-<a href="https://wa.me/6281378004808?text=Halo%20Bang%20Sky,%20pinjem%20dulu%20seratus" target="_blank" class="whatsapp-btn" title="Terror Sky">
+<a href="https://wa.me/6281378004808?text=Halo%20Bang%20Sky,%20pinjem%20dulu%20seratus" target="_blank" rel="noopener noreferrer" class="whatsapp-btn" title="Terror Sky">
 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
 </svg>
@@ -942,19 +969,19 @@ z-index: 10000;
 </div>
 <div class="home-footer-layout">
 <div class="home-footer-social social-media-container">
-<a href="https://www.tiktok.com/@sppg.sei.pasir.1" target="_blank" class="social-link" title="TikTok">
+<a href="https://www.tiktok.com/@sppg.sei.pasir.1" target="_blank" rel="noopener noreferrer" class="social-link" title="TikTok">
 <svg viewBox="0 0 24 24" fill="none"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z" fill="#000000"/></svg>
 </a>
-<a href="https://www.instagram.com/sppgsungaipasir1" target="_blank" class="social-link" title="Instagram">
+<a href="https://www.instagram.com/sppgsungaipasir1" target="_blank" rel="noopener noreferrer" class="social-link" title="Instagram">
 <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" fill="url(#ig-gradient)"/><path d="M12 7a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm5.5-9a1.5 1.5 0 100 3 1.5 1.5 0 000-3z" fill="white"/><defs><linearGradient id="ig-gradient" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="#f09433"/><stop offset="25%" stop-color="#e6683c"/><stop offset="50%" stop-color="#dc2743"/><stop offset="75%" stop-color="#cc2366"/><stop offset="100%" stop-color="#bc1888"/></linearGradient></defs></svg>
 </a>
 <a href="mailto:sppgmeralseipasirsatu@gmail.com" class="social-link" title="Email">
 <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="2" fill="#EA4335"/><path d="M2 6l10 7 10-7" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
 </a>
-<a href="https://www.youtube.com/@channel_anda" target="_blank" class="social-link" title="YouTube">
+<a href="https://www.youtube.com/@channel_anda" target="_blank" rel="noopener noreferrer" class="social-link" title="YouTube">
 <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="4" fill="#FF0000"/><path d="M10 8l6 4-6 4V8z" fill="white"/></svg>
 </a>
-<a href="https://sites.google.com/view/deployskyy/about" target="_blank" class="social-link" title="aboutskyyᯓᡣ𐭩">
+<a href="https://sites.google.com/view/deployskyy/about" target="_blank" rel="noopener noreferrer" class="social-link" title="aboutskyyᯓᡣ𐭩">
 <svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
 </a>
 </div>
@@ -1409,12 +1436,42 @@ z-index: 10000;
 <script>
 window.SPAS1_AUTH_TOKEN = '';
 window.SPAS1_AUTH_ROLE = '';
+function escapeHtml(value) {
+return String(value).replace(/[&<>"']/g, function(char) {
+return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char];
+});
+}
+function safeImageDataUrl(value) {
+const url = String(value || '');
+return /^data:image\/(?:png|jpeg|gif|webp);base64,[A-Za-z0-9+/]+={0,2}$/i.test(url) ? url : '';
+}
+function readImageFile(file, onLoad) {
+if (!file || !/^image\/(png|jpeg|gif|webp)$/i.test(file.type) || file.size > 10 * 1024 * 1024) {
+alert('Gunakan gambar PNG, JPEG, GIF, atau WebP maksimal 10 MB.');
+return;
+}
+const reader = new FileReader();
+reader.onload = function(event) {
+const image = safeImageDataUrl(event.target.result);
+if (!image) {
+alert('Format gambar tidak valid atau tidak didukung.');
+return;
+}
+onLoad(image);
+};
+reader.onerror = function() {
+alert('Gagal membaca file gambar.');
+};
+reader.readAsDataURL(file);
+}
 function callGAS(action, payload, onSuccess, onError) {
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbyhH47TszRivYtI26VqYIBfyMqz958tuT4B9ehLlMXqA1kZZK_ug0x93dHHMx6tfWBuew/exec';
 const requestPayload = Object.assign({}, payload || {});
 if (window.SPAS1_AUTH_TOKEN && !requestPayload.authToken) requestPayload.authToken = window.SPAS1_AUTH_TOKEN;
 fetch(GAS_URL, {
 method: 'POST',
+cache: 'no-store',
+credentials: 'omit',
 headers: {
 'Content-Type': 'text/plain;charset=utf-8'
 },
@@ -1423,7 +1480,10 @@ action: action,
 payload: requestPayload
 })
 })
-.then(response => response.json())
+.then(response => {
+if (!response.ok) throw new Error('Server returned HTTP ' + response.status);
+return response.json();
+})
 .then(data => {
 if (onSuccess) onSuccess(data);
 })
@@ -1531,8 +1591,8 @@ function verifikasiAdmin() {
 const u = document.getElementById('adminUser').value.trim();
 const p = document.getElementById('adminPass').value;
 const btn = document.getElementById('btnSubmitAdmin');
-if (!u || !p) { alert('️ Username dan Password harus diisi!'); return; }
-btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Memverifikasi...';
+if (!u || !p) { alert('⚠️ Username dan Password harus diisi!'); return; }
+btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Verifikasi Akses Login...';
 btn.disabled = true;
 callGAS('verifyAdminLogin', { username: u, password: p }, function(res) {
 btn.innerHTML = 'Masuk ke Dashboard';
@@ -1685,7 +1745,7 @@ function setPortalLoginBusy(buttonId, busy) {
 const button = document.getElementById(buttonId);
 if (!button) return;
 button.disabled = busy;
-button.innerHTML = busy ? '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Memeriksa username dan kata sandi...' : '<i class="fa-solid fa-right-to-bracket"></i> Masuk ke Portal';
+button.innerHTML = busy ? '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Verifikasi Akses Login...' : '<i class="fa-solid fa-right-to-bracket"></i> Masuk ke Portal';
 }
 function verifyMnLogin() {
 const user = document.getElementById('mnLoginUser').value.trim();
@@ -1786,10 +1846,55 @@ const matchKat = fKat === 'all' || m.kategori === fKat;
 return matchSearch && matchHari && matchKat;
 });
 if (filtered.length === 0) { container.innerHTML = '<div class="mn-empty-state" style="grid-column: 1/-1;"><i class="fa-solid fa-utensils" style="font-size: 40px; margin-bottom: 10px; opacity: 0.5;"></i><p>Tidak ada menu yang ditemukan.</p></div>'; return; }
-container.innerHTML = filtered.slice(0, 100).map(m => '<div class="mn-menu-card"><button class="mn-edit-btn" onclick="openMnEditModal(' + m.id + ')" title="Edit Menu"><i class="fa-solid fa-pen"></i></button><div class="mn-menu-header"><div class="mn-menu-id">#' + String(m.id).padStart(3, '0') + '</div></div><div class="mn-menu-name">' + m.nama + '</div><div class="mn-menu-tags"><span class="mn-tag mn-tag-hari">📅 ' + m.hari + '</span><span class="mn-tag mn-tag-kategori">🏷️ ' + m.kategori + '</span><span class="mn-tag mn-tag-daerah">📍 ' + m.daerah + '</span></div><div class="mn-composition-grid"><div class="mn-comp-item"><div class="mn-comp-label">🍚 Karbohidrat</div><div class="mn-comp-value">' + m.karbohidrat.nama + ' (' + m.karbohidrat.gram + 'g)</div></div><div class="mn-comp-item"><div class="mn-comp-label">🥩 Protein Hewani</div><div class="mn-comp-value">' + m.proteinHewani.nama + ' (' + m.proteinHewani.gram + 'g)</div></div><div class="mn-comp-item"><div class="mn-comp-label">🫘 Protein Nabati</div><div class="mn-comp-value">' + m.proteinNabati.nama + ' (' + m.proteinNabati.gram + 'g)</div></div><div class="mn-comp-item"><div class="mn-comp-label"> Sayuran</div><div class="mn-comp-value">' + m.sayuran.nama + ' (' + m.sayuran.gram + 'g)</div></div><div class="mn-comp-item" style="grid-column: 1/-1;"><div class="mn-comp-label"> Buah</div><div class="mn-comp-value">' + m.buah.nama + ' (' + m.buah.gram + 'g)</div></div></div><div class="mn-akg-bar"><div class="mn-akg-title"> Komposisi Gizi (AKG per Porsi)</div><div class="mn-akg-grid"><div class="mn-akg-item"><div class="mn-akg-val">' + m.akg.kalori + '</div><div class="mn-akg-unit">Kalori</div></div><div class="mn-akg-item"><div class="mn-akg-val">' + m.akg.protein + 'g</div><div class="mn-akg-unit">Protein</div></div><div class="mn-akg-item"><div class="mn-akg-val">' + m.akg.lemak + 'g</div><div class="mn-akg-unit">Lemak</div></div><div class="mn-akg-item"><div class="mn-akg-val">' + m.akg.karbohidrat + 'g</div><div class="mn-akg-unit">Karbo</div></div><div class="mn-akg-item"><div class="mn-akg-val">' + m.akg.serat + 'g</div><div class="mn-akg-unit">Serat</div></div><div class="mn-akg-item"><div class="mn-akg-val">' + m.akg.vitA + 'µg</div><div class="mn-akg-unit">Vit A</div></div><div class="mn-akg-item"><div class="mn-akg-val">' + m.akg.vitC + 'mg</div><div class="mn-akg-unit">Vit C</div></div><div class="mn-akg-item"><div class="mn-akg-val">' + m.akg.kalsium + 'mg</div><div class="mn-akg-unit">Kalsium</div></div><div class="mn-akg-item"><div class="mn-akg-val">' + m.akg.zatBesi + 'mg</div><div class="mn-akg-unit">Zat Besi</div></div><div class="mn-akg-item"><div class="mn-akg-val">✓</div><div class="mn-akg-unit">MBG OK</div></div></div></div></div>').join('');
+container.innerHTML = filtered.slice(0, 100).map(m => {
+const id = Number(m.id);
+const editButton = Number.isSafeInteger(id) ? '<button class="mn-edit-btn" onclick="openMnEditModal(' + id + ')" title="Edit Menu"><i class="fa-solid fa-pen"></i></button>' : '';
+const text = value => escapeHtml(value);
+return '<div class="mn-menu-card">' + editButton +
+'<div class="mn-menu-header"><div class="mn-menu-id">#' + text(String(m.id).padStart(3, '0')) + '</div></div>' +
+'<div class="mn-menu-name">' + text(m.nama) + '</div><div class="mn-menu-tags">' +
+'<span class="mn-tag mn-tag-hari">📅 ' + text(m.hari) + '</span><span class="mn-tag mn-tag-kategori">🏷️ ' + text(m.kategori) + '</span><span class="mn-tag mn-tag-daerah">📍 ' + text(m.daerah) + '</span></div>' +
+'<div class="mn-composition-grid"><div class="mn-comp-item"><div class="mn-comp-label">🍚 Karbohidrat</div><div class="mn-comp-value">' + text(m.karbohidrat.nama) + ' (' + text(m.karbohidrat.gram) + 'g)</div></div>' +
+'<div class="mn-comp-item"><div class="mn-comp-label">🥩 Protein Hewani</div><div class="mn-comp-value">' + text(m.proteinHewani.nama) + ' (' + text(m.proteinHewani.gram) + 'g)</div></div>' +
+'<div class="mn-comp-item"><div class="mn-comp-label">🫘 Protein Nabati</div><div class="mn-comp-value">' + text(m.proteinNabati.nama) + ' (' + text(m.proteinNabati.gram) + 'g)</div></div>' +
+'<div class="mn-comp-item"><div class="mn-comp-label">Sayuran</div><div class="mn-comp-value">' + text(m.sayuran.nama) + ' (' + text(m.sayuran.gram) + 'g)</div></div>' +
+'<div class="mn-comp-item" style="grid-column: 1/-1;"><div class="mn-comp-label">Buah</div><div class="mn-comp-value">' + text(m.buah.nama) + ' (' + text(m.buah.gram) + 'g)</div></div></div>' +
+'<div class="mn-akg-bar"><div class="mn-akg-title">Komposisi Gizi (AKG per Porsi)</div><div class="mn-akg-grid">' +
+'<div class="mn-akg-item"><div class="mn-akg-val">' + text(m.akg.kalori) + '</div><div class="mn-akg-unit">Kalori</div></div>' +
+'<div class="mn-akg-item"><div class="mn-akg-val">' + text(m.akg.protein) + 'g</div><div class="mn-akg-unit">Protein</div></div>' +
+'<div class="mn-akg-item"><div class="mn-akg-val">' + text(m.akg.lemak) + 'g</div><div class="mn-akg-unit">Lemak</div></div>' +
+'<div class="mn-akg-item"><div class="mn-akg-val">' + text(m.akg.karbohidrat) + 'g</div><div class="mn-akg-unit">Karbo</div></div>' +
+'<div class="mn-akg-item"><div class="mn-akg-val">' + text(m.akg.serat) + 'g</div><div class="mn-akg-unit">Serat</div></div>' +
+'<div class="mn-akg-item"><div class="mn-akg-val">' + text(m.akg.vitA) + 'µg</div><div class="mn-akg-unit">Vit A</div></div>' +
+'<div class="mn-akg-item"><div class="mn-akg-val">' + text(m.akg.vitC) + 'mg</div><div class="mn-akg-unit">Vit C</div></div>' +
+'<div class="mn-akg-item"><div class="mn-akg-val">' + text(m.akg.kalsium) + 'mg</div><div class="mn-akg-unit">Kalsium</div></div>' +
+'<div class="mn-akg-item"><div class="mn-akg-val">' + text(m.akg.zatBesi) + 'mg</div><div class="mn-akg-unit">Zat Besi</div></div>' +
+'<div class="mn-akg-item"><div class="mn-akg-val">✓</div><div class="mn-akg-unit">MBG OK</div></div></div></div></div>';
+}).join('');
 }
-function handleMnLogoUpload(event) { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = function(e) { const img = document.getElementById('mnLogoImg'); const def = document.getElementById('mnLogoDefault'); img.src = e.target.result; img.style.display = 'block'; def.style.display = 'none'; try { localStorage.setItem('mn_logo_custom', e.target.result); } catch(err) {} showToast('✅ Logo Bank Menu berhasil diubah!'); }; reader.readAsDataURL(file); }
-function loadMnLogo() { try { const saved = localStorage.getItem('mn_logo_custom'); if (saved) { const img = document.getElementById('mnLogoImg'); const def = document.getElementById('mnLogoDefault'); img.src = saved; img.style.display = 'block'; def.style.display = 'none'; } } catch(err) {} }
+function handleMnLogoUpload(event) {
+const file = event.target.files[0];
+if (!file) return;
+readImageFile(file, function(image) {
+const img = document.getElementById('mnLogoImg');
+const def = document.getElementById('mnLogoDefault');
+img.src = image;
+img.style.display = 'block';
+def.style.display = 'none';
+try { localStorage.setItem('mn_logo_custom', image); } catch(err) { console.error('Unable to save Bank Menu logo locally:', err); }
+});
+}
+function loadMnLogo() {
+try {
+const saved = safeImageDataUrl(localStorage.getItem('mn_logo_custom'));
+if (!saved) return;
+const img = document.getElementById('mnLogoImg');
+const def = document.getElementById('mnLogoDefault');
+img.src = saved;
+img.style.display = 'block';
+def.style.display = 'none';
+} catch(err) { console.error('Unable to load Bank Menu logo:', err); }
+}
 function openMnEditModal(menuId) { const menu = MN_MENU_DATA.find(m => m.id === menuId); if (!menu) return; document.getElementById('mnEditId').value = menuId; document.getElementById('mnEditNama').value = menu.nama; document.getElementById('mnEditHari').value = menu.hari; document.getElementById('mnEditKategori').value = menu.kategori; document.getElementById('mnEditKarbo').value = menu.karbohidrat.nama + ' | ' + menu.karbohidrat.gram; document.getElementById('mnEditProteinH').value = menu.proteinHewani.nama + ' | ' + menu.proteinHewani.gram; document.getElementById('mnEditProteinN').value = menu.proteinNabati.nama + ' | ' + menu.proteinNabati.gram; document.getElementById('mnEditSayur').value = menu.sayuran.nama + ' | ' + menu.sayuran.gram; document.getElementById('mnEditBuah').value = menu.buah.nama + ' | ' + menu.buah.gram; document.getElementById('mnEditKalori').value = menu.akg.kalori; document.getElementById('mnEditProtein').value = menu.akg.protein; document.getElementById('mnEditLemak').value = menu.akg.lemak; document.getElementById('mnEditModal').classList.add('show'); }
 function closeMnEditModal() { document.getElementById('mnEditModal').classList.remove('show'); }
 function saveMnEdit() { const id = parseInt(document.getElementById('mnEditId').value); const menu = MN_MENU_DATA.find(m => m.id === id); if (!menu) return; menu.nama = document.getElementById('mnEditNama').value; menu.hari = document.getElementById('mnEditHari').value; menu.kategori = document.getElementById('mnEditKategori').value; menu.daerah = menu.kategori.replace('Tradisional ', ''); const parseField = (val) => { const parts = val.split('|').map(s => s.trim()); return { nama: parts[0] || '', gram: parseInt(parts[1]) || 0 }; }; menu.karbohidrat = parseField(document.getElementById('mnEditKarbo').value); menu.proteinHewani = parseField(document.getElementById('mnEditProteinH').value); menu.proteinNabati = parseField(document.getElementById('mnEditProteinN').value); menu.sayuran = parseField(document.getElementById('mnEditSayur').value); menu.buah = parseField(document.getElementById('mnEditBuah').value); menu.akg.kalori = parseInt(document.getElementById('mnEditKalori').value) || 0; menu.akg.protein = parseInt(document.getElementById('mnEditProtein').value) || 0; menu.akg.lemak = parseInt(document.getElementById('mnEditLemak').value) || 0; closeMnEditModal(); renderMenuNusantara(); syncMenuToCloud(); showToast('✅ Menu berhasil diperbarui!'); }
@@ -1860,10 +1965,41 @@ const fKat = document.getElementById('slFilterKategori').value;
 let filtered = SL_STOK_DATA.filter(s => { const matchSearch = !search || s.nama.toLowerCase().includes(search) || s.kategori.toLowerCase().includes(search) || s.supplier.toLowerCase().includes(search); const matchKat = fKat === 'all' || s.kategori === fKat; return matchSearch && matchKat; });
 if (filtered.length === 0) { tbody.innerHTML = '<tr><td colspan="8" class="text-center py-8" style="color: #9CA3AF;">🔍 Tidak ada item yang ditemukan.</td></tr>'; return; }
 const catClassMap = { 'Bahan Baku Utama': 'sl-cat-bahan', 'Bumbu Dasar': 'sl-cat-bumbu', 'Rempah Khas Indonesia': 'sl-cat-rempah', 'Bumbu Racikan': 'sl-cat-racikan', 'Bahan Kering': 'sl-cat-kering', 'Bahan Basah': 'sl-cat-basah', 'Bahan Kemasan': 'sl-cat-kemasan' };
-tbody.innerHTML = filtered.map((s, idx) => { const catClass = catClassMap[s.kategori] || 'sl-cat-bahan'; let stockClass = 'sl-stock-ok'; if (s.stok < 50) stockClass = 'sl-stock-critical'; else if (s.stok < 150) stockClass = 'sl-stock-low'; return '<tr class="sl-table-row"><td style="font-weight: 800; color: #10B981;">' + s.id + '</td><td><span class="sl-cat-badge ' + catClass + '">' + s.kategori + '</span></td><td style="font-weight: 700;">' + s.nama + '</td><td style="color: #9CA3AF;">' + s.satuan + '</td><td class="' + stockClass + '">' + s.stok + '</td><td style="color: #F59E0B; font-weight: 700;">Rp ' + s.harga.toLocaleString('id-ID') + '</td><td style="color: #9CA3AF; font-size: 11px;">' + s.supplier + '</td><td><button class="sl-edit-btn" style="position:static;opacity:1;transform:none;width:32px;height:32px;" onclick="openSlEditModal(' + s.id + ')" title="Edit Item"><i class="fa-solid fa-pen"></i></button></td></tr>'; }).join('');
+tbody.innerHTML = filtered.map(s => {
+const id = Number(s.id);
+const catClass = catClassMap[s.kategori] || 'sl-cat-bahan';
+const stockClass = Number(s.stok) < 50 ? 'sl-stock-critical' : Number(s.stok) < 150 ? 'sl-stock-low' : 'sl-stock-ok';
+const editButton = Number.isSafeInteger(id) ? '<button class="sl-edit-btn" style="position:static;opacity:1;transform:none;width:32px;height:32px;" onclick="openSlEditModal(' + id + ')" title="Edit Item"><i class="fa-solid fa-pen"></i></button>' : '';
+return '<tr class="sl-table-row"><td style="font-weight:800;color:#10B981;">' + escapeHtml(s.id) + '</td>' +
+'<td><span class="sl-cat-badge ' + catClass + '">' + escapeHtml(s.kategori) + '</span></td><td style="font-weight:700;">' + escapeHtml(s.nama) + '</td>' +
+'<td style="color:#9CA3AF;">' + escapeHtml(s.satuan) + '</td><td class="' + stockClass + '">' + escapeHtml(s.stok) + '</td>' +
+'<td style="color:#F59E0B;font-weight:700;">Rp ' + escapeHtml(Number(s.harga).toLocaleString('id-ID')) + '</td>' +
+'<td style="color:#9CA3AF;font-size:11px;">' + escapeHtml(s.supplier) + '</td><td>' + editButton + '</td></tr>';
+}).join('');
 }
-function handleSlLogoUpload(event) { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = function(e) { const img = document.getElementById('slLogoImg'); const def = document.getElementById('slLogoDefault'); img.src = e.target.result; img.style.display = 'block'; def.style.display = 'none'; try { localStorage.setItem('sl_logo_custom', e.target.result); } catch(err) {} showToast('✅ Logo Stok Logistik berhasil diubah!'); }; reader.readAsDataURL(file); }
-function loadSlLogo() { try { const saved = localStorage.getItem('sl_logo_custom'); if (saved) { const img = document.getElementById('slLogoImg'); const def = document.getElementById('slLogoDefault'); img.src = saved; img.style.display = 'block'; def.style.display = 'none'; } } catch(err) {} }
+function handleSlLogoUpload(event) {
+const file = event.target.files[0];
+if (!file) return;
+readImageFile(file, function(image) {
+const img = document.getElementById('slLogoImg');
+const def = document.getElementById('slLogoDefault');
+img.src = image;
+img.style.display = 'block';
+def.style.display = 'none';
+try { localStorage.setItem('sl_logo_custom', image); } catch(err) { console.error('Unable to save Stok Logistik logo locally:', err); }
+});
+}
+function loadSlLogo() {
+try {
+const saved = safeImageDataUrl(localStorage.getItem('sl_logo_custom'));
+if (!saved) return;
+const img = document.getElementById('slLogoImg');
+const def = document.getElementById('slLogoDefault');
+img.src = saved;
+img.style.display = 'block';
+def.style.display = 'none';
+} catch(err) { console.error('Unable to load Stok Logistik logo:', err); }
+}
 function openSlEditModal(itemId) { const item = SL_STOK_DATA.find(s => s.id === itemId); if (!item) return; document.getElementById('slEditId').value = itemId; document.getElementById('slEditKategori').value = item.kategori; document.getElementById('slEditNama').value = item.nama; document.getElementById('slEditSatuan').value = item.satuan; document.getElementById('slEditStok').value = item.stok; document.getElementById('slEditHarga').value = item.harga; document.getElementById('slEditSupplier').value = item.supplier; document.getElementById('slEditModal').classList.add('show'); }
 function closeSlEditModal() { document.getElementById('slEditModal').classList.remove('show'); }
 function saveSlEdit() { const id = parseInt(document.getElementById('slEditId').value); const item = SL_STOK_DATA.find(s => s.id === id); if (!item) return; item.kategori = document.getElementById('slEditKategori').value; item.nama = document.getElementById('slEditNama').value; item.satuan = document.getElementById('slEditSatuan').value; item.stok = parseInt(document.getElementById('slEditStok').value) || 0; item.harga = parseInt(document.getElementById('slEditHarga').value) || 0; item.supplier = document.getElementById('slEditSupplier').value; closeSlEditModal(); renderStokLogistik(); syncStokToCloud(); showToast('✅ Item stok berhasil diperbarui!'); }
@@ -1919,7 +2055,11 @@ const rows = table.querySelectorAll('tr');
 rows.forEach(row => {
 const cols = row.querySelectorAll('td, th');
 const rowData = [];
-cols.forEach(col => { rowData.push('"' + col.innerText.replace(/"/g, '""') + '"'); });
+cols.forEach(col => {
+let value = col.innerText.replace(/"/g, '""');
+if (/^[\s]*[=+\-@]/.test(value)) value = "'" + value;
+rowData.push('"' + value + '"');
+});
 csv.push(rowData.join(','));
 });
 const csvContent = '\uFEFF' + csv.join('\n');
@@ -1944,6 +2084,16 @@ function showCameraError(message) { const statusText = document.getElementById('
 async function retryCameraAccess() { const errorPanel = document.getElementById('frErrorPanel'); errorPanel.classList.remove('show'); await bukaKameraDepanOtomatis(); }
 function openCameraSettings() { alert('Pengaturan Browser:\n1. Buka Settings/Pengaturan browser\n2. Cari "Site Settings" / "Privacy"\n3. Cari "Camera" permissions\n4. Izinkan untuk situs ini\n5. Refresh halaman'); }
 window.handleFileCapture = function(event, source) { const file = event.target.files[0]; if (!file) return; if (!file.type.startsWith('image/')) { alert('⚠️ File harus berupa gambar (JPG/PNG).'); event.target.value = ''; return; } const maxSize = 10 * 1024 * 1024; if (file.size > maxSize) { alert('⚠️ Ukuran file terlalu besar. Maksimal 10MB.'); event.target.value = ''; return; } const reader = new FileReader(); reader.onload = function(e) { const dataUrl = e.target.result; if (!dataUrl || dataUrl.length < 100) { alert('❌ Gagal membaca file. Coba file lain.'); return; } const preview = document.getElementById('frFilePreview'); const previewImg = document.getElementById('frFilePreviewImg'); previewImg.src = dataUrl; preview.style.display = 'block'; capturedFaceFileBase64 = dataUrl; const statusText = document.getElementById('cameraStatusText'); const errorPanel = document.getElementById('frErrorPanel'); if (errorPanel) errorPanel.classList.remove('show'); if (statusText) { const sourceText = source === 'camera' ? 'Kamera' : 'Galeri'; statusText.innerHTML = '<span class="fr-status-dot" style="background:#28a745"></span><span>Foto dari ' + sourceText + ' ✓</span>'; } const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2); showToast('✅ Foto berhasil dipilih dari ' + (source === 'camera' ? 'kamera' : 'galeri') + ' (' + fileSizeMB + ' MB)'); setTimeout(() => { event.target.value = ''; }, 100); }; reader.onerror = function() { alert('❌ Gagal membaca file. Coba file lain.'); event.target.value = ''; }; reader.readAsDataURL(file); };
+const handleValidatedFileCapture = window.handleFileCapture;
+window.handleFileCapture = function(event, source) {
+const file = event && event.target.files && event.target.files[0];
+if (file && !/^image\/(png|jpeg|gif|webp)$/i.test(file.type)) {
+alert('File harus berupa gambar PNG, JPEG, GIF, atau WebP.');
+event.target.value = '';
+return;
+}
+return handleValidatedFileCapture(event, source);
+};
 function kembaliKeMenuAbsen() { stopCamera(); document.getElementById('screen-scan-wajah').classList.add('hidden'); document.getElementById('screen-menu-absen').classList.remove('hidden'); }
 function simpanAbsensiFinal() { const btn = document.getElementById('btnSimpanAbsen'); if (!activeUserData || !window.SPAS1_AUTH_TOKEN || window.SPAS1_AUTH_ROLE !== 'employee') { alert('Sesi relawan tidak valid. Silakan login kembali.'); logoutKaryawan(); return; } btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Menyimpan ke Sheet...</span>'; btn.disabled = true; const payload = { tipe: activeAbsenType, lokasi: document.getElementById('lokasiGPSDisplay').innerText }; callGAS('recordUserAttendance', payload, function(res) { btn.innerHTML = '<i class="fa-solid fa-user-check"></i> <span>Verifikasi Kehadiran</span>'; btn.disabled = false; if (!res || res.status !== 'success') { alert('❌ ' + (res && res.message ? res.message : 'Absensi gagal disimpan.')); return; } showToast(res.message + ' (PIN valid; identitas wajah/lokasi tidak diverifikasi)'); stopCamera(); const preview = document.getElementById('frFilePreview'); if (preview) preview.style.display = 'none'; capturedFaceFileBase64 = ''; kembaliKeMenuAbsen(); }, function(err) { btn.innerHTML = '<i class="fa-solid fa-user-check"></i> <span>Verifikasi Kehadiran</span>'; btn.disabled = false; alert('❌ Gagal: ' + err.message); }); }
 function stopCamera() { if (faceTrackInterval) { clearInterval(faceTrackInterval); faceTrackInterval = null; } if(cameraStream) { cameraStream.getTracks().forEach(track => track.stop()); cameraStream = null; } const video = document.getElementById('webcamVideo'); if (video) { video.srcObject = null; } }
@@ -2053,7 +2203,7 @@ const button = document.getElementById('portalLoginSubmit');
 if (!button) return;
 button.disabled = busy;
 button.setAttribute('aria-busy', String(busy));
-button.innerHTML = busy ? '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Memeriksa username dan kata sandi...' : 'Masuk ke Portal';
+button.innerHTML = busy ? '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Verifikasi Akses Login...' : 'Masuk ke Portal';
 }
 window.handleLogin = function() {
 const u = document.getElementById('loginUsername').value.trim();
@@ -2082,18 +2232,68 @@ let porsiKecil = 503; let appLogoBase64 = ''; let haccpChecks = {"cold":false,"o
 let defaultMenus = { "Senin": { "jamKirim": "07:45 WIB | 08:40 WIB | 10:00 WIB", "menuList": "26 OKTOBER 2026 :\n🍚 Nasi\n🍗 Oseng Ayam Taichan\n🫘 Tahu Goreng\n🥦 Acar Timun & Wortel\n🍊 Jeruk", "recipeDetail": "🍗 STANDAR RESEP & PANDUAN PENGOLAHAN :\n1. NASI :\n- Beras dicuci bersih, steamer kapasitas 24 tray. Split Shift Koki : Ivan, Doni, Dendi, Ega" }, "Selasa": { "jamKirim": "07:45 WIB | 08:40 WIB | 10:00 WIB", "menuList": "SELASA, 27 OKTOBER 2026 :\n🍚 Nasi\n🍗 Ayam Goreng Lengkuas\n🫘 Tempe Bacem\n🥣 Sup Buncis Bakso\n🍌 Pisang", "recipeDetail": "🍗 STANDAR RESEP & PANDUAN PENGOLAHAN:\n1. AYAM GORENG LENGKUAS:\n- Ungkep ayam dengan bumbu halus dan parutan lengkuas kaya rempah hingga meresap.\n- Goreng dalam minyak panas hingga keemasan." }, "Rabu": { "jamKirim": "07:45 WIB | 08:40 WIB | 10:00 WIB", "menuList": "RABU, 28 OKTOBER 2026 :\n🍚 Nasi\n🐟 Ikan Fillet Asam Manis\n🥔 Perkedel Kentang\n🥦 Sayur Bayam Jagung Manis\n🍎 Apel", "recipeDetail": "🐟 STANDAR RESEP & PANDUAN PENGOLAHAN:\n1. IKAN FILLET ASAM MANIS:\n- Goreng fillet ikan tepung, siram dengan saus asam manis nanas dan paprika." }, "Kamis": { "jamKirim": "07:45 WIB | 08:40 WIB | 10:00 WIB", "menuList": "KAMIS, 29 OKTOBER 2026 :\n🍚 Nasi\n🥩 Semur Daging Sapi & Kentang\n🫘 Tahu Goreng Kunyit\n🥦 Tumis Kangkung & Taoge\n🍊 Jeruk", "recipeDetail": "🥩 STANDAR RESEP & PANDUAN PENGOLAHAN:\n1. SEMUR DAGING SAPI:\n- Rebus daging hingga empuk, masak dengan bumbu semur, kecap manis, dan rempah." }, "Jumat": { "jamKirim": "07:45 WIB | 08:40 WIB | 10:00 WIB", "menuList": "JUMAT, 30 OKTOBER 2026 :\n🍚 Nasi\n🍗 Ayam Suwir Bumbu Bali\n🫘 Tempe Goreng Tepung\n🥦 Sup Oyong Soun\n🍌 Pepaya", "recipeDetail": "🍳 STANDAR RESEP & PANDUAN PENGOLAHAN:\n1. AYAM SUWIR BUMBU BALI:\n- Rebus ayam, suwir halus, tumis dengan bumbu Bali merah harum." } };
 let defaultBudget = { "Senin": [{ "cat": "Karbohidrat", "name": "Beras Rumah Padang (Nasi Putih)", "amount": 46.0048, "unit": "gram", "price": 110000, "priceUnit": "gram" }, { "cat": "Protein Hewani", "name": "Ayam Dada Fillet (Ayam Taichan)", "amount": 72.0096, "unit": "gram", "price": 46000, "priceUnit": "gram" }, { "cat": "Protein Nabati", "name": "Tahu Putih", "amount": 40, "unit": "gram", "price": 16000, "priceUnit": "gram" }, { "cat": "Sayuran", "name": "Timun", "amount": 18.0144, "unit": "gram", "price": 9500, "priceUnit": "gram" }, { "cat": "Sayuran", "name": "Wortel", "amount": 18.0503, "unit": "gram", "price": 9500, "priceUnit": "gram" }, { "cat": "Buah-Buahan / Pelengkap", "name": "Jeruk Medan", "amount": 80, "unit": "gram", "price": 18000, "priceUnit": "gram" }], "Selasa": [{ "cat": "Karbohidrat", "name": "Beras Premium (Nasi)", "amount": 150, "unit": "gram", "price": 13500, "priceUnit": "kg" }, { "cat": "Protein Hewani", "name": "Ayam Potong Segar", "amount": 90, "unit": "gram", "price": 36000, "priceUnit": "kg" }, { "cat": "Protein Nabati", "name": "Tempe Segar", "amount": 45, "unit": "gram", "price": 12000, "priceUnit": "kg" }, { "cat": "Sayuran", "name": "Buncis & Bakso", "amount": 60, "unit": "gram", "price": 14000, "priceUnit": "kg" }, { "cat": "Buah-Buahan / Pelengkap", "name": "Pisang Cavendish", "amount": 1, "unit": "buah", "price": 1500, "priceUnit": "buah" }], "Rabu": [{ "cat": "Karbohidrat", "name": "Beras Premium (Nasi)", "amount": 150, "unit": "gram", "price": 13500, "priceUnit": "kg" }, { "cat": "Protein Hewani", "name": "Ikan Fillet Kakap/Tenggiri", "amount": 85, "unit": "gram", "price": 45000, "priceUnit": "kg" }, { "cat": "Protein Nabati", "name": "Kentang (Perkedel)", "amount": 50, "unit": "gram", "price": 16000, "priceUnit": "kg" }, { "cat": "Sayuran", "name": "Bayam & Jagung Manis", "amount": 60, "unit": "gram", "price": 9000, "priceUnit": "kg" }, { "cat": "Buah-Buahan / Pelengkap", "name": "Buah Apel", "amount": 1, "unit": "buah", "price": 3000, "priceUnit": "buah" }], "Kamis": [{ "cat": "Karbohidrat", "name": "Beras Premium (Nasi)", "amount": 150, "unit": "gram", "price": 13500, "priceUnit": "kg" }, { "cat": "Protein Hewani", "name": "Daging Sapi Pilihan", "amount": 80, "unit": "gram", "price": 130000, "priceUnit": "kg" }, { "cat": "Protein Nabati", "name": "Tahu Kuning", "amount": 40, "unit": "gram", "price": 11000, "priceUnit": "kg" }, { "cat": "Sayuran", "name": "Kangkung & Taoge", "amount": 60, "unit": "gram", "price": 8000, "priceUnit": "kg" }, { "cat": "Buah-Buahan / Pelengkap", "name": "Jeruk Manis", "amount": 80, "unit": "gram", "price": 18000, "priceUnit": "kg" }], "Jumat": [{ "cat": "Karbohidrat", "name": "Beras Premium (Nasi)", "amount": 150, "unit": "gram", "price": 13500, "priceUnit": "kg" }, { "cat": "Protein Hewani", "name": "Ayam Suwir Bumbu Bali", "amount": 85, "unit": "gram", "price": 36000, "priceUnit": "kg" }, { "cat": "Protein Nabati", "name": "Tempe Goreng Tepung", "amount": 45, "unit": "gram", "price": 12000, "priceUnit": "kg" }, { "cat": "Sayuran", "name": "Oyong & Soun", "amount": 60, "unit": "gram", "price": 10000, "priceUnit": "kg" }, { "cat": "Buah-Buahan / Pelengkap", "name": "Pepaya Potong Segar", "amount": 100, "unit": "gram", "price": 7000, "priceUnit": "kg" }] };
 let defaultTasks = [{ "id": "1", "title": "🥩 Quality Receiving | Penerimaan & Sortir Bahan Baku Segar", "day": "Semua Hari", "category": "Quality & Safety Check", "priority": "Tinggi", "assignee": "Pak Rete & Fathur (16:30 WIB)", "statusDetail": "Belum Dimulai", "done": false }, { "id": "2", "title": "🥬 Pencucian, Sterilisasi & Potong Sayuran & Nabati", "day": "Semua Hari", "category": "Persiapan Bahan", "priority": "Tinggi", "assignee": "Riska & Tim (20:00 WIB)", "statusDetail": "Belum Dimulai", "done": false }, { "id": "3", "title": "🧅 Kupas Bawang, Sortir & Sterilisasi Buah Jeruk", "day": "Senin", "category": "Persiapan Bahan", "priority": "Sedang", "assignee": "Mami & Nanda (03:00 WIB)", "statusDetail": "Belum Dimulai", "done": false }, { "id": "4", "title": "🌶️ Meracik Bumbu, Tumisan, Deep Fry, Marinasi & Saos", "day": "Semua Hari", "category": "Bumbu & Racikan", "priority": "Tinggi", "assignee": "Wawan & Tim (01:00 WIB)", "statusDetail": "Belum Dimulai", "done": false }, { "id": "5", "title": "🍚 Cuci Bersih Beras, Steam Nasi Putih", "day": "Semua Hari", "category": "Persiapan Bahan", "priority": "Tinggi", "assignee": "Ivan, Doni, Dendi, Ega (01:00 WIB)", "statusDetail": "Belum Dimulai", "done": false }, { "id": "6", "title": "🍽️ Sample Food Test (Uji Sensori & Organoleptik)", "day": "Semua Hari", "category": "Quality & Safety Check", "priority": "Tinggi", "assignee": "Wawan & Tim (04:35 WIB)", "statusDetail": "Belum Dimulai", "done": false }, { "id": "7", "title": "❄️ Cek Suhu Cold Storage, Chiller | Gudang Basah & Kering", "day": "Semua Hari", "category": "Quality & Safety Check", "priority": "Tinggi", "assignee": "Pak Rete (16:30 WIB)", "statusDetail": "Belum Dimulai", "done": false }, { "id": "8", "title": "🍱 Pemorsian & Pemasangan Label Jam Batas Aman Konsumsi", "day": "Semua Hari", "category": "Packing & Distribusi Internal", "priority": "Tinggi", "assignee": "Tito & Tim Packing (07:15 WIB)", "statusDetail": "Belum Dimulai", "done": false }, { "id": "9", "title": "🧹 Cleaning & Sanitasi Keseluruhan Area Kerja Dapur", "day": "Semua Hari", "category": "Kebersihan & Sanitasi", "priority": "Sedang", "assignee": "Tim Kitchen (11:00 WIB)", "statusDetail": "Belum Dimulai", "done": false }];
-function saveAppDataToCloud() { const data = { globalTargetPorsi, porsiBesar, porsiKecil, defaultTasks, defaultMenus, defaultBudget, appLogoBase64, haccpChecks, akgPosters }; try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {} }
-function loadAppDataFromCloud() { let saved = null; try { saved = localStorage.getItem(STORAGE_KEY); } catch(e) {} if (saved) { try { const data = JSON.parse(saved); if (data.globalTargetPorsi !== undefined) globalTargetPorsi = data.globalTargetPorsi; if (data.porsiBesar !== undefined) porsiBesar = data.porsiBesar; if (data.porsiKecil !== undefined) porsiKecil = data.porsiKecil; if (data.defaultTasks) { defaultTasks = data.defaultTasks.map(t => ({ ...t, statusDetail: t.statusDetail || (t.done ? 'Selesai' : 'Belum Dimulai') })); } if (data.defaultMenus) Object.assign(defaultMenus, data.defaultMenus); if (data.defaultBudget) Object.assign(defaultBudget, data.defaultBudget); if (data.akgPosters) akgPosters = data.akgPosters; if (data.appLogoBase64 !== undefined) { appLogoBase64 = data.appLogoBase64; const img = document.getElementById('brandLogoImg'); if (img && appLogoBase64) { img.src = appLogoBase64; img.style.display = 'block'; } } if (data.haccpChecks) { haccpChecks = data.haccpChecks; if(document.getElementById('haccpCold')) document.getElementById('haccpCold').checked = haccpChecks.cold; if(document.getElementById('haccpOrgano')) document.getElementById('haccpOrgano').checked = haccpChecks.organo; if(document.getElementById('haccpSanitasi')) document.getElementById('haccpSanitasi').checked = haccpChecks.sanitasi; if(document.getElementById('haccpLabel')) document.getElementById('haccpLabel').checked = haccpChecks.label; } } catch(e) {} } }
+function saveAppDataToCloud() {
+const data = { globalTargetPorsi, porsiBesar, porsiKecil, defaultTasks, defaultMenus, defaultBudget, appLogoBase64, haccpChecks, akgPosters };
+try {
+localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+} catch(error) {
+console.error('Unable to save application data locally:', error);
+}
+}
+function loadAppDataFromCloud() {
+let saved;
+try {
+saved = localStorage.getItem(STORAGE_KEY);
+} catch(error) {
+console.error('Unable to read application data from local storage:', error);
+return;
+}
+if (!saved) return;
+try {
+const stored = JSON.parse(saved);
+if (stored && typeof stored === 'object' && typeof stored.appLogoBase64 === 'string' && stored.appLogoBase64 && !safeImageDataUrl(stored.appLogoBase64)) {
+console.warn('Ignoring an unsupported locally stored logo.');
+stored.appLogoBase64 = '';
+}
+const data = validateBackupData(stored);
+if (data.globalTargetPorsi !== undefined) globalTargetPorsi = data.globalTargetPorsi;
+if (data.porsiBesar !== undefined) porsiBesar = data.porsiBesar;
+if (data.porsiKecil !== undefined) porsiKecil = data.porsiKecil;
+if (data.defaultTasks) defaultTasks = data.defaultTasks;
+if (data.defaultMenus) Object.keys(data.defaultMenus).forEach(day => { defaultMenus[day] = data.defaultMenus[day]; });
+if (data.defaultBudget) Object.keys(data.defaultBudget).forEach(day => { defaultBudget[day] = data.defaultBudget[day]; });
+if (data.akgPosters) akgPosters = data.akgPosters;
+if (data.appLogoBase64 !== undefined) {
+appLogoBase64 = data.appLogoBase64;
+const img = document.getElementById('brandLogoImg');
+if (img && appLogoBase64) { img.src = appLogoBase64; img.style.display = 'block'; }
+}
+if (data.haccpChecks) {
+haccpChecks = data.haccpChecks;
+document.getElementById('haccpCold').checked = haccpChecks.cold;
+document.getElementById('haccpOrgano').checked = haccpChecks.organo;
+document.getElementById('haccpSanitasi').checked = haccpChecks.sanitasi;
+document.getElementById('haccpLabel').checked = haccpChecks.label;
+}
+} catch(error) {
+console.error('Saved application data is invalid:', error);
+}
+}
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbyhH47TszRivYtI26VqYIBfyMqz958tuT4B9ehLlMXqA1kZZK_ug0x93dHHMx6tfWBuew/exec';
 function callGAS(action, payload, onSuccess, onError) {
 const body = Object.assign({ action: action }, payload || {});
 if (window.SPAS1_AUTH_TOKEN && !body.authToken) body.authToken = window.SPAS1_AUTH_TOKEN;
 fetch(GAS_URL, {
 method: 'POST',
+cache: 'no-store',
+credentials: 'omit',
 headers: { 'Content-Type': 'text/plain;charset=utf-8' },
 body: JSON.stringify(body)
 })
-.then(res => res.json())
+.then(res => {
+if (!res.ok) throw new Error('Server returned HTTP ' + res.status);
+return res.json();
+})
 .then(data => { if (onSuccess) onSuccess(data); })
 .catch(err => {
 console.error('GAS Error:', err);
@@ -2198,7 +2398,7 @@ window.openResetPasswordModal = function() { if (confirm('⚠️ Reset data loka
 window.switchMainView = function(viewName) { currentMainView = viewName; ['viewDashboard', 'viewRecipes', 'viewBudget', 'viewAkg'].forEach(id => { document.getElementById(id).style.display = 'none'; }); ['navBtnDashboard', 'navBtnRecipes', 'navBtnBudget', 'navBtnAkg'].forEach(id => { document.getElementById(id).classList.remove('active'); }); if (viewName === 'dashboard') { document.getElementById('viewDashboard').style.display = 'flex'; document.getElementById('navBtnDashboard').classList.add('active'); document.getElementById('dashboardActionButtons').style.display = 'flex'; renderDayTabs(); } else if (viewName === 'recipes') { document.getElementById('viewRecipes').style.display = 'flex'; document.getElementById('navBtnRecipes').classList.add('active'); document.getElementById('dashboardActionButtons').style.display = 'none'; renderRecipeView(); } else if (viewName === 'budget') { document.getElementById('viewBudget').style.display = 'flex'; document.getElementById('navBtnBudget').classList.add('active'); document.getElementById('dashboardActionButtons').style.display = 'none'; renderBudgetTabs(); renderBudgetTable(); } else if (viewName === 'akg') { document.getElementById('viewAkg').style.display = 'flex'; document.getElementById('navBtnAkg').classList.add('active'); document.getElementById('dashboardActionButtons').style.display = 'none'; renderAkgPosters(); } };
 function renderDayTabs() { const container = document.getElementById('dayTabsContainer'); container.innerHTML = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'].map(d => '<button class="day-tab ' + (selectedDay === d ? 'active' : '') + '" onclick="selectDay(\'' + d + '\')">📅 ' + d + '</button>').join(''); document.getElementById('targetPorsiText').textContent = globalTargetPorsi.toLocaleString('id-ID') + " Porsi"; const menuObj = defaultMenus[selectedDay]; if (menuObj) { document.getElementById('distributionScheduleText').textContent = menuObj.jamKirim; document.getElementById('dailyMenuList').textContent = menuObj.menuList; } renderTasks(); }
 window.selectDay = function(d) { selectedDay = d; renderDayTabs(); };
-function renderRecipeView() { const container = document.getElementById('recipeDayTabsContainer'); container.innerHTML = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'].map(d => '<button class="day-tab ' + (selectedRecipeDay === d ? 'active' : '') + '" onclick="selectRecipeDay(\'' + d + '\')">📅 ' + d + '</button>').join(''); document.getElementById('recipeSubtitleInfo').textContent = 'Standar Resep, Bahan Baku, & Instruksi Target: ' + globalTargetPorsi.toLocaleString('id-ID') + ' Porsi'; const menuObj = defaultMenus[selectedRecipeDay]; const area = document.getElementById('recipeContentArea'); if (menuObj) { area.innerHTML = '<div class="recipe-card"><div class="recipe-title">🍽️ Rincian Menu Utama Sekolah & Posyandu (' + selectedRecipeDay + ') - Target: ' + globalTargetPorsi.toLocaleString('id-ID') + ' Porsi</div><div class="recipe-text">' + menuObj.menuList + '</div><div class="recipe-section-title" style="margin-top: 14px;">📖 Standar Resep & Panduan Pengolahan</div><div class="recipe-text">' + menuObj.recipeDetail + '</div></div>'; } }
+function renderRecipeView() { const container = document.getElementById('recipeDayTabsContainer'); container.innerHTML = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'].map(d => '<button class="day-tab ' + (selectedRecipeDay === d ? 'active' : '') + '" onclick="selectRecipeDay(\'' + d + '\')">📅 ' + d + '</button>').join(''); document.getElementById('recipeSubtitleInfo').textContent = 'Standar Resep, Bahan Baku, & Instruksi Target: ' + globalTargetPorsi.toLocaleString('id-ID') + ' Porsi'; const menuObj = defaultMenus[selectedRecipeDay]; const area = document.getElementById('recipeContentArea'); if (menuObj) { area.innerHTML = '<div class="recipe-card"><div class="recipe-title">🍽️ Rincian Menu Utama Sekolah & Posyandu (' + selectedRecipeDay + ') - Target: ' + globalTargetPorsi.toLocaleString('id-ID') + ' Porsi</div><div class="recipe-text">' + escapeHtml(menuObj.menuList) + '</div><div class="recipe-section-title" style="margin-top: 14px;">📖 Standar Resep & Panduan Pengolahan</div><div class="recipe-text">' + escapeHtml(menuObj.recipeDetail) + '</div></div>'; } }
 window.selectRecipeDay = function(d) { selectedRecipeDay = d; renderRecipeView(); };
 function renderBudgetTabs() { const container = document.getElementById('budgetDayTabsContainer'); container.innerHTML = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'].map(d => '<button class="day-tab ' + (selectedBudgetDay === d ? 'active' : '') + '" onclick="selectBudgetDay(\'' + d + '\')">📅 ' + d + '</button>').join(''); document.getElementById('budgetSubtitleInfo').textContent = 'Kalkulasi Pagu Anggaran Bahan Baku & Bumbu (Batas Maks. Rp 24.000.000) untuk Target Porsi: ' + globalTargetPorsi.toLocaleString('id-ID') + ' Porsi'; document.getElementById('budgetPerPortionTitleLabel').textContent = 'ESTIMASI BIAYA / OMPRENG (' + globalTargetPorsi.toLocaleString('id-ID') + ' PORSI)'; document.getElementById('tableHeaderTakaranPorsiBesar').textContent = 'Gramasi / Porsi Besar'; document.getElementById('tableHeaderTakaranPorsiKecil').textContent = 'Gramasi / Porsi Kecil'; document.getElementById('tableHeaderTotalKebutuhanBesar').innerHTML = 'Total Kebutuhan (<span id="porsiBesarLabel">'+porsiBesar.toLocaleString('id-ID')+'</span> Porsi Besar) <button class=\'btn-icon\' style=\'margin-left:4px; font-size:10px;\' onclick=\'editPorsiBesar()\'>✏️</button>'; document.getElementById('tableHeaderTotalKebutuhanKecil').innerHTML = 'Total Kebutuhan (<span id="porsiKecilLabel">'+porsiKecil.toLocaleString('id-ID')+'</span> Porsi Kecil) <button class=\'btn-icon\' style=\'margin-left:4px; font-size:10px;\' onclick=\'editPorsiKecil()\'>✏️</button>'; }
 window.selectBudgetDay = function(d) { selectedBudgetDay = d; renderBudgetTabs(); renderBudgetTable(); };
@@ -2224,7 +2424,7 @@ let html = '';
 categories.forEach(category => {
 const categoryItems = items.filter(item => (item.cat || 'Lainnya') === category);
 if (!categoryItems.length) return;
-html += '<tr class="cat-header-row"><td colspan="8">📦 KATEGORI: ' + category.toUpperCase() + '</td></tr>';
+html += '<tr class="cat-header-row"><td colspan="8">📦 KATEGORI: ' + escapeHtml(category.toUpperCase()) + '</td></tr>';
 categoryItems.forEach(item => {
 const index = items.indexOf(item);
 const amountLarge = getBudgetPortionAmount(item, 'large');
@@ -2234,12 +2434,14 @@ const totalSmall = amountSmall * porsiKecil;
 const cost = calculateBudgetCost(item, totalLarge + totalSmall);
 totalDaily += cost;
 const price = Number(item.price) || 0;
-html += '<tr><td style="padding-left:18px;font-weight:700;">• ' + item.name + '</td>' +
-'<td><span style="font-weight:700;color:var(--emerald);">' + amountLarge.toLocaleString('id-ID') + ' ' + item.unit + '</span><button class="btn-icon" style="margin-left:4px;" onclick="openEditBudgetItemModal(' + index + ')" title="Edit gramasi">✏️</button></td>' +
-'<td><span style="font-weight:700;color:var(--purple);">' + amountSmall.toLocaleString('id-ID') + ' ' + item.unit + '</span><button class="btn-icon" style="margin-left:4px;" onclick="openEditBudgetItemModal(' + index + ')" title="Edit gramasi">✏️</button></td>' +
-'<td><span style="font-weight:700;color:var(--sky);">' + formatBudgetTotal(totalLarge, item.unit) + '</span></td>' +
-'<td><span style="font-weight:700;color:var(--amber);">' + formatBudgetTotal(totalSmall, item.unit) + '</span></td>' +
-'<td><span style="font-weight:700;color:var(--amber);">Rp ' + price.toLocaleString('id-ID') + ' / ' + (item.priceUnit || item.unit) + '</span><button class="btn-icon" style="margin-left:4px;" onclick="openEditBudgetItemModal(' + index + ')" title="Edit harga">💰</button></td>' +
+const unit = escapeHtml(item.unit);
+const priceUnit = escapeHtml(item.priceUnit || item.unit);
+html += '<tr><td style="padding-left:18px;font-weight:700;">• ' + escapeHtml(item.name) + '</td>' +
+'<td><span style="font-weight:700;color:var(--emerald);">' + amountLarge.toLocaleString('id-ID') + ' ' + unit + '</span><button class="btn-icon" style="margin-left:4px;" onclick="openEditBudgetItemModal(' + index + ')" title="Edit gramasi">✏️</button></td>' +
+'<td><span style="font-weight:700;color:var(--purple);">' + amountSmall.toLocaleString('id-ID') + ' ' + unit + '</span><button class="btn-icon" style="margin-left:4px;" onclick="openEditBudgetItemModal(' + index + ')" title="Edit gramasi">✏️</button></td>' +
+'<td><span style="font-weight:700;color:var(--sky);">' + escapeHtml(formatBudgetTotal(totalLarge, item.unit)) + '</span></td>' +
+'<td><span style="font-weight:700;color:var(--amber);">' + escapeHtml(formatBudgetTotal(totalSmall, item.unit)) + '</span></td>' +
+'<td><span style="font-weight:700;color:var(--amber);">Rp ' + price.toLocaleString('id-ID') + ' / ' + priceUnit + '</span><button class="btn-icon" style="margin-left:4px;" onclick="openEditBudgetItemModal(' + index + ')" title="Edit harga">💰</button></td>' +
 '<td style="font-weight:800;color:var(--emerald);">Rp ' + Math.round(cost).toLocaleString('id-ID') + '</td>' +
 '<td><button class="btn-icon" onclick="openEditBudgetItemModal(' + index + ')" title="Edit item">✏️</button><button class="btn-icon" onclick="deleteBudgetItem(' + index + ')" title="Hapus">🗑️</button></td></tr>';
 });
@@ -2259,18 +2461,101 @@ let totalKecilStr = (item.unit === 'gram' || item.unit === 'ml') ? (totalKecilNu
 html += '<tr><td style="padding-left: 18px; font-weight: 700;">• ' + item.name + '</td><td><span style="font-weight: 700; color: var(--emerald);">' + item.amount + ' ' + item.unit + '</span><button class="btn-icon" style="margin-left: 4px;" onclick="openEditBudgetItemModal(' + originalIndex + ')" title="Edit">✏️</button></td><td><span style="font-weight: 700; color: var(--purple);">' + item.amount + ' ' + item.unit + '</span><button class="btn-icon" style="margin-left: 4px;" onclick="openEditBudgetItemModal(' + originalIndex + ')" title="Edit">✏️</button></td><td><span style="font-weight: 700; color: var(--sky);">' + totalBesarStr + '</span><button class="btn-icon" style="margin-left: 4px;" onclick="openEditBudgetItemModal(' + originalIndex + ')" title="Edit">✏️</button></td><td><span style="font-weight: 700; color: var(--amber);">' + totalKecilStr + '</span><button class="btn-icon" style="margin-left: 4px;" onclick="openEditBudgetItemModal(' + originalIndex + ')" title="Edit">✏️</button></td><td><span style="font-weight: 700; color: var(--amber);">Rp ' + item.price.toLocaleString('id-ID') + ' / ' + (item.priceUnit || item.unit) + '</span><button class="btn-icon" style="margin-left: 4px;" onclick="openEditBudgetItemModal(' + originalIndex + ')" title="Edit Harga">💰</button></td><td style="font-weight: 800; color: var(--emerald);">Rp ' + Math.round(itemCost).toLocaleString('id-ID') + '</td><td><button class="btn-icon" onclick="openEditBudgetItemModal(' + originalIndex + ')" title="Edit Item">✏️</button><button class="btn-icon" onclick="deleteBudgetItem(' + originalIndex + ')" title="Hapus">🗑️</button></td></tr>'; }); }); tbody.innerHTML = html; document.getElementById('totalBudgetDailyRp').textContent = 'Rp ' + Math.round(totalDaily).toLocaleString('id-ID'); let perPortion = globalTargetPorsi > 0 ? totalDaily / globalTargetPorsi : 0; document.getElementById('totalBudgetPerPortionRp').textContent = 'Rp ' + Math.round(perPortion).toLocaleString('id-ID') + ' / Porsi'; const MAX_BUDGET_LIMIT = 24000000; const summaryBoxDaily = document.getElementById('summaryBoxDaily'); const warningBadge = document.getElementById('budgetWarningBadge'); if (totalDaily > MAX_BUDGET_LIMIT) { summaryBoxDaily.classList.add('budget-alert-warning'); warningBadge.style.display = 'inline'; } else { summaryBoxDaily.classList.remove('budget-alert-warning'); warningBadge.style.display = 'none'; } }
 window.openAkgUploadModal = function() { document.getElementById('akgPosterTitleInput').value = ''; document.getElementById('akgPosterFile').value = ''; document.getElementById('akgUploadModal').style.display = 'flex'; };
 window.closeAkgUploadModal = function() { document.getElementById('akgUploadModal').style.display = 'none'; };
-window.saveAkgPoster = function() { const title = document.getElementById('akgPosterTitleInput').value.trim() || 'Poster Menu AKG'; const fileInput = document.getElementById('akgPosterFile'); const nowFormatted = new Date().toLocaleDateString('id-ID', {day: '2-digit', month: '2-digit', year: 'numeric'}); if (fileInput.files && fileInput.files[0]) { const reader = new FileReader(); reader.onload = function(e) { akgPosters.push({ id: String(Date.now()), title: title, image: e.target.result, date: nowFormatted }); closeAkgUploadModal(); renderAkgPosters(); saveAppDataToCloud(); alert('✅ Poster AKG berhasil diunggah!'); }; reader.readAsDataURL(fileInput.files[0]); } else { alert('Silakan pilih file gambar poster terlebih dahulu.'); } };
-window.openAkgDetailModal = function(id) { const p = akgPosters.find(x => x.id === id); if (!p) return; document.getElementById('editAkgId').value = p.id; document.getElementById('akgEditTitleInput').value = p.title; document.getElementById('akgDetailImg').src = p.image; document.getElementById('akgEditFileInput').value = ''; document.getElementById('akgDetailModal').style.display = 'flex'; };
+window.saveAkgPoster = function() {
+const title = document.getElementById('akgPosterTitleInput').value.trim() || 'Poster Menu AKG';
+const fileInput = document.getElementById('akgPosterFile');
+const file = fileInput.files && fileInput.files[0];
+if (!file) { alert('Silakan pilih file gambar poster terlebih dahulu.'); return; }
+readImageFile(file, function(image) {
+const nowFormatted = new Date().toLocaleDateString('id-ID', { day: '2-digit', month: '2-digit', year: 'numeric' });
+akgPosters.push({ id: String(Date.now()), title: title, image: image, date: nowFormatted });
+closeAkgUploadModal();
+renderAkgPosters();
+saveAppDataToCloud();
+alert('✅ Poster AKG berhasil diunggah!');
+});
+};
+window.openAkgDetailModal = function(id) { const p = akgPosters.find(x => String(x.id) === String(id)); if (!p) return; document.getElementById('editAkgId').value = p.id; document.getElementById('akgEditTitleInput').value = p.title; document.getElementById('akgDetailImg').src = safeImageDataUrl(p.image); document.getElementById('akgEditFileInput').value = ''; document.getElementById('akgDetailModal').style.display = 'flex'; };
 window.closeAkgDetailModal = function() { document.getElementById('akgDetailModal').style.display = 'none'; };
-window.saveAkgEditModal = function() { const id = document.getElementById('editAkgId').value; const newTitle = document.getElementById('akgEditTitleInput').value.trim(); const fileInput = document.getElementById('akgEditFileInput'); const p = akgPosters.find(x => x.id === id); if (p) { if (newTitle) p.title = newTitle; if (fileInput.files && fileInput.files[0]) { const reader = new FileReader(); reader.onload = function(e) { p.image = e.target.result; closeAkgDetailModal(); renderAkgPosters(); saveAppDataToCloud(); alert('✅ Poster AKG berhasil diperbarui!'); }; reader.readAsDataURL(fileInput.files[0]); return; } closeAkgDetailModal(); renderAkgPosters(); saveAppDataToCloud(); alert('✅ Poster AKG berhasil diperbarui!'); } };
-window.deleteAkgPoster = function(id) { if (confirm('Hapus poster AKG ini?')) { akgPosters = akgPosters.filter(p => p.id !== id); renderAkgPosters(); saveAppDataToCloud(); } };
-function renderAkgPosters() { const container = document.getElementById('akgPosterContainer'); if (!akgPosters || akgPosters.length === 0) { container.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 30px; font-size: 12px; background: var(--card-inner); border-radius: 8px; border: 1px dashed var(--border);">Belum ada poster AKG yang diunggah. Klik tombol "Upload Poster AKG" di atas untuk menambahkan.</div>'; return; } container.innerHTML = akgPosters.map(p => '<div style="background: var(--card-inner); border: 1px solid var(--border); border-radius: 12px; padding: 10px; display: flex; flex-direction: column; gap: 8px;"><div style="width: 100%; height: 180px; border-radius: 8px; overflow: hidden; background: #000; display: flex; align-items: center; justify-content: center; cursor: pointer;" onclick="openAkgDetailModal(\'' + p.id + '\')" title="Klik untuk lihat detail & edit"><img src="' + p.image + '" style="width: 100%; height: 100%; object-fit: cover;" alt="Poster AKG"></div><div style="font-size: 12px; font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer;" onclick="openAkgDetailModal(\'' + p.id + '\')" title="' + p.title + '">' + p.title + '</div><div style="font-size: 10px; color: var(--text-muted);">Diupload: ' + p.date + '</div><div style="display: flex; gap: 6px; margin-top: 2px;"><button class="btn btn-outline" style="flex: 1; padding: 4px 6px; font-size: 11px; justify-content: center;" onclick="openAkgDetailModal(\'' + p.id + '\')">✏️ Edit</button><button class="btn btn-danger" style="flex: 1; padding: 4px 6px; font-size: 11px; justify-content: center;" onclick="deleteAkgPoster(\'' + p.id + '\')">🗑️ Hapus</button></div></div>').join(''); }
-function renderTasks() { const container = document.getElementById('taskContainer'); const search = document.getElementById('searchInput').value.trim().toLowerCase(); const fDay = document.getElementById('filterDay').value; const fStat = document.getElementById('filterStatus').value; let filtered = defaultTasks.filter(t => { let matchSearch = t.title.toLowerCase().includes(search) || t.assignee.toLowerCase().includes(search) || t.category.toLowerCase().includes(search); let matchDay = (fDay === 'all' || t.day === fDay || t.day === 'Semua Hari'); let matchStat = (fStat === 'all' || t.statusDetail === fStat); return matchSearch && matchDay && matchStat; }); let total = defaultTasks.length; let inProgressCount = defaultTasks.filter(t => t.statusDetail === 'Sedang Dimulai').length; let doneCount = defaultTasks.filter(t => t.statusDetail === 'Selesai').length; let pendingCount = defaultTasks.filter(t => t.statusDetail === 'Belum Dimulai').length; let pct = total > 0 ? Math.round((doneCount / total) * 100) : 0; document.getElementById('statTotal').textContent = total; document.getElementById('statPending').textContent = pendingCount; document.getElementById('statInProgress').textContent = inProgressCount; document.getElementById('statDone').textContent = doneCount; document.getElementById('statStatusBadge').textContent = pct + '% SIAP'; document.getElementById('progressText').textContent = pct + '%'; document.getElementById('progressBar').style.width = pct + '%'; document.getElementById('taskCounterBadge').textContent = filtered.length + ' Tugas'; container.innerHTML = filtered.map(t => { let statusBadgeHtml = ''; if (t.statusDetail === 'Selesai') { statusBadgeHtml = '<span class="tag" style="background: rgba(16,185,129,0.2); color: #34d399;">✔️ Selesai</span>'; } else if (t.statusDetail === 'Sedang Dimulai') { statusBadgeHtml = '<span class="task-status-anim" style="background: rgba(14,165,233,0.2); color: #38bdf8; border: 1px solid #0ea5e9;">⚡ Sedang Dimulai</span>'; } else { statusBadgeHtml = '<span class="tag" style="background: rgba(239,68,68,0.2); color: #f87171;">⏳ Belum Dimulai</span>'; } return '<div class="task-item ' + (t.statusDetail === 'Selesai' ? 'done' : '') + '"><div class="task-check ' + (t.statusDetail === 'Selesai' ? 'checked' : '') + '" onclick="toggleTask(\'' + t.id + '\')">' + (t.statusDetail === 'Selesai' ? '✓' : '') + '</div><div class="task-content"><div class="task-title">' + t.title + '</div><div class="task-tags"><span class="tag tag-day">📅 ' + t.day + '</span><span class="tag tag-cat">' + t.category + '</span><span class="tag tag-prio">' + t.priority + '</span><span class="tag tag-pj">👤 ' + t.assignee + '</span>' + statusBadgeHtml + '</div></div><div class="task-actions"><button class="btn-icon" title="Edit Tugas" onclick="openEditTaskModal(\'' + t.id + '\')">✏️</button><button class="btn-icon" title="Hapus Tugas" onclick="deleteTask(\'' + t.id + '\')">🗑️</button></div></div>'; }).join(''); }
-window.toggleTask = function(id) { const t = defaultTasks.find(x => x.id === id); if (t) { if (t.statusDetail === 'Selesai') { t.statusDetail = 'Belum Dimulai'; t.done = false; } else { t.statusDetail = 'Selesai'; t.done = true; } renderTasks(); saveAppDataToCloud(); } };
+window.saveAkgEditModal = function() {
+const id = document.getElementById('editAkgId').value;
+const newTitle = document.getElementById('akgEditTitleInput').value.trim();
+const fileInput = document.getElementById('akgEditFileInput');
+const poster = akgPosters.find(item => String(item.id) === String(id));
+if (!poster) return;
+const save = function(image) {
+if (newTitle) poster.title = newTitle;
+if (image) poster.image = image;
+closeAkgDetailModal();
+renderAkgPosters();
+saveAppDataToCloud();
+alert('✅ Poster AKG berhasil diperbarui!');
+};
+const file = fileInput.files && fileInput.files[0];
+if (file) readImageFile(file, save);
+else save('');
+};
+window.deleteAkgPoster = function(id) { if (confirm('Hapus poster AKG ini?')) { akgPosters = akgPosters.filter(p => String(p.id) !== String(id)); renderAkgPosters(); saveAppDataToCloud(); } };
+function renderAkgPosters() {
+const container = document.getElementById('akgPosterContainer');
+if (!akgPosters || akgPosters.length === 0) {
+container.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:30px;font-size:12px;background:var(--card-inner);border-radius:8px;border:1px dashed var(--border);">Belum ada poster AKG yang diunggah. Klik tombol "Upload Poster AKG" di atas untuk menambahkan.</div>';
+return;
+}
+container.innerHTML = akgPosters.map(p => {
+const id = escapeHtml(p.id);
+const image = escapeHtml(safeImageDataUrl(p.image));
+const title = escapeHtml(p.title);
+const date = escapeHtml(p.date);
+return '<div style="background:var(--card-inner);border:1px solid var(--border);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:8px;">' +
+'<div data-poster-action="edit" data-poster-id="' + id + '" style="width:100%;height:180px;border-radius:8px;overflow:hidden;background:#000;display:flex;align-items:center;justify-content:center;cursor:pointer;" title="Klik untuk lihat detail &amp; edit"><img src="' + image + '" style="width:100%;height:100%;object-fit:cover;" alt="Poster AKG"></div>' +
+'<div data-poster-action="edit" data-poster-id="' + id + '" style="font-size:12px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;" title="' + title + '">' + title + '</div>' +
+'<div style="font-size:10px;color:var(--text-muted);">Diupload: ' + date + '</div>' +
+'<div style="display:flex;gap:6px;margin-top:2px;"><button class="btn btn-outline" style="flex:1;padding:4px 6px;font-size:11px;justify-content:center;" data-poster-action="edit" data-poster-id="' + id + '">✏️ Edit</button>' +
+'<button class="btn btn-danger" style="flex:1;padding:4px 6px;font-size:11px;justify-content:center;" data-poster-action="delete" data-poster-id="' + id + '">🗑️ Hapus</button></div></div>';
+}).join('');
+container.querySelectorAll('[data-poster-action]').forEach(button => {
+button.addEventListener('click', function() {
+const id = this.getAttribute('data-poster-id');
+if (this.getAttribute('data-poster-action') === 'delete') window.deleteAkgPoster(id);
+else window.openAkgDetailModal(id);
+});
+});
+}
+function renderTasks() { const container = document.getElementById('taskContainer'); const search = document.getElementById('searchInput').value.trim().toLowerCase(); const fDay = document.getElementById('filterDay').value; const fStat = document.getElementById('filterStatus').value; let filtered = defaultTasks.filter(t => { let matchSearch = t.title.toLowerCase().includes(search) || t.assignee.toLowerCase().includes(search) || t.category.toLowerCase().includes(search); let matchDay = (fDay === 'all' || t.day === fDay || t.day === 'Semua Hari'); let matchStat = (fStat === 'all' || t.statusDetail === fStat); return matchSearch && matchDay && matchStat; }); let total = defaultTasks.length; let inProgressCount = defaultTasks.filter(t => t.statusDetail === 'Sedang Dimulai').length; let doneCount = defaultTasks.filter(t => t.statusDetail === 'Selesai').length; let pendingCount = defaultTasks.filter(t => t.statusDetail === 'Belum Dimulai').length; let pct = total > 0 ? Math.round((doneCount / total) * 100) : 0; document.getElementById('statTotal').textContent = total; document.getElementById('statPending').textContent = pendingCount; document.getElementById('statInProgress').textContent = inProgressCount; document.getElementById('statDone').textContent = doneCount; document.getElementById('statStatusBadge').textContent = pct + '% SIAP'; document.getElementById('progressText').textContent = pct + '%'; document.getElementById('progressBar').style.width = pct + '%'; document.getElementById('taskCounterBadge').textContent = filtered.length + ' Tugas'; container.innerHTML = filtered.map(t => {
+const id = escapeHtml(t.id);
+const done = t.statusDetail === 'Selesai';
+let statusBadgeHtml = '';
+if (done) {
+statusBadgeHtml = '<span class="tag" style="background:rgba(16,185,129,0.2);color:#34d399;">✔️ Selesai</span>';
+} else if (t.statusDetail === 'Sedang Dimulai') {
+statusBadgeHtml = '<span class="task-status-anim" style="background:rgba(14,165,233,0.2);color:#38bdf8;border:1px solid #0ea5e9;">⚡ Sedang Dimulai</span>';
+} else {
+statusBadgeHtml = '<span class="tag" style="background:rgba(239,68,68,0.2);color:#f87171;">⏳ Belum Dimulai</span>';
+}
+return '<div class="task-item ' + (done ? 'done' : '') + '"><div class="task-check ' + (done ? 'checked' : '') + '" data-task-action="toggle" data-task-id="' + id + '">' + (done ? '✓' : '') + '</div>' +
+'<div class="task-content"><div class="task-title">' + escapeHtml(t.title) + '</div><div class="task-tags">' +
+'<span class="tag tag-day">📅 ' + escapeHtml(t.day) + '</span><span class="tag tag-cat">' + escapeHtml(t.category) + '</span>' +
+'<span class="tag tag-prio">' + escapeHtml(t.priority) + '</span><span class="tag tag-pj">👤 ' + escapeHtml(t.assignee) + '</span>' +
+statusBadgeHtml + '</div></div><div class="task-actions">' +
+'<button class="btn-icon" title="Edit Tugas" data-task-action="edit" data-task-id="' + id + '">✏️</button>' +
+'<button class="btn-icon" title="Hapus Tugas" data-task-action="delete" data-task-id="' + id + '">🗑️</button></div></div>';
+}).join('');
+container.querySelectorAll('[data-task-action]').forEach(button => {
+button.addEventListener('click', function() {
+const id = this.getAttribute('data-task-id');
+const action = this.getAttribute('data-task-action');
+if (action === 'toggle') window.toggleTask(id);
+else if (action === 'edit') window.openEditTaskModal(id);
+else if (action === 'delete') window.deleteTask(id);
+});
+});
+}
+window.toggleTask = function(id) { const t = defaultTasks.find(x => String(x.id) === String(id)); if (t) { if (t.statusDetail === 'Selesai') { t.statusDetail = 'Belum Dimulai'; t.done = false; } else { t.statusDetail = 'Selesai'; t.done = true; } renderTasks(); saveAppDataToCloud(); } };
 window.markAllDone = function() { defaultTasks.forEach(t => { t.statusDetail = 'Selesai'; t.done = true; }); renderTasks(); saveAppDataToCloud(); };
 window.openLogoModal = function() { document.getElementById('logoModal').style.display = 'flex'; };
 window.closeLogoModal = function() { document.getElementById('logoModal').style.display = 'none'; };
-window.saveLogoModal = function() { const fileInput = document.getElementById('logoInputFile'); if (fileInput.files && fileInput.files[0]) { const reader = new FileReader(); reader.onload = function(e) { appLogoBase64 = e.target.result; const img = document.getElementById('brandLogoImg'); img.src = appLogoBase64; img.style.display = 'block'; closeLogoModal(); saveAppDataToCloud(); }; reader.readAsDataURL(fileInput.files[0]); } else { alert('Pilih file gambar terlebih dahulu.'); } };
+window.saveLogoModal = function() { const fileInput = document.getElementById('logoInputFile'); if (fileInput.files && fileInput.files[0]) { readImageFile(fileInput.files[0], function(image) { appLogoBase64 = image; const img = document.getElementById('brandLogoImg'); img.src = appLogoBase64; img.style.display = 'block'; closeLogoModal(); saveAppDataToCloud(); }); } else { alert('Pilih file gambar terlebih dahulu.'); } };
 window.resetLogoToDefault = function() { appLogoBase64 = ''; const img = document.getElementById('brandLogoImg'); img.src = 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJYzPk2Xea4JAccvonUAeQSs-3E69THE8bVeyXD7m-yyTN78e60a09u-TS_v99dJcbPCtfJNJ9vNMPflbA1sx3jSi0T-BYBSP-_vDNefVbO-z2FVazjn6fktuCFRfZhOodqLqQRSaJIZS0dG1xkP3kbD4NmWbMuIvDSDKL3HdBP1XLgjS3aagtRyK88cHu/s1600/image.png'; img.style.display = 'block'; closeLogoModal(); saveAppDataToCloud(); };
 window.openTargetPorsiModal = function() { document.getElementById('targetPorsiInputNumber').value = globalTargetPorsi; document.getElementById('targetPorsiModal').style.display = 'flex'; };
 window.closeTargetPorsiModal = function() { document.getElementById('targetPorsiModal').style.display = 'none'; };
@@ -2283,10 +2568,10 @@ window.openScheduleModal = function() { document.getElementById('scheduleInputTe
 window.closeScheduleModal = function() { document.getElementById('scheduleModal').style.display = 'none'; };
 window.saveScheduleModal = function() { const val = document.getElementById('scheduleInputText').value.trim(); const scope = document.querySelector('input[name="schedScope"]:checked').value; if (scope === 'all') { Object.keys(defaultMenus).forEach(k => defaultMenus[k].jamKirim = val); } else { defaultMenus[selectedDay].jamKirim = val; } closeScheduleModal(); renderDayTabs(); saveAppDataToCloud(); };
 window.openAddTaskModal = function() { document.getElementById('taskModalTitle').textContent = "Tambah Tugas Baru"; document.getElementById('editTaskId').value = ''; document.getElementById('taskInputTitle').value = ''; document.getElementById('taskInputDay').value = selectedDay; document.getElementById('taskInputStatusDetail').value = 'Belum Dimulai'; document.getElementById('taskModal').style.display = 'flex'; };
-window.openEditTaskModal = function(id) { const t = defaultTasks.find(x => x.id === id); if (!t) return; document.getElementById('taskModalTitle').textContent = "Edit Tugas Dapur"; document.getElementById('editTaskId').value = t.id; document.getElementById('taskInputTitle').value = t.title; document.getElementById('taskInputDay').value = t.day; document.getElementById('taskInputStatusDetail').value = t.statusDetail || 'Belum Dimulai'; document.getElementById('taskInputCategory').value = t.category; document.getElementById('taskInputPriority').value = t.priority; document.getElementById('taskInputAssignee').value = t.assignee; document.getElementById('taskModal').style.display = 'flex'; };
+window.openEditTaskModal = function(id) { const t = defaultTasks.find(x => String(x.id) === String(id)); if (!t) return; document.getElementById('taskModalTitle').textContent = "Edit Tugas Dapur"; document.getElementById('editTaskId').value = t.id; document.getElementById('taskInputTitle').value = t.title; document.getElementById('taskInputDay').value = t.day; document.getElementById('taskInputStatusDetail').value = t.statusDetail || 'Belum Dimulai'; document.getElementById('taskInputCategory').value = t.category; document.getElementById('taskInputPriority').value = t.priority; document.getElementById('taskInputAssignee').value = t.assignee; document.getElementById('taskModal').style.display = 'flex'; };
 window.closeTaskModal = function() { document.getElementById('taskModal').style.display = 'none'; };
 window.saveTaskModal = function() { const id = document.getElementById('editTaskId').value; const title = document.getElementById('taskInputTitle').value.trim(); const day = document.getElementById('taskInputDay').value; const statusDetail = document.getElementById('taskInputStatusDetail').value; const cat = document.getElementById('taskInputCategory').value; const prio = document.getElementById('taskInputPriority').value; const assignee = document.getElementById('taskInputAssignee').value.trim() || 'Tim Dapur'; if (!title) { alert('Judul tugas tidak boleh kosong.'); return; } let isDone = (statusDetail === 'Selesai'); if (id) { const t = defaultTasks.find(x => x.id === id); if (t) { t.title = title; t.day = day; t.statusDetail = statusDetail; t.category = cat; t.priority = prio; t.assignee = assignee; t.done = isDone; } } else { defaultTasks.push({ id: String(Date.now()), title, day, statusDetail, category: cat, priority: prio, assignee, done: isDone }); } closeTaskModal(); renderTasks(); saveAppDataToCloud(); };
-window.deleteTask = function(id) { if (confirm('Hapus tugas ini?')) { defaultTasks = defaultTasks.filter(x => x.id !== id); renderTasks(); saveAppDataToCloud(); } };
+window.deleteTask = function(id) { if (confirm('Hapus tugas ini?')) { defaultTasks = defaultTasks.filter(x => String(x.id) !== String(id)); renderTasks(); saveAppDataToCloud(); } };
 window.openAddBudgetItemModal = function() { document.getElementById('budgetItemModalTitle').textContent = '➕ Tambah Bahan Baku / Bumbu'; document.getElementById('editBudgetIndex').value = ''; document.getElementById('biCategory').value = 'Karbohidrat'; document.getElementById('biName').value = ''; document.getElementById('biAmountLarge').value = ''; document.getElementById('biAmountSmall').value = ''; document.getElementById('biUnit').value = 'gram'; document.getElementById('biPrice').value = ''; document.getElementById('biPriceUnit').value = 'kg'; document.getElementById('budgetItemModal').style.display = 'flex'; };
 window.openEditBudgetItemModal = function(index) { const items = defaultBudget[selectedBudgetDay] || []; const item = items[index]; if (!item) return; document.getElementById('budgetItemModalTitle').textContent = '✏️ Edit Bahan Baku / Bumbu'; document.getElementById('editBudgetIndex').value = index; document.getElementById('biCategory').value = item.cat; document.getElementById('biName').value = item.name; document.getElementById('biAmountLarge').value = getBudgetPortionAmount(item, 'large'); document.getElementById('biAmountSmall').value = getBudgetPortionAmount(item, 'small'); document.getElementById('biUnit').value = item.unit; document.getElementById('biPrice').value = item.price; document.getElementById('biPriceUnit').value = item.priceUnit || item.unit; document.getElementById('budgetItemModal').style.display = 'flex'; };
 window.calculateTotalKebutuhan = function() {
@@ -2320,7 +2605,146 @@ window.closeImportModal = function() { document.getElementById('importModal').st
 window.processImportTasks = function() { const text = document.getElementById('importInputText').value.trim(); if (!text) return; const lines = text.split('\n'); let count = 0; lines.forEach(line => { let parts = line.split('|').map(p => p.trim()); if (parts[0]) { defaultTasks.push({ id: String(Date.now() + Math.random()), title: parts[0], day: parts[1] || selectedDay, statusDetail: 'Belum Dimulai', category: parts[2] || 'Persiapan Bahan', priority: parts[5] || 'Tinggi', assignee: parts[3] || 'Tim Dapur', done: false }); count++; } }); closeImportModal(); renderTasks(); saveAppDataToCloud(); showToast('✅ ' + count + ' tugas berhasil diimport!'); };
 window.exportDataJson = function() { const data = { globalTargetPorsi, porsiBesar, porsiKecil, defaultTasks, defaultMenus, defaultBudget, appLogoBase64, haccpChecks, akgPosters }; const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'SPAS1_SPPG_Sungai_Pasir_Backup.json'; a.click(); showToast('✅ Backup JSON berhasil diunduh!'); };
 window.triggerImportJson = function() { document.getElementById('importJsonFile').click(); };
-window.importDataJson = function(event) { const file = event.target.files[0]; if (!file) return; const reader = new FileReader(); reader.onload = function(e) { try { const data = JSON.parse(e.target.result); if (data.globalTargetPorsi !== undefined) globalTargetPorsi = data.globalTargetPorsi; if (data.porsiBesar !== undefined) porsiBesar = data.porsiBesar; if (data.porsiKecil !== undefined) porsiKecil = data.porsiKecil; if (data.defaultTasks) { defaultTasks = data.defaultTasks.map(t => ({ ...t, statusDetail: t.statusDetail || (t.done ? 'Selesai' : 'Belum Dimulai') })); } if (data.defaultMenus) Object.assign(defaultMenus, data.defaultMenus); if (data.defaultBudget) Object.assign(defaultBudget, data.defaultBudget); if (data.akgPosters) akgPosters = data.akgPosters; if (data.appLogoBase64 !== undefined) { appLogoBase64 = data.appLogoBase64; const img = document.getElementById('brandLogoImg'); if (img && appLogoBase64) { img.src = appLogoBase64; img.style.display = 'block'; } } if (data.haccpChecks) { haccpChecks = data.haccpChecks; if(document.getElementById('haccpCold')) document.getElementById('haccpCold').checked = haccpChecks.cold; if(document.getElementById('haccpOrgano')) document.getElementById('haccpOrgano').checked = haccpChecks.organo; if(document.getElementById('haccpSanitasi')) document.getElementById('haccpSanitasi').checked = haccpChecks.sanitasi; if(document.getElementById('haccpLabel')) document.getElementById('haccpLabel').checked = haccpChecks.label; } saveAppDataToCloud(); renderDayTabs(); renderRecipeView(); renderBudgetTable(); renderAkgPosters(); alert('✅ Data berhasil dipulihkan!'); event.target.value = ''; } catch(err) { alert('❌ Gagal membaca file JSON: ' + err.message); } }; reader.readAsText(file); };
+function validateBackupData(data) {
+if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('Struktur backup tidak valid.');
+const result = {};
+const days = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'];
+const isRecord = value => value && typeof value === 'object' && !Array.isArray(value);
+const readText = (value, label, maxLength) => {
+if (typeof value !== 'string' || value.length > maxLength) throw new Error(label + ' tidak valid.');
+return value;
+};
+const readNumber = (value, label) => {
+if (typeof value !== 'number' || !Number.isFinite(value) || value < 0 || value > 1000000000) throw new Error(label + ' tidak valid.');
+return value;
+};
+['globalTargetPorsi', 'porsiBesar', 'porsiKecil'].forEach(key => {
+if (Object.prototype.hasOwnProperty.call(data, key)) result[key] = readNumber(data[key], key);
+});
+if (Object.prototype.hasOwnProperty.call(data, 'defaultTasks')) {
+if (!Array.isArray(data.defaultTasks) || data.defaultTasks.length > 2000) throw new Error('Daftar tugas tidak valid.');
+result.defaultTasks = data.defaultTasks.map(task => {
+if (!isRecord(task)) throw new Error('Format tugas tidak valid.');
+const status = task.statusDetail || (task.done ? 'Selesai' : 'Belum Dimulai');
+if (!['Belum Dimulai', 'Sedang Dimulai', 'Selesai'].includes(status)) throw new Error('Status tugas tidak valid.');
+return {
+id: readText(String(task.id ?? ''), 'ID tugas', 100),
+title: readText(task.title, 'Judul tugas', 500),
+day: readText(task.day, 'Hari tugas', 100),
+category: readText(task.category, 'Kategori tugas', 150),
+priority: readText(task.priority, 'Prioritas tugas', 100),
+assignee: readText(task.assignee, 'Penanggung jawab tugas', 200),
+statusDetail: status,
+done: status === 'Selesai'
+};
+});
+}
+if (Object.prototype.hasOwnProperty.call(data, 'defaultMenus')) {
+if (!isRecord(data.defaultMenus)) throw new Error('Daftar menu tidak valid.');
+result.defaultMenus = {};
+Object.keys(data.defaultMenus).forEach(day => {
+if (!days.includes(day) || !isRecord(data.defaultMenus[day])) throw new Error('Hari/menu tidak valid.');
+const menu = data.defaultMenus[day];
+result.defaultMenus[day] = {
+jamKirim: readText(menu.jamKirim, 'Jadwal menu', 1000),
+menuList: readText(menu.menuList, 'Daftar menu', 10000),
+recipeDetail: readText(menu.recipeDetail, 'Detail resep', 20000)
+};
+});
+}
+if (Object.prototype.hasOwnProperty.call(data, 'defaultBudget')) {
+if (!isRecord(data.defaultBudget)) throw new Error('Daftar anggaran tidak valid.');
+result.defaultBudget = {};
+Object.keys(data.defaultBudget).forEach(day => {
+if (!days.includes(day) || !Array.isArray(data.defaultBudget[day]) || data.defaultBudget[day].length > 1000) throw new Error('Data anggaran per hari tidak valid.');
+result.defaultBudget[day] = data.defaultBudget[day].map(item => {
+if (!isRecord(item)) throw new Error('Format item anggaran tidak valid.');
+const normalized = {
+cat: readText(item.cat, 'Kategori anggaran', 150),
+name: readText(item.name, 'Nama bahan', 300),
+amount: readNumber(item.amount, 'Jumlah bahan'),
+unit: readText(item.unit, 'Satuan bahan', 30),
+price: readNumber(item.price, 'Harga bahan')
+};
+if (item.amountLarge !== undefined) normalized.amountLarge = readNumber(item.amountLarge, 'Jumlah porsi besar');
+if (item.amountSmall !== undefined) normalized.amountSmall = readNumber(item.amountSmall, 'Jumlah porsi kecil');
+if (item.priceUnit !== undefined) normalized.priceUnit = readText(item.priceUnit, 'Satuan harga', 30);
+return normalized;
+});
+});
+}
+if (Object.prototype.hasOwnProperty.call(data, 'appLogoBase64')) {
+const logo = data.appLogoBase64;
+if (logo !== '' && !safeImageDataUrl(logo)) throw new Error('Format logo tidak valid.');
+result.appLogoBase64 = logo;
+}
+if (Object.prototype.hasOwnProperty.call(data, 'haccpChecks')) {
+if (!isRecord(data.haccpChecks) || ['cold', 'organo', 'sanitasi', 'label'].some(key => typeof data.haccpChecks[key] !== 'boolean')) throw new Error('Status pemeriksaan HACCP tidak valid.');
+result.haccpChecks = { cold: data.haccpChecks.cold, organo: data.haccpChecks.organo, sanitasi: data.haccpChecks.sanitasi, label: data.haccpChecks.label };
+}
+if (Object.prototype.hasOwnProperty.call(data, 'akgPosters')) {
+if (!Array.isArray(data.akgPosters) || data.akgPosters.length > 200) throw new Error('Daftar poster AKG tidak valid.');
+result.akgPosters = data.akgPosters.map(poster => {
+if (!isRecord(poster) || !safeImageDataUrl(poster.image)) throw new Error('Data gambar poster tidak valid.');
+return {
+id: readText(String(poster.id ?? ''), 'ID poster', 100),
+title: readText(poster.title, 'Judul poster', 300),
+image: safeImageDataUrl(poster.image),
+date: readText(poster.date, 'Tanggal poster', 100)
+};
+});
+}
+return result;
+}
+window.importDataJson = function(event) {
+const file = event.target.files[0];
+if (!file) return;
+if (file.size > 25 * 1024 * 1024) {
+alert('Ukuran file backup maksimal 25 MB.');
+event.target.value = '';
+return;
+}
+const reader = new FileReader();
+reader.onload = function(e) {
+try {
+const data = validateBackupData(JSON.parse(e.target.result));
+if (data.globalTargetPorsi !== undefined) globalTargetPorsi = data.globalTargetPorsi;
+if (data.porsiBesar !== undefined) porsiBesar = data.porsiBesar;
+if (data.porsiKecil !== undefined) porsiKecil = data.porsiKecil;
+if (data.defaultTasks) defaultTasks = data.defaultTasks;
+if (data.defaultMenus) Object.keys(data.defaultMenus).forEach(day => { defaultMenus[day] = data.defaultMenus[day]; });
+if (data.defaultBudget) Object.keys(data.defaultBudget).forEach(day => { defaultBudget[day] = data.defaultBudget[day]; });
+if (data.akgPosters) akgPosters = data.akgPosters;
+if (data.appLogoBase64 !== undefined) {
+appLogoBase64 = data.appLogoBase64;
+const img = document.getElementById('brandLogoImg');
+if (img && appLogoBase64) { img.src = appLogoBase64; img.style.display = 'block'; }
+}
+if (data.haccpChecks) {
+haccpChecks = data.haccpChecks;
+document.getElementById('haccpCold').checked = haccpChecks.cold;
+document.getElementById('haccpOrgano').checked = haccpChecks.organo;
+document.getElementById('haccpSanitasi').checked = haccpChecks.sanitasi;
+document.getElementById('haccpLabel').checked = haccpChecks.label;
+}
+saveAppDataToCloud();
+renderDayTabs();
+renderRecipeView();
+renderBudgetTable();
+renderAkgPosters();
+alert('✅ Data berhasil dipulihkan!');
+event.target.value = '';
+} catch(err) {
+alert('❌ Backup tidak valid: ' + err.message);
+event.target.value = '';
+}
+};
+reader.onerror = function() {
+alert('❌ Gagal membaca file backup.');
+event.target.value = '';
+};
+reader.readAsText(file);
+};
 window.printPage = function() { window.print(); };
 window.printPdf = function() { window.print(); };
 window.editPorsiBesar = function() { let v = prompt("Ubah jumlah Porsi Besar (saat ini: " + porsiBesar + "):", porsiBesar); if(v && !isNaN(v) && parseInt(v) >= 0) { porsiBesar = parseInt(v); globalTargetPorsi = porsiBesar + porsiKecil; renderBudgetTabs(); renderBudgetTable(); renderDayTabs(); renderRecipeView(); saveAppDataToCloud(); showToast("✅ Porsi Besar: " + porsiBesar + " | Total: " + globalTargetPorsi); } };
