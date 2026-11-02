@@ -7,7 +7,7 @@ update to the latest version!
 | Version | Supported          |
 | ------- | ------------------ |
 | 5.1.x   | :x: |
-| 3.0.x   | :x:                |
+| 2.1.2   | upcoming :white_check_mark:               |
 | 2.0.x   | :white_check_mark: |
 | < 1.0   | :x:                |
 
