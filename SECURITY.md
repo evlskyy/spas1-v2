@@ -2,8 +2,7 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+update to the latest version!
 
 | Version | Supported          |
 | ------- | ------------------ |
@@ -14,8 +13,8 @@ currently being supported with security updates.
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+Use this repository as learning material; never claim copyright over it.
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+
+
+©2026-CraftedSkyy.With ❤️
