@@ -452,12 +452,61 @@ body.app-light-mode .social-link { background: rgba(0,0,0,0.05); border: 1px sol
 .github-social-link svg path { fill: #FFFFFF; }
 body.app-light-mode .github-social-link svg path { fill: #181717; }
 .home-footer-layout { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 12px; width: 100%; padding-top: 4px; }
-.home-footer-admin { grid-column: 1; grid-row: 1; justify-self: start; }
+.home-footer-admin { display: flex; flex-direction: column; grid-column: 1; grid-row: 1; justify-self: start; gap: 8px; }
 .home-footer-admin button { padding: 8px !important; font-size: 10px !important; gap: 5px !important; }
+.home-project-info-button { border-color: rgba(52, 211, 153, 0.4) !important; background-color: rgba(5, 150, 105, 0.15) !important; color: #A7F3D0 !important; }
+.home-project-info-button:hover { border-color: #6EE7B7 !important; background-color: rgba(5, 150, 105, 0.3) !important; }
 .home-footer-social { grid-column: 2; grid-row: 1; justify-self: center; margin-top: 0; gap: 6px; flex-wrap: nowrap; }
 .home-footer-social .social-link { width: 36px; height: 36px; border-radius: 10px; }
 .home-footer-social .social-link svg { width: 18px; height: 18px; }
+.aboutskyy-social-link { overflow: hidden; padding: 0; }
+.aboutskyy-social-link img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .home-footer-copyright { grid-column: 3; grid-row: 1; justify-self: end; text-align: right; }
+.home-project-info-content { margin-top: 10px; padding: 18px; border: 1px solid #3A506B; border-radius: 16px; background: #1C2541; color: #E5E7EB; box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18); }
+.home-project-info-content h2 { margin: 0; color: #FFFFFF; font-size: 16px; font-weight: 800; }
+.home-project-info-content > p { margin: 7px 0 14px; color: #CBD5E1; font-size: 11px; line-height: 1.65; }
+.home-project-info-content h3 { margin: 0 0 8px; color: #A7F3D0; font-size: 11px; font-weight: 800; }
+.home-project-info-section { margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(148, 163, 184, 0.2); }
+.home-project-info-section > p { margin: 0 0 10px; color: #CBD5E1; font-size: 10px; line-height: 1.65; }
+.home-project-architecture { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
+.home-project-architecture li { padding: 9px 10px; border: 1px solid rgba(148, 163, 184, 0.16); border-radius: 9px; background: rgba(15, 23, 42, 0.28); color: #D1D5DB; font-size: 10px; line-height: 1.5; }
+.home-project-architecture strong { display: block; margin-bottom: 2px; color: #A7F3D0; }
+.home-project-info-section .home-project-info-features { margin-top: 8px; }
+.home-project-info-features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 12px; margin: 0; padding: 0; list-style: none; }
+.home-project-info-features li { display: flex; align-items: flex-start; gap: 7px; color: #D1D5DB; font-size: 10px; line-height: 1.5; }
+.home-project-info-features i { margin-top: 2px; color: #34D399; }
+.home-project-info-note { margin: 12px 0 0 !important; padding: 9px 10px; border-radius: 9px; background: rgba(245, 158, 11, 0.1); color: #FDE68A !important; font-size: 10px !important; }
+.home-project-security { margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(148, 163, 184, 0.2); }
+.home-project-security h3 { margin: 0 0 8px; color: #A7F3D0; font-size: 13px; font-weight: 800; }
+.home-project-security > p { margin: 0 0 10px; color: #CBD5E1; font-size: 10px; line-height: 1.6; }
+.home-project-versions { display: grid; gap: 7px; margin: 0; padding: 0; list-style: none; }
+.home-project-versions li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 10px; border: 1px solid rgba(148, 163, 184, 0.16); border-radius: 9px; background: rgba(15, 23, 42, 0.28); color: #E5E7EB; font-size: 10px; }
+.home-project-version-status { font-weight: 700; text-align: right; }
+.home-project-version-supported { color: #6EE7B7; }
+.home-project-version-unsupported { color: #FCA5A5; }
+.home-project-security-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; color: #A7F3D0; font-size: 10px; font-weight: 700; text-decoration: none; }
+.home-project-security-link:hover { text-decoration: underline; }
+.home-project-info-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; padding-top: 12px; border-top: 1px solid rgba(148, 163, 184, 0.2); }
+.home-project-info-links a { display: inline-flex; align-items: center; gap: 6px; padding: 7px 9px; border: 1px solid rgba(52, 211, 153, 0.25); border-radius: 9px; color: #A7F3D0; font-size: 10px; font-weight: 700; text-decoration: none; transition: background-color 0.2s, border-color 0.2s; }
+.home-project-info-links a:hover { border-color: rgba(52, 211, 153, 0.6); background: rgba(16, 185, 129, 0.12); }
+body.app-light-mode #view-project-info .home-project-info-content { border-color: #D1D5DB; background: #FFFFFF; color: #374151; }
+body.app-light-mode #view-project-info .home-project-info-content h2 { color: #111827 !important; }
+body.app-light-mode #view-project-info .home-project-info-content h3 { color: #047857 !important; }
+body.app-light-mode #view-project-info .home-project-info-content > p { color: #4B5563 !important; }
+body.app-light-mode #view-project-info .home-project-info-section { border-color: #E5E7EB; }
+body.app-light-mode #view-project-info .home-project-info-section > p { color: #4B5563 !important; }
+body.app-light-mode #view-project-info .home-project-architecture li { border-color: #E5E7EB; background: #F9FAFB; color: #374151; }
+body.app-light-mode #view-project-info .home-project-architecture strong { color: #047857 !important; }
+body.app-light-mode #view-project-info .home-project-info-features li,
+body.app-light-mode #view-project-info .home-project-info-features li span { color: #374151 !important; }
+body.app-light-mode #view-project-info .home-project-info-note { background: #FFFBEB; color: #92400E !important; }
+body.app-light-mode #view-project-info .home-project-security h3 { color: #047857 !important; }
+body.app-light-mode #view-project-info .home-project-security > p { color: #4B5563 !important; }
+body.app-light-mode #view-project-info .home-project-versions li { border-color: #E5E7EB; background: #F9FAFB; color: #374151; }
+body.app-light-mode #view-project-info .home-project-version-supported { color: #047857; }
+body.app-light-mode #view-project-info .home-project-version-unsupported { color: #B91C1C; }
+body.app-light-mode #view-project-info .home-project-security-link { color: #047857; }
+body.app-light-mode #view-project-info .home-project-info-links a { color: #047857; }
 @media (max-width: 640px) {
   .home-footer-layout { grid-template-columns: minmax(0, 1fr); row-gap: 12px; }
   .home-footer-admin { grid-column: 1; grid-row: 1; justify-self: stretch; }
@@ -466,10 +515,12 @@ body.app-light-mode .github-social-link svg path { fill: #181717; }
   .home-footer-social .social-link { width: 48px; height: 48px; border-radius: 12px; }
   .home-footer-social .social-link svg { width: 20px; height: 20px; }
   .home-footer-copyright { grid-column: 1; grid-row: 3; justify-self: center; text-align: center; font-size: 10px; }
+  .home-project-info-content { padding: 15px; }
 }
 @media (max-width: 380px) {
   .home-footer-social { gap: 12px; }
   .home-footer-admin button { padding: 16px 12px !important; font-size: 14px !important; gap: 8px !important; }
+  .home-project-info-features { grid-template-columns: 1fr; }
 }
 @media (max-width: 768px) {
 body { font-size: 14px; }
@@ -993,8 +1044,8 @@ body * { visibility: hidden; }
 <a href="https://www.youtube.com/@channel_anda" target="_blank" rel="noopener noreferrer" class="social-link" title="YouTube">
 <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="4" fill="#FF0000"/><path d="M10 8l6 4-6 4V8z" fill="white"/></svg>
 </a>
-<a href="https://sites.google.com/view/deployskyy/about" target="_blank" rel="noopener noreferrer" class="social-link" title="aboutskyyᯓᡣ𐭩">
-<svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+<a href="https://sites.google.com/view/deployskyy/about" target="_blank" rel="noopener noreferrer" class="social-link aboutskyy-social-link" title="aboutskyyᯓᡣ𐭩" aria-label="About Skyy">
+<img src="assets/aboutskyy.png" alt="Foto profil Skyy">
 </a>
 <a href="https://github.com/evlskyy/spas1-v2" target="_blank" rel="noopener noreferrer" class="social-link github-social-link" title="GitHub Skyy" aria-label="GitHub">
 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.304.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.31.468-2.381 1.235-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 016.006 0c2.29-1.552 3.297-1.23 3.297-1.23.653 1.652.242 2.873.12 3.176.77.84 1.233 1.911 1.233 3.221 0 4.609-2.807 5.623-5.48 5.921.43.372.814 1.103.814 2.222 0 1.604-.015 2.896-.015 3.29 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
@@ -1004,10 +1055,87 @@ body * { visibility: hidden; }
 <button id="btnSuperAdminLogin" type="button" onclick="bukaAdminPortal()" class="px-3 py-2.5 rounded-xl border border-indigo-400/40 bg-indigo-600/15 text-xs text-indigo-300 hover:bg-indigo-600/30 hover:border-indigo-300 font-bold flex items-center justify-center gap-1.5 transition shadow-lg whitespace-nowrap">
 <i class="fa-solid fa-user-shield"></i><span>SUPER ADMIN LOGIN</span><i class="fa-solid fa-arrow-right text-xs"></i>
 </button>
+<button id="btnProjectInfo" type="button" onclick="bukaInfoProyek()" class="home-project-info-button px-3 py-2.5 rounded-xl border text-xs font-bold flex items-center justify-center gap-1.5 transition shadow-lg whitespace-nowrap">
+<i class="fa-solid fa-book-open"></i><span>READ INFO PROJECT</span><i class="fa-solid fa-arrow-right text-xs"></i>
+</button>
 </div>
 <div class="home-footer-copyright text-[10px] text-gray-500">
 <a href="mailto:hallosky@spas1.my.id" aria-label="Email CraftedSkyy" style="color: inherit; text-decoration: none;">©2026-CraftedSkyy.With ❤️</a>
 </div>
+ </div>
+ </div>
+ </div>
+<div id="view-project-info" class="hidden flex-grow flex flex-col items-center p-4">
+<div class="w-full max-w-2xl space-y-4">
+<div class="w-full mb-3 flex justify-start"><button type="button" onclick="kembaliKeHome()" class="btn-kembali-animated px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-xl text-xs font-semibold flex items-center gap-2"><i class="fa-solid fa-arrow-left"></i> Kembali ke Menu Utama</button></div>
+<div class="home-project-info-content">
+<h2>SPAS1 Version 2.0</h2>
+<p>Aplikasi web komprehensif untuk mendukung pengelolaan operasional harian dapur Makan Bergizi Gratis (MBG) untuk SPPG Sungai Pasir 1, Meral, Karimun.</p>
+<section class="home-project-info-section" aria-labelledby="projectOverviewTitle">
+<h3 id="projectOverviewTitle"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Tentang Proyek</h3>
+<p>Aplikasi berbasis web yang dapat digunakan melalui URL Google Apps Script tanpa membeli domain sendiri. <strong>SPAS1 Version 2.0</strong> membantu mengelola 500+ paket menu, stok logistik, dan absensi relawan dengan sinkronisasi data melalui layanan Google.</p>
+<p>Google Apps Script digunakan sebagai backend untuk mengotomatisasi proses dan menghubungkan aplikasi dengan Google Sheets sebagai penyimpanan data operasional. Platform ini juga dapat dimanfaatkan untuk membangun berbagai solusi, seperti aplikasi inventaris, keuangan, belanja, maupun portofolio.</p>
+<p><strong>Keamanan:</strong> Saya menggunakan serverless Blind XSS Hunter oleh <strong>@IAmMandatory</strong> sebagai backbone security untuk menghindari Mitigasi Resiko dari Cyber Attack.</p>
+</section>
+<section class="home-project-info-section" aria-labelledby="projectArchitectureTitle">
+<h3 id="projectArchitectureTitle"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Arsitektur Sistem</h3>
+<ul class="home-project-architecture">
+<li><strong>Frontend</strong>HTML, Tailwind CSS, dan JavaScript (single-page application).</li>
+<li><strong>Backend</strong>Google Apps Script, termasuk doGet, doPost, dan fungsi aplikasi.</li>
+<li><strong>Database</strong>Google Sheets dengan beberapa sheet terstruktur.</li>
+<li><strong>Hosting</strong>Google Apps Script Web App, diakses melalui URL deployment.</li>
+</ul>
+</section>
+<section class="home-project-info-section" aria-labelledby="projectModulesTitle">
+<h3 id="projectModulesTitle"><i class="fa-solid fa-cubes" aria-hidden="true"></i> Modul yang Dibangun</h3>
+<ul class="home-project-info-features">
+<li><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span><strong>Modul 1 · Absensi Relawan:</strong> pencatatan berbasis PIN, laporan lokasi dari browser, dan pemindaian visual.</span></li>
+<li><i class="fa-solid fa-utensils" aria-hidden="true"></i><span><strong>Modul 2 · Bank Menu &amp; Gizi:</strong> lebih dari 500 paket menu standar MBG dan pengelolaan informasi gizi.</span></li>
+<li><i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i><span><strong>Modul 3 · Stok Logistik:</strong> pengelolaan lebih dari 600 item bahan baku dan bumbu.</span></li>
+<li><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i><span><strong>Modul 4 · Persiapan &amp; Distribusi:</strong> joblist harian, jadwal distribusi, dan checklist HACCP.</span></li>
+</ul>
+</section>
+<section class="home-project-info-section" aria-labelledby="projectBenefitsTitle">
+<h3 id="projectBenefitsTitle"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Keunggulan Apps Script</h3>
+<ul class="home-project-info-features">
+<li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Dapat dimulai tanpa server dan domain sendiri; penggunaan mengikuti kuota serta kebijakan layanan Google.</span></li>
+<li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Terintegrasi dengan Google Sheets untuk pengelolaan data.</span></li>
+<li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Dapat diakses melalui URL dari perangkat yang terhubung ke internet.</span></li>
+<li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Mendukung sinkronisasi data antarperangkat.</span></li>
+<li><i class="fa-solid fa-check" aria-hidden="true"></i><span>Praktis dikelola tanpa infrastruktur Development yang kompleks.</span></li>
+</ul>
+<p style="margin-top: 12px;">Project ini membuktikan bahwa solusi teknologi tidak harus mahal, dapat dibangun secara bertahap dengan pemahaman yang tepat,memanfaatkan Google Apps Script sebagai backbone aplikasi operasional skala menengah.</p>
+</section>
+<h3>Fitur &amp; fungsi</h3>
+<ul class="home-project-info-features">
+<li><i class="fa-solid fa-utensils" aria-hidden="true"></i><span>Pengelolaan menu harian MBG dan bank menu berisi 500+ paket.</span></li>
+<li><i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i><span>Pengelolaan 600+ data stok logistik dapur.</span></li>
+<li><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i><span>Pencatatan absensi harian relawan berbasis PIN.</span></li>
+<li><i class="fa-solid fa-chart-line" aria-hidden="true"></i><span>Monitoring operasional, pelaporan, dan dokumentasi.</span></li>
+<li><i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i><span>Sinkronisasi data melalui layanan cloud.</span></li>
+</ul>
+<p class="home-project-info-note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Pemindaian visual pada absensi bukan verifikasi identitas.</p>
+<h3 style="margin-top: 14px;">Developer · iamsky</h3>
+<div class="home-project-info-links">
+<a href="https://github.com/evlskyy/spas1-v2" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i>GitHub · @evlskyy</a>
+<a href="mailto:hallosky@spas1.my.id"><i class="fa-solid fa-envelope" aria-hidden="true"></i>hallosky@spas1.my.id</a>
+<a href="https://www.instagram.com/evlskyy/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i>Instagram · @evlskyy</a>
+</div>
+<section class="home-project-security" aria-labelledby="projectSecurityTitle">
+<h3 id="projectSecurityTitle"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Security Policy</h3>
+<h4 style="margin: 12px 0 6px; color: inherit; font-size: 11px; font-weight: 800;">Supported Versions</h4>
+<p>Update to the latest version!</p>
+<ul class="home-project-versions">
+<li><span>5.1</span><span class="home-project-version-status home-project-version-unsupported">Belum didukung ❌</span></li>
+<li><span>2.1.2</span><span class="home-project-version-status home-project-version-supported">Upcoming ✅</span></li>
+<li><span>2.0.x</span><span class="home-project-version-status home-project-version-supported">Didukung ✅</span></li>
+<li><span>&lt; 1.0</span><span class="home-project-version-status home-project-version-unsupported">Tidak lagi didukung ❌</span></li>
+</ul>
+<h4 style="margin: 14px 0 6px; color: inherit; font-size: 11px; font-weight: 800;">Reporting a Vulnerability</h4>
+<p>Use this repository as learning material; never claim copyright over it.</p>
+<a class="home-project-security-link" href="https://github.com/evlskyy/spas1-v2/blob/main/SECURITY.md" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i>Security Policy GitHub Lab</a>
+</section>
+<p style="margin-bottom: 0;">© 2026 SPAS1 Project · Crafted.Sky With ❤️</p>
 </div>
 </div>
 </div>
@@ -1517,8 +1645,13 @@ const MN_SAYUR = ['Sayur Bayam', 'Sayur Sop', 'Sayur Lodeh', 'Sayur Asem', 'Sayu
 const MN_BUAH = ['Pisang', 'Jeruk', 'Apel', 'Pepaya', 'Semangka', 'Melon', 'Nanas', 'Mangga', 'Salak', 'Rambutan', 'Duku', 'Manggis', 'Jambu Biji', 'Pir', 'Anggur', 'Kiwi', 'Strawberry', 'Blueberry'];
 const MN_MENU_DATA = [];
 const SL_STOK_DATA = [];
+function bukaInfoProyek() {
+document.getElementById('view-home').classList.add('hidden');
+document.getElementById('view-project-info').classList.remove('hidden');
+}
 function bukaModul(modulId) {
 document.getElementById('view-home').classList.add('hidden');
+document.getElementById('view-project-info').classList.add('hidden');
 document.getElementById('modul-absensi').classList.add('hidden');
 document.getElementById('modul-menu').classList.add('hidden');
 document.getElementById('modul-stok').classList.add('hidden');
@@ -1573,6 +1706,7 @@ document.getElementById('modul-menu').classList.add('hidden');
 document.getElementById('modul-stok').classList.add('hidden');
 document.getElementById('modul-joblist').classList.add('hidden');
 document.getElementById('view-admin').classList.add('hidden');
+document.getElementById('view-project-info').classList.add('hidden');
 document.getElementById('mnLoginOverlay').classList.remove('show');
 document.getElementById('slLoginOverlay').classList.remove('show');
 document.getElementById('loginPortal').style.display = 'flex';
