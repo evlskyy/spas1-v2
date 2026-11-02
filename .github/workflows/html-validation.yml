@@ -14,7 +14,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Validate HTML files
-      uses: Cyb3r-Jak3/html5validator-action@v7.0
+    - name: Setup Python
+      uses: actions/setup-python@v5
       with:
-        root: .
+        python-version: '3.x'
+        
+    - name: Install HTML5 Validator
+      run: pip install html5validator
+      
+    - name: Validate HTML files
+      run: |
+        html5validator --root . --match "*.html" --also-check-css
