@@ -461,7 +461,12 @@ body.app-light-mode .github-social-link svg path { fill: #181717; }
 .home-footer-social .social-link svg { width: 18px; height: 18px; }
 .aboutskyy-social-link { overflow: hidden; padding: 0; }
 .aboutskyy-social-link img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.home-footer-copyright { grid-column: 3; grid-row: 1; justify-self: end; text-align: right; }
+.home-footer-trakteer { grid-column: 3; grid-row: 1; justify-self: end; align-self: start; display: flex; flex-direction: column; align-items: flex-end; gap: 20px; }
+.trakteer-link { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-width: 126px; height: 36px; padding: 0 12px; border: 0; border-radius: 10px; background: #e90029; color: #fff; font-size: 13px; font-weight: 800; letter-spacing: 0.02em; text-decoration: none; box-shadow: 0 4px 14px rgba(233, 0, 41, 0.22); animation: trakteerFade 3.2s ease-in-out infinite; transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease; }
+.trakteer-link:hover, .trakteer-link:focus-visible { opacity: 1; transform: translateY(-2px); box-shadow: 0 7px 18px rgba(233, 0, 41, 0.36); outline: none; }
+.trakteer-icon { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 7px; background: #fff; color: #e90029; font-size: 13px; }
+@keyframes trakteerFade { 0%, 100% { opacity: 0.76; } 50% { opacity: 1; } }
+.home-footer-copyright { text-align: right; }
 .home-project-info-content { margin-top: 10px; padding: 18px; border: 1px solid #3A506B; border-radius: 16px; background: #1C2541; color: #E5E7EB; box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18); }
 .home-project-info-content h2 { margin: 0; color: #FFFFFF; font-size: 16px; font-weight: 800; }
 .home-project-info-content > p { margin: 7px 0 14px; color: #CBD5E1; font-size: 11px; line-height: 1.65; }
@@ -514,7 +519,11 @@ body.app-light-mode #view-project-info .home-project-info-links a { color: #0478
   .home-footer-social { grid-column: 1; grid-row: 2; justify-self: center; margin-top: 0; gap: 16px; }
   .home-footer-social .social-link { width: 48px; height: 48px; border-radius: 12px; }
   .home-footer-social .social-link svg { width: 20px; height: 20px; }
-  .home-footer-copyright { grid-column: 1; grid-row: 3; justify-self: center; text-align: center; font-size: 10px; }
+  .home-footer-trakteer { display: contents; }
+  .trakteer-link { min-width: 140px; height: 42px; font-size: 14px; }
+  .trakteer-icon { width: 26px; height: 26px; font-size: 15px; }
+  .home-footer-layout > .home-footer-trakteer > .trakteer-link { grid-column: 1; grid-row: 3; justify-self: center; }
+  .home-footer-copyright { grid-column: 1; grid-row: 4; justify-self: center; text-align: center; font-size: 10px; }
   .home-project-info-content { padding: 15px; }
 }
 @media (max-width: 380px) {
@@ -770,6 +779,7 @@ flex-direction: column;
 align-items: flex-end;
 gap: 10px;
 }
+body:not(.home-screen-active) .whatsapp-float { display: none; }
 .whatsapp-tooltip {
 background: #ffffff;
 color: #1f2937;
@@ -874,6 +884,20 @@ font-size: 11px;
 }
 }
 
+.sync-auth-overlay { display: none; position: fixed; inset: 0; z-index: 100001; align-items: center; justify-content: center; padding: 16px; background: rgba(2, 6, 23, 0.78); }
+.sync-auth-card { width: min(100%, 380px); padding: 22px; border: 1px solid rgba(52, 211, 153, 0.4); border-radius: 18px; background: #111827; color: #E5E7EB; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); }
+.sync-auth-card h2 { display: flex; align-items: center; gap: 9px; margin: 0; color: #6EE7B7; font-size: 17px; font-weight: 800; }
+.sync-auth-card p { margin: 8px 0 16px; color: #CBD5E1; font-size: 12px; line-height: 1.5; }
+.sync-auth-card label { display: block; margin: 12px 0 5px; font-size: 11px; font-weight: 700; }
+.sync-auth-card input { width: 100%; padding: 10px 12px; border: 1px solid #475569; border-radius: 9px; background: #1F2937; color: #F9FAFB; font-size: 13px; }
+.sync-auth-card input:focus { border-color: #34D399; outline: 2px solid rgba(52, 211, 153, 0.2); }
+.sync-auth-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 18px; }
+.sync-auth-error { display: none; margin-top: 12px; color: #FCA5A5; font-size: 11px; font-weight: 700; }
+.sync-auth-error.show { display: block; }
+body.app-light-mode .sync-auth-card { background: #FFFFFF; color: #111827; }
+body.app-light-mode .sync-auth-card p { color: #475569; }
+body.app-light-mode .sync-auth-card input { background: #F8FAFC; color: #111827; }
+
 #modal-admin-login {
 z-index: 10000;
 }
@@ -891,7 +915,7 @@ body * { visibility: hidden; }
 }
 </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between">
+<body class="min-h-screen flex flex-col justify-between home-screen-active">
 <!-- SVG Symbol Definitions untuk Animasi AI Anak-anak -->
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
 <symbol id="ai-kid-tk-boy" viewBox="0 0 60 60">
@@ -981,6 +1005,22 @@ body * { visibility: hidden; }
 </a>
 </div>
 
+<div class="sync-auth-overlay" id="syncAuthModal" role="dialog" aria-modal="true" aria-labelledby="syncAuthTitle" onclick="if(event.target===this) closeSyncAuthModal()">
+<form class="sync-auth-card" onsubmit="event.preventDefault(); submitSyncAuth();">
+<h2 id="syncAuthTitle"><i class="fa-solid fa-shield-halved"></i> Konfirmasi Sinkronisasi</h2>
+<p id="syncAuthDescription">Masukkan kembali akun portal untuk mengizinkan perubahan pada spreadsheet.</p>
+<label for="syncAuthUsername">Username portal</label>
+<input id="syncAuthUsername" type="text" autocomplete="username" maxlength="80" required>
+<label for="syncAuthPassword">Kata sandi portal</label>
+<input id="syncAuthPassword" type="password" autocomplete="current-password" maxlength="128" required>
+<div class="sync-auth-actions">
+<button id="syncAuthCancel" type="button" class="btn btn-outline" onclick="closeSyncAuthModal()">Batal</button>
+<button id="syncAuthSubmit" type="submit" class="btn btn-emerald"><i class="fa-solid fa-lock"></i> Izinkan Sync</button>
+</div>
+<div id="syncAuthError" class="sync-auth-error" role="alert"></div>
+</form>
+</div>
+
 <div id="view-home" class="flex-grow flex flex-col justify-center items-center p-4">
 <div class="w-full max-w-2xl space-y-6">
 <div class="dark-card p-6 rounded-3xl shadow-2xl text-center space-y-3 relative overflow-hidden border border-[#3A506B]">
@@ -1059,8 +1099,13 @@ body * { visibility: hidden; }
 <i class="fa-solid fa-book-open"></i><span>READ INFO PROJECT</span><i class="fa-solid fa-arrow-right text-xs"></i>
 </button>
 </div>
+<div class="home-footer-trakteer">
+<a href="http://teer.id/evlskyy" target="_blank" rel="noopener noreferrer" class="trakteer-link" title="Trakteer Kopi Bray" aria-label="Trakteer Kopi Bray">
+<span class="trakteer-icon"><i class="fa-solid fa-heart"></i></span><span>trakteer</span>
+</a>
 <div class="home-footer-copyright text-[10px] text-gray-500">
 <a href="mailto:hallosky@spas1.my.id" aria-label="Email CraftedSkyy" style="color: inherit; text-decoration: none;">©2026-CraftedSkyy.With ❤️</a>
+</div>
 </div>
  </div>
  </div>
@@ -1075,7 +1120,7 @@ body * { visibility: hidden; }
 <h3 id="projectOverviewTitle"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Tentang Proyek</h3>
 <p>Aplikasi berbasis web yang dapat digunakan melalui URL Google Apps Script tanpa membeli domain sendiri. <strong>SPAS1 Version 2.0</strong> membantu mengelola 500+ paket menu, stok logistik, dan absensi relawan dengan sinkronisasi data melalui layanan Google.</p>
 <p>Google Apps Script digunakan sebagai backend untuk mengotomatisasi proses dan menghubungkan aplikasi dengan Google Sheets sebagai penyimpanan data operasional. Platform ini juga dapat dimanfaatkan untuk membangun berbagai solusi, seperti aplikasi inventaris, keuangan, belanja, maupun portofolio.</p>
-<p><strong>Keamanan:</strong> Saya menggunakan serverless Blind XSS Hunter oleh <strong>@IAmMandatory</strong> sebagai backbone security untuk menghindari Mitigasi Resiko dari Cyber Attack.</p>
+<p><strong>Keamanan:</strong> Menggunakan serverless Blind XSS Hunter oleh <strong>@IAmMandatory</strong> sebagai backbone security untuk menghindari Mitigasi Resiko dari Cyber Attack.</p>
 </section>
 <section class="home-project-info-section" aria-labelledby="projectArchitectureTitle">
 <h3 id="projectArchitectureTitle"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Arsitektur Sistem</h3>
@@ -1221,7 +1266,7 @@ body * { visibility: hidden; }
 <select id="mnFilterKategori" class="mn-select" onchange="renderMenuNusantara()"><option value="all">Semua Kategori</option><option value="Tradisional Jawa">Tradisional Jawa</option><option value="Tradisional Sunda">Tradisional Sunda</option><option value="Tradisional Sumatra">Tradisional Sumatra</option><option value="Tradisional Bali">Tradisional Bali</option><option value="Tradisional Kalimantan">Tradisional Kalimantan</option><option value="Tradisional Sulawesi">Tradisional Sulawesi</option><option value="Tradisional Papua">Tradisional Papua</option><option value="SPPG Sungai Pasir1 Meral">SPPG Sungai Pasir1 Meral</option></select>
 <button onclick="fetchBankMenuFromCloud()" class="mn-btn-export" style="background:linear-gradient(135deg,#8B5CF6,#7C3AED);"><i class="fa-solid fa-cloud-arrow-down"></i> Tarik Data Sheet Cloud</button>
 <button onclick="printMenuNusantara()" class="mn-btn-export" style="background:linear-gradient(135deg,#3B82F6,#2563EB);"><i class="fa-solid fa-print"></i> Print</button>
-<button onclick="syncMenuToCloud()" class="mn-btn-export" style="background:linear-gradient(135deg,#10B981,#059669);"><i class="fa-solid fa-cloud-arrow-up"></i> Sync Cloud</button>
+<button onclick="syncMenuToCloud(event)" class="mn-btn-export" style="background:linear-gradient(135deg,#10B981,#059669);"><i class="fa-solid fa-cloud-arrow-up"></i> Sync Cloud</button>
 <button onclick="exportMenuPDF()" class="mn-btn-export"><i class="fa-solid fa-file-pdf"></i> Export PDF</button>
 </div>
 <div id="mnMenuContainer" class="mn-menu-grid"></div>
@@ -1285,7 +1330,7 @@ body * { visibility: hidden; }
 <select id="slFilterKategori" class="sl-select" onchange="renderStokLogistik()"><option value="all">Semua Kategori</option><option value="Bahan Baku Utama">Bahan Baku Utama</option><option value="Bumbu Dasar">Bumbu Dasar</option><option value="Rempah Khas Indonesia">Rempah Khas Indonesia</option><option value="Bumbu Racikan">Bumbu Racikan</option><option value="Bahan Kering">Bahan Kering</option><option value="Bahan Basah">Bahan Basah</option><option value="Bahan Kemasan">Bahan Kemasan</option></select>
 <button onclick="fetchStokLogistikFromCloud()" class="sl-btn-export" style="background:linear-gradient(135deg,#8B5CF6,#7C3AED);"><i class="fa-solid fa-cloud-arrow-down"></i> Tarik Data Sheet Cloud</button>
 <button onclick="printStokLogistik()" class="sl-btn-export" style="background:linear-gradient(135deg,#3B82F6,#2563EB);"><i class="fa-solid fa-print"></i> Print</button>
-<button onclick="syncStokToCloud()" class="sl-btn-export" style="background:linear-gradient(135deg,#10B981,#059669);"><i class="fa-solid fa-cloud-arrow-up"></i> Sync Cloud</button>
+<button onclick="syncStokToCloud(event)" class="sl-btn-export" style="background:linear-gradient(135deg,#10B981,#059669);"><i class="fa-solid fa-cloud-arrow-up"></i> Sync Cloud</button>
 <button onclick="exportStokPDF()" class="sl-btn-export"><i class="fa-solid fa-file-pdf"></i> Export PDF</button>
 </div>
 <div class="sl-scroll-hint"><i class="fa-solid fa-hand-pointer"></i> Geser tabel ke kanan untuk melihat semua kolom</div>
@@ -1347,7 +1392,7 @@ body * { visibility: hidden; }
 <div class="download-info"><strong>☁️ Cloud Sync & Two-Way Edition:</strong> Sinkronisasi 2 arah Terkoneksi Ke Database Sheet & Cloud Database</div>
 <div style="align-items: center; display: flex; flex-wrap: wrap; gap: 6px;">
 <select class="input-field" id="themeSelector" onchange="changeCustomTheme(this.value)" style="font-size: 11px; font-weight: 700; padding: 4px 8px; width: auto;"><option value="emerald"> Emerald Skyy</option><option value="ocean">🌊 Ocean Skyy</option><option value="royal"> Royal Dark Skyy</option><option value="light">☀️ Clean Minimalist Skyy</option></select>
-<button class="btn btn-emerald" onclick="syncToCloudSheet()" style="font-size: 11px; padding: 4px 8px;">🔁 Sinkronisasi Cloud</button>
+<button class="btn btn-emerald" onclick="syncToCloudSheet(event)" style="font-size: 11px; padding: 4px 8px;">🔁 Sinkronisasi Cloud</button>
 <button class="btn btn-outline" onclick="fetchFromCloudSheet()" style="font-size: 11px; padding: 4px 8px;">📥 Tarik dari Sheet Cloud</button>
 <button class="btn btn-outline" onclick="handleLogout()" style="font-size: 11px; padding: 4px 8px;">🔒Lock Portal</button>
 <button class="btn btn-emerald" onclick="downloadCurrentHtml()">Download SPAS1 2.0 HTML ➜]</button>
@@ -1646,10 +1691,12 @@ const MN_BUAH = ['Pisang', 'Jeruk', 'Apel', 'Pepaya', 'Semangka', 'Melon', 'Nana
 const MN_MENU_DATA = [];
 const SL_STOK_DATA = [];
 function bukaInfoProyek() {
+document.body.classList.remove('home-screen-active');
 document.getElementById('view-home').classList.add('hidden');
 document.getElementById('view-project-info').classList.remove('hidden');
 }
 function bukaModul(modulId) {
+document.body.classList.remove('home-screen-active');
 document.getElementById('view-home').classList.add('hidden');
 document.getElementById('view-project-info').classList.add('hidden');
 document.getElementById('modul-absensi').classList.add('hidden');
@@ -1712,6 +1759,7 @@ document.getElementById('slLoginOverlay').classList.remove('show');
 document.getElementById('loginPortal').style.display = 'flex';
 document.getElementById('dashboardActionButtons').style.display = 'none';
 document.getElementById('view-home').classList.remove('hidden');
+document.body.classList.add('home-screen-active');
 }
 function showToast(msg) {
 const toast = document.getElementById('toast-notify');
@@ -1721,6 +1769,7 @@ toast.classList.add('translate-x-0', 'opacity-100');
 setTimeout(() => { toast.classList.remove('translate-x-0', 'opacity-100'); toast.classList.add('translate-x-[120%]', 'opacity-0'); }, 3500);
 }
 function bukaAdminPortal() {
+document.body.classList.remove('home-screen-active');
 const modal = document.getElementById('modal-admin-login');
 modal.classList.remove('hidden');
 modal.classList.add('flex');
@@ -1735,6 +1784,10 @@ modal.classList.remove('flex');
 modal.style.display = 'none';
 modal.setAttribute('aria-hidden', 'true');
 document.getElementById('btnSuperAdminLogin').focus();
+if (!document.getElementById('view-home').classList.contains('hidden') &&
+    document.getElementById('view-admin').classList.contains('hidden')) {
+  document.body.classList.add('home-screen-active');
+}
 }
 function verifikasiAdmin() {
 const u = document.getElementById('adminUser').value.trim();
@@ -1750,9 +1803,10 @@ if (res && res.status === 'success' && res.sessionToken) {
 window.SPAS1_AUTH_TOKEN = res.sessionToken;
 window.SPAS1_AUTH_ROLE = 'admin';
 showToast(res.message);
-tutupAdminLogin();
 document.getElementById('view-home').classList.add('hidden');
 document.getElementById('view-admin').classList.remove('hidden');
+document.body.classList.remove('home-screen-active');
+tutupAdminLogin();
 tarikDataSpreadsheetAdmin();
 } else { alert('❌ ' + (res && res.message ? res.message : 'Login gagal. Periksa koneksi dan respons server.')); }
 }, function(err) {
@@ -1768,6 +1822,7 @@ window.SPAS1_AUTH_TOKEN = '';
 window.SPAS1_AUTH_ROLE = '';
 document.getElementById('view-admin').classList.add('hidden');
 document.getElementById('view-home').classList.remove('hidden');
+document.body.classList.add('home-screen-active');
 document.getElementById('loginPortal').style.display = 'flex';
 document.getElementById('dashboardActionButtons').style.display = 'none';
 showToast('✅ Berhasil logout dari Admin Portal');
@@ -1779,20 +1834,31 @@ document.getElementById(tabId).classList.remove('hidden');
 if (btn) { btn.classList.add('active'); btn.style.backgroundColor = '#4F46E5'; btn.style.color = '#FFFFFF'; }
 }
 function renderAdminTextRows(tbody, records, fields) {
+const renderId = (adminTableRenderIds.get(tbody) || 0) + 1;
+adminTableRenderIds.set(tbody, renderId);
+tbody.replaceChildren();
+let index = 0;
+const appendBatch = () => {
+if (adminTableRenderIds.get(tbody) !== renderId) return;
 const rows = document.createDocumentFragment();
-records.forEach(record => {
+const end = Math.min(index + 100, records.length);
+for (; index < end; index++) {
 const row = document.createElement('tr');
 fields.forEach(field => {
 const cell = document.createElement('td');
 cell.className = 'p-3';
-const value = field(record);
+const value = field(records[index]);
 cell.textContent = value == null || value === '' ? '-' : String(value);
 row.appendChild(cell);
 });
 rows.appendChild(row);
-});
-tbody.replaceChildren(rows);
 }
+tbody.appendChild(rows);
+if (index < records.length) requestAnimationFrame(appendBatch);
+};
+appendBatch();
+}
+const adminTableRenderIds = new WeakMap();
 function tarikDataSpreadsheetAdmin(btn) {
 if (btn) {
 btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Syncing...</span>';
@@ -1956,8 +2022,8 @@ document.getElementById('slLoginPass').focus();
 }
 }, function() { setPortalLoginBusy('slLoginSubmit', false); errorEl.classList.add('show'); });
 }
-function closeMnLogin() { document.getElementById('mnLoginOverlay').classList.remove('show'); document.getElementById('modul-menu').classList.add('hidden'); document.getElementById('view-home').classList.remove('hidden'); }
-function closeSlLogin() { document.getElementById('slLoginOverlay').classList.remove('show'); document.getElementById('modul-stok').classList.add('hidden'); document.getElementById('view-home').classList.remove('hidden'); }
+function closeMnLogin() { document.getElementById('mnLoginOverlay').classList.remove('show'); document.getElementById('modul-menu').classList.add('hidden'); document.getElementById('view-home').classList.remove('hidden'); document.body.classList.add('home-screen-active'); }
+function closeSlLogin() { document.getElementById('slLoginOverlay').classList.remove('show'); document.getElementById('modul-stok').classList.add('hidden'); document.getElementById('view-home').classList.remove('hidden'); document.body.classList.add('home-screen-active'); }
 function logoutMnPortal() { const token = window.SPAS1_AUTH_TOKEN; if (token) callGAS('logout', { authToken: token }); window.SPAS1_AUTH_TOKEN = ''; window.SPAS1_AUTH_ROLE = ''; }
 function logoutSlPortal() { const token = window.SPAS1_AUTH_TOKEN; if (token) callGAS('logout', { authToken: token }); window.SPAS1_AUTH_TOKEN = ''; window.SPAS1_AUTH_ROLE = ''; }
 function generateMenuNusantara() {
@@ -1994,8 +2060,8 @@ const matchHari = fHari === 'all' || m.hari === fHari;
 const matchKat = fKat === 'all' || m.kategori === fKat;
 return matchSearch && matchHari && matchKat;
 });
-if (filtered.length === 0) { container.innerHTML = '<div class="mn-empty-state" style="grid-column: 1/-1;"><i class="fa-solid fa-utensils" style="font-size: 40px; margin-bottom: 10px; opacity: 0.5;"></i><p>Tidak ada menu yang ditemukan.</p></div>'; return; }
-container.innerHTML = filtered.slice(0, 100).map(m => {
+if (filtered.length === 0) { cancelHtmlRender(container); container.innerHTML = '<div class="mn-empty-state" style="grid-column: 1/-1;"><i class="fa-solid fa-utensils" style="font-size: 40px; margin-bottom: 10px; opacity: 0.5;"></i><p>Tidak ada menu yang ditemukan.</p></div>'; return; }
+renderHtmlInChunks(container, filtered.slice(0, 100), m => {
 const id = Number(m.id);
 const editButton = Number.isSafeInteger(id) ? '<button class="mn-edit-btn" onclick="openMnEditModal(' + id + ')" title="Edit Menu"><i class="fa-solid fa-pen"></i></button>' : '';
 const text = value => escapeHtml(value);
@@ -2019,7 +2085,26 @@ return '<div class="mn-menu-card">' + editButton +
 '<div class="mn-akg-item"><div class="mn-akg-val">' + text(m.akg.kalsium) + 'mg</div><div class="mn-akg-unit">Kalsium</div></div>' +
 '<div class="mn-akg-item"><div class="mn-akg-val">' + text(m.akg.zatBesi) + 'mg</div><div class="mn-akg-unit">Zat Besi</div></div>' +
 '<div class="mn-akg-item"><div class="mn-akg-val">✓</div><div class="mn-akg-unit">MBG OK</div></div></div></div></div>';
-}).join('');
+}, 12);
+}
+const htmlRenderIds = new WeakMap();
+function renderHtmlInChunks(container, items, renderItem, batchSize) {
+const renderId = (htmlRenderIds.get(container) || 0) + 1;
+htmlRenderIds.set(container, renderId);
+container.replaceChildren();
+let index = 0;
+const appendBatch = () => {
+if (htmlRenderIds.get(container) !== renderId) return;
+const end = Math.min(index + batchSize, items.length);
+let html = '';
+for (; index < end; index++) html += renderItem(items[index]);
+container.insertAdjacentHTML('beforeend', html);
+if (index < items.length) requestAnimationFrame(appendBatch);
+};
+appendBatch();
+}
+function cancelHtmlRender(container) {
+htmlRenderIds.set(container, (htmlRenderIds.get(container) || 0) + 1);
 }
 function handleMnLogoUpload(event) {
 const file = event.target.files[0];
@@ -2070,16 +2155,27 @@ function printMenuNusantara() {
   showToast('📄 Mencetak Bank Menu Nusantara...');
 }
 function exportMenuPDF() { printMenuNusantara(); showToast('📄 Export PDF Bank Menu Nusantara'); }
-function syncMenuToCloud() {
+function syncMenuToCloud(clickEvent) {
+const btn = clickEvent ? clickEvent.currentTarget : null;
 const indicator = document.getElementById('mnCloudSync');
+window.requestSyncAuthorization('bank_menu', function(syncToken) {
 if(indicator) { indicator.classList.add('syncing'); indicator.innerHTML = '<span class="cloud-sync-dot"></span><span>Syncing...</span>'; }
-callGAS('syncBankMenu', { menus: MN_MENU_DATA }, function(res) {
+if (btn) btn.disabled = true;
+callGAS('syncBankMenu', { menus: MN_MENU_DATA, authToken: syncToken }, function(res) {
+if (btn) btn.disabled = false;
+window.revokeSyncAuthorization(syncToken);
 if(indicator) {
 indicator.classList.remove('syncing');
 if(res && res.status === 'success') { indicator.innerHTML = '<span class="cloud-sync-dot"></span><span>Synced ✓</span>'; showToast('✅ ' + res.message); }
 else { indicator.classList.add('error'); indicator.innerHTML = '<span class="cloud-sync-dot"></span><span>Error</span>'; showToast('❌ ' + (res ? res.message : 'Error')); }
 }
-}, function(err) { showToast('❌ Gagal: ' + err.message); });
+}, function(err) {
+if (btn) btn.disabled = false;
+window.revokeSyncAuthorization(syncToken);
+if(indicator) { indicator.classList.remove('syncing'); indicator.classList.add('error'); indicator.innerHTML = '<span class="cloud-sync-dot"></span><span>Error</span>'; }
+showToast('❌ Gagal: ' + err.message);
+});
+});
 }
 function generateStokLogistik() {
 if (SL_STOK_DATA.length > 0) return;
@@ -2112,9 +2208,9 @@ const tbody = document.getElementById('slTableBody');
 const search = document.getElementById('slSearchInput').value.trim().toLowerCase();
 const fKat = document.getElementById('slFilterKategori').value;
 let filtered = SL_STOK_DATA.filter(s => { const matchSearch = !search || s.nama.toLowerCase().includes(search) || s.kategori.toLowerCase().includes(search) || s.supplier.toLowerCase().includes(search); const matchKat = fKat === 'all' || s.kategori === fKat; return matchSearch && matchKat; });
-if (filtered.length === 0) { tbody.innerHTML = '<tr><td colspan="8" class="text-center py-8" style="color: #9CA3AF;">🔍 Tidak ada item yang ditemukan.</td></tr>'; return; }
+if (filtered.length === 0) { cancelHtmlRender(tbody); tbody.innerHTML = '<tr><td colspan="8" class="text-center py-8" style="color: #9CA3AF;">🔍 Tidak ada item yang ditemukan.</td></tr>'; return; }
 const catClassMap = { 'Bahan Baku Utama': 'sl-cat-bahan', 'Bumbu Dasar': 'sl-cat-bumbu', 'Rempah Khas Indonesia': 'sl-cat-rempah', 'Bumbu Racikan': 'sl-cat-racikan', 'Bahan Kering': 'sl-cat-kering', 'Bahan Basah': 'sl-cat-basah', 'Bahan Kemasan': 'sl-cat-kemasan' };
-tbody.innerHTML = filtered.map(s => {
+renderHtmlInChunks(tbody, filtered, s => {
 const id = Number(s.id);
 const catClass = catClassMap[s.kategori] || 'sl-cat-bahan';
 const stockClass = Number(s.stok) < 50 ? 'sl-stock-critical' : Number(s.stok) < 150 ? 'sl-stock-low' : 'sl-stock-ok';
@@ -2124,7 +2220,7 @@ return '<tr class="sl-table-row"><td style="font-weight:800;color:#10B981;">' + 
 '<td style="color:#9CA3AF;">' + escapeHtml(s.satuan) + '</td><td class="' + stockClass + '">' + escapeHtml(s.stok) + '</td>' +
 '<td style="color:#F59E0B;font-weight:700;">Rp ' + escapeHtml(Number(s.harga).toLocaleString('id-ID')) + '</td>' +
 '<td style="color:#9CA3AF;font-size:11px;">' + escapeHtml(s.supplier) + '</td><td>' + editButton + '</td></tr>';
-}).join('');
+}, 60);
 }
 function handleSlLogoUpload(event) {
 const file = event.target.files[0];
@@ -2162,16 +2258,27 @@ function printStokLogistik() {
   showToast('📄 Mencetak Stok Logistik...');
 }
 function exportStokPDF() { printStokLogistik(); showToast('📄 Export PDF Stok Logistik'); }
-function syncStokToCloud() {
+function syncStokToCloud(clickEvent) {
+const btn = clickEvent ? clickEvent.currentTarget : null;
 const indicator = document.getElementById('slCloudSync');
+window.requestSyncAuthorization('stok', function(syncToken) {
 if(indicator) { indicator.classList.add('syncing'); indicator.innerHTML = '<span class="cloud-sync-dot"></span><span>Syncing...</span>'; }
-callGAS('syncStokLogistik', { items: SL_STOK_DATA }, function(res) {
+if (btn) btn.disabled = true;
+callGAS('syncStokLogistik', { items: SL_STOK_DATA, authToken: syncToken }, function(res) {
+if (btn) btn.disabled = false;
+window.revokeSyncAuthorization(syncToken);
 if(indicator) {
 indicator.classList.remove('syncing');
 if(res && res.status === 'success') { indicator.innerHTML = '<span class="cloud-sync-dot"></span><span>Synced ✓</span>'; showToast('✅ ' + res.message); }
 else { indicator.classList.add('error'); indicator.innerHTML = '<span class="cloud-sync-dot"></span><span>Error</span>'; showToast('❌ ' + (res ? res.message : 'Error')); }
 }
-}, function(err) { showToast('❌ Gagal: ' + err.message); });
+}, function(err) {
+if (btn) btn.disabled = false;
+window.revokeSyncAuthorization(syncToken);
+if(indicator) { indicator.classList.remove('syncing'); indicator.classList.add('error'); indicator.innerHTML = '<span class="cloud-sync-dot"></span><span>Error</span>'; }
+showToast('❌ Gagal: ' + err.message);
+});
+});
 }
 function exportAdminPDF(section) {
 const sectionNames = { 'dashboard': 'Dashboard_Admin', 'laporan': 'Laporan_Absensi', 'karyawan': 'Data_Relawan' };
@@ -2431,7 +2538,7 @@ console.error('Saved application data is invalid:', error);
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbyhH47TszRivYtI26VqYIBfyMqz958tuT4B9ehLlMXqA1kZZK_ug0x93dHHMx6tfWBuew/exec';
 function callGAS(action, payload, onSuccess, onError) {
 const body = Object.assign({ action: action }, payload || {});
-if (window.SPAS1_AUTH_TOKEN && !body.authToken) body.authToken = window.SPAS1_AUTH_TOKEN;
+if (!Object.prototype.hasOwnProperty.call(body, 'authToken') && window.SPAS1_AUTH_TOKEN) body.authToken = window.SPAS1_AUTH_TOKEN;
 fetch(GAS_URL, {
 method: 'POST',
 cache: 'no-store',
@@ -2450,11 +2557,85 @@ if (onError) onError(err);
 else alert('❌ Koneksi gagal: ' + err.message);
 });
 }
-window.syncToCloudSheet = function() {
+let syncAuthCallback = null;
+function requestSyncAuthorization(module, callback) {
+const modal = document.getElementById('syncAuthModal');
+const moduleLabels = { bank_menu: 'Bank Menu', stok: 'Stok Logistik', persiapan: 'Persiapan & Distribusi' };
+modal.dataset.module = module;
+document.getElementById('syncAuthTitle').innerHTML = '<i class="fa-solid fa-shield-halved"></i> Konfirmasi Sinkronisasi';
+document.getElementById('syncAuthDescription').textContent =
+  'Masukkan kembali username dan kata sandi portal ' + (moduleLabels[module] || '') + ' untuk mengizinkan perubahan pada spreadsheet.';
+document.getElementById('syncAuthUsername').value = '';
+document.getElementById('syncAuthPassword').value = '';
+document.getElementById('syncAuthError').classList.remove('show');
+document.getElementById('syncAuthError').textContent = '';
+document.getElementById('syncAuthSubmit').disabled = false;
+document.getElementById('syncAuthSubmit').innerHTML = '<i class="fa-solid fa-lock"></i> Izinkan Sync';
+document.getElementById('syncAuthCancel').disabled = false;
+syncAuthCallback = callback;
+modal.style.display = 'flex';
+document.getElementById('syncAuthUsername').focus();
+}
+function closeSyncAuthModal() {
+if (document.getElementById('syncAuthSubmit').disabled) return;
+const modal = document.getElementById('syncAuthModal');
+modal.style.display = 'none';
+document.getElementById('syncAuthUsername').value = '';
+document.getElementById('syncAuthPassword').value = '';
+document.getElementById('syncAuthError').classList.remove('show');
+syncAuthCallback = null;
+}
+function submitSyncAuth() {
+const modal = document.getElementById('syncAuthModal');
+const username = document.getElementById('syncAuthUsername').value.trim();
+const password = document.getElementById('syncAuthPassword').value;
+const button = document.getElementById('syncAuthSubmit');
+const cancelButton = document.getElementById('syncAuthCancel');
+const error = document.getElementById('syncAuthError');
+if (!username || !password || button.disabled) return;
+button.disabled = true;
+cancelButton.disabled = true;
+button.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Memverifikasi...';
+error.classList.remove('show');
+callGAS('verifySyncPassword', {
+  username: username,
+  password: password,
+  module: modal.dataset.module,
+  authToken: null
+}, function(res) {
+  button.disabled = false;
+  cancelButton.disabled = false;
+  button.innerHTML = '<i class="fa-solid fa-lock"></i> Izinkan Sync';
+  document.getElementById('syncAuthPassword').value = '';
+  if (!res || res.status !== 'success' || !res.sessionToken) {
+    error.textContent = res && res.message ? res.message : 'Verifikasi gagal. Coba kembali.';
+    error.classList.add('show');
+    return;
+  }
+  const callback = syncAuthCallback;
+  syncAuthCallback = null;
+  modal.style.display = 'none';
+  if (callback) callback(res.sessionToken);
+}, function(err) {
+  button.disabled = false;
+  cancelButton.disabled = false;
+  button.innerHTML = '<i class="fa-solid fa-lock"></i> Izinkan Sync';
+  document.getElementById('syncAuthPassword').value = '';
+  error.textContent = 'Gagal memverifikasi kata sandi: ' + err.message;
+  error.classList.add('show');
+});
+}
+window.closeSyncAuthModal = closeSyncAuthModal;
+window.submitSyncAuth = submitSyncAuth;
+function revokeSyncAuthorization(token) {
+if (token) callGAS('logout', { authToken: token });
+}
+window.requestSyncAuthorization = requestSyncAuthorization;
+window.revokeSyncAuthorization = revokeSyncAuthorization;
+window.syncToCloudSheet = function(clickEvent) {
 const role = window.SPAS1_AUTH_ROLE;
 if (['admin', 'persiapan'].indexOf(role) === -1 || !window.SPAS1_AUTH_TOKEN) { alert('Login Persiapan/Distribusi atau admin diperlukan untuk sinkronisasi Modul 4.'); return; }
-const btn = event ? event.target : null;
-if (btn) { btn.innerHTML = '⏳ Syncing...'; btn.disabled = true; }
+const btn = clickEvent ? clickEvent.currentTarget : null;
 const payload = {
 globalTargetPorsi: globalTargetPorsi,
 porsiBesar: porsiBesar,
@@ -2465,8 +2646,12 @@ defaultBudget: defaultBudget,
 haccpChecks: haccpChecks,
 akgPosters: akgPosters
 };
+requestSyncAuthorization('persiapan', function(syncToken) {
+if (btn) { btn.innerHTML = '⏳ Syncing...'; btn.disabled = true; }
+payload.authToken = syncToken;
 callGAS(role === 'admin' ? 'syncAllModules' : 'syncAllDataToCloud', payload, function(res) {
-if (btn) { btn.innerHTML = '🔄 Sinkronisasi Cloud'; btn.disabled = false; }
+if (btn) { btn.innerHTML = '🔁 Sinkronisasi Cloud'; btn.disabled = false; }
+revokeSyncAuthorization(syncToken);
 if (res && res.status === 'success') {
 alert('✅ ' + res.message);
 saveAppDataToCloud();
@@ -2475,7 +2660,9 @@ alert('❌ ' + (res ? res.message : 'Error'));
 }
 }, function(err) {
 if (btn) { btn.innerHTML = '🔁 Sinkronisasi Cloud'; btn.disabled = false; }
+revokeSyncAuthorization(syncToken);
 alert('❌ Gagal: ' + err.message);
+});
 });
 };
 window.fetchFromCloudSheet = function() {
@@ -2936,6 +3123,7 @@ callGAS('verifyAdminLogin', { username: user, password: pass }, function(res) {
 if (res && res.status === 'success' && res.sessionToken) {
 window.SPAS1_AUTH_TOKEN = res.sessionToken;
 window.SPAS1_AUTH_ROLE = 'admin';
+document.body.classList.remove('home-screen-active');
 alert('✅ ' + res.message);
 const loginModal = document.getElementById('modal-admin-login') || document.getElementById('loginPortal');
 if (loginModal) loginModal.style.display = 'none';
@@ -2972,13 +3160,20 @@ const menusToSync = Object.keys(defaultMenus).map(hari => {
 const m = defaultMenus[hari];
 return { id: 'MENU-' + hari, nama: m.menuList || 'Menu ' + hari, hari: hari, kategori: 'Tradisional', daerah: 'Sungai Pasir', akg: { kalori: 0, protein: 0, lemak: 0 } };
 });
-const btn = event ? event.target : null;
+const btn = window.event ? window.event.currentTarget : null;
+window.requestSyncAuthorization('bank_menu', function(syncToken) {
 if (btn) { btn.innerHTML = '⏳ Syncing...'; btn.disabled = true; }
-callGAS('syncBankMenu', { menus: menusToSync }, function(res) {
+callGAS('syncBankMenu', { menus: menusToSync, authToken: syncToken }, function(res) {
 if (btn) { btn.innerHTML = '☁️ Sync Cloud'; btn.disabled = false; }
+window.revokeSyncAuthorization(syncToken);
 if (res && res.status === 'success') {
 if (typeof showToast === 'function') showToast(res.message); else alert(res.message);
 } else { alert('❌ ' + (res ? res.message : 'Gagal sync Bank Menu')); }
+}, function(err) {
+if (btn) { btn.innerHTML = '☁️ Sync Cloud'; btn.disabled = false; }
+window.revokeSyncAuthorization(syncToken);
+alert('❌ Gagal sync Bank Menu: ' + err.message);
+});
 });
 };
 window.fetchBankMenuFromCloud = function() {
@@ -3016,13 +3211,20 @@ showToast('✅ ' + loadedMenus.length + ' data Bank Menu dimuat dari Sheet.');
 };
 window.syncStokLogistikToCloud = function() {
 const itemsToSync = typeof globalStokData !== 'undefined' ? globalStokData : [];
-const btn = event ? event.target : null;
+const btn = window.event ? window.event.currentTarget : null;
+window.requestSyncAuthorization('stok', function(syncToken) {
 if (btn) { btn.innerHTML = '⏳ Syncing...'; btn.disabled = true; }
-callGAS('syncStokLogistik', { items: itemsToSync }, function(res) {
+callGAS('syncStokLogistik', { items: itemsToSync, authToken: syncToken }, function(res) {
 if (btn) { btn.innerHTML = '☁️ Sync Cloud'; btn.disabled = false; }
+window.revokeSyncAuthorization(syncToken);
 if (res && res.status === 'success') {
 if (typeof showToast === 'function') showToast(res.message); else alert(res.message);
 } else { alert('❌ ' + (res ? res.message : 'Gagal sync Stok Logistik')); }
+}, function(err) {
+if (btn) { btn.innerHTML = '☁️ Sync Cloud'; btn.disabled = false; }
+window.revokeSyncAuthorization(syncToken);
+alert('❌ Gagal sync Stok Logistik: ' + err.message);
+});
 });
 };
 window.fetchStokLogistikFromCloud = function() {
