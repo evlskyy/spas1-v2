@@ -23,6 +23,7 @@ SPAS1 (Sungai Pasir 1) adalah aplikasi web yang saya bangun untuk membantu penge
 - 💻 **GitHub**: [evlskyy](https://github.com/evlskyy)
 - 📧 **Email**: [hallosky@spas1.my.id](mailto:hallosky@spas1.my.id)
 - 📸 **Instagram**: [@evlskyy](https://instagram.com/evlskyy)
+- ☕️ **Trakteer Kopi** : https://teer.id/evlskyy
 
 ---
 
