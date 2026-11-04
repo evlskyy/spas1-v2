@@ -7,9 +7,10 @@ update to the latest version!
 | Version | Supported          |
 | ------- | ------------------ |
 | 5.1.x   | :x: |
-| 2.1.2   | upcoming :white_check_mark:               |
-| 2.0.x   | :white_check_mark: |
-| < 1.0   | :x:                |
+| 2.1.2   | upcoming :white_check_mark: |
+| 2.1.x   | support :white_check_mark: |
+| 2.0.x   | :x: not support |
+| < 1.0   | :x: not support |
 
 ## Reporting a Vulnerability
 
