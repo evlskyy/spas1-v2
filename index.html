@@ -3507,8 +3507,11 @@ prefer: 'resolution=merge-duplicates,return=minimal'
 });
 }
 
-async function syncAkgPosters(posters) {
+async function syncAkgPosters(posters, replaceExisting) {
 requireSupabaseSession();
+const existingPosters = replaceExisting ? await supabaseRequest('MODUL4_PosterAKG', {
+query: { select: 'AppKey', AppKey: 'like.poster:%' }
+}) : [];
 const normalized = [];
 for (const item of posters || []) {
 if (!item || !item.id) continue;
@@ -3530,10 +3533,22 @@ imageUrl: imageUrl || supabasePublicMediaUrl(fileId)
 await saveAkgPosterRecord(poster);
 normalized.push(poster);
 }
+if (replaceExisting) {
+const retainedIds = new Set(normalized.map(function(poster) { return poster.id; }));
+await Promise.all(existingPosters.filter(function(row) {
+return String(row.AppKey || '').startsWith('poster:') && !retainedIds.has(String(row.AppKey).slice(7));
+}).map(function(row) {
+return supabaseRequest('MODUL4_PosterAKG', {
+method: 'DELETE',
+query: { AppKey: 'eq.' + row.AppKey },
+prefer: 'return=minimal'
+});
+}));
+}
 return normalized;
 }
 
-async function saveOperationalState(payload) {
+async function saveOperationalState(payload, replaceAkgPosters) {
 requireSupabaseSession();
 const timestamp = new Date().toISOString();
 const state = {
@@ -3546,7 +3561,7 @@ defaultBudget: payload.defaultBudget && typeof payload.defaultBudget === 'object
 haccpChecks: payload.haccpChecks && typeof payload.haccpChecks === 'object' ? payload.haccpChecks : {},
 akgPosters: []
 };
-state.akgPosters = await syncAkgPosters(Array.isArray(payload.akgPosters) ? payload.akgPosters : []);
+state.akgPosters = await syncAkgPosters(Array.isArray(payload.akgPosters) ? payload.akgPosters : [], replaceAkgPosters);
 const schedules = Object.keys(state.defaultMenus).reduce(function(result, day) {
 result[day] = state.defaultMenus[day] && state.defaultMenus[day].jamKirim || '';
 return result;
@@ -3730,6 +3745,10 @@ const skippedMessage = skippedModules.length
 ? ' ' + skippedModules.join(' dan ') + ' dilewati karena data lokal kosong; tarik data dari Supabase sebelum sinkronisasi.'
 : '';
 return { status: 'success', message: 'Data ' + syncedModules.join(', ') + ' berhasil disinkronkan ke Supabase.' + skippedMessage };
+}
+case 'restoreModule4': {
+const state = await saveOperationalState(payload, true);
+return { status: 'success', state: state, message: 'Backup Modul 4 berhasil dipulihkan ke Supabase.' };
 }
 case 'fetchDashboardData': {
 requireSupabaseSession();
@@ -5134,17 +5153,24 @@ function saveAppDataToCloud() {
 const data = { globalTargetPorsi, porsiBesar, porsiKecil, defaultTasks, defaultMenus, defaultBudget, appLogoBase64, haccpChecks, akgPosters };
 try {
 localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+return true;
 } catch(error) {
 console.error('Unable to save application data locally:', error);
+return false;
 }
 }
 function loadAppDataFromCloud() {
 let saved;
+const embeddedBackup = document.getElementById('spas1-embedded-backup');
+if (embeddedBackup) {
+saved = embeddedBackup.textContent;
+} else {
 try {
 saved = localStorage.getItem(STORAGE_KEY);
 } catch(error) {
 console.error('Unable to read application data from local storage:', error);
 return;
+}
 }
 if (!saved) return;
 try {
@@ -5154,28 +5180,34 @@ console.warn('Ignoring an unsupported locally stored logo.');
 stored.appLogoBase64 = '';
 }
 const data = validateBackupData(stored);
+applyBackupData(data);
+} catch(error) {
+console.error('Saved application data is invalid:', error);
+}
+}
+function applyBackupData(data) {
 if (data.globalTargetPorsi !== undefined) globalTargetPorsi = data.globalTargetPorsi;
 if (data.porsiBesar !== undefined) porsiBesar = data.porsiBesar;
 if (data.porsiKecil !== undefined) porsiKecil = data.porsiKecil;
 if (data.defaultTasks) defaultTasks = data.defaultTasks;
-if (data.defaultMenus) Object.keys(data.defaultMenus).forEach(day => { defaultMenus[day] = data.defaultMenus[day]; });
-if (data.defaultBudget) Object.keys(data.defaultBudget).forEach(day => { defaultBudget[day] = data.defaultBudget[day]; });
+if (data.defaultMenus) defaultMenus = data.defaultMenus;
+if (data.defaultBudget) defaultBudget = data.defaultBudget;
 if (data.akgPosters) akgPosters = data.akgPosters;
 if (data.appLogoBase64 !== undefined) {
 appLogoBase64 = data.appLogoBase64;
 window.SPAS1_MODULE_LOGO_OVERRIDE = appLogoBase64;
 const img = document.getElementById('brandLogoImg');
-if (img && appLogoBase64) { img.src = appLogoBase64; img.style.display = 'block'; }
+if (img) {
+img.src = appLogoBase64 || currentSiteSettings.logoUrl || DEFAULT_SITE_LOGO_URL;
+img.style.display = 'block';
+}
 }
 if (data.haccpChecks) {
 haccpChecks = data.haccpChecks;
-document.getElementById('haccpCold').checked = haccpChecks.cold;
-document.getElementById('haccpOrgano').checked = haccpChecks.organo;
-document.getElementById('haccpSanitasi').checked = haccpChecks.sanitasi;
-document.getElementById('haccpLabel').checked = haccpChecks.label;
-}
-} catch(error) {
-console.error('Saved application data is invalid:', error);
+[['cold', 'haccpCold'], ['organo', 'haccpOrgano'], ['sanitasi', 'haccpSanitasi'], ['label', 'haccpLabel']].forEach(function(pair) {
+const checkbox = document.getElementById(pair[1]);
+if (checkbox) checkbox.checked = haccpChecks[pair[0]];
+});
 }
 }
 function callSupabaseAction(action, payload, onSuccess, onError) {
@@ -5708,8 +5740,54 @@ window.deleteBudgetItem = function(index) { if (confirm('Hapus item bahan baku i
 window.openImportModal = function() { document.getElementById('importModal').style.display = 'flex'; };
 window.closeImportModal = function() { document.getElementById('importModal').style.display = 'none'; };
 window.processImportTasks = function() { const text = document.getElementById('importInputText').value.trim(); if (!text) return; const lines = text.split('\n'); let count = 0; lines.forEach(line => { let parts = line.split('|').map(p => p.trim()); if (parts[0]) { defaultTasks.push({ id: String(Date.now() + Math.random()), title: parts[0], day: parts[1] || selectedDay, statusDetail: 'Belum Dimulai', category: parts[2] || 'Persiapan Bahan', priority: parts[5] || 'Tinggi', assignee: parts[3] || 'Tim Dapur', done: false }); count++; } }); closeImportModal(); renderTasks(); saveAppDataToCloud(); showToast('✅ ' + count + ' tugas berhasil diimport!'); };
-window.exportDataJson = function() { const data = { globalTargetPorsi, porsiBesar, porsiKecil, defaultTasks, defaultMenus, defaultBudget, appLogoBase64, haccpChecks, akgPosters }; const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'SPAS1_SPPG_Sungai_Pasir_Backup.json'; a.click(); showToast('✅ Backup JSON berhasil diunduh!'); };
-window.triggerImportJson = function() { document.getElementById('importJsonFile').click(); };
+function getCurrentBackupData() {
+return {
+globalTargetPorsi: globalTargetPorsi,
+porsiBesar: porsiBesar,
+porsiKecil: porsiKecil,
+defaultTasks: defaultTasks,
+defaultMenus: defaultMenus,
+defaultBudget: defaultBudget,
+appLogoBase64: appLogoBase64,
+haccpChecks: haccpChecks,
+akgPosters: akgPosters.map(function(poster) {
+const backupPoster = {
+id: poster.id,
+title: poster.title,
+date: poster.date,
+fileId: poster.fileId || '',
+imageUrl: poster.imageUrl || ''
+};
+if (poster.image) backupPoster.image = poster.image;
+return backupPoster;
+})
+};
+}
+function downloadBlob(blob, filename) {
+const url = URL.createObjectURL(blob);
+const link = document.createElement('a');
+link.href = url;
+link.download = filename;
+document.body.appendChild(link);
+link.click();
+link.remove();
+setTimeout(function() { URL.revokeObjectURL(url); }, 1000);
+}
+window.exportDataJson = function() {
+try {
+const data = validateBackupData(getCurrentBackupData());
+const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json;charset=utf-8' });
+if (blob.size > 25 * 1024 * 1024) throw new Error('Ukuran backup melebihi batas 25 MB.');
+downloadBlob(blob, 'SPAS1_SPPG_Sungai_Pasir_Backup.json');
+showToast('✅ Backup JSON berhasil diunduh.');
+} catch(error) {
+alert('❌ Gagal membuat backup JSON: ' + error.message);
+}
+};
+window.triggerImportJson = function() {
+const input = document.getElementById('importJsonFile');
+if (input) input.click();
+};
 function validateBackupData(data) {
 if (!data || typeof data !== 'object' || Array.isArray(data)) throw new Error('Struktur backup tidak valid.');
 const result = {};
@@ -5798,13 +5876,26 @@ result.haccpChecks = { cold: data.haccpChecks.cold, organo: data.haccpChecks.org
 if (Object.prototype.hasOwnProperty.call(data, 'akgPosters')) {
 if (!Array.isArray(data.akgPosters) || data.akgPosters.length > 200) throw new Error('Daftar poster AKG tidak valid.');
 result.akgPosters = data.akgPosters.map(poster => {
-if (!isRecord(poster) || !safeImageDataUrl(poster.image)) throw new Error('Data gambar poster tidak valid.');
-return {
-id: readText(String(poster.id ?? ''), 'ID poster', 100),
+if (!isRecord(poster)) throw new Error('Format poster AKG tidak valid.');
+const id = readText(String(poster.id ?? ''), 'ID poster', 100);
+if (!/^[A-Za-z0-9._-]+$/.test(id)) throw new Error('ID poster tidak valid.');
+const image = poster.image === undefined ? '' : safeImageDataUrl(poster.image);
+if (poster.image !== undefined && !image) throw new Error('Format gambar poster tidak valid.');
+const fileId = poster.fileId === undefined ? '' : readText(String(poster.fileId), 'ID file poster', 500);
+if (fileId && !supabasePublicMediaUrl(fileId)) throw new Error('Lokasi file poster tidak valid.');
+const imageUrl = poster.imageUrl === undefined ? '' : readText(String(poster.imageUrl), 'URL poster', 2000);
+if (imageUrl && !aboutSafeImageUrl(imageUrl)) throw new Error('URL poster tidak valid.');
+if (imageUrl && fileId && imageUrl !== supabasePublicMediaUrl(fileId)) throw new Error('URL dan ID file poster tidak cocok.');
+if (!image && !fileId && !imageUrl) throw new Error('Data gambar poster tidak ditemukan.');
+const normalizedPoster = {
+id: id,
 title: readText(poster.title, 'Judul poster', 300),
-image: safeImageDataUrl(poster.image),
 date: readText(poster.date, 'Tanggal poster', 100)
 };
+if (image) normalizedPoster.image = image;
+if (fileId) normalizedPoster.fileId = fileId;
+if (imageUrl) normalizedPoster.imageUrl = imageUrl;
+return normalizedPoster;
 });
 }
 return result;
@@ -5820,33 +5911,53 @@ return;
 const reader = new FileReader();
 reader.onload = function(e) {
 try {
+if (typeof e.target.result !== 'string') throw new Error('Isi file backup tidak dapat dibaca.');
 const data = validateBackupData(JSON.parse(e.target.result));
-if (data.globalTargetPorsi !== undefined) globalTargetPorsi = data.globalTargetPorsi;
-if (data.porsiBesar !== undefined) porsiBesar = data.porsiBesar;
-if (data.porsiKecil !== undefined) porsiKecil = data.porsiKecil;
-if (data.defaultTasks) defaultTasks = data.defaultTasks;
-if (data.defaultMenus) Object.keys(data.defaultMenus).forEach(day => { defaultMenus[day] = data.defaultMenus[day]; });
-if (data.defaultBudget) Object.keys(data.defaultBudget).forEach(day => { defaultBudget[day] = data.defaultBudget[day]; });
-if (data.akgPosters) akgPosters = data.akgPosters;
-if (data.appLogoBase64 !== undefined) {
-appLogoBase64 = data.appLogoBase64;
-window.SPAS1_MODULE_LOGO_OVERRIDE = appLogoBase64;
-const img = document.getElementById('brandLogoImg');
-if (img && appLogoBase64) { img.src = appLogoBase64; img.style.display = 'block'; }
+if (!['admin', 'persiapan'].includes(window.SPAS1_AUTH_ROLE) || !window.SPAS1_AUTH_TOKEN || !window.SPAS1_SUPABASE_SESSION) {
+throw new Error('Login Persiapan/Distribusi atau admin diperlukan untuk memulihkan backup ke Supabase.');
 }
-if (data.haccpChecks) {
-haccpChecks = data.haccpChecks;
-document.getElementById('haccpCold').checked = haccpChecks.cold;
-document.getElementById('haccpOrgano').checked = haccpChecks.organo;
-document.getElementById('haccpSanitasi').checked = haccpChecks.sanitasi;
-document.getElementById('haccpLabel').checked = haccpChecks.label;
+if (!confirm('Pulihkan backup Modul 4? Data Modul 4 di perangkat dan Supabase akan diganti, termasuk daftar poster AKG.')) {
+event.target.value = '';
+return;
 }
-saveAppDataToCloud();
+const previousData = getCurrentBackupData();
+const syncRole = window.SPAS1_AUTH_ROLE === 'admin' ? 'admin' : 'persiapan';
+requestSyncAuthorization(syncRole, function(syncToken) {
+applyBackupData(data);
+if (!saveAppDataToCloud()) {
+applyBackupData(previousData);
 renderDayTabs();
 renderRecipeView();
+renderBudgetTabs();
 renderBudgetTable();
 renderAkgPosters();
-alert('✅ Data berhasil dipulihkan!');
+renderTasks();
+alert('❌ Backup tidak dipulihkan karena penyimpanan lokal gagal. Periksa ruang penyimpanan browser lalu coba lagi.');
+return;
+}
+renderDayTabs();
+renderRecipeView();
+renderBudgetTabs();
+renderBudgetTable();
+renderAkgPosters();
+renderTasks();
+const payload = Object.assign({}, getCurrentBackupData(), { authToken: syncToken });
+callSupabaseAction('restoreModule4', payload, function(response) {
+if (!response || response.status !== 'success' || !response.state) {
+alert('❌ Data tersimpan di perangkat, tetapi pemulihan Supabase gagal: ' + (response && response.message || 'Respons server tidak valid.'));
+return;
+}
+if (Array.isArray(response.state.akgPosters)) akgPosters = response.state.akgPosters;
+if (!saveAppDataToCloud()) {
+alert('⚠️ Backup berhasil dipulihkan ke Supabase, tetapi perubahan terbaru tidak dapat disimpan di perangkat ini.');
+return;
+}
+renderAkgPosters();
+showToast('✅ Backup Modul 4 berhasil dipulihkan di perangkat dan Supabase.');
+}, function(error) {
+alert('❌ Data tersimpan di perangkat, tetapi pemulihan Supabase gagal: ' + error.message);
+});
+});
 event.target.value = '';
 } catch(err) {
 alert('❌ Backup tidak valid: ' + err.message);
@@ -5916,7 +6027,27 @@ window.printBudgetOnly = function() {
   }
 };
 
-window.downloadCurrentHtml = function() { saveAppDataToCloud(); let htmlContent = document.documentElement.outerHTML; const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' }); const url = URL.createObjectURL(blob); const a = document.createElement('a'); a.href = url; a.download = 'SPAS1_v2.1.1_SPPG_Sungai_Pasir_AutoLock.html'; a.click(); URL.revokeObjectURL(url); showToast('✅ HTML berhasil diunduh!'); };
+window.downloadCurrentHtml = function() {
+try {
+const backup = validateBackupData(getCurrentBackupData());
+const html = document.documentElement.cloneNode(true);
+let backupNode = html.querySelector('#spas1-embedded-backup');
+if (!backupNode) {
+backupNode = document.createElement('script');
+backupNode.id = 'spas1-embedded-backup';
+backupNode.type = 'application/json';
+}
+backupNode.textContent = JSON.stringify(backup).replace(/</g, '\\u003c');
+html.querySelector('head').appendChild(backupNode);
+const persisted = saveAppDataToCloud();
+const blob = new Blob(['<!DOCTYPE html>\n' + html.outerHTML], { type: 'text/html;charset=utf-8' });
+downloadBlob(blob, 'SPAS1_v2.1.1_SPPG_Sungai_Pasir_AutoLock.html');
+if (persisted) showToast('✅ HTML berhasil diunduh dengan snapshot data Modul 4.');
+else alert('⚠️ HTML berhasil diunduh dengan snapshot data, tetapi penyimpanan lokal browser gagal.');
+} catch(error) {
+alert('❌ Gagal mengunduh HTML: ' + error.message);
+}
+};
 function updateClock() { const now = new Date(); const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }; const dateEl = document.getElementById('currentDate'); const clockEl = document.getElementById('currentClock'); if (dateEl) dateEl.textContent = now.toLocaleDateString('id-ID', options); if (clockEl) clockEl.textContent = now.toTimeString().split(' ')[0] + ' WIB'; }
 setInterval(updateClock, 1000);
 function saveHaccpCheck() { haccpChecks = { cold: document.getElementById('haccpCold').checked, organo: document.getElementById('haccpOrgano').checked, sanitasi: document.getElementById('haccpSanitasi').checked, label: document.getElementById('haccpLabel').checked }; saveAppDataToCloud(); }
