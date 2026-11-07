@@ -1,0 +1,2 @@
+[functions.volunteer-registration]
+verify_jwt = false
