@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b132b">
+  <meta name="robots" content="noindex, nofollow">
+  <title>SPAS1 Version 2 — Live Demo</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --page: #0b132b;
+      --panel: #14203a;
+      --panel-raised: #192945;
+      --panel-inner: #0e1930;
+      --text: #f5f7fb;
+      --muted: #9aa8bd;
+      --border: #3a506b;
+      --green: #10b981;
+      --green-soft: rgb(16 185 129 / 14%);
+      --blue: #60a5fa;
+      --amber: #fbbf24;
+      --purple: #c084fc;
+      --red: #fb7185;
+      --shadow: 0 16px 38px rgb(0 0 0 / 22%);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: radial-gradient(ellipse at 10% 0%, #142647 0, var(--page) 42rem);
+      color: var(--text);
+      font: 14px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    button { font: inherit; }
+    .shell { width: min(100% - 32px, 1260px); margin: 24px auto; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand-logo { display: grid; width: 52px; height: 52px; flex: 0 0 52px; place-items: center; overflow: hidden; border: 1px solid #536a88; border-radius: 16px; background: var(--panel-raised); }
+    .brand-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .brand-logo, .welcome-logo { animation: demoLogoBounceShake 3s ease-in-out infinite; transform-origin: 50% 80%; }
+    @keyframes demoLogoBounceShake {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      12% { transform: translateY(-7px) rotate(-3deg); }
+      24% { transform: translateY(0) rotate(3deg); }
+      34% { transform: translateY(-3px) rotate(-2deg); }
+      44% { transform: translateY(0) rotate(0); }
+      68% { transform: translateY(0) rotate(-2deg); }
+      72% { transform: translateY(0) rotate(2deg); }
+      76% { transform: translateY(0) rotate(-2deg); }
+      80% { transform: translateY(0) rotate(0); }
+    }
+    .brand h1 { margin: 0; font-size: clamp(17px, 3vw, 22px); font-weight: 850; letter-spacing: -.025em; line-height: 1.2; }
+    .brand p { margin: 3px 0 0; color: var(--muted); font-size: 12px; }
+    .version { display: inline-flex; align-items: center; gap: 7px; margin-top: 5px; border: 1px solid rgb(16 185 129 / 40%); border-radius: 999px; background: var(--green-soft); color: #6ee7b7; padding: 2px 9px; font-size: 10px; font-weight: 800; }
+    .live-dot { width: 7px; height: 7px; border-radius: 50%; background: #34d399; box-shadow: 0 0 10px #34d399; }
+    .top-actions { display: flex; align-items: center; justify-content: flex-end; gap: 8px; }
+    .mode-badge, .toolbar-button { min-height: 38px; border: 1px solid var(--border); border-radius: 11px; background: var(--panel); color: var(--text); }
+    .mode-badge { display: inline-flex; align-items: center; gap: 7px; padding: 0 11px; color: #a7f3d0; font-size: 11px; font-weight: 800; white-space: nowrap; }
+    .toolbar-button { display: inline-flex; align-items: center; justify-content: center; padding: 0 11px; text-decoration: none; font-size: 12px; font-weight: 700; cursor: pointer; }
+    .theme-button { width: 40px; padding: 0; font-size: 18px; }
+    .notice { display: flex; gap: 10px; align-items: flex-start; margin: 0 0 17px; padding: 11px 14px; border: 1px solid #36566d; border-radius: 13px; background: #102539; color: #d3eaf3; font-size: 12px; }
+    .notice strong { color: #a7f3d0; }
+    .demo-contact { color: #fde68a; font-weight: 700; }
+    .demo-contact a { color: #facc15; font-weight: 800; text-decoration: underline; text-underline-offset: 2px; }
+    .dashboard { display: grid; grid-template-columns: minmax(0, 1fr) 310px; gap: 16px; align-items: start; }
+    .main-column, .side-column { display: grid; gap: 15px; min-width: 0; }
+    .card { min-width: 0; border: 1px solid var(--border); border-radius: 19px; background: linear-gradient(155deg, var(--panel-raised), var(--panel)); box-shadow: var(--shadow); }
+    .welcome { position: relative; overflow: hidden; padding: 21px; text-align: center; }
+    .welcome::after { position: absolute; top: -65px; right: -40px; width: 180px; height: 180px; border-radius: 50%; background: rgb(16 185 129 / 7%); content: ""; }
+    .welcome-main { display: flex; align-items: center; justify-content: center; gap: 16px; }
+    .welcome-logo { display: grid; width: 67px; height: 67px; flex: 0 0 67px; place-items: center; overflow: hidden; border: 1px solid rgb(99 102 241 / 35%); border-radius: 19px; background: rgb(99 102 241 / 14%); }
+    .welcome-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .welcome-copy { text-align: left; }
+    .welcome-copy h2 { margin: 0; font-size: clamp(17px, 3vw, 21px); font-weight: 850; letter-spacing: -.02em; text-transform: uppercase; }
+    .welcome-copy p { margin: 3px 0 0; color: #6ee7b7; font-size: 12px; font-weight: 700; letter-spacing: .03em; }
+    .clock-row { display: flex; justify-content: space-between; gap: 12px; margin-top: 17px; padding: 9px 12px; border: 1px solid var(--border); border-radius: 11px; background: rgb(0 0 0 / 14%); color: #c5d0df; font-size: 11px; font-weight: 650; }
+    .clock-row strong { color: #6ee7b7; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 10px; margin: 0 0 11px; }
+    .section-heading h2, .section-heading p { margin: 0; }
+    .section-heading h2 { font-size: 15px; font-weight: 850; }
+    .section-heading p { margin-top: 3px; color: var(--muted); font-size: 11px; }
+    .module-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .module-card { display: flex; align-items: center; gap: 13px; min-height: 98px; padding: 15px; border: 1px solid var(--border); border-radius: 16px; background: linear-gradient(145deg, #192945, #111e37); color: var(--text); text-align: left; cursor: pointer; transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+    .module-card:hover { transform: translateY(-2px); border-color: #7085a2; box-shadow: 0 10px 24px rgb(0 0 0 / 20%); }
+    .module-icon { display: grid; width: 47px; height: 47px; flex: 0 0 47px; place-items: center; border: 1px solid currentColor; border-radius: 14px; background: rgb(99 102 241 / 13%); color: #818cf8; font-size: 23px; }
+    .module-card:nth-child(2) .module-icon { background: rgb(16 185 129 / 13%); color: #34d399; }
+    .module-card:nth-child(3) .module-icon { background: rgb(245 158 11 / 13%); color: #fbbf24; }
+    .module-card:nth-child(4) .module-icon { background: rgb(168 85 247 / 13%); color: #c084fc; }
+    .module-number { display: block; color: currentColor; font-size: 9px; font-weight: 850; letter-spacing: .11em; }
+    .module-card h3 { margin: 1px 0 2px; font-size: 13px; font-weight: 800; }
+    .module-card p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.35; }
+    .module-card:nth-child(1) .module-number { color: #818cf8; }
+    .module-card:nth-child(2) .module-number { color: #34d399; }
+    .module-card:nth-child(3) .module-number { color: #fbbf24; }
+    .module-card:nth-child(4) .module-number { color: #c084fc; }
+    .side-card { padding: 16px; }
+    .side-card h2 { margin: 0; font-size: 14px; font-weight: 850; }
+    .side-intro { margin: 4px 0 12px; color: var(--muted); font-size: 10px; }
+    .news-item { padding: 10px 0; border-top: 1px solid rgb(58 80 107 / 65%); }
+    .news-item:first-of-type { border-top: 0; padding-top: 0; }
+    .news-item strong { display: block; font-size: 11px; }
+    .news-item p { margin: 4px 0 0; color: var(--muted); font-size: 10px; }
+    .poster-preview { display: grid; min-height: 135px; place-items: center; margin: 12px 0 8px; padding: 14px; border: 1px dashed #568b7b; border-radius: 14px; background: linear-gradient(140deg, #173b37, #182a44); color: #a7f3d0; text-align: center; }
+    .poster-preview span { display: block; font-size: 28px; }
+    .poster-preview strong { display: block; margin-top: 3px; font-size: 12px; }
+    .poster-preview small { display: block; margin-top: 2px; color: #a4b9c9; font-size: 9px; }
+    .meta-row { display: flex; justify-content: space-between; gap: 8px; color: var(--muted); font-size: 9px; }
+    .footer { margin-top: 17px; color: #7f8da3; text-align: center; font-size: 10px; }
+    [hidden] { display: none !important; }
+
+    .module-page { padding: 18px; }
+    .page-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 15px; }
+    .page-top h2 { margin: 0; font-size: clamp(17px, 3vw, 21px); font-weight: 900; }
+    .page-top p { margin: 3px 0 0; color: var(--muted); font-size: 11px; }
+    .back-button { flex: 0 0 auto; border: 1px solid var(--border); border-radius: 10px; background: var(--panel-inner); color: #dce5ef; padding: 7px 10px; font-size: 10px; font-weight: 750; cursor: pointer; }
+    .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; margin-bottom: 14px; }
+    .stat { min-width: 0; padding: 11px 10px; border: 1px solid var(--border); border-radius: 12px; background: var(--panel-inner); text-align: center; }
+    .stat strong { display: block; color: var(--green); font-size: 18px; font-weight: 900; }
+    .stat span { display: block; margin-top: 2px; color: var(--muted); font-size: 9px; font-weight: 750; text-transform: uppercase; }
+    .subnav { display: flex; gap: 7px; overflow-x: auto; margin: 0 0 13px; padding: 0 0 4px; }
+    .subnav button, .day-nav button { flex: 0 0 auto; border: 1px solid var(--border); border-radius: 9px; background: var(--panel-inner); color: #bac7d7; padding: 7px 10px; font-size: 10px; font-weight: 750; cursor: pointer; }
+    .subnav button[aria-pressed="true"], .day-nav button[aria-pressed="true"] { border-color: #0e9f6e; background: rgb(16 185 129 / 17%); color: #6ee7b7; }
+    .inner-card { margin-top: 11px; padding: 14px; border: 1px solid var(--border); border-radius: 13px; background: rgb(5 12 27 / 22%); }
+    .inner-card h3 { margin: 0 0 9px; font-size: 12px; font-weight: 850; }
+    .inner-card > p { margin: -4px 0 10px; color: var(--muted); font-size: 10px; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 10px; }
+    table { width: 100%; border-collapse: collapse; font-size: 10px; text-align: left; }
+    th, td { padding: 9px 10px; border-bottom: 1px solid rgb(58 80 107 / 65%); white-space: nowrap; }
+    th { background: rgb(0 0 0 / 16%); color: #a8b5c7; font-size: 9px; letter-spacing: .04em; text-transform: uppercase; }
+    tbody tr:last-child td { border-bottom: 0; }
+    .pill { display: inline-flex; border: 1px solid rgb(16 185 129 / 30%); border-radius: 999px; background: var(--green-soft); color: #6ee7b7; padding: 3px 7px; font-size: 9px; font-weight: 800; }
+    .pill.pending { border-color: rgb(251 191 36 / 32%); background: rgb(251 191 36 / 12%); color: #fcd34d; }
+    .pill.info { border-color: rgb(96 165 250 / 32%); background: rgb(96 165 250 / 12%); color: #93c5fd; }
+    .sample-label { display: inline-block; margin-bottom: 9px; border: 1px solid rgb(96 165 250 / 28%); border-radius: 999px; background: rgb(96 165 250 / 10%); color: #bfdbfe; padding: 3px 8px; font-size: 9px; font-weight: 800; }
+    .item-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+    .item-card { min-width: 0; padding: 12px; border: 1px solid var(--border); border-radius: 11px; background: var(--panel-inner); }
+    .item-card h4 { margin: 0 0 7px; font-size: 11px; }
+    .item-card p { display: flex; justify-content: space-between; gap: 8px; margin: 4px 0; color: var(--muted); font-size: 9px; }
+    .item-card b { color: #e4ebf3; font-weight: 700; text-align: right; }
+    .readonly-note { margin: 12px 0 0; color: #8d9bb0; font-size: 9px; }
+    .progress-head { display: flex; justify-content: space-between; gap: 10px; font-size: 11px; font-weight: 800; }
+    .progress-track { height: 10px; margin: 9px 0 12px; overflow: hidden; border: 1px solid var(--border); border-radius: 999px; background: var(--panel-inner); }
+    .progress-track span { display: block; width: 67%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #10b981, #6ee7b7); }
+    .task-list { display: grid; gap: 7px; }
+    .task-row { display: flex; align-items: center; gap: 9px; padding: 9px 10px; border: 1px solid var(--border); border-radius: 10px; background: var(--panel-inner); font-size: 10px; }
+    .task-mark { display: grid; width: 19px; height: 19px; flex: 0 0 19px; place-items: center; border: 1px solid #50647e; border-radius: 6px; color: #a7f3d0; font-size: 11px; }
+    .task-mark.done { border-color: #0e9f6e; background: var(--green-soft); }
+    .task-row span:nth-child(2) { flex: 1; }
+    .recipe-card { padding: 12px; border: 1px solid var(--border); border-radius: 11px; background: var(--panel-inner); }
+    .recipe-card h4 { margin: 0 0 7px; color: #6ee7b7; font-size: 12px; }
+    .recipe-card p { margin: 4px 0; color: #b7c4d5; font-size: 10px; }
+    .poster-card { display: grid; min-height: 210px; place-items: center; padding: 18px; border: 1px dashed #628779; border-radius: 13px; background: linear-gradient(145deg, #14332f, #152641); text-align: center; }
+    .poster-card span { font-size: 40px; }
+    .poster-card h3 { margin: 5px 0 3px; color: #a7f3d0; font-size: 17px; }
+    .poster-card p { margin: 0; color: #bdc9d8; font-size: 10px; }
+
+    .admin-preview { display: grid; grid-template-columns: 220px minmax(0, 1fr); overflow: hidden; }
+    .admin-sidebar { display: flex; flex-direction: column; gap: 12px; padding: 16px 12px; border-right: 1px solid var(--border); background: rgb(0 0 0 / 15%); }
+    .admin-sidebar-brand { display: flex; align-items: center; gap: 9px; padding: 2px 4px 11px; border-bottom: 1px solid rgb(58 80 107 / 65%); }
+    .admin-sidebar-mark { display: grid; width: 37px; height: 37px; flex: 0 0 37px; place-items: center; overflow: hidden; border: 1px solid var(--border); border-radius: 11px; background: var(--panel-raised); }
+    .admin-sidebar-mark img { width: 100%; height: 100%; object-fit: contain; }
+    .admin-sidebar-brand strong { display: block; font-size: 10px; }
+    .admin-sidebar-brand span { display: block; color: var(--muted); font-size: 9px; }
+    .admin-nav { display: grid; gap: 5px; }
+    .admin-nav button { display: flex; align-items: center; gap: 8px; width: 100%; border: 1px solid transparent; border-radius: 9px; background: transparent; color: #bac7d7; padding: 9px 10px; text-align: left; font-size: 10px; font-weight: 750; cursor: pointer; }
+    .admin-nav button[aria-current="page"] { border-color: rgb(99 102 241 / 35%); background: rgb(99 102 241 / 15%); color: #c7d2fe; }
+    .admin-sidebar-foot { margin-top: auto; border: 1px solid rgb(96 165 250 / 24%); border-radius: 10px; background: rgb(96 165 250 / 8%); color: #bfdbfe; padding: 9px; font-size: 9px; line-height: 1.45; }
+    .admin-main { min-width: 0; padding: 17px; }
+    .admin-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+    .admin-header h2 { margin: 0; font-size: 17px; font-weight: 850; }
+    .admin-header p { margin: 3px 0 0; color: var(--muted); font-size: 10px; }
+    .admin-tag { flex: 0 0 auto; border: 1px solid rgb(96 165 250 / 35%); border-radius: 999px; background: rgb(96 165 250 / 12%); color: #bfdbfe; padding: 4px 8px; font-size: 9px; font-weight: 800; }
+    .admin-content-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .admin-info-card { min-width: 0; padding: 13px; border: 1px solid #d5deea; border-radius: 12px; background: #fff; color: #172338; }
+    .admin-info-card h3 { margin: 0 0 9px; color: #1e293b; font-size: 11px; font-weight: 850; }
+    .admin-info-card p { margin: 5px 0; color: #64748b; font-size: 9px; }
+    .admin-info-card strong { color: #334155; }
+    .admin-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 9px; margin-bottom: 11px; }
+    .admin-metric { padding: 11px; border: 1px solid #d5deea; border-left: 3px solid #10b981; border-radius: 11px; background: #fff; color: #172338; }
+    .admin-metric:nth-child(2) { border-left-color: #3b82f6; }
+    .admin-metric:nth-child(3) { border-left-color: #f59e0b; }
+    .admin-metric:nth-child(4) { border-left-color: #a855f7; }
+    .admin-metric span { display: block; color: #64748b; font-size: 8px; font-weight: 800; text-transform: uppercase; }
+    .admin-metric strong { display: block; margin-top: 3px; color: #172338; font-size: 20px; font-weight: 900; }
+    .admin-table { overflow-x: auto; border: 1px solid #d5deea; border-radius: 10px; background: #fff; }
+    .admin-table table { color: #334155; }
+    .admin-table th { background: #f1f5f9; color: #64748b; }
+    .admin-table td { border-color: #e2e8f0; }
+    .admin-readonly-value { display: block; margin-top: 3px; border: 1px solid #dbe3ec; border-radius: 8px; background: #f8fafc; color: #334155; padding: 8px 9px; font-size: 10px; }
+    .admin-preview-note { margin: 12px 0 0; border: 1px solid #b9d9f4; border-radius: 10px; background: #eff8ff; color: #315774; padding: 9px 11px; font-size: 9px; }
+
+    body.light .version { color: #047857; }
+    body.light .notice {
+      border-color: #cbd5e1;
+      background: #eff8ff;
+      color: #315774;
+      box-shadow: 0 5px 16px rgb(51 65 85 / 8%);
+    }
+    body.light .notice strong { color: #047857; }
+    body.light .demo-contact { color: #92400e; }
+    body.light .demo-contact a { color: #a16207; }
+    body.light .mode-badge { border-color: #a7f3d0; background: #ecfdf5; color: #047857; }
+    body.light .toolbar-button { border-color: #d2dbe6; background: #ffffff; color: #334155; }
+    body.light .card,
+    body.light .module-page,
+    body.light .side-card,
+    body.light .welcome,
+    body.light .inner-card,
+    body.light .stat,
+    body.light .item-card,
+    body.light .task-row,
+    body.light .recipe-card {
+      background: #ffffff;
+      color: #172338;
+    }
+    body.light .inner-card,
+    body.light .stat,
+    body.light .item-card,
+    body.light .task-row,
+    body.light .recipe-card,
+    body.light .table-wrap { border-color: #d2dbe6; }
+    body.light .inner-card { background: #ffffff; box-shadow: 0 5px 18px rgb(51 65 85 / 6%); }
+    body.light th { border-color: #dbe3ec; background: #e8eef5; color: #475569; }
+    body.light td { border-color: #e2e8f0; color: #334155; }
+    body.light table { color: #334155; }
+    body.light .back-button,
+    body.light .subnav button,
+    body.light .day-nav button { background: #f8fafc; border-color: #d2dbe6; }
+    body.light .module-card {
+      border-color: #d2dbe6;
+      background: linear-gradient(145deg, #fff, #f1f5f9);
+      color: #172338;
+    }
+    body.light .module-card:hover { border-color: #94a3b8; }
+    body.light .module-card p { color: #526174; }
+    body.light .module-card:nth-child(1) .module-number { color: #4f46e5; }
+    body.light .module-card:nth-child(2) .module-number { color: #047857; }
+    body.light .module-card:nth-child(3) .module-number { color: #a16207; }
+    body.light .module-card:nth-child(4) .module-number { color: #7e22ce; }
+    body.light .module-icon { color: #4f46e5; }
+    body.light .module-card:nth-child(2) .module-icon { color: #047857; }
+    body.light .module-card:nth-child(3) .module-icon { color: #a16207; }
+    body.light .module-card:nth-child(4) .module-icon { color: #7e22ce; }
+    body.light .back-button { color: #334155; }
+    body.light .subnav button,
+    body.light .day-nav button { color: #475569; }
+    body.light .subnav button[aria-pressed="true"],
+    body.light .day-nav button[aria-pressed="true"] { color: #047857; }
+    body.light .pill { color: #047857; }
+    body.light .pill.pending { color: #92400e; }
+    body.light .pill.info { color: #1d4ed8; }
+    body.light .sample-label { color: #1d4ed8; }
+    body.light .item-card b { color: #334155; }
+    body.light .item-card h4,
+    body.light .task-row,
+    body.light .recipe-card h4,
+    body.light .recipe-card p,
+    body.light .progress-head { color: #334155; }
+    body.light .readonly-note { color: #526174; }
+    body.light .admin-sidebar { background: #f1f5f9; }
+    body.light .admin-nav button { color: #475569; }
+    body.light .admin-nav button[aria-current="page"] { color: #4338ca; }
+    body.light .admin-sidebar-foot { color: #1e40af; }
+    body.light .admin-tag { color: #1d4ed8; }
+    body.light .footer { color: #526174; }
+    body.light,
+    body.light .shell,
+    body.light .shell * {
+      color: #000000 !important;
+    }
+    body.light .shell p,
+    body.light .shell span,
+    body.light .shell b,
+    body.light .shell strong,
+    body.light .shell th,
+    body.light .shell td,
+    body.light .shell h1,
+    body.light .shell h2,
+    body.light .shell h3,
+    body.light .shell h4,
+    body.light .shell label,
+    body.light .shell button,
+    body.light .shell a {
+      font-weight: 800;
+    }
+    .sample-label,
+    body.light .sample-label,
+    .readonly-note,
+    body.light .readonly-note {
+      font-size: 11px;
+    }
+    body.light .sample-label { background: #e2e8f0; border-color: #94a3b8; }
+    body.light table { font-size: 11px; }
+    body.light th, body.light td { white-space: normal; }
+    body.light .notice { font-size: 13px; }
+    body.light .poster-preview,
+    body.light .poster-card {
+      color: #d1fae5 !important;
+    }
+    body.light .poster-preview strong,
+    body.light .poster-card h3 {
+      color: #a7f3d0 !important;
+    }
+    body.light .poster-preview small,
+    body.light .poster-card p {
+      color: #e2e8f0 !important;
+    }
+    body.light .welcome-copy p,
+    body.light .card p,
+    body.light .module-page p,
+    body.light .side-card p,
+    body.light .inner-card p,
+    body.light .readonly-note,
+    body.light .admin-preview-note { font-size: 12px; line-height: 1.55; }
+    body.light .clock-row { font-size: 11px; }
+    body.light .clock-row strong { font-size: 12px; }
+    body.light .module-card h3 { font-size: 14px; }
+    body.light .module-card p { font-size: 12px; line-height: 1.45; }
+    body.light table { font-size: 13px; }
+    body.light th { font-size: 12px; }
+    body.light td { font-size: 13px; line-height: 1.45; }
+    body.light .sample-label { font-size: 11px; }
+
+    @media (max-width: 900px) { .dashboard { grid-template-columns: minmax(0, 1fr); } .side-column { grid-row: 2; } .news-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; } }
+    @media (max-width: 600px) {
+      .shell { width: calc(100% - 20px); margin: 12px auto; }
+      .topbar { align-items: flex-start; flex-wrap: wrap; }
+      .brand { gap: 8px; }
+      .brand-logo { width: 43px; height: 43px; flex-basis: 43px; border-radius: 13px; }
+      .brand p { font-size: 10px; }
+      .top-actions { width: 100%; flex-wrap: nowrap; justify-content: flex-start; gap: 5px; }
+      .mode-badge { min-height: 32px; padding: 0 8px; font-size: 9px; }
+      .toolbar-button { min-height: 32px; padding: 0 8px; font-size: 10px; }
+      .theme-button { width: 34px; padding: 0; }
+      .notice { gap: 7px; padding: 10px; font-size: 10px; line-height: 1.55; }
+      body.light .notice { font-size: 11px; line-height: 1.5; }
+      body.light .module-card h3 { font-size: 13px; }
+      body.light .module-card p { font-size: 11px; line-height: 1.45; }
+      body.light .page-top h2 { font-size: 18px; }
+      body.light .page-top p { font-size: 12px; line-height: 1.45; }
+      body.light table { font-size: 11px; }
+      body.light th { font-size: 10px; }
+      body.light td { font-size: 11px; }
+      body.light th, body.light td { padding: 8px 7px; }
+      body.light .sample-label { font-size: 9px; line-height: 1.35; }
+      body.light .readonly-note { font-size: 10px; line-height: 1.45; }
+      body.light .welcome-copy p { font-size: 12px; line-height: 1.45; }
+      body.light .clock-row { font-size: 10px; }
+      body.light .clock-row strong { font-size: 11px; }
+      body.light .card p,
+      body.light .module-page p,
+      body.light .side-card p,
+      body.light .admin-preview-note { font-size: 11px; line-height: 1.45; }
+      .demo-contact { display: block; margin-top: 4px; }
+      .welcome { padding: 16px 12px; }
+      .welcome-main { gap: 10px; }
+      .welcome-logo { width: 52px; height: 52px; flex-basis: 52px; border-radius: 15px; }
+      .welcome-copy h2 { font-size: 14px; }
+      .welcome-copy p { font-size: 10px; }
+      .clock-row { font-size: 9px; }
+      .module-grid { gap: 8px; }
+      .module-card { min-height: 101px; gap: 9px; padding: 10px; }
+      .module-icon { width: 38px; height: 38px; flex-basis: 38px; border-radius: 12px; font-size: 19px; }
+      .module-card h3 { font-size: 11px; }
+      .module-card p { font-size: 9px; }
+      .module-page { padding: 13px; }
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .item-grid, .news-columns { grid-template-columns: minmax(0, 1fr); }
+      .side-card { padding: 14px; }
+      .admin-preview { grid-template-columns: minmax(0, 1fr); }
+      .admin-sidebar { border-right: 0; border-bottom: 1px solid var(--border); padding: 11px; }
+      .admin-sidebar-brand { display: none; }
+      .admin-nav { display: flex; overflow-x: auto; }
+      .admin-nav button { width: auto; flex: 0 0 auto; white-space: nowrap; }
+      .admin-sidebar-foot { display: none; }
+      .admin-main { padding: 13px; }
+      .admin-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 360px) {
+      .shell { width: calc(100% - 14px); }
+      .brand p { max-width: 130px; }
+      .brand { width: 100%; }
+      .mode-badge { max-width: 75px; white-space: normal; line-height: 1.15; }
+      .home-button { padding: 0 7px; }
+      .module-card { gap: 7px; padding: 8px; }
+      .module-icon { width: 33px; height: 33px; flex-basis: 33px; font-size: 17px; }
+      .admin-content-grid { grid-template-columns: minmax(0, 1fr); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+      .brand-logo, .welcome-logo { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-logo"><img src="assets/spas1-mark.png" alt="Logo SPAS1"></div>
+        <div>
+          <h1>Sungai Pasir 1</h1>
+          <p>Operasional Dapur Terhubung</p>
+          <span class="version"><span class="live-dot" aria-hidden="true"></span> SPAS1 · Version 2</span>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span class="mode-badge">DEMO · SIMULASI</span>
+        <a class="toolbar-button home-button" href="index.html">Beranda</a>
+        <button class="toolbar-button theme-button" id="themeToggle" type="button" aria-label="Aktifkan mode terang" title="Aktifkan mode terang">☀</button>
+      </div>
+    </header>
+
+    <div class="notice" role="note">
+      <span aria-hidden="true">ℹ️</span>
+      <div><strong>Mode pratinjau publik, hanya-baca.</strong><span class="demo-contact"> Jika membutuhkan aplikasi serupa untuk organisasi Anda? <a href="https://wa.me/6281378004808?text=Halo%20Bang%20Sky,%20saya%20tertarik%20aplikasi%20web%20seperti%20SPAS1" target="_blank" rel="noopener noreferrer">Hubungi melalui WhatsApp</a>.</span></div>
+    </div>
+
+    <div class="dashboard" id="dashboardView">
+      <main class="main-column">
+        <section class="card welcome" id="homeView" aria-labelledby="welcomeTitle">
+          <div class="welcome-main">
+            <div class="welcome-logo"><img src="assets/spas1-mark.png" alt=""></div>
+            <div class="welcome-copy">
+              <h2 id="welcomeTitle">Sungai Pasir 1</h2>
+              <p>Operasional Dapur Terhubung</p>
+              <span class="version"><span class="live-dot" aria-hidden="true"></span> SPAS1 · Version 2</span>
+            </div>
+          </div>
+          <div class="clock-row"><span>Pratinjau dashboard · Data contoh</span><strong>READ ONLY</strong></div>
+        </section>
+
+        <section id="moduleCards" aria-labelledby="modulesTitle">
+          <div class="section-heading">
+            <div><h2 id="modulesTitle">Dashboard &amp; Modul Operasional</h2><p>Pilih modul untuk melihat contoh tampilan SPAS1.</p></div>
+          </div>
+          <div class="module-grid">
+            <button class="module-card" type="button" data-open-module="attendance">
+              <span class="module-icon" aria-hidden="true">◉</span>
+              <span><span class="module-number">MODUL 1</span><h3>Absensi PIN</h3><p>Contoh status kehadiran relawan</p></span>
+            </button>
+            <button class="module-card" type="button" data-open-module="menu">
+              <span class="module-icon" aria-hidden="true">🍽️</span>
+              <span><span class="module-number">MODUL 2</span><h3>Bank Menu &amp; Gizi</h3><p>500 Paket Menu Standar MBG</p></span>
+            </button>
+            <button class="module-card" type="button" data-open-module="stock">
+              <span class="module-icon" aria-hidden="true">📦</span>
+              <span><span class="module-number">MODUL 3</span><h3>Stok Logistik</h3><p>600 Item Bahan Baku &amp; Bumbu</p></span>
+            </button>
+            <button class="module-card" type="button" data-open-module="preparation">
+              <span class="module-icon" aria-hidden="true">☷</span>
+              <span><span class="module-number">MODUL 4</span><h3>Persiapan &amp; Distribusi</h3><p>Joblist, jadwal, resep, pagu &amp; AKG</p></span>
+            </button>
+          </div>
+          <button class="module-card" style="width:100%; min-height:70px; margin-top:12px; border-color:rgb(96 165 250 / 36%);" type="button" data-open-admin>
+            <span class="module-icon" style="background:rgb(96 165 250 / 13%); color:#93c5fd;" aria-hidden="true">🛡️</span>
+            <span><span class="module-number" style="color:#93c5fd;">PRATINJAU · HANYA TAMPILAN</span><h3>SUPER ADMIN</h3><p>Lihat contoh dashboard dan pengelolaan admin tanpa login atau aksi perubahan.</p></span>
+          </button>
+        </section>
+
+        <section class="card module-page" id="moduleView" aria-live="polite" hidden>
+          <div class="page-top">
+            <div><h2 id="moduleTitle"></h2><p id="moduleDescription"></p></div>
+            <button class="back-button" id="backButton" type="button">← Modul</button>
+          </div>
+          <div id="moduleContent"></div>
+        </section>
+      </main>
+
+      <aside class="side-column" aria-label="Informasi contoh SPPG">
+        <section class="card side-card">
+          <h2>📢 Info seputar SPPG</h2>
+          <p class="side-intro">Contoh konten dashboard SPAS1.</p>
+          <div class="news-columns">
+            <div>
+              <article class="news-item"><strong>Menu MBG hari ini</strong><p>Nasi putih, ayam kecap, sayur bening, dan buah pisang.</p></article>
+              <article class="news-item"><strong>Info layanan dapur</strong><p>Contoh jadwal persiapan dan distribusi untuk sekolah serta Posyandu.</p></article>
+            </div>
+            <div>
+              <div class="poster-preview" role="img" aria-label="Poster AKG simulasi">
+                <div><span aria-hidden="true">🥗</span><strong>Poster Menu AKG</strong><small>Angka Kecukupan Gizi · Contoh</small></div>
+              </div>
+              <div class="meta-row"><span>Info poster</span><span>Data simulasi</span></div>
+            </div>
+          </div>
+        </section>
+        <section class="card side-card">
+          <h2>Pratinjau Operasional</h2>
+          <p class="side-intro">Data berikut dibuat khusus untuk demonstrasi.</p>
+          <div class="news-item"><strong>Target contoh</strong><p>2.503 porsi · bukan target aktual</p></div>
+          <div class="news-item"><strong>Status koneksi</strong><p>Offline dari sistem operasional; tidak ada sinkronisasi.</p></div>
+        </section>
+      </aside>
+    </div>
+
+    <section class="card admin-preview" id="adminPreview" aria-label="Pratinjau SUPER ADMIN" hidden>
+      <aside class="admin-sidebar">
+        <div class="admin-sidebar-brand"><div class="admin-sidebar-mark"><img src="assets/spas1-mark.png" alt=""></div><div><strong>SUPER ADMIN</strong><span>SPPG SUNGAI PASIR 1 MERAL</span></div></div>
+        <nav class="admin-nav" aria-label="Menu pratinjau SUPER ADMIN">
+          <button type="button" data-admin-view="dashboard" aria-current="page">▦ Dashboard</button>
+          <button type="button" data-admin-view="settings">⚙ Identitas Aplikasi</button>
+          <button type="button" data-admin-view="about">♧ Tentang Kami</button>
+          <button type="button" data-admin-view="content">✎ Konten Situs</button>
+          <button type="button" data-admin-view="news">⚑ Info SPPG</button>
+          <button type="button" data-admin-view="access">✓ Permintaan Akses</button>
+          <button type="button" data-admin-view="reports">▤ Laporan</button>
+          <button type="button" data-admin-view="volunteers">♙ Relawan</button>
+        </nav>
+        <div class="admin-sidebar-foot">Pratinjau antarmuka saja.<br>Semua data bersifat simulasi.</div>
+      </aside>
+      <div class="admin-main">
+        <div class="admin-header">
+          <div><h2 id="adminViewTitle">Dashboard Utama</h2><p id="adminViewDescription">Contoh ringkasan operasional yang biasanya dikelola SUPER ADMIN.</p></div>
+          <div style="display:flex; flex-wrap:wrap; justify-content:flex-end; gap:7px;">
+            <span class="admin-tag">SIMULASI · READ ONLY</span>
+            <button type="button" class="back-button" id="adminBackButton">← Kembali ke demo</button>
+          </div>
+        </div>
+        <div id="adminViewContent"></div>
+        <p class="admin-preview-note"><strong>Pratinjau saja:</strong> tidak ada login, data nyata, sinkronisasi, form, upload, persetujuan, atau tombol perubahan. Menu di samping hanya berpindah antarcontoh tampilan lokal.</p>
+      </div>
+    </section>
+
+    <footer class="footer">SPAS1 Version 2 · Live Demo publik hanya-baca · Data simulasi, bukan data operasional</footer>
+  </div>
+
+  <script>
+    (function () {
+      var moduleDefinitions = {
+        attendance: {
+          title: 'Absensi Harian · Modul 1',
+          description: 'Pratinjau catatan kehadiran contoh. Login, PIN, kamera, GPS, dan pencatatan absensi tidak tersedia.',
+          content: '<span class="sample-label">SIMULASI · TIDAK MENCATAT ABSENSI</span><div class="stats"><div class="stat"><strong>24</strong><span>Relawan Contoh</span></div><div class="stat"><strong>18</strong><span>Hadir</span></div><div class="stat"><strong>3</strong><span>Sudah Pulang</span></div><div class="stat"><strong>3</strong><span>Belum Tercatat</span></div></div><section class="inner-card"><h3>Ringkasan Absensi Hari Ini</h3><p>Data contoh untuk memperlihatkan ringkasan tampilan absensi.</p><div class="table-wrap"><table><thead><tr><th>Nama contoh</th><th>ID contoh</th><th>Tim</th><th>Waktu</th><th>Status</th></tr></thead><tbody><tr><td>Relawan Contoh 01</td><td>EMP-001</td><td>Persiapan</td><td>06.42 WIB</td><td><span class="pill">Hadir</span></td></tr><tr><td>Relawan Contoh 02</td><td>EMP-002</td><td>Pengolahan</td><td>06.51 WIB</td><td><span class="pill">Hadir</span></td></tr><tr><td>Relawan Contoh 03</td><td>EMP-003</td><td>Distribusi</td><td>—</td><td><span class="pill pending">Belum tercatat</span></td></tr></tbody></table></div></section><p class="readonly-note">Contoh ini tidak meminta identitas dan tidak mengakses kamera, lokasi, PIN, maupun data relawan sebenarnya.</p>'
+        },
+        menu: {
+          title: 'Bank Menu & Gizi · Modul 2',
+          description: 'Contoh tampilan Bank Menu Nusantara, komposisi bahan, dan ringkasan AKG.',
+          content: '<span class="sample-label">500 PAKET MENU · DATA CONTOH</span><div class="stats"><div class="stat"><strong>500</strong><span>Total Paket</span></div><div class="stat"><strong>100</strong><span>Menu Senin</span></div><div class="stat"><strong>100</strong><span>Menu Selasa</span></div><div class="stat"><strong>5</strong><span>Hari Layanan</span></div></div><nav class="subnav day-nav" aria-label="Hari menu"><button type="button" data-day="Senin" aria-pressed="true">Senin</button><button type="button" data-day="Selasa" aria-pressed="false">Selasa</button><button type="button" data-day="Rabu" aria-pressed="false">Rabu</button><button type="button" data-day="Kamis" aria-pressed="false">Kamis</button><button type="button" data-day="Jumat" aria-pressed="false">Jumat</button></nav><div id="menuDayContent"></div><p class="readonly-note">Navigasi hari hanya mengubah tampilan lokal. Data paket dan komposisi di sini adalah contoh, bukan bank menu tersimpan.</p>'
+        },
+        stock: {
+          title: 'Stok Logistik Dapur · Modul 3',
+          description: 'Contoh tampilan ringkasan bahan baku, bumbu, rempah, dan persediaan.',
+          content: '<span class="sample-label">600 ITEM · DATA CONTOH</span><div class="stats"><div class="stat"><strong>600</strong><span>Total Item</span></div><div class="stat"><strong>100</strong><span>Bahan Baku</span></div><div class="stat"><strong>300</strong><span>Bumbu &amp; Rempah</span></div><div class="stat"><strong>200</strong><span>Racikan &amp; Lainnya</span></div></div><section class="inner-card"><h3>Contoh Daftar Stok</h3><p>Kolom hanya menampilkan data simulasi. Tidak ada perubahan jumlah stok.</p><div class="table-wrap"><table><thead><tr><th>Nama bahan contoh</th><th>Kategori</th><th>Stok contoh</th><th>Satuan</th><th>Status</th></tr></thead><tbody><tr><td>Beras medium</td><td>Bahan Baku Utama</td><td>75</td><td>kg</td><td><span class="pill">Contoh cukup</span></td></tr><tr><td>Telur ayam</td><td>Bahan Baku Utama</td><td>42</td><td>kg</td><td><span class="pill">Contoh cukup</span></td></tr><tr><td>Minyak goreng</td><td>Bahan Basah</td><td>18</td><td>liter</td><td><span class="pill pending">Contoh perhatian</span></td></tr><tr><td>Bawang putih</td><td>Bumbu Dasar</td><td>12</td><td>kg</td><td><span class="pill">Contoh cukup</span></td></tr><tr><td>Ketumbar bubuk</td><td>Rempah Khas Indonesia</td><td>4</td><td>kg</td><td><span class="pill">Contoh cukup</span></td></tr><tr><td>Wadah makan</td><td>Bahan Kemasan</td><td>500</td><td>buah</td><td><span class="pill info">Contoh stok</span></td></tr></tbody></table></div></section><p class="readonly-note">Tidak ada tombol tambah, edit, hapus, upload, tarik data, atau sinkronisasi stok di demo.</p>'
+        },
+        preparation: {
+          title: 'Persiapan & Distribusi · Modul 4',
+          description: 'Pratinjau joblist harian, standar resep, pagu anggaran PO, dan poster AKG.',
+          content: '<nav class="subnav" aria-label="Bagian Modul 4"><button type="button" data-preparation-tab="joblist" aria-pressed="true">📝 Dashboard &amp; Joblist</button><button type="button" data-preparation-tab="recipes" aria-pressed="false">📖 Standar Resep</button><button type="button" data-preparation-tab="budget" aria-pressed="false">💰 Pagu Anggaran PO</button><button type="button" data-preparation-tab="akg" aria-pressed="false">🥗 Poster Menu AKG</button></nav><div id="preparationContent"></div><p class="readonly-note">Semua tombol aksi di Modul 4 asli (tambah/edit tugas, ubah porsi, upload, print, import/export, dan sync) tidak disediakan di demo.</p>'
+        }
+      };
+
+      var menusByDay = {
+        Senin: '<span class="sample-label">SENIN · MENU CONTOH</span><div class="item-grid"><article class="item-card"><h4>Nasi putih + ayam kecap</h4><p><span>Karbohidrat</span><b>Nasi putih · 150 g</b></p><p><span>Protein hewani</span><b>Ayam kecap · 80 g</b></p><p><span>Protein nabati</span><b>Tahu kukus · 40 g</b></p><p><span>Sayur &amp; buah</span><b>Bayam · Pisang</b></p></article><article class="item-card"><h4>Ringkasan gizi contoh</h4><p><span>Energi</span><b>620 kkal</b></p><p><span>Protein</span><b>24 g</b></p><p><span>Lemak</span><b>18 g</b></p><p><span>Karbohidrat</span><b>86 g</b></p></article></div>',
+        Selasa: '<span class="sample-label">SELASA · MENU CONTOH</span><div class="item-grid"><article class="item-card"><h4>Nasi + ikan bumbu kuning</h4><p><span>Karbohidrat</span><b>Nasi putih · 150 g</b></p><p><span>Protein hewani</span><b>Ikan · 80 g</b></p><p><span>Protein nabati</span><b>Tempe · 40 g</b></p><p><span>Sayur &amp; buah</span><b>Capcay · Jeruk</b></p></article><article class="item-card"><h4>Ringkasan gizi contoh</h4><p><span>Energi</span><b>605 kkal</b></p><p><span>Protein</span><b>26 g</b></p><p><span>Lemak</span><b>17 g</b></p><p><span>Karbohidrat</span><b>82 g</b></p></article></div>',
+        Rabu: '<span class="sample-label">RABU · MENU CONTOH</span><div class="item-grid"><article class="item-card"><h4>Nasi + telur balado</h4><p><span>Karbohidrat</span><b>Nasi putih · 150 g</b></p><p><span>Protein hewani</span><b>Telur · 1 butir</b></p><p><span>Protein nabati</span><b>Perkedel tahu · 40 g</b></p><p><span>Sayur &amp; buah</span><b>Sup sayur · Pepaya</b></p></article><article class="item-card"><h4>Ringkasan gizi contoh</h4><p><span>Energi</span><b>590 kkal</b></p><p><span>Protein</span><b>22 g</b></p><p><span>Lemak</span><b>16 g</b></p><p><span>Karbohidrat</span><b>84 g</b></p></article></div>',
+        Kamis: '<span class="sample-label">KAMIS · MENU CONTOH</span><div class="item-grid"><article class="item-card"><h4>Nasi + semur daging</h4><p><span>Karbohidrat</span><b>Nasi putih · 150 g</b></p><p><span>Protein hewani</span><b>Daging sapi · 70 g</b></p><p><span>Protein nabati</span><b>Tempe · 40 g</b></p><p><span>Sayur &amp; buah</span><b>Buncis wortel · Semangka</b></p></article><article class="item-card"><h4>Ringkasan gizi contoh</h4><p><span>Energi</span><b>635 kkal</b></p><p><span>Protein</span><b>25 g</b></p><p><span>Lemak</span><b>20 g</b></p><p><span>Karbohidrat</span><b>85 g</b></p></article></div>',
+        Jumat: '<span class="sample-label">JUMAT · MENU CONTOH</span><div class="item-grid"><article class="item-card"><h4>Nasi + ayam panggang</h4><p><span>Karbohidrat</span><b>Nasi putih · 150 g</b></p><p><span>Protein hewani</span><b>Ayam panggang · 80 g</b></p><p><span>Protein nabati</span><b>Tempe · 40 g</b></p><p><span>Sayur &amp; buah</span><b>Sayur sop · Melon</b></p></article><article class="item-card"><h4>Ringkasan gizi contoh</h4><p><span>Energi</span><b>615 kkal</b></p><p><span>Protein</span><b>24 g</b></p><p><span>Lemak</span><b>19 g</b></p><p><span>Karbohidrat</span><b>83 g</b></p></article></div>'
+      };
+
+      var preparationTabs = {
+        joblist: '<div class="stats"><div class="stat"><strong>9</strong><span>Total Tugas</span></div><div class="stat"><strong>2</strong><span>Belum Selesai</span></div><div class="stat"><strong>1</strong><span>Sedang Dikerjakan</span></div><div class="stat"><strong>67%</strong><span>Status Siap</span></div></div><section class="inner-card"><div class="progress-head"><span>Status Progres Operasional</span><span style="color:#6ee7b7">67% · CONTOH</span></div><div class="progress-track"><span></span></div><h3>Joblist Harian &amp; Jadwal Distribusi</h3><div class="task-list"><div class="task-row"><span class="task-mark done">✓</span><span>Persiapan area dan sanitasi peralatan</span><span class="pill">Selesai</span></div><div class="task-row"><span class="task-mark done">✓</span><span>Pemeriksaan bahan baku masuk</span><span class="pill">Selesai</span></div><div class="task-row"><span class="task-mark">•</span><span>Pengolahan menu dan pengemasan</span><span class="pill info">Berlangsung</span></div><div class="task-row"><span class="task-mark">•</span><span>Pemeriksaan akhir sebelum distribusi</span><span class="pill pending">Menunggu</span></div></div><div class="inner-card"><h3>Jadwal Distribusi · Contoh</h3><div class="table-wrap"><table><thead><tr><th>Tujuan</th><th>Waktu</th><th>Porsi contoh</th><th>Status</th></tr></thead><tbody><tr><td>Sekolah Contoh A</td><td>07.45 WIB</td><td>1.200</td><td><span class="pill">Disiapkan</span></td></tr><tr><td>Sekolah Contoh B</td><td>08.40 WIB</td><td>800</td><td><span class="pill">Disiapkan</span></td></tr><tr><td>Posyandu Contoh</td><td>10.00 WIB</td><td>503</td><td><span class="pill pending">Terjadwal</span></td></tr></tbody></table></div></div><div class="inner-card"><h3>Checklist HACCP · Tampilan saja</h3><div class="task-list"><div class="task-row"><span class="task-mark done">✓</span><span>Area kerja bersih dan tersanitasi</span><span class="pill">Contoh</span></div><div class="task-row"><span class="task-mark done">✓</span><span>Bahan pangan diperiksa sebelum diolah</span><span class="pill">Contoh</span></div><div class="task-row"><span class="task-mark">•</span><span>Suhu penyimpanan dan pemasakan diperiksa</span><span class="pill pending">Contoh</span></div></div></div></section>',
+        recipes: '<span class="sample-label">STANDAR RESEP · CONTOH</span><section class="inner-card"><h3>Buku Resep &amp; Panduan Pengolahan</h3><p>Contoh satu resep untuk memperlihatkan susunan konten. Resep tidak dapat diedit.</p><div class="recipe-card"><h4>Ayam kecap · 2.503 porsi (target contoh)</h4><p><b>Bahan utama:</b> ayam, bawang merah, bawang putih, kecap, dan bumbu dasar.</p><p><b>Persiapan:</b> cuci bahan dengan air mengalir, pisahkan bahan mentah dari bahan siap santap.</p><p><b>Pengolahan:</b> masak hingga matang merata dan jaga suhu penyajian sesuai prosedur dapur.</p><p><b>Penyajian:</b> bagi sesuai porsi dan lakukan pemeriksaan visual sebelum distribusi.</p></div><div class="item-grid" style="margin-top:9px"><article class="item-card"><h4>Komposisi menu</h4><p><span>Karbohidrat</span><b>Nasi putih</b></p><p><span>Protein hewani</span><b>Ayam kecap</b></p><p><span>Sayur</span><b>Sayur bening</b></p><p><span>Buah</span><b>Pisang</b></p></article><article class="item-card"><h4>Informasi gizi contoh</h4><p><span>Energi</span><b>620 kkal</b></p><p><span>Protein</span><b>24 g</b></p><p><span>Lemak</span><b>18 g</b></p><p><span>Karbohidrat</span><b>86 g</b></p></article></div></section>',
+        budget: '<span class="sample-label">PAGU ANGGARAN PO · CONTOH</span><div class="stats"><div class="stat"><strong>Rp 24 jt</strong><span>Batas Pagu Contoh</span></div><div class="stat"><strong>2.503</strong><span>Target Porsi Contoh</span></div><div class="stat"><strong>Rp 21,8 jt</strong><span>Anggaran Harian</span></div><div class="stat"><strong>Rp 8.710</strong><span>Estimasi per Porsi</span></div></div><section class="inner-card"><h3>Rincian Anggaran Bahan Baku &amp; Bumbu</h3><p>Nilai simulasi untuk memperlihatkan tabel Pagu Anggaran PO.</p><div class="table-wrap"><table><thead><tr><th>Kategori &amp; bahan</th><th>Porsi besar</th><th>Porsi kecil</th><th>Harga satuan</th><th>Total contoh</th></tr></thead><tbody><tr><td>Karbohidrat · Beras</td><td>150 g</td><td>100 g</td><td>Rp 15.000/kg</td><td>Rp 5.256.300</td></tr><tr><td>Protein hewani · Ayam</td><td>80 g</td><td>60 g</td><td>Rp 38.000/kg</td><td>Rp 7.916.000</td></tr><tr><td>Protein nabati · Tempe</td><td>40 g</td><td>30 g</td><td>Rp 14.000/kg</td><td>Rp 1.471.400</td></tr><tr><td>Sayuran &amp; buah</td><td>100 g</td><td>80 g</td><td>—</td><td>Rp 7.156.300</td></tr><tr><td><b>Total anggaran harian contoh</b></td><td colspan="3"></td><td><b>Rp 21.800.000</b></td></tr></tbody></table></div></section>',
+        akg: '<span class="sample-label">POSTER MENU AKG · CONTOH</span><section class="inner-card"><h3>Poster Menu AKG (Angka Kecukupan Gizi)</h3><p>Area pratinjau visual; pada demo tidak tersedia upload atau pengelolaan poster.</p><div class="poster-card" role="img" aria-label="Poster simulasi menu bergizi seimbang"><div><span aria-hidden="true">🥦 🍚 🍗 🍌</span><h3>Isi Ompreng</h3><p>Contoh menu bergizi seimbang · SPAS1</p><p>Sayur · buah · protein · sumber karbohidrat</p></div></div></section>'
+      };
+
+      var adminViews = {
+        dashboard: {
+          title: 'Dashboard Utama',
+          description: 'Contoh ringkasan operasional yang biasanya dikelola SUPER ADMIN.',
+          content: '<div class="admin-metrics"><div class="admin-metric"><span>Hadir Hari Ini</span><strong>18</strong></div><div class="admin-metric"><span>Sudah Pulang</span><strong>6</strong></div><div class="admin-metric"><span>Terlambat</span><strong>2</strong></div><div class="admin-metric"><span>Total Relawan</span><strong>47</strong></div></div><div class="admin-content-grid"><section class="admin-info-card"><h3>Ringkasan Dashboard &amp; Live Sync</h3><p>Status data: <strong>contoh lokal, tidak tersinkron</strong></p><p>Modul operasional: <strong>4 modul pratinjau</strong></p><p>Versi aplikasi: <strong>SPAS1 Version 2</strong></p></section><section class="admin-info-card"><h3>Aktivitas contoh</h3><p>06.42 · Relawan Contoh 01 — Absensi simulasi</p><p>07.15 · Dapur Contoh — Persiapan menu</p><p>08.00 · Sistem demo — Tidak terhubung ke layanan</p></section></div>'
+        },
+        settings: {
+          title: 'Pengaturan Identitas Aplikasi',
+          description: 'Contoh pratinjau identitas yang dikelola admin pada aplikasi asli.',
+          content: '<div class="admin-content-grid"><section class="admin-info-card"><h3>Identitas Global</h3><p>Nama Yayasan</p><span class="admin-readonly-value">Yayasan Bidadari Indonesia Gemilang · CONTOH</span><p>Nama SPPG</p><span class="admin-readonly-value">SPPG Sungai Pasir 1 Meral · CONTOH</span></section><section class="admin-info-card"><h3>Logo Aplikasi</h3><div style="display:flex;align-items:center;gap:12px"><div class="admin-sidebar-mark"><img src="assets/spas1-mark.png" alt="Logo contoh SPAS1"></div><p>Pratinjau logo SPAS1<br><strong>Tidak dapat diganti dalam demo</strong></p></div></section></div>'
+        },
+        about: {
+          title: 'Tentang Kami',
+          description: 'Contoh konten profil, penerima manfaat, dan struktur tim.',
+          content: '<div class="admin-metrics"><div class="admin-metric"><span>Penerima Manfaat</span><strong>2.546</strong></div><div class="admin-metric"><span>Relawan</span><strong>47</strong></div></div><div class="admin-content-grid"><section class="admin-info-card"><h3>Profil SPPG · Contoh</h3><p><strong>SPPG Sungai Pasir 1 Meral</strong> mendukung layanan Makan Bergizi Gratis melalui kolaborasi tim dapur, yayasan, sekolah, dan Posyandu.</p><p>Informasi profil pada demo ini merupakan data ilustrasi.</p></section><section class="admin-info-card"><h3>Struktur Tim · Data Fiktif</h3><p>Koordinator Dapur — Personel Contoh 01</p><p>Penanggung Jawab Gizi — Personel Contoh 02</p><p>Koordinator Distribusi — Personel Contoh 03</p></section></div>'
+        },
+        content: {
+          title: 'Konten Situs',
+          description: 'Contoh pratinjau judul, deskripsi, kontak, dan informasi publik.',
+          content: '<div class="admin-content-grid"><section class="admin-info-card"><h3>Identitas Halaman Publik</h3><p>Judul halaman</p><span class="admin-readonly-value">SPPG Sungai Pasir 1 Meral · CONTOH</span><p>Deskripsi singkat</p><span class="admin-readonly-value">Sistem Operasional Dapur dan layanan Makan Bergizi Gratis.</span></section><section class="admin-info-card"><h3>Kontak &amp; Informasi</h3><p>Email publik: <strong>alamat-contoh@example.invalid</strong></p><p>Lokasi: <strong>Sungai Pasir 1, Meral, Karimun · CONTOH</strong></p><p>Isi di sini hanya contoh; pengaturan tidak aktif.</p></section></div>'
+        },
+        news: {
+          title: 'Info SPPG',
+          description: 'Contoh daftar informasi dan poster yang tampil untuk publik.',
+          content: '<div class="admin-content-grid"><section class="admin-info-card"><h3>Info yang Diterbitkan · Contoh</h3><p><strong>Informasi dapur</strong> · Jadwal layanan contoh</p><p><strong>Lowongan kerja</strong> · Tidak ada lowongan aktual</p><p><strong>Pengumuman</strong> · Data simulasi</p></section><section class="admin-info-card"><h3>Poster / Info Visual</h3><p>🥗 Poster Menu AKG · Contoh pratinjau</p><p>🍱 Menu MBG Hari Ini · Contoh</p><p>Jam batas konsumsi · Belum ada data aktual</p></section></div>'
+        },
+        access: {
+          title: 'Permintaan Akses',
+          description: 'Contoh tampilan antrean registrasi. Tidak menampilkan identitas pengguna nyata.',
+          content: '<section class="admin-info-card"><h3>Persetujuan Registrasi Portal · Data Fiktif</h3><div class="admin-table"><table><thead><tr><th>Nama contoh</th><th>Email contoh</th><th>Status</th></tr></thead><tbody><tr><td>Pendaftar Contoh 01</td><td>pengguna01@example.invalid</td><td><span class="pill pending">Menunggu</span></td></tr><tr><td>Pendaftar Contoh 02</td><td>pengguna02@example.invalid</td><td><span class="pill info">Terverifikasi · Contoh</span></td></tr></tbody></table></div><p>Persetujuan, penetapan peran, dan aktivasi akun tidak tersedia dalam pratinjau.</p></section>'
+        },
+        reports: {
+          title: 'Laporan',
+          description: 'Contoh ringkasan laporan kehadiran dan kegiatan operasional.',
+          content: '<div class="admin-metrics"><div class="admin-metric"><span>Catatan Absensi</span><strong>18</strong></div><div class="admin-metric"><span>Periode</span><strong>1</strong></div></div><section class="admin-info-card"><h3>Ringkasan Laporan · Contoh</h3><div class="admin-table"><table><thead><tr><th>Tanggal contoh</th><th>Kegiatan</th><th>Jumlah</th><th>Status</th></tr></thead><tbody><tr><td>04 Nov 2026</td><td>Absensi relawan</td><td>18 catatan</td><td><span class="pill">Simulasi</span></td></tr><tr><td>04 Nov 2026</td><td>Persiapan menu</td><td>2.503 porsi</td><td><span class="pill">Simulasi</span></td></tr></tbody></table></div></section>'
+        },
+        volunteers: {
+          title: 'Relawan',
+          description: 'Contoh ringkasan daftar relawan tanpa informasi pribadi yang sebenarnya.',
+          content: '<div class="admin-metrics"><div class="admin-metric"><span>Total Relawan</span><strong>47</strong></div><div class="admin-metric"><span>Aktif · Contoh</span><strong>42</strong></div><div class="admin-metric"><span>Perlu Tinjauan</span><strong>5</strong></div></div><section class="admin-info-card"><h3>Daftar Relawan · Data Fiktif</h3><div class="admin-table"><table><thead><tr><th>Nama</th><th>Peran contoh</th><th>Status</th></tr></thead><tbody><tr><td>Relawan Contoh 01</td><td>Persiapan</td><td><span class="pill">Contoh aktif</span></td></tr><tr><td>Relawan Contoh 02</td><td>Pengolahan</td><td><span class="pill">Contoh aktif</span></td></tr><tr><td>Relawan Contoh 03</td><td>Distribusi</td><td><span class="pill pending">Contoh tinjauan</span></td></tr></tbody></table></div></section>'
+        }
+      };
+
+      var homeView = document.getElementById('homeView');
+      var moduleCards = document.getElementById('moduleCards');
+      var dashboardView = document.getElementById('dashboardView');
+      var moduleView = document.getElementById('moduleView');
+      var moduleTitle = document.getElementById('moduleTitle');
+      var moduleDescription = document.getElementById('moduleDescription');
+      var moduleContent = document.getElementById('moduleContent');
+
+      function showHome() {
+        document.getElementById('adminPreview').hidden = true;
+        dashboardView.hidden = false;
+        moduleView.hidden = true;
+        homeView.hidden = false;
+        moduleCards.hidden = false;
+      }
+
+      function showAdminView(key) {
+        var selected = adminViews[key];
+        if (!selected) return;
+        document.getElementById('adminViewTitle').textContent = selected.title;
+        document.getElementById('adminViewDescription').textContent = selected.description;
+        document.getElementById('adminViewContent').innerHTML = selected.content;
+        document.querySelectorAll('[data-admin-view]').forEach(function (button) {
+          if (button.dataset.adminView === key) button.setAttribute('aria-current', 'page');
+          else button.removeAttribute('aria-current');
+        });
+      }
+
+      function showAdminPreview() {
+        dashboardView.hidden = true;
+        document.getElementById('adminPreview').hidden = false;
+        showAdminView('dashboard');
+        document.getElementById('adminBackButton').focus();
+      }
+
+      function showModule(key) {
+        var selected = moduleDefinitions[key];
+        if (!selected) return;
+        moduleTitle.textContent = selected.title;
+        moduleDescription.textContent = selected.description;
+        moduleContent.innerHTML = selected.content;
+        homeView.hidden = true;
+        moduleCards.hidden = true;
+        moduleView.hidden = false;
+        if (key === 'menu') showMenuDay('Senin');
+        if (key === 'preparation') showPreparationTab('joblist');
+        document.getElementById('backButton').focus();
+      }
+
+      function showMenuDay(day) {
+        var target = document.getElementById('menuDayContent');
+        if (!target || !menusByDay[day]) return;
+        target.innerHTML = menusByDay[day];
+        document.querySelectorAll('[data-day]').forEach(function (button) {
+          button.setAttribute('aria-pressed', String(button.dataset.day === day));
+        });
+      }
+
+      function showPreparationTab(tab) {
+        var target = document.getElementById('preparationContent');
+        if (!target || !preparationTabs[tab]) return;
+        target.innerHTML = preparationTabs[tab];
+        document.querySelectorAll('[data-preparation-tab]').forEach(function (button) {
+          button.setAttribute('aria-pressed', String(button.dataset.preparationTab === tab));
+        });
+      }
+
+      document.querySelectorAll('[data-open-module]').forEach(function (button) {
+        button.addEventListener('click', function () { showModule(button.dataset.openModule); });
+      });
+      document.querySelector('[data-open-admin]').addEventListener('click', showAdminPreview);
+      document.querySelectorAll('[data-admin-view]').forEach(function (button) {
+        button.addEventListener('click', function () { showAdminView(button.dataset.adminView); });
+      });
+      document.getElementById('adminBackButton').addEventListener('click', showHome);
+      document.getElementById('backButton').addEventListener('click', showHome);
+      document.getElementById('moduleContent').addEventListener('click', function (event) {
+        var dayButton = event.target.closest('[data-day]');
+        var preparationButton = event.target.closest('[data-preparation-tab]');
+        if (dayButton) showMenuDay(dayButton.dataset.day);
+        if (preparationButton) showPreparationTab(preparationButton.dataset.preparationTab);
+      });
+
+      var themeButton = document.getElementById('themeToggle');
+      themeButton.addEventListener('click', function () {
+        var light = document.body.classList.toggle('light');
+        document.body.style.background = light ? '#eef2f6' : '';
+        document.body.style.color = light ? '#172338' : '';
+        document.documentElement.style.colorScheme = light ? 'light' : 'dark';
+        document.querySelector('meta[name="theme-color"]').content = light ? '#eef2f6' : '#0b132b';
+        themeButton.textContent = light ? '☾' : '☀';
+        themeButton.setAttribute('aria-label', light ? 'Aktifkan mode gelap' : 'Aktifkan mode terang');
+        themeButton.title = light ? 'Aktifkan mode gelap' : 'Aktifkan mode terang';
+        if (light) {
+          document.documentElement.style.setProperty('--page', '#eef2f6');
+          document.documentElement.style.setProperty('--panel', '#ffffff');
+          document.documentElement.style.setProperty('--panel-raised', '#f7f9fc');
+          document.documentElement.style.setProperty('--panel-inner', '#f1f5f9');
+          document.documentElement.style.setProperty('--text', '#172338');
+          document.documentElement.style.setProperty('--muted', '#64748b');
+          document.documentElement.style.setProperty('--border', '#d2dbe6');
+        } else {
+          document.documentElement.style.removeProperty('--page');
+          document.documentElement.style.removeProperty('--panel');
+          document.documentElement.style.removeProperty('--panel-raised');
+          document.documentElement.style.removeProperty('--panel-inner');
+          document.documentElement.style.removeProperty('--text');
+          document.documentElement.style.removeProperty('--muted');
+          document.documentElement.style.removeProperty('--border');
+        }
+      });
+    }());
+  </script>
+</body>
+</html>
