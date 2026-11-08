@@ -40,19 +40,18 @@ const maintenancePage = `<!doctype html>
     }
     h1 { margin: 20px 0 10px; font-size: clamp(26px, 7vw, 38px); line-height: 1.2; }
     p { margin: 0; color: #c5d0df; }
-    a {
+    .unavailable {
       display: inline-flex;
       justify-content: center;
       margin-top: 24px;
       padding: 11px 18px;
-      border: 1px solid #34d399;
+      border: 1px solid #64748b;
       border-radius: 12px;
-      background: rgb(16 185 129 / 14%);
-      color: #a7f3d0;
+      background: rgb(100 116 139 / 12%);
+      color: #94a3b8;
       font-weight: 750;
-      text-decoration: none;
+      cursor: not-allowed;
     }
-    a:hover, a:focus-visible { background: rgb(16 185 129 / 24%); outline: 2px solid #6ee7b7; outline-offset: 3px; }
   </style>
 </head>
 <body>
@@ -60,7 +59,7 @@ const maintenancePage = `<!doctype html>
     <span class="status">SPAS1 · 503</span>
     <h1>Situs sedang dalam perbaikan</h1>
     <p>Maaf, domain spas1.my.id sementara tidak tersedia. Silakan coba kembali nanti.</p>
-    <a href="https://spas1.pages.dev/">Buka aplikasi SPAS1</a>
+    <span class="unavailable" aria-disabled="true">Aplikasi sementara tidak tersedia</span>
   </main>
 </body>
 </html>`;
