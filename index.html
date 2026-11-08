@@ -3935,7 +3935,17 @@ case 'createAnnouncement':
 await supabaseRequest('INFO_SPPG', { method: 'POST', body: { ID: payload.id || 'INFO-' + Date.now(), Tanggal: payload.date, Kategori: payload.category, Judul: payload.title, Isi: payload.content, Status: 'Published', Dibuat: new Date().toISOString(), 'Poster File ID': payload.posterMediaId || null, 'Poster URL': payload.posterUrl || null }, prefer: 'return=minimal' });
 return { status: 'success', message: 'Pengumuman berhasil dipublikasikan.' };
 case 'deleteAnnouncement':
-await supabaseRequest('INFO_SPPG', { method: 'DELETE', query: { ID: 'eq.' + payload.id }, prefer: 'return=minimal' });
+requireSupabaseSession();
+const announcementId = String(payload.id || '');
+if (!announcementId) throw new Error('ID info tidak ditemukan. Muat ulang daftar info lalu coba lagi.');
+const deletedAnnouncements = await supabaseRequest('INFO_SPPG', {
+method: 'DELETE',
+query: { ID: 'eq.' + announcementId },
+prefer: 'return=representation'
+});
+if (!Array.isArray(deletedAnnouncements) || !deletedAnnouncements.length) {
+throw new Error('Info tidak terhapus. Data mungkin sudah dihapus atau sesi SUPER ADMIN tidak memiliki akses.');
+}
 return { status: 'success', message: 'Pengumuman berhasil dihapus.' };
 case 'fetchPublicMedia':
 case 'fetchAdminMedia': {
