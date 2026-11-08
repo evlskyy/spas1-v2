@@ -13,6 +13,16 @@ const jsonResponse = (body: unknown, status: number, origin: string) =>
     headers: { ...corsHeaders(origin), "Content-Type": "application/json; charset=utf-8" },
   });
 
+function getErrorMessage(error: unknown) {
+  if (error instanceof Error) return error.message;
+  if (!error || typeof error !== "object") return "";
+  const value = error as Record<string, unknown>;
+  const message = typeof value.message === "string" ? value.message : "";
+  const details = typeof value.details === "string" ? value.details : "";
+  const hint = typeof value.hint === "string" ? value.hint : "";
+  return [message, details, hint].filter(Boolean).join(" ");
+}
+
 function allowedOrigins() {
   return (Deno.env.get("APP_ALLOWED_ORIGINS") || "https://spas1.my.id,https://spas1.pages.dev")
     .split(",")
@@ -52,6 +62,7 @@ Deno.serve(async (request) => {
     return jsonResponse({ error: "Invalid JSON request." }, 400, origin);
   }
 
+  let adminAuthorized = false;
   try {
     if (input.action === "submit") {
       return await submitRegistration(input, request, adminClient, origin);
@@ -72,12 +83,16 @@ Deno.serve(async (request) => {
     if (user.app_metadata?.role !== "admin") {
       return jsonResponse({ error: "Hanya SUPER ADMIN yang dapat mengelola permohonan." }, 403, origin);
     }
+    adminAuthorized = true;
     if (input.action === "list") return await listRegistrations(adminClient, origin);
     if (input.action === "review") return await reviewRegistration(input, user.id, adminClient, origin);
     return jsonResponse({ error: "Aksi tidak dikenal." }, 400, origin);
   } catch (error) {
-    console.error("Volunteer function failed:", error instanceof Error ? error.message : "Unknown error");
-    return jsonResponse({ error: error instanceof Error ? error.message : "Permintaan gagal." }, 500, origin);
+    const message = getErrorMessage(error);
+    console.error("Volunteer function failed:", message || "Unknown error");
+    return jsonResponse({
+      error: adminAuthorized && message ? message : "Permintaan gagal.",
+    }, 500, origin);
   }
 });
 
