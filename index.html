@@ -86,6 +86,7 @@ tanpa izin tertulis dari pemilik hak cipta, kecuali jika diizinkan hukum.
         "@type": "Person",
         "name": "iamsky",
         "alternateName": "evlskyy",
+        "image": "https://spas1.my.id/assets/skyyabout.jpeg",
         "sameAs": ["https://instagram.com/evlskyy"]
       },
       "publisher": {"@id": "https://spas1.my.id/#organization"}
@@ -811,6 +812,20 @@ body.app-light-mode .home-footer-powered a[href*="github.com"]:not([href*="featu
 .home-project-info-features i { flex: 0 0 auto; margin-top: 4px; color: #34D399; }
 .home-project-info-note { margin: 16px 0 0 !important; padding: 14px 16px; border-radius: 12px; background: rgba(245, 158, 11, 0.1); color: #FDE68A !important; font-size: clamp(13px, 1vw, 15px) !important; line-height: 1.7; }
 .home-project-info-content > h3 { margin: 22px 0 12px; color: #A7F3D0; font-size: clamp(16px, 1.35vw, 19px); font-weight: 800; }
+.developer-profile { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; }
+.developer-profile-link { position: relative; display: block; box-sizing: border-box; flex: 0 0 36px; width: 36px; height: 36px; overflow: visible; border: 1px solid rgba(52, 211, 153, 0.4); border-radius: 10px; box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.1), 0 0 12px rgba(16, 185, 129, 0.2); transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+.developer-profile-link:hover,
+.developer-profile-link:focus-visible { border-color: rgba(110, 231, 183, 0.9); box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2), 0 0 18px rgba(16, 185, 129, 0.48); }
+.developer-profile-thumb { position: absolute; inset: 2px; overflow: hidden; border-radius: 7px; }
+.developer-profile-photo { display: block; width: 100%; height: 100%; object-fit: cover; }
+.developer-profile-preview { position: absolute; z-index: 20; left: 50%; bottom: calc(100% + 10px); width: 112px; height: 112px; padding: 4px; border: 1px solid rgba(110, 231, 183, 0.7); border-radius: 16px; background: #1C2541; box-shadow: 0 10px 28px rgba(0,0,0,0.35); opacity: 0; pointer-events: none; transform: translate(-50%, 6px) scale(0.94); transform-origin: center bottom; transition: opacity 160ms ease, transform 160ms ease; }
+.developer-profile-preview::after { position: absolute; left: calc(50% - 6px); bottom: -7px; width: 12px; height: 12px; border-right: 1px solid rgba(110, 231, 183, 0.7); border-bottom: 1px solid rgba(110, 231, 183, 0.7); background: #1C2541; content: ""; transform: rotate(45deg); }
+.developer-profile-preview img { display: block; width: 100%; height: 100%; border-radius: 12px; object-fit: cover; }
+.developer-profile-link:hover .developer-profile-preview,
+.developer-profile-link:focus-visible .developer-profile-preview { opacity: 1; transform: translate(-50%, 0) scale(1); }
+.developer-profile-link:focus-visible { outline: 2px solid #6EE7B7; outline-offset: 3px; }
+.developer-profile-details { display: grid; gap: 2px; color: #CBD5E1; font-size: 11px; line-height: 1.4; }
+.developer-profile-details strong { color: #A7F3D0; }
 .project-info-page-inner { width: 100%; max-width: 80rem; }
 .home-project-security { margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(148, 163, 184, 0.2); }
 .home-project-security h3 { margin: 0 0 8px; color: #A7F3D0; font-size: 13px; font-weight: 800; }
@@ -846,6 +861,11 @@ body.app-light-mode #view-project-info .home-project-version-supported { color: 
 body.app-light-mode #view-project-info .home-project-version-unsupported { color: #B91C1C; }
 body.app-light-mode #view-project-info .home-project-security-link { color: #047857; }
 body.app-light-mode #view-project-info .home-project-info-links a { color: #047857; }
+body.app-light-mode #view-project-info .developer-profile-link { border-color: rgba(5,150,105,0.45); box-shadow: 0 0 0 2px rgba(16,185,129,0.08), 0 0 12px rgba(16,185,129,0.16); }
+body.app-light-mode #view-project-info .developer-profile-preview,
+body.app-light-mode #view-project-info .developer-profile-preview::after { border-color: rgba(5,150,105,0.6); background: #FFFFFF; }
+body.app-light-mode #view-project-info .developer-profile-details { color: #4B5563; }
+body.app-light-mode #view-project-info .developer-profile-details strong { color: #047857; }
 body.app-light-mode #view-project-info .home-project-info-content h3,
 body.app-light-mode #view-project-info .home-project-architecture strong,
 body.app-light-mode #view-project-info .home-project-version-supported,
@@ -1201,6 +1221,9 @@ body.app-light-mode #view-admin .site-settings-heading .site-settings-icon { col
   .home-footer-social { grid-area: social; justify-self: center; margin-top: 0; gap: 16px; }
   .home-footer-social .social-link { width: 48px; height: 48px; border-radius: 12px; }
   .home-footer-social .social-link svg { width: 20px; height: 20px; }
+  #view-project-info .developer-profile-link { flex-basis: 48px; width: 48px; height: 48px; border-radius: 12px; }
+  #view-project-info .developer-profile-thumb { border-radius: 9px; }
+  #view-project-info .developer-profile-preview { display: none; }
   .home-footer-trakteer { display: contents; }
   .home-footer-layout > .home-footer-trakteer > .trakteer-link { grid-area: trakteer; justify-self: stretch; width: 100%; min-width: 0; height: 42px; box-sizing: border-box; gap: 3px; padding: 0 4px; font-size: 8px; }
   .trakteer-icon, .project-info-trakteer-icon { flex-basis: 16px; width: 16px; height: 16px; }
@@ -2123,7 +2146,7 @@ gtag('config', 'G-4933FEDV2TW');
 <div class="sync-auth-overlay" id="syncAuthModal" role="dialog" aria-modal="true" aria-labelledby="syncAuthTitle" onclick="if(event.target===this) closeSyncAuthModal()">
 <form class="sync-auth-card" onsubmit="event.preventDefault(); submitSyncAuth();">
 <h2 id="syncAuthTitle"><i class="fa-solid fa-shield-halved"></i> Konfirmasi Sinkronisasi</h2>
-<p id="syncAuthDescription">Masukkan kembali akun portal untuk mengizinkan perubahan pada Database Supabase.</p>
+<p id="syncAuthDescription">Masukkan kembali akun portal untuk mengizinkan perubahan pada Database.</p>
 <label for="syncAuthUsername">Username portal</label>
 <input id="syncAuthUsername" type="text" autocomplete="username" maxlength="80" required>
 <label for="syncAuthPassword">Kata sandi portal</label>
@@ -2216,9 +2239,6 @@ gtag('config', 'G-4933FEDV2TW');
 <a data-social-key="youtube" href="https://www.youtube.com/@channel_anda" target="_blank" rel="noopener noreferrer" class="social-link" title="YouTube" aria-label="YouTube">
 <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="4" fill="#FF0000"/><path d="M10 8l6 4-6 4V8z" fill="white"/></svg>
 </a>
-<a data-social-key="aboutskyy" href="https://sites.google.com/view/deployskyy/about" target="_blank" rel="noopener noreferrer" class="social-link aboutskyy-social-link" title="aboutskyyᯓᡣ𐭩" aria-label="About Skyy">
-<img src="assets/aboutskyy.png" alt="About Skyy">
-</a>
 <a data-social-key="github" href="https://github.com/evlskyy/spas1-v2" target="_blank" rel="noopener noreferrer" class="social-link github-social-link" title="GitHub Skyy" aria-label="GitHub">
 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.304.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.31.468-2.381 1.235-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 016.006 0c2.29-1.552 3.297-1.23 3.297-1.23.653 1.652.242 2.873.12 3.176.77.84 1.233 1.911 1.233 3.221 0 4.609-2.807 5.623-5.48 5.921.43.372.814 1.103.814 2.222 0 1.604-.015 2.896-.015 3.29 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
 </a>
@@ -2271,7 +2291,7 @@ gtag('config', 'G-4933FEDV2TW');
 <p id="projectInfoSummary" data-content-key="projectSummary">Aplikasi operasional MBG untuk SPPG Sungai Pasir 1 Meral, Karimun, dengan Supabase sebagai backend dan Cloudflare Pages untuk publikasi frontend.</p>
 <section class="home-project-info-section" aria-labelledby="projectOverviewTitle">
 <h3 id="projectOverviewTitle"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Tentang Project</h3>
-<p><strong>SPAS1 Version 2.1.1</strong> membantu mengelola menu, stok logistik, absensi relawan, persiapan, distribusi, dan informasi SPPG. Alur backend telah beralih dari Apps Script dan Spreadsheet ke Supabase.</p>
+<p><strong>SPAS1 Version 2.1.1</strong> membantu mengelola menu, stok logistik, absensi relawan, persiapan, distribusi, dan informasi SPPG. Alur backend telah bermigrasi dari Apps Script dan Spreadsheet ke Supabase.</p>
 <p><strong>Supabase</strong> menjadi backend aplikasi untuk autentikasi, PostgreSQL, kebijakan akses, dan penyimpanan media. Tombol Sinkronisasi Database dan Tarik dari Database menggunakan adapter Supabase pada modul yang terhubung, mengikuti sesi login dan kebijakan akses tiap tabel.</p>
 <p><strong>Cloudflare Pages</strong> menyajikan frontend statis. Kode sumber dapat dikelola di GitHub dan diterbitkan melalui integrasi deployment yang dikonfigurasi untuk repository tersebut. Cloudflare Workers hanya digunakan untuk fungsi edge bila memang dikonfigurasi; Worker bukan pengganti database Supabase.</p>
 <ul class="home-project-info-features">
@@ -2349,8 +2369,22 @@ gtag('config', 'G-4933FEDV2TW');
 </ul>
 <p class="home-project-info-note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Pemindaian visual pada absensi bukan verifikasi identitas.</p>
 <h3 style="margin-top: 14px;">Developer · iamsky</h3>
+<div class="developer-profile">
+<a class="developer-profile-link" href="https://github.com/evlskyy/spas1-v2" target="_blank" rel="noopener noreferrer" aria-label="Buka repository SPAS1 di GitHub">
+<span class="developer-profile-thumb">
+<img class="developer-profile-photo" src="assets/skyyabout.jpeg" alt="Foto profil Skyy (iamsky), pengembang SPAS1" width="36" height="36" decoding="async">
+</span>
+<span class="developer-profile-preview" aria-hidden="true"><img src="assets/skyyabout.jpeg" alt=""></span>
+</a>
+<div class="developer-profile-details">
+<strong>Author: iamsky</strong>
+<span>Programmer</span>
+<span>Full Stack Developer Android &amp; iOS</span>
+</div>
+</div>
 <div class="home-project-info-links">
 <a data-social-key="github" href="https://github.com/evlskyy/spas1-v2" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i><span data-social-label>GitHub · @evlskyy</span></a>
+<a data-social-key="aboutskyy" href="https://sites.google.com/view/deployskyy/about" target="_blank" rel="noopener noreferrer" aria-label="About Skyy"><img class="custom-social-icon" src="assets/aboutskyy.png" alt="" width="16" height="16" decoding="async"><span data-social-label>About Skyy</span></a>
 <a data-social-key="developerEmail" href="mailto:hallosky@spas1.my.id"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span data-social-label>hallosky@spas1.my.id</span></a>
 <a data-social-key="trakteer" href="https://trakteer.id/evlskyy/tip" target="_blank" rel="noopener noreferrer" aria-label="Trakteer evlskyy"><img src="https://edge-cdn.trakteer.id/images/embed/trbtn-icon.png?v=14-05-2025" alt="" class="project-info-trakteer-icon"><span data-social-label>Trakteer · evlskyy</span></a>
 <a data-social-key="developerInstagram" href="https://www.instagram.com/evlskyy/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i><span data-social-label>Instagram · @evlskyy</span></a>
@@ -2647,7 +2681,7 @@ gtag('config', 'G-4933FEDV2TW');
 </div>
 <div class="container">
 <div class="download-banner">
-<div class="download-info"><strong>☁️ Sinkronisasi Database:</strong> Data modul disimpan dan ditarik dari Supabase.</div>
+<div class="download-info"><strong>☁️ Sinkronisasi 2 arah Database:</strong> Data modul disimpan dan ditarik dari Database - Aplikasi.</div>
 <div style="align-items: center; display: flex; flex-wrap: wrap; gap: 6px;">
 <select class="input-field" id="themeSelector" onchange="changeCustomTheme(this.value)" style="font-size: 11px; font-weight: 700; padding: 4px 8px; width: auto;"><option value="emerald"> Emerald Skyy</option><option value="ocean">🌊 Ocean Skyy</option><option value="royal"> Royal Dark Skyy</option><option value="light">☀️ Clean Minimalist Skyy</option></select>
 <button class="btn btn-emerald" onclick="syncToSupabase(event)" style="font-size: 11px; padding: 4px 8px;">🔁 Sinkronisasi Database</button>
@@ -2767,7 +2801,7 @@ gtag('config', 'G-4933FEDV2TW');
 <input id="targetPorsiSmallInput" class="input-field" type="number" min="0" step="1" inputmode="numeric" oninput="updateTargetPorsiTotal()">
 <label for="targetPorsiInputNumber" style="display:block;margin:12px 0 5px;font-size:12px;font-weight:700;">Total Target Porsi</label>
 <input id="targetPorsiInputNumber" class="input-field" type="number" readonly aria-live="polite">
-<div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px;"><button type="button" class="btn btn-outline" onclick="closeTargetPorsiModal()">Batal</button><button id="targetPorsiSaveButton" type="button" class="btn btn-emerald" onclick="saveTargetPorsiModal()">Simpan ke Supabase</button></div>
+<div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px;"><button type="button" class="btn btn-outline" onclick="closeTargetPorsiModal()">Batal</button><button id="targetPorsiSaveButton" type="button" class="btn btn-emerald" onclick="saveTargetPorsiModal()">Simpan ke Database</button></div>
 </div>
 </div>
 <div id="akgUploadModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="akgUploadModalTitle" onclick="if(event.target===this) closeAkgUploadModal()">
@@ -2778,7 +2812,7 @@ gtag('config', 'G-4933FEDV2TW');
 <label for="akgPosterFile" style="display:block;margin:12px 0 5px;font-size:12px;font-weight:700;">File Gambar</label>
 <input id="akgPosterFile" class="input-field" type="file" accept="image/png,image/jpeg,image/gif,image/webp">
 <p style="font-size:11px;color:var(--text-muted);margin-top:6px;">Format PNG, JPEG, GIF, atau WebP, maksimal 10 MB. File disimpan di Supabase Storage.</p>
-<div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px;"><button type="button" class="btn btn-outline" onclick="closeAkgUploadModal()">Batal</button><button id="akgPosterSaveButton" type="button" class="btn btn-emerald" onclick="saveAkgPoster()">Unggah ke Supabase</button></div>
+<div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px;"><button type="button" class="btn btn-outline" onclick="closeAkgUploadModal()">Batal</button><button id="akgPosterSaveButton" type="button" class="btn btn-emerald" onclick="saveAkgPoster()">Unggah ke Database</button></div>
 </div>
 </div>
 <div id="akgDetailModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="akgDetailModalTitle" onclick="if(event.target===this) closeAkgDetailModal()">

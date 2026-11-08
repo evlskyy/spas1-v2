@@ -107,7 +107,11 @@
     .poster-preview strong { display: block; margin-top: 3px; font-size: 12px; }
     .poster-preview small { display: block; margin-top: 2px; color: #a4b9c9; font-size: 9px; }
     .meta-row { display: flex; justify-content: space-between; gap: 8px; color: var(--muted); font-size: 9px; }
-    .footer { margin-top: 17px; color: #7f8da3; text-align: center; font-size: 10px; }
+    .footer { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 20px; color: #7f8da3; text-align: left; font-size: 10px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 8px; }
+    .footer-links a { display: inline-flex; align-items: center; gap: 6px; min-height: 34px; padding: 6px 9px; border: 1px solid rgb(52 211 153 / 25%); border-radius: 9px; color: #a7f3d0; font-size: 10px; font-weight: 700; text-decoration: none; transition: background-color .2s, border-color .2s, box-shadow .2s; }
+    .footer-links a:hover, .footer-links a:focus-visible { border-color: rgb(110 231 183 / 85%); background: rgb(16 185 129 / 16%); box-shadow: 0 0 0 3px rgb(16 185 129 / 12%); outline: none; }
+    .footer-links svg, .footer-links img { display: block; width: 16px; height: 16px; flex: 0 0 16px; object-fit: contain; }
     [hidden] { display: none !important; }
 
     .module-page { padding: 18px; }
@@ -522,7 +526,31 @@
       </div>
     </section>
 
-    <footer class="footer">SPAS1 Version 2 · Live Demo publik hanya-baca · Data simulasi, bukan data operasional</footer>
+    <footer class="footer">
+      <nav class="footer-links" aria-label="Tautan developer">
+        <a href="https://github.com/evlskyy/spas1-v2" target="_blank" rel="noopener noreferrer" aria-label="GitHub evlskyy, repository SPAS1">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.304.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.31.468-2.381 1.235-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.3 1.23a11.5 11.5 0 016.006 0c2.29-1.552 3.297-1.23 3.297-1.23.653 1.652.242 2.873.12 3.176.77.84 1.233 1.911 1.235 3.221 0 4.609-2.807 5.623-5.48 5.921.43.372.814 1.103.814 2.222 0 1.604-.015 2.896-.015 3.29 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          <span>GitHub · @evlskyy</span>
+        </a>
+        <a href="https://sites.google.com/view/deployskyy/about" target="_blank" rel="noopener noreferrer" aria-label="About Skyy">
+          <img src="assets/aboutskyy.png" alt="" width="16" height="16" decoding="async">
+          <span>About Skyy</span>
+        </a>
+        <a href="mailto:hallosky@spas1.my.id">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5zm2 .3v.45l8 5.4 8-5.4V5.8l-8 5.35z"/></svg>
+          <span>hallosky@spas1.my.id</span>
+        </a>
+        <a href="https://trakteer.id/evlskyy/tip" target="_blank" rel="noopener noreferrer" aria-label="Trakteer evlskyy">
+          <img src="https://edge-cdn.trakteer.id/images/embed/trbtn-icon.png?v=14-05-2025" alt="" width="16" height="16" loading="lazy" decoding="async">
+          <span>Trakteer · evlskyy</span>
+        </a>
+        <a href="https://www.instagram.com/evlskyy/" target="_blank" rel="noopener noreferrer" aria-label="Instagram evlskyy">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5m0 2.2A2.8 2.8 0 0 0 4.2 7v10A2.8 2.8 0 0 0 7 19.8h10a2.8 2.8 0 0 0 2.8-2.8V7A2.8 2.8 0 0 0 17 4.2zm5 3.1a4.7 4.7 0 1 1 0 9.4 4.7 4.7 0 0 1 0-9.4m0 2.2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5m5.1-3.4a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2"/></svg>
+          <span>Instagram · @evlskyy</span>
+        </a>
+      </nav>
+      <span>SPAS1 Version 2 · Live Demo publik hanya-baca · Data simulasi, bukan data operasional</span>
+    </footer>
   </div>
 
   <script>

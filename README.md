@@ -22,8 +22,18 @@ The application frontend is a static site served by Cloudflare Pages. Supabase p
 
 Cloudflare Pages deploys the production branch when changes are pushed to GitHub. Verify the Pages deployment at `https://spas1.pages.dev` before changing custom-domain routing.
 
+### Temporary maintenance mode
+
+The Cloudflare Pages middleware in `functions/_middleware.js` reads the `MAINTENANCE_MODE` environment variable. It returns an HTTP 503 maintenance page for requests to `spas1.my.id` by default; `spas1.pages.dev` continues serving the application.
+
+Set `MAINTENANCE_MODE` to `false` in the Cloudflare Pages project's production environment variables to restore the custom domain. Set it to `true` (or remove the variable) to enable maintenance. Deploy the project after changing the variable so the new setting takes effect.
+
 ## Developer
 
+- Author: **iamsky**
+- Role: Programmer; Full Stack Developer Android & iOS
+- Profile photo: [Skyy (iamsky)](assets/skyyabout.jpeg)
+- Project repository: [evlskyy/spas1-v2](https://github.com/evlskyy/spas1-v2)
 - GitHub: [evlskyy](https://github.com/evlskyy)
 - Email: [hallosky@spas1.my.id](mailto:hallosky@spas1.my.id)
 - Instagram: [@evlskyy](https://instagram.com/evlskyy)

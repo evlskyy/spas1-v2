@@ -3,13 +3,13 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://spas1.my.id/</loc>
-    <lastmod>2026-11-07</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://spas1.my.id/assets/skyyabout.jpeg</image:loc>
-      <image:title>Foto profil Skyy</image:title>
-      <image:caption>Foto profil Skyy, pengelola SPAS1</image:caption>
+      <image:title>Foto profil iamsky, author dan programmer SPAS1</image:title>
+      <image:caption>Skyy (iamsky), programmer dan Full Stack Developer Android &amp; iOS, pengembang SPAS1.</image:caption>
     </image:image>
   </url>
 </urlset>
