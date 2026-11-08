@@ -3929,7 +3929,19 @@ return await callSupabaseFunction('volunteer-registration', Object.assign({ acti
 case 'fetchAnnouncements':
 case 'fetchAnnouncementsAdmin': {
 const rows = await supabaseRequest('INFO_SPPG', action === 'fetchAnnouncements' ? { query: { Status: 'eq.Published', order: 'Tanggal.desc' } } : { query: { order: 'Tanggal.desc' } });
-return { status: 'success', announcements: rows, data: rows };
+const announcements = rows.map(function(row) {
+return {
+id: String(row.ID || row.id || ''),
+date: String(row.Tanggal || row.date || ''),
+category: String(row.Kategori || row.category || ''),
+title: String(row.Judul || row.title || ''),
+content: String(row.Isi || row.content || ''),
+status: String(row.Status || row.status || ''),
+posterFileId: String(row['Poster File ID'] || row.posterFileId || ''),
+posterUrl: String(row['Poster URL'] || row.posterUrl || '')
+};
+});
+return { status: 'success', announcements: announcements, data: announcements };
 }
 case 'createAnnouncement':
 await supabaseRequest('INFO_SPPG', { method: 'POST', body: { ID: payload.id || 'INFO-' + Date.now(), Tanggal: payload.date, Kategori: payload.category, Judul: payload.title, Isi: payload.content, Status: 'Published', Dibuat: new Date().toISOString(), 'Poster File ID': payload.posterMediaId || null, 'Poster URL': payload.posterUrl || null }, prefer: 'return=minimal' });
