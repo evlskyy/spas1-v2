@@ -14,17 +14,15 @@ The application frontend is a static site served by Cloudflare Pages. Supabase p
 
 ## Deployment and configuration
 
-- Cloudflare Pages project: `spas1` (`spas1.pages.dev`)
+- Cloudflare Pages project: `spas1`
 - Supabase project reference is configured in `index.html`; the publishable key is public by design.
 - The volunteer-registration Edge Function requires the `TURNSTILE_SECRET_KEY` secret in Supabase. Never put this value in frontend code or commit it to Git.
-- Allowed browser origins for the function are configured by `APP_ALLOWED_ORIGINS`; the default includes `https://spas1.pages.dev` and `https://spas1.my.id`.
+- Allowed browser origins for the function are configured by `APP_ALLOWED_ORIGINS`; the default includes `https://spas1.my.id`.
 - Database schema and row-level security setup are documented in `supabase_migration.sql`. Review carefully and back up data before applying it to another project.
-
-Cloudflare Pages deploys the production branch when changes are pushed to GitHub. Verify the Pages deployment at `https://spas1.pages.dev` before changing custom-domain routing.
 
 ### Temporary maintenance mode
 
-The Cloudflare Pages middleware in `functions/_middleware.js` reads the `MAINTENANCE_MODE` environment variable. It returns an HTTP 503 maintenance page for requests to `spas1.my.id` by default; `spas1.pages.dev` continues serving the application.
+The Cloudflare Pages middleware in `functions/_middleware.js` reads the `MAINTENANCE_MODE` environment variable. It returns an HTTP 503 maintenance page for requests to `spas1.my.id`
 
 Set `MAINTENANCE_MODE` to `false` in the Cloudflare Pages project's production environment variables to restore the custom domain. Set it to `true` (or remove the variable) to enable maintenance. Deploy the project after changing the variable so the new setting takes effect.
 
