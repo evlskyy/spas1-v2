@@ -22,9 +22,11 @@ alter table public."SPAS1_TEAM" enable row level security;
 alter table public."modul2_bank_menu" enable row level security;
 alter table public."modul3_stok_logistik" enable row level security;
 
--- These tables are published for deletes and may not have a primary key.
+-- These tables are published for deletes or updates and may not have a primary key.
 alter table public."INFO_SPPG" replica identity full;
 alter table public."SPAS1_MEDIA" replica identity full;
+alter table public."MODUL1_PendaftaranRelawan" replica identity full;
+alter table public."MODUL1_DataRelawan" replica identity full;
 
 alter table public."MODUL1_PendaftaranRelawan"
   add column if not exists "Auth User ID" uuid;

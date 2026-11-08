@@ -30,17 +30,29 @@ function allowedOrigins() {
     .filter(Boolean);
 }
 
+function isLocalDevelopmentOrigin(origin: string) {
+  try {
+    const url = new URL(origin);
+    return url.origin === origin &&
+      ["http:", "https:"].includes(url.protocol) &&
+      ["localhost", "127.0.0.1", "[::1]"].includes(url.hostname);
+  } catch {
+    return false;
+  }
+}
+
 Deno.serve(async (request) => {
   const originHeader = request.headers.get("Origin") || "";
   const origins = allowedOrigins();
-  const origin = origins.includes(originHeader) ? originHeader : origins[0];
+  const originAllowed = origins.includes(originHeader) || isLocalDevelopmentOrigin(originHeader);
+  const origin = originAllowed ? originHeader : origins[0];
 
   if (request.method === "OPTIONS") {
-    if (!origins.includes(originHeader)) return new Response(null, { status: 403 });
+    if (!originAllowed) return new Response(null, { status: 403 });
     return new Response(null, { status: 204, headers: corsHeaders(origin) });
   }
   if (request.method !== "POST") return jsonResponse({ error: "Method not allowed." }, 405, origin);
-  if (!originHeader || !origins.includes(originHeader)) {
+  if (!originHeader || !originAllowed) {
     return jsonResponse({ error: "Origin is not allowed." }, 403, origin);
   }
 
