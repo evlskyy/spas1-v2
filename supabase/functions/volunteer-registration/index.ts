@@ -41,6 +41,32 @@ function isLocalDevelopmentOrigin(origin: string) {
   }
 }
 
+const allowedVolunteerRoles = [
+  "Kepala SPPG",
+  "Akuntan",
+  "Ahli Gizi",
+  "Aslap ( Asisten Lapangan )",
+  "Head Chef",
+  "Koordinator Persiapan",
+  "Koordinator Pemorsian",
+  "Koordinator Ompreng",
+  "Koordinator Security",
+  "Koordinator Driver",
+];
+const allowedVolunteerDivisions = [
+  "Koki",
+  "Persiapan",
+  "Pemorsian",
+  "Cuci Ompreng",
+  "Driver",
+  "Office Boy",
+  "Security / Keamanan",
+];
+const pendingRegistrationStatuses = [
+  "Menunggu Persetujuan SUPER ADMIN",
+  "Menunggu Verifikasi SUPER ADMIN",
+];
+
 Deno.serve(async (request) => {
   const originHeader = request.headers.get("Origin") || "";
   const origins = allowedOrigins();
@@ -98,6 +124,8 @@ Deno.serve(async (request) => {
     adminAuthorized = true;
     if (input.action === "list") return await listRegistrations(adminClient, origin);
     if (input.action === "review") return await reviewRegistration(input, user.id, adminClient, origin);
+    if (input.action === "updateRequest") return await updateRegistration(input, adminClient, origin);
+    if (input.action === "deleteRequest") return await deleteRegistration(input, adminClient, origin);
     return jsonResponse({ error: "Aksi tidak dikenal." }, 400, origin);
   } catch (error) {
     const message = getErrorMessage(error);
@@ -118,12 +146,15 @@ async function submitRegistration(
   const volunteerId = String(input.idRelawan || "").trim();
   const contactEmail = String(input.email || "").trim().toLowerCase();
   const phone = String(input.noHp || "").trim();
+  const role = String(input.role || "").trim();
+  const division = String(input.division || "").trim();
   const password = String(input.pin || "");
   const confirmation = String(input.pinConfirm || "");
   if (!name || name.length > 150 || !volunteerId || volunteerId.length > 80 ||
       !/^[A-Za-z0-9._-]+$/.test(volunteerId) ||
       contactEmail.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contactEmail) ||
-      !phone || phone.length > 40 || password.length < 8 || password.length > 128 ||
+      !phone || phone.length > 40 || !allowedVolunteerRoles.includes(role) ||
+      !allowedVolunteerDivisions.includes(division) || password.length < 8 || password.length > 128 ||
       password !== confirmation) {
     return jsonResponse({ error: "Data pendaftaran tidak valid. Periksa ID, email, nomor HP, dan PIN minimal 8 karakter." }, 400, origin);
   }
@@ -187,6 +218,8 @@ async function submitRegistration(
     "Nama Lengkap": name,
     Email: contactEmail,
     "No HP": phone,
+    Role: role,
+    Divisi: division,
     Status: "Menunggu Persetujuan SUPER ADMIN",
     "Diajukan Pada": new Date().toISOString(),
   });
@@ -206,7 +239,7 @@ async function listRegistrations(
 ) {
   const { data, error } = await adminClient
     .from("MODUL1_PendaftaranRelawan")
-    .select('"ID Permohonan","ID Relawan","Nama Lengkap",Email,"No HP",Status,"Diajukan Pada"')
+    .select('"ID Permohonan","ID Relawan","Nama Lengkap",Email,"No HP",Role,Divisi,Status,"Diajukan Pada"')
     .order("Diajukan Pada", { ascending: false });
   if (error) throw error;
   const registrations = (data || []).map((row) => ({
@@ -215,6 +248,8 @@ async function listRegistrations(
     nama: row["Nama Lengkap"],
     email: row.Email,
     noHp: row["No HP"],
+    role: row.Role || "",
+    division: row.Divisi || "",
     status: row.Status,
     submittedAt: row["Diajukan Pada"],
   }));
@@ -236,13 +271,12 @@ async function reviewRegistration(
   if (!requestId || !["approve", "reject"].includes(String(decision))) {
     return jsonResponse({ error: "Keputusan atau ID permohonan tidak valid." }, 400, origin);
   }
-  const pendingStatus = "Menunggu Persetujuan SUPER ADMIN";
   const processingStatus = "Sedang Diproses";
   const { data: requestRow, error: claimError } = await adminClient
     .from("MODUL1_PendaftaranRelawan")
     .update({ Status: processingStatus })
     .eq("ID Permohonan", requestId)
-    .eq("Status", pendingStatus)
+    .in("Status", pendingRegistrationStatuses)
     .select('*')
     .maybeSingle();
   if (claimError) throw claimError;
@@ -261,8 +295,8 @@ async function reviewRegistration(
         "ID Relawan": requestRow["ID Relawan"],
         "Auth User ID": authUserId,
         "Nama Lengkap": requestRow["Nama Lengkap"],
-        Divisi: "Relawan",
-        Role: "employee",
+        Divisi: requestRow.Divisi || "Relawan",
+        Role: requestRow.Role || "Relawan",
         "Status Biometrik": "Belum diverifikasi",
         "No HP": requestRow["No HP"],
         "Status Akun": "Aktif",
@@ -298,7 +332,7 @@ async function reviewRegistration(
     const { error: rollbackError } = await adminClient
       .from("MODUL1_PendaftaranRelawan")
       .update({
-        Status: pendingStatus,
+        Status: pendingRegistrationStatuses[0],
         "Diputuskan Pada": null,
         "Diputuskan Oleh": null,
       })
@@ -317,6 +351,97 @@ async function reviewRegistration(
     throw error;
   }
   return jsonResponse({ status: "success", message: `Permohonan berhasil ${decision === "approve" ? "disetujui" : "ditolak"}.` }, 200, origin);
+}
+
+async function updateRegistration(
+  input: Record<string, unknown>,
+  adminClient: ReturnType<typeof createClient>,
+  origin: string,
+) {
+  const requestId = String(input.requestId || "").trim();
+  const name = String(input.nama || "").trim();
+  const email = String(input.email || "").trim().toLowerCase();
+  const phone = String(input.noHp || "").trim();
+  const role = String(input.role || "").trim();
+  const division = String(input.division || "").trim();
+  if (!requestId || !name || name.length > 150 ||
+      email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ||
+      !phone || phone.length > 40 || !allowedVolunteerRoles.includes(role) ||
+      !allowedVolunteerDivisions.includes(division)) {
+    return jsonResponse({ error: "Data permohonan tidak valid. Periksa nama, email, nomor HP, Role, dan Divisi." }, 400, origin);
+  }
+  const { data, error } = await adminClient
+    .from("MODUL1_PendaftaranRelawan")
+    .update({
+      "Nama Lengkap": name,
+      Email: email,
+      "No HP": phone,
+      Role: role,
+      Divisi: division,
+    })
+    .eq("ID Permohonan", requestId)
+    .in("Status", pendingRegistrationStatuses)
+    .select('"ID Permohonan"')
+    .maybeSingle();
+  if (error) throw error;
+  if (!data) return jsonResponse({ error: "Permohonan tidak ditemukan atau sudah diproses; hanya permohonan menunggu yang dapat diubah." }, 409, origin);
+  return jsonResponse({ status: "success", message: "Perubahan permohonan berhasil disimpan." }, 200, origin);
+}
+
+async function deleteRegistration(
+  input: Record<string, unknown>,
+  adminClient: ReturnType<typeof createClient>,
+  origin: string,
+) {
+  const requestId = String(input.requestId || "").trim();
+  if (!requestId) return jsonResponse({ error: "ID permohonan tidak ditemukan." }, 400, origin);
+  const deletingStatus = "Dihapus";
+  const { data: requestRow, error: claimError } = await adminClient
+    .from("MODUL1_PendaftaranRelawan")
+    .update({ Status: deletingStatus })
+    .eq("ID Permohonan", requestId)
+    .in("Status", pendingRegistrationStatuses)
+    .select('"ID Permohonan","Auth User ID"')
+    .maybeSingle();
+  if (claimError) throw claimError;
+  if (!requestRow) return jsonResponse({ error: "Permohonan tidak ditemukan atau sudah diproses; hanya permohonan menunggu yang dapat dihapus." }, 409, origin);
+
+  const authUserId = requestRow["Auth User ID"];
+  if (authUserId) {
+    const { error: authError } = await adminClient.auth.admin.deleteUser(authUserId);
+    if (authError) {
+      const { error: restoreError } = await adminClient
+        .from("MODUL1_PendaftaranRelawan")
+        .update({ Status: pendingRegistrationStatuses[0] })
+        .eq("ID Permohonan", requestId)
+        .eq("Status", deletingStatus);
+      if (restoreError) throw new Error("Akun tidak dapat dihapus dan status permohonan gagal dipulihkan.");
+      throw authError;
+    }
+  }
+
+  const { data: deletedRequest, error: deleteError } = await adminClient
+    .from("MODUL1_PendaftaranRelawan")
+    .delete()
+    .eq("ID Permohonan", requestId)
+    .eq("Status", deletingStatus)
+    .select('"ID Permohonan"')
+    .maybeSingle();
+  if (deleteError || !deletedRequest) {
+    const { data: restoredRequest, error: restoreError } = await adminClient
+      .from("MODUL1_PendaftaranRelawan")
+      .update({ Status: pendingRegistrationStatuses[0], "Auth User ID": null })
+      .eq("ID Permohonan", requestId)
+      .eq("Status", deletingStatus)
+      .select('"ID Permohonan"')
+      .maybeSingle();
+    if (restoreError || !restoredRequest) {
+      throw new Error("Akun login sudah dihapus, tetapi permohonan gagal dibersihkan atau dipulihkan. Periksa data di Supabase.");
+    }
+    throw new Error("Akun login sudah dihapus. Permohonan masih tercatat tanpa akun; klik Hapus lagi untuk membersihkannya." +
+      (deleteError ? " " + deleteError.message : ""));
+  }
+  return jsonResponse({ status: "success", message: "Permohonan dan akun login terkait berhasil dihapus." }, 200, origin);
 }
 
 async function recordAttendance(

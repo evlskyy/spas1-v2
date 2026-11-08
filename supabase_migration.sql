@@ -1,4 +1,4 @@
--- Run in Supabase SQL Editor only after backing up all 19 tables.
+-- Run in Supabase SQL Editor only after backing up all 19 existing tables.
 -- Before running: disable public sign-ups in Authentication > Settings.
 -- This migration assigns trusted existing @admin/@module accounts their RLS role claims.
 
@@ -27,18 +27,42 @@ alter table public."INFO_SPPG" replica identity full;
 alter table public."SPAS1_MEDIA" replica identity full;
 alter table public."MODUL1_PendaftaranRelawan" replica identity full;
 alter table public."MODUL1_DataRelawan" replica identity full;
+alter table public."MODUL1_Absensi" replica identity full;
 
 alter table public."MODUL1_PendaftaranRelawan"
   add column if not exists "Auth User ID" uuid;
 alter table public."MODUL1_DataRelawan"
   add column if not exists "Auth User ID" uuid,
   add column if not exists "Status Akun" text;
+update public."MODUL1_DataRelawan"
+set "Status Akun" = 'Aktif'
+where "Status Akun" is null;
 alter table public."MODUL1_PendaftaranRelawan"
   add column if not exists "Diajukan Pada" text,
   add column if not exists "Diputuskan Pada" text,
   add column if not exists "Diputuskan Oleh" text,
+  add column if not exists "Role" text,
+  add column if not exists "Divisi" text,
   alter column "PIN Salt" drop not null,
   alter column "PIN Hash" drop not null;
+
+alter table public."MODUL1_Absensi"
+  add column if not exists "ID Absensi" uuid;
+update public."MODUL1_Absensi"
+set "ID Absensi" = gen_random_uuid()
+where "ID Absensi" is null;
+alter table public."MODUL1_Absensi"
+  alter column "ID Absensi" set default gen_random_uuid(),
+  alter column "ID Absensi" set not null;
+create unique index if not exists "MODUL1_Absensi_ID_Absensi_app_key"
+  on public."MODUL1_Absensi" ("ID Absensi");
+
+create table if not exists public."MODUL1_Absensi_Drafts" (
+  "ID Absensi" uuid primary key references public."MODUL1_Absensi" ("ID Absensi") on delete cascade,
+  "Data" jsonb not null,
+  "Diperbarui" timestamptz not null default now()
+);
+alter table public."MODUL1_Absensi_Drafts" enable row level security;
 
 do $$
 begin
@@ -59,7 +83,7 @@ begin
   if exists (
     select 1 from public."MODUL1_PendaftaranRelawan"
     where "ID Relawan" is not null
-      and "Status" in ('Menunggu Persetujuan SUPER ADMIN', 'Sedang Diproses')
+      and "Status" in ('Menunggu Persetujuan SUPER ADMIN', 'Menunggu Verifikasi SUPER ADMIN', 'Sedang Diproses')
     group by "ID Relawan" having count(*) > 1
   ) then
     raise exception 'Duplicate pending volunteer IDs exist; resolve them before applying this migration.';
@@ -144,9 +168,17 @@ set raw_app_meta_data = coalesce(raw_app_meta_data, '{}'::jsonb) || '{"role":"mo
 where right(lower(email), length('@module.spas1.local')) = '@module.spas1.local';
 
 drop policy if exists "MODUL1_Absensi admin read" on public."MODUL1_Absensi";
-create policy "MODUL1_Absensi admin read"
-on public."MODUL1_Absensi" for select to authenticated
-using ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+drop policy if exists "MODUL1_Absensi admin manage" on public."MODUL1_Absensi";
+create policy "MODUL1_Absensi admin manage"
+on public."MODUL1_Absensi" for all to authenticated
+using ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin')
+with check ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
+
+drop policy if exists "MODUL1_Absensi_Drafts admin manage" on public."MODUL1_Absensi_Drafts";
+create policy "MODUL1_Absensi_Drafts admin manage"
+on public."MODUL1_Absensi_Drafts" for all to authenticated
+using ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin')
+with check ((auth.jwt() -> 'app_metadata' ->> 'role') = 'admin');
 
 drop policy if exists "MODUL1_DataRelawan admin manage" on public."MODUL1_DataRelawan";
 create policy "MODUL1_DataRelawan admin manage"

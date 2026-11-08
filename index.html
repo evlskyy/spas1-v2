@@ -2499,6 +2499,8 @@ gtag('config', 'G-4933FEDV2TW');
 <div><label for="registrationVolunteerId" class="block text-xs font-semibold text-gray-300 mb-1">ID Relawan untuk Login</label><input id="registrationVolunteerId" name="id-relawan" type="text" autocomplete="username" minlength="3" maxlength="80" required placeholder="Contoh: ID1212" class="w-full px-4 py-3 bg-[#0B132B] border border-[#3A506B] rounded-xl text-sm focus:outline-none focus:border-indigo-500 text-white"></div>
 <div><label for="registrationEmail" class="block text-xs font-semibold text-gray-300 mb-1">Email Aktif</label><input id="registrationEmail" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="nama@email.com" class="w-full px-4 py-3 bg-[#0B132B] border border-[#3A506B] rounded-xl text-sm focus:outline-none focus:border-indigo-500 text-white"></div>
 <div><label for="registrationPhone" class="block text-xs font-semibold text-gray-300 mb-1">Nomor HP</label><input id="registrationPhone" name="tel" type="tel" autocomplete="tel" inputmode="tel" maxlength="25" required placeholder="Contoh: 081234567890" class="w-full px-4 py-3 bg-[#0B132B] border border-[#3A506B] rounded-xl text-sm focus:outline-none focus:border-indigo-500 text-white"></div>
+<div><label for="registrationRole" class="block text-xs font-semibold text-gray-300 mb-1">Role yang Dilamar</label><select id="registrationRole" name="role" required class="w-full px-4 py-3 bg-[#0B132B] border border-[#3A506B] rounded-xl text-sm focus:outline-none focus:border-indigo-500 text-white"><option value="">Pilih Role</option><option>Kepala SPPG</option><option>Akuntan</option><option>Ahli Gizi</option><option>Aslap ( Asisten Lapangan )</option><option>Head Chef</option><option>Koordinator Persiapan</option><option>Koordinator Pemorsian</option><option>Koordinator Ompreng</option><option>Koordinator Security</option><option>Koordinator Driver</option></select></div>
+<div><label for="registrationDivision" class="block text-xs font-semibold text-gray-300 mb-1">Divisi</label><select id="registrationDivision" name="division" required class="w-full px-4 py-3 bg-[#0B132B] border border-[#3A506B] rounded-xl text-sm focus:outline-none focus:border-indigo-500 text-white"><option value="">Pilih Divisi</option><option>Koki</option><option>Persiapan</option><option>Pemorsian</option><option>Cuci Ompreng</option><option>Driver</option><option>Office Boy</option><option>Security / Keamanan</option></select></div>
 <div><label for="registrationPin" class="block text-xs font-semibold text-gray-300 mb-1">Buat PIN Relawan</label><input id="registrationPin" name="new-password" type="password" autocomplete="new-password" minlength="8" maxlength="128" required placeholder="Minimal 8 karakter" class="w-full px-4 py-3 bg-[#0B132B] border border-[#3A506B] rounded-xl text-sm focus:outline-none focus:border-indigo-500 text-white"></div>
 <div><label for="registrationPinConfirm" class="block text-xs font-semibold text-gray-300 mb-1">Ulangi PIN Relawan</label><input id="registrationPinConfirm" name="confirm-password" type="password" autocomplete="new-password" minlength="8" maxlength="128" required placeholder="Ulangi PIN yang sama" class="w-full px-4 py-3 bg-[#0B132B] border border-[#3A506B] rounded-xl text-sm focus:outline-none focus:border-indigo-500 text-white"></div>
 <p class="text-[11px] leading-5 text-amber-200/90"><i class="fa-solid fa-lock mr-1"></i>PIN akan tersimpan sebagai hash, bukan teks yang dapat dibaca admin.</p>
@@ -2973,7 +2975,7 @@ gtag('config', 'G-4933FEDV2TW');
 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 overflow-x-auto pb-1">
 <h2 class="text-lg sm:text-xl font-bold text-gray-900 shrink-0">Dashboard Utama & Live Sync</h2>
 <div class="flex items-center gap-2 flex-wrap shrink-0">
-<button onclick="tarikDataSupabaseAdmin(this)" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-bold flex items-center gap-2 shadow"><i class="fa-solid fa-rotate icon-sync"></i> <span class="label-sync">Tarik dari Database</span></button>
+<button onclick="tarikDataSupabaseAdmin(this)" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-bold flex items-center gap-2 shadow"><i class="fa-solid fa-rotate icon-sync"></i> <span class="label-sync">Sinkronisasi Database</span></button>
 <button onclick="exportAdminPDF('dashboard')" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold flex items-center gap-2 shadow"><i class="fa-solid fa-file-pdf"></i> <span>Export PDF</span></button>
 <button onclick="printAdminSection('dashboard')" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold flex items-center gap-2 shadow"><i class="fa-solid fa-print"></i> <span>Print</span></button>
 <span class="text-xs bg-green-100 text-green-800 px-3 py-1 rounded-full font-semibold"><i class="fa-solid fa-circle text-[8px] mr-1"></i> Sync Active</span>
@@ -3144,7 +3146,7 @@ gtag('config', 'G-4933FEDV2TW');
 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 overflow-x-auto pb-1">
 <h2 class="text-lg sm:text-xl font-bold text-gray-900 shrink-0">Log Absensi (Database)</h2>
 <div class="flex items-center gap-2 flex-wrap shrink-0">
-<button onclick="tarikDataSupabaseAdmin(this)" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-bold flex items-center gap-2 shadow"><i class="fa-solid fa-rotate icon-sync"></i> <span class="label-sync">Tarik dari Database</span></button>
+<button onclick="tarikDataSupabaseAdmin(this)" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-bold flex items-center gap-2 shadow"><i class="fa-solid fa-rotate icon-sync"></i> <span class="label-sync">Sinkronisasi Database</span></button>
 <button onclick="exportAdminPDF('laporan')" class="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold flex items-center gap-2 shadow"><i class="fa-solid fa-file-pdf"></i> <span>Export PDF</span></button>
 <button onclick="exportToCSV('tbodyLogAbsen', 'Laporan_Absensi')" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold flex items-center gap-2 shadow"><i class="fa-solid fa-file-csv"></i> <span>Export CSV</span></button>
 <button onclick="printAdminSection('laporan')" class="px-3 py-1.5 bg-gray-600 hover:bg-gray-700 text-white rounded-lg text-xs font-bold flex items-center gap-2 shadow"><i class="fa-solid fa-print"></i> <span>Print</span></button>
@@ -3152,7 +3154,7 @@ gtag('config', 'G-4933FEDV2TW');
 </div>
 <div class="light-card rounded-2xl p-3 sm:p-4 overflow-x-auto shadow-sm">
 <table class="w-full text-left text-xs whitespace-nowrap min-w-[650px]" id="tableLaporan">
-<thead class="bg-gray-50 uppercase font-bold border-b text-gray-600"><tr><th class="p-3">ID / Nama</th><th class="p-3">Tanggal</th><th class="p-3">Masuk</th><th class="p-3">Pulang</th><th class="p-3">Status Kehadiran</th><th class="p-3">GPS</th><th class="p-3">Face Track</th></tr></thead>
+<thead class="bg-gray-50 uppercase font-bold border-b text-gray-600"><tr><th class="p-3">ID / Nama</th><th class="p-3">Tanggal</th><th class="p-3">Masuk</th><th class="p-3">Pulang</th><th class="p-3">Status Kehadiran</th><th class="p-3">GPS</th><th class="p-3">Face Track</th><th class="p-3 print:hidden">Aksi</th></tr></thead>
 <tbody id="tbodyLogAbsen" class="divide-y divide-gray-100"></tbody>
 </table>
 </div>
@@ -3167,16 +3169,17 @@ gtag('config', 'G-4933FEDV2TW');
 <button onclick="printAdminSection('karyawan')" class="px-3 py-1.5 bg-gray-600 hover:bg-gray-700 text-white rounded-lg text-xs font-bold flex items-center gap-2 shadow"><i class="fa-solid fa-print"></i> <span>Print</span></button>
 </div>
 </div>
+<p class="text-[11px] text-gray-500">Akun relawan baru dibuat melalui proses Registrasi; nonaktifkan akun untuk mengarsipkan tanpa menghapus riwayat.</p>
 <div class="light-card rounded-2xl p-3 sm:p-4 overflow-x-auto shadow-sm">
-<table class="w-full text-left text-xs whitespace-nowrap min-w-[500px]" id="tableKaryawan">
-<thead class="bg-gray-50 uppercase font-bold border-b text-gray-600"><tr><th class="p-3">ID Relawan</th><th class="p-3">Nama Lengkap</th><th class="p-3">Divisi</th><th class="p-3">Status Biometrik</th></tr></thead>
+<table class="w-full text-left text-xs whitespace-nowrap min-w-[650px]" id="tableKaryawan">
+<thead class="bg-gray-50 uppercase font-bold border-b text-gray-600"><tr><th class="p-3">ID Relawan</th><th class="p-3">Nama Lengkap</th><th class="p-3">Role</th><th class="p-3">Divisi</th><th class="p-3">Status Biometrik</th><th class="p-3">Status Akun</th><th class="p-3 print:hidden">Aksi</th></tr></thead>
 <tbody id="tbodyDataKaryawan" class="divide-y divide-gray-100"></tbody>
 </table>
 </div>
 </section>
 <section id="tab-registrations" class="admin-tab space-y-4 hidden">
 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
-<div><h2 class="text-lg sm:text-xl font-bold text-gray-900">Permohonan Registrasi Relawan</h2><p class="mt-1 text-xs text-gray-500">Periksa data dan email pendaftar, lalu setujui atau tolak permohonannya.</p></div>
+<div><h2 class="text-lg sm:text-xl font-bold text-gray-900">Permohonan Registrasi Relawan</h2><p class="mt-1 text-xs text-gray-500">Pendaftaran baru dilakukan melalui formulir relawan. SUPER ADMIN dapat mengubah atau menghapus permohonan yang masih menunggu, lalu menyetujui atau menolaknya.</p></div>
 <button type="button" onclick="loadVolunteerRegistrationRequests(this)" class="px-3 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-bold flex items-center gap-2 shadow"><i class="fa-solid fa-rotate"></i> Muat Ulang</button>
 </div>
 <div id="volunteerRegistrationList" class="space-y-3" aria-live="polite"><div class="light-card rounded-2xl p-4 text-sm text-gray-500">Memuat permohonan...</div></div>
@@ -3731,37 +3734,107 @@ clearSupabaseSession();
 return { status: 'success' };
 case 'fetchAllAdminData': {
 requireSupabaseSession();
-const [karyawan, logAbsen] = await Promise.all([
+const [karyawan, logAbsen, attendanceDrafts] = await Promise.all([
 supabaseRequest('MODUL1_DataRelawan'),
-supabaseRequest('MODUL1_Absensi')
+supabaseRequest('MODUL1_Absensi'),
+supabaseRequest('MODUL1_Absensi_Drafts')
 ]);
 return {
 status: 'success',
 karyawan: karyawan.map(function(row) {
-return { IDKaryawan: row['ID Relawan'], NamaLengkap: row['Nama Lengkap'], Divisi: row.Divisi, Role: row.Role };
+return { IDKaryawan: row['ID Relawan'], NamaLengkap: row['Nama Lengkap'], Divisi: row.Divisi, Role: row.Role, StatusAkun: row['Status Akun'] || 'Aktif' };
 }),
 logAbsen: logAbsen.map(function(row) {
-return { IDKaryawan: row['ID Karyawan'], Nama: row.Nama, Tanggal: row.Timestamp, Masuk: row.Jam, LokasiMasuk: row.Lokasi, StatusMasuk: row['Tipe Absen'], FaceTrack: row['Status Face'] };
-})
+return { IDAbsensi: String(row['ID Absensi'] || ''), IDKaryawan: row['ID Karyawan'], Nama: row.Nama, Tanggal: row.Timestamp, Masuk: row.Jam, Pulang: row.Pulang, LokasiMasuk: row.Lokasi, StatusMasuk: row['Tipe Absen'], FaceTrack: row['Status Face'] };
+}),
+attendanceDrafts: attendanceDrafts.map(function(row) { return { IDAbsensi: String(row['ID Absensi'] || ''), Data: row.Data || {} }; })
 };
 }
-case 'updateVolunteerDivision': {
+case 'updateAttendanceRecord': {
 requireSupabaseSession();
-if (window.SPAS1_AUTH_ROLE !== 'admin') throw new Error('Hanya SUPER ADMIN yang dapat mengubah divisi relawan.');
+if (window.SPAS1_AUTH_ROLE !== 'admin') throw new Error('Hanya SUPER ADMIN yang dapat mengubah laporan absensi.');
+const attendanceId = String(payload.id || '').trim();
+const jam = String(payload.jam || '').trim();
+const status = String(payload.status || '').trim();
+const lokasi = String(payload.lokasi || '').trim();
+if (!attendanceId || !jam || jam.length > 40 || lokasi.length > 200) throw new Error('Data absensi tidak valid.');
+if (!['Masuk', 'Pulang'].includes(status)) throw new Error('Pilih status absensi yang tersedia.');
+const rows = await supabaseRequest('MODUL1_Absensi', {
+method: 'PATCH',
+query: { '"ID Absensi"': 'eq.' + attendanceId },
+body: { Jam: jam, 'Tipe Absen': status, Lokasi: lokasi || 'Lokasi tidak tersedia' },
+prefer: 'return=representation'
+});
+if (!Array.isArray(rows) || !rows.length) throw new Error('Catatan absensi tidak ditemukan atau SUPER ADMIN tidak memiliki akses.');
+await supabaseRequest('MODUL1_Absensi_Drafts', { method: 'DELETE', query: { '"ID Absensi"': 'eq.' + attendanceId }, prefer: 'return=minimal' });
+return { status: 'success', message: 'Perubahan absensi berhasil disimpan.' };
+}
+case 'saveAttendanceDraft': {
+requireSupabaseSession();
+if (window.SPAS1_AUTH_ROLE !== 'admin') throw new Error('Hanya SUPER ADMIN yang dapat menyimpan draft absensi.');
+const attendanceId = String(payload.id || '').trim();
+const jam = String(payload.jam || '').trim();
+const status = String(payload.status || '').trim();
+const lokasi = String(payload.lokasi || '').trim();
+if (!attendanceId || !jam || jam.length > 40 || lokasi.length > 200) throw new Error('Data draft absensi tidak valid.');
+if (!['Masuk', 'Pulang'].includes(status)) throw new Error('Pilih status absensi yang tersedia.');
+await supabaseRequest('MODUL1_Absensi_Drafts', {
+method: 'POST',
+query: { on_conflict: '"ID Absensi"' },
+body: { 'ID Absensi': attendanceId, Data: { Jam: jam, 'Tipe Absen': status, Lokasi: lokasi } },
+prefer: 'resolution=merge-duplicates,return=minimal'
+});
+return { status: 'success', message: 'Draft perubahan absensi tersimpan di database.' };
+}
+case 'deleteAttendanceRecord': {
+requireSupabaseSession();
+if (window.SPAS1_AUTH_ROLE !== 'admin') throw new Error('Hanya SUPER ADMIN yang dapat menghapus laporan absensi.');
+const attendanceId = String(payload.id || '').trim();
+if (!attendanceId) throw new Error('ID catatan absensi tidak ditemukan.');
+const rows = await supabaseRequest('MODUL1_Absensi', {
+method: 'DELETE',
+query: { '"ID Absensi"': 'eq.' + attendanceId },
+prefer: 'return=representation'
+});
+if (!Array.isArray(rows) || !rows.length) throw new Error('Catatan absensi tidak ditemukan atau SUPER ADMIN tidak memiliki akses.');
+return { status: 'success', message: 'Catatan absensi berhasil dihapus.' };
+}
+case 'updateVolunteerAssignment': {
+requireSupabaseSession();
+if (window.SPAS1_AUTH_ROLE !== 'admin') throw new Error('Hanya SUPER ADMIN yang dapat mengubah Role dan Divisi relawan.');
 const volunteerId = String(payload.id || '').trim();
+const role = String(payload.role || '').trim();
 const division = String(payload.division || '').trim();
 if (!volunteerId) throw new Error('ID relawan tidak ditemukan. Sinkronkan data lalu coba lagi.');
-if (!division || division.length > 100) throw new Error('Divisi wajib diisi dan maksimal 100 karakter.');
+const allowedRoles = ['Kepala SPPG', 'Akuntan', 'Ahli Gizi', 'Aslap ( Asisten Lapangan )', 'Head Chef', 'Koordinator Persiapan', 'Koordinator Pemorsian', 'Koordinator Ompreng', 'Koordinator Security', 'Koordinator Driver'];
+const allowedDivisions = ['Koki', 'Persiapan', 'Pemorsian', 'Cuci Ompreng', 'Driver', 'Office Boy', 'Security / Keamanan'];
+if (!allowedRoles.includes(role)) throw new Error('Pilih Role yang tersedia.');
+if (!allowedDivisions.includes(division)) throw new Error('Pilih Divisi yang tersedia.');
 const updatedRows = await supabaseRequest('MODUL1_DataRelawan', {
 method: 'PATCH',
 query: { '"ID Relawan"': 'eq.' + volunteerId },
-body: { Divisi: division },
+body: { Role: role, Divisi: division },
 prefer: 'return=representation'
 });
 if (!Array.isArray(updatedRows) || !updatedRows.length) {
 throw new Error('Data relawan tidak ditemukan atau SUPER ADMIN tidak memiliki akses untuk mengubahnya.');
 }
-return { status: 'success', message: 'Divisi relawan berhasil diperbarui.' };
+return { status: 'success', message: 'Role dan Divisi relawan berhasil diperbarui.' };
+}
+case 'updateVolunteerStatus': {
+requireSupabaseSession();
+if (window.SPAS1_AUTH_ROLE !== 'admin') throw new Error('Hanya SUPER ADMIN yang dapat mengubah status akun relawan.');
+const volunteerId = String(payload.id || '').trim();
+const accountStatus = String(payload.status || '').trim();
+if (!volunteerId || !['Aktif', 'Nonaktif'].includes(accountStatus)) throw new Error('ID relawan atau status akun tidak valid.');
+const updatedRows = await supabaseRequest('MODUL1_DataRelawan', {
+method: 'PATCH',
+query: { '"ID Relawan"': 'eq.' + volunteerId },
+body: { 'Status Akun': accountStatus },
+prefer: 'return=representation'
+});
+if (!Array.isArray(updatedRows) || !updatedRows.length) throw new Error('Data relawan tidak ditemukan atau SUPER ADMIN tidak memiliki akses.');
+return { status: 'success', message: accountStatus === 'Nonaktif' ? 'Relawan dinonaktifkan. Riwayat absensi tetap tersimpan.' : 'Akun relawan diaktifkan kembali.' };
 }
 case 'fetchBankMenu': {
 const rows = await supabaseRequest('modul2_bank_menu');
@@ -3940,6 +4013,10 @@ case 'submitVolunteerRegistration':
 return await callSupabaseFunction('volunteer-registration', Object.assign({ action: 'submit' }, payload));
 case 'reviewVolunteerRegistration':
 return await callSupabaseFunction('volunteer-registration', Object.assign({ action: 'review' }, payload));
+case 'updateVolunteerRegistration':
+return await callSupabaseFunction('volunteer-registration', Object.assign({ action: 'updateRequest' }, payload));
+case 'deleteVolunteerRegistration':
+return await callSupabaseFunction('volunteer-registration', Object.assign({ action: 'deleteRequest' }, payload));
 case 'recordUserAttendance':
 requireSupabaseSession();
 if (window.SPAS1_AUTH_ROLE !== 'employee') throw new Error('Sesi relawan tidak valid. Silakan login kembali.');
@@ -4437,9 +4514,11 @@ email.className = 'break-all';
 email.textContent = 'Email: ' + (item.email || '-');
 const phone = document.createElement('p');
 phone.textContent = 'Nomor HP: ' + (item.noHp || '-');
+const assignment = document.createElement('p');
+assignment.textContent = 'Role / Divisi: ' + [item.role || 'Belum dipilih', item.division || 'Belum dipilih'].join(' / ');
 const submitted = document.createElement('p');
 submitted.textContent = 'Dikirim: ' + formatVolunteerRegistrationDate(item.submittedAt);
-info.append(name, volunteerId, email, phone, submitted);
+info.append(name, volunteerId, email, phone, assignment, submitted);
 const controls = document.createElement('div');
 controls.className = 'flex shrink-0 flex-col items-start gap-2 sm:items-end';
 const status = document.createElement('span');
@@ -4461,7 +4540,18 @@ reject.type = 'button';
 reject.className = 'rounded-lg bg-rose-600 px-3 py-2 text-[11px] font-bold text-white hover:bg-rose-700';
 reject.textContent = 'Tolak';
 reject.addEventListener('click', function() { reviewVolunteerRegistration(item.requestId, 'reject', approve, reject); });
-actions.append(approve, reject);
+const edit = document.createElement('button');
+edit.type = 'button';
+edit.className = 'rounded-lg bg-indigo-600 px-3 py-2 text-[11px] font-bold text-white hover:bg-indigo-700';
+edit.textContent = 'Edit';
+edit.addEventListener('click', function() { editVolunteerRegistration(item, card); });
+const remove = document.createElement('button');
+remove.type = 'button';
+remove.className = 'rounded-lg bg-slate-700 px-3 py-2 text-[11px] font-bold text-white hover:bg-slate-800';
+remove.textContent = 'Hapus';
+remove.addEventListener('click', function() { deleteVolunteerRegistration(item.requestId, remove); });
+actions.classList.add('flex-wrap');
+actions.append(approve, reject, edit, remove);
 controls.appendChild(actions);
 }
 details.append(info, controls);
@@ -4473,6 +4563,118 @@ function formatVolunteerRegistrationDate(value) {
 if (!value) return 'Tidak tersedia';
 const date = new Date(value);
 return Number.isNaN(date.getTime()) ? 'Tidak tersedia' : date.toLocaleString('id-ID');
+}
+function createRegistrationSelect(label, choices, current) {
+const select = document.createElement('select');
+select.className = 'w-full rounded-lg border border-gray-300 bg-white px-2 py-2 text-xs text-gray-900';
+select.setAttribute('aria-label', label);
+const placeholder = document.createElement('option');
+placeholder.value = '';
+placeholder.textContent = choices.includes(current) ? 'Pilih ' + label : 'Pilih ' + label + (current ? ' (saat ini: ' + current + ')' : '');
+select.appendChild(placeholder);
+choices.forEach(function(value) {
+const option = document.createElement('option');
+option.value = value;
+option.textContent = value;
+option.selected = current === value;
+select.appendChild(option);
+});
+return select;
+}
+function editVolunteerRegistration(item, card) {
+const form = document.createElement('form');
+form.className = 'mt-3 grid gap-2 rounded-xl border border-indigo-200 bg-indigo-50 p-3 sm:grid-cols-2';
+const fields = [
+['Nama Lengkap', item.nama, 'text', 150],
+['Email', item.email, 'email', 254],
+['Nomor HP', item.noHp, 'tel', 40]
+];
+const inputs = {};
+fields.forEach(function(field) {
+const label = document.createElement('label');
+label.className = 'grid gap-1 text-[11px] font-semibold text-slate-700';
+label.textContent = field[0];
+const input = document.createElement('input');
+input.type = field[2];
+input.maxLength = field[3];
+input.required = true;
+input.value = field[1] || '';
+input.className = 'rounded-lg border border-gray-300 bg-white px-2 py-2 text-xs text-gray-900';
+label.appendChild(input);
+form.appendChild(label);
+inputs[field[0]] = input;
+});
+const roleOptions = ['Kepala SPPG', 'Akuntan', 'Ahli Gizi', 'Aslap ( Asisten Lapangan )', 'Head Chef', 'Koordinator Persiapan', 'Koordinator Pemorsian', 'Koordinator Ompreng', 'Koordinator Security', 'Koordinator Driver'];
+const divisionOptions = ['Koki', 'Persiapan', 'Pemorsian', 'Cuci Ompreng', 'Driver', 'Office Boy', 'Security / Keamanan'];
+const roleSelect = createRegistrationSelect('Role', roleOptions, item.role);
+const divisionSelect = createRegistrationSelect('Divisi', divisionOptions, item.division);
+form.append(roleSelect, divisionSelect);
+const actions = document.createElement('div');
+actions.className = 'flex gap-2 sm:col-span-2';
+const save = document.createElement('button');
+save.type = 'submit';
+save.className = 'rounded-lg bg-emerald-600 px-3 py-2 text-[11px] font-bold text-white hover:bg-emerald-700';
+save.textContent = 'Simpan Perubahan';
+const cancel = document.createElement('button');
+cancel.type = 'button';
+cancel.className = 'rounded-lg border border-slate-400 bg-slate-600 px-3 py-2 text-[11px] font-bold text-white hover:bg-slate-700';
+cancel.textContent = 'Batal';
+cancel.addEventListener('click', function() { form.remove(); });
+actions.append(save, cancel);
+form.appendChild(actions);
+card.appendChild(form);
+form.addEventListener('submit', function(event) {
+event.preventDefault();
+if (!roleSelect.value || !divisionSelect.value) {
+alert('Pilih Role dan Divisi terlebih dahulu.');
+return;
+}
+save.disabled = true;
+cancel.disabled = true;
+save.textContent = 'Menyimpan...';
+callSupabaseAction('updateVolunteerRegistration', {
+requestId: item.requestId,
+nama: inputs['Nama Lengkap'].value.trim(),
+email: inputs.Email.value.trim(),
+noHp: inputs['Nomor HP'].value.trim(),
+role: roleSelect.value,
+division: divisionSelect.value
+}, function(result) {
+if (!result || result.status !== 'success') {
+save.disabled = false;
+cancel.disabled = false;
+save.textContent = 'Simpan Perubahan';
+alert('Gagal mengubah permohonan: ' + (result && result.message ? result.message : 'Respons server tidak valid.'));
+return;
+}
+showToast(result.message || 'Perubahan permohonan disimpan.');
+loadVolunteerRegistrationRequests(null, { notify: false });
+}, function(error) {
+save.disabled = false;
+cancel.disabled = false;
+save.textContent = 'Simpan Perubahan';
+alert('Gagal mengubah permohonan: ' + error.message);
+});
+});
+}
+function deleteVolunteerRegistration(requestId, button) {
+if (!requestId || !confirm('Hapus permohonan yang masih menunggu beserta akun login terkait? Tindakan ini permanen.')) return;
+button.disabled = true;
+button.textContent = 'Menghapus...';
+callSupabaseAction('deleteVolunteerRegistration', { requestId: requestId }, function(result) {
+if (!result || result.status !== 'success') {
+button.disabled = false;
+button.textContent = 'Hapus';
+alert('Gagal menghapus permohonan: ' + (result && result.message ? result.message : 'Respons server tidak valid.'));
+return;
+}
+showToast(result.message || 'Permohonan dihapus.');
+loadVolunteerRegistrationRequests(null, { notify: false });
+}, function(error) {
+button.disabled = false;
+button.textContent = 'Hapus';
+alert('Gagal menghapus permohonan: ' + error.message);
+});
 }
 function loadVolunteerRegistrationRequests(btn, options) {
 const settings = options || {};
@@ -4533,6 +4735,8 @@ alert('Keputusan gagal disimpan: ' + err.message);
 });
 }
 function renderAdminVolunteerRows(tbody, records) {
+const roleOptions = ['Kepala SPPG', 'Akuntan', 'Ahli Gizi', 'Aslap ( Asisten Lapangan )', 'Head Chef', 'Koordinator Persiapan', 'Koordinator Pemorsian', 'Koordinator Ompreng', 'Koordinator Security', 'Koordinator Driver'];
+const divisionOptions = ['Koki', 'Persiapan', 'Pemorsian', 'Cuci Ompreng', 'Driver', 'Office Boy', 'Security / Keamanan'];
 tbody.replaceChildren();
 records.forEach(function(volunteer) {
 const row = document.createElement('tr');
@@ -4542,6 +4746,11 @@ idCell.textContent = volunteer.IDKaryawan == null ? '-' : String(volunteer.IDKar
 const nameCell = document.createElement('td');
 nameCell.className = 'p-3';
 nameCell.textContent = volunteer.NamaLengkap || '-';
+const roleCell = document.createElement('td');
+roleCell.className = 'p-3';
+roleCell.dataset.exportValue = volunteer.Role || '';
+const roleLabel = document.createElement('span');
+roleLabel.textContent = volunteer.Role || '-';
 const divisionCell = document.createElement('td');
 divisionCell.className = 'p-3';
 divisionCell.dataset.exportValue = volunteer.Divisi || '';
@@ -4551,34 +4760,69 @@ const editButton = document.createElement('button');
 editButton.type = 'button';
 editButton.className = 'ml-2 rounded-md bg-indigo-100 px-2 py-1 text-[10px] font-bold text-indigo-700 hover:bg-indigo-200 print:hidden';
 editButton.textContent = 'Edit';
-editButton.setAttribute('aria-label', 'Edit divisi relawan ' + (volunteer.NamaLengkap || volunteer.IDKaryawan || ''));
+editButton.setAttribute('aria-label', 'Edit Role dan Divisi relawan ' + (volunteer.NamaLengkap || volunteer.IDKaryawan || ''));
 editButton.disabled = !volunteer.IDKaryawan;
 editButton.addEventListener('click', function() {
-const input = document.createElement('input');
-input.type = 'text';
-input.maxLength = 100;
-input.value = volunteer.Divisi || '';
-input.setAttribute('aria-label', 'Divisi relawan');
-input.className = 'w-36 rounded-md border border-gray-300 bg-white px-2 py-1 text-xs text-gray-900';
+const roleSelect = document.createElement('select');
+roleSelect.setAttribute('aria-label', 'Role relawan');
+roleSelect.className = 'mb-1 w-48 rounded-md border border-gray-300 bg-white px-2 py-1 text-xs text-gray-900';
+const rolePlaceholder = document.createElement('option');
+rolePlaceholder.value = '';
+rolePlaceholder.textContent = volunteer.Role && !roleOptions.includes(volunteer.Role)
+? 'Pilih Role (saat ini: ' + volunteer.Role + ')'
+: 'Pilih Role';
+roleSelect.appendChild(rolePlaceholder);
+roleOptions.forEach(function(role) {
+const option = document.createElement('option');
+option.value = role;
+option.textContent = role;
+option.selected = volunteer.Role === role;
+roleSelect.appendChild(option);
+});
+const divisionSelect = document.createElement('select');
+divisionSelect.setAttribute('aria-label', 'Divisi relawan');
+divisionSelect.className = 'w-40 rounded-md border border-gray-300 bg-white px-2 py-1 text-xs text-gray-900';
+const divisionPlaceholder = document.createElement('option');
+divisionPlaceholder.value = '';
+divisionPlaceholder.textContent = volunteer.Divisi && !divisionOptions.includes(volunteer.Divisi)
+? 'Pilih Divisi (saat ini: ' + volunteer.Divisi + ')'
+: 'Pilih Divisi';
+divisionSelect.appendChild(divisionPlaceholder);
+divisionOptions.forEach(function(division) {
+const option = document.createElement('option');
+option.value = division;
+option.textContent = division;
+option.selected = volunteer.Divisi === division;
+divisionSelect.appendChild(option);
+});
 const saveButton = document.createElement('button');
 saveButton.type = 'button';
-saveButton.className = 'ml-2 rounded-md bg-emerald-600 px-2 py-1 text-[10px] font-bold text-white hover:bg-emerald-700';
+saveButton.className = 'rounded-md bg-emerald-600 px-2 py-1 text-[10px] font-bold text-white hover:bg-emerald-700';
 saveButton.textContent = 'Simpan';
 const cancelButton = document.createElement('button');
 cancelButton.type = 'button';
-cancelButton.className = 'ml-1 rounded-md bg-gray-200 px-2 py-1 text-[10px] font-bold text-gray-700 hover:bg-gray-300';
+cancelButton.className = 'rounded-md border border-slate-400 bg-slate-600 px-2 py-1 text-[10px] font-bold text-white hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-100';
 cancelButton.textContent = 'Batal';
-divisionCell.replaceChildren(input, saveButton, cancelButton);
-input.focus();
-input.select();
+roleCell.replaceChildren(roleSelect);
+const divisionEditor = document.createElement('div');
+divisionEditor.className = 'flex flex-col items-start gap-1';
+const editorActions = document.createElement('div');
+editorActions.className = 'flex items-center gap-2';
+editorActions.append(saveButton, cancelButton);
+divisionEditor.append(divisionSelect, editorActions);
+divisionCell.replaceChildren(divisionEditor);
+roleSelect.focus();
 cancelButton.addEventListener('click', function() {
+roleCell.replaceChildren(roleLabel);
 divisionCell.replaceChildren(divisionLabel, editButton);
 });
 saveButton.addEventListener('click', function() {
-const division = input.value.trim();
-if (!division || division.length > 100) {
-alert('Divisi wajib diisi dan maksimal 100 karakter.');
-input.focus();
+const role = roleSelect.value;
+const division = divisionSelect.value;
+if (!role || !division) {
+alert('Pilih Role dan Divisi terlebih dahulu.');
+if (!role) roleSelect.focus();
+else divisionSelect.focus();
 return;
 }
 if (!window.SPAS1_SUPABASE_SESSION || window.SPAS1_AUTH_ROLE !== 'admin') {
@@ -4588,8 +4832,9 @@ return;
 saveButton.disabled = true;
 cancelButton.disabled = true;
 saveButton.textContent = 'Menyimpan...';
-callSupabaseAction('updateVolunteerDivision', {
+callSupabaseAction('updateVolunteerAssignment', {
 id: String(volunteer.IDKaryawan),
+role: role,
 division: division
 }, function(result) {
 if (!result || result.status !== 'success') {
@@ -4599,11 +4844,15 @@ saveButton.textContent = 'Simpan';
 alert('Gagal mengubah divisi: ' + (result && result.message ? result.message : 'Respons server tidak valid.'));
 return;
 }
+volunteer.Role = role;
 volunteer.Divisi = division;
+roleCell.dataset.exportValue = role;
 divisionCell.dataset.exportValue = division;
+roleLabel.textContent = role;
 divisionLabel.textContent = division;
+roleCell.replaceChildren(roleLabel);
 divisionCell.replaceChildren(divisionLabel, editButton);
-showToast('Divisi relawan berhasil diperbarui.');
+showToast('Role dan Divisi relawan berhasil diperbarui.');
 }, function(error) {
 saveButton.disabled = false;
 cancelButton.disabled = false;
@@ -4611,16 +4860,215 @@ saveButton.textContent = 'Simpan';
 alert('Gagal mengubah divisi: ' + error.message);
 });
 });
-input.addEventListener('keydown', function(event) {
+ [roleSelect, divisionSelect].forEach(function(select) {
+select.addEventListener('keydown', function(event) {
 if (event.key === 'Enter') saveButton.click();
 if (event.key === 'Escape') cancelButton.click();
 });
 });
+});
+roleCell.appendChild(roleLabel);
 divisionCell.append(divisionLabel, editButton);
 const biometricCell = document.createElement('td');
 biometricCell.className = 'p-3';
 biometricCell.textContent = '✓ Terdaftar';
-row.append(idCell, nameCell, divisionCell, biometricCell);
+const accountStatusCell = document.createElement('td');
+accountStatusCell.className = 'p-3';
+const accountStatus = volunteer.StatusAkun || 'Aktif';
+accountStatusCell.dataset.exportValue = accountStatus;
+accountStatusCell.textContent = accountStatus;
+accountStatusCell.classList.toggle('text-rose-700', accountStatus === 'Nonaktif');
+const actionsCell = document.createElement('td');
+actionsCell.className = 'p-3 print:hidden';
+actionsCell.dataset.exportValue = '';
+const statusButton = document.createElement('button');
+statusButton.type = 'button';
+statusButton.className = accountStatus === 'Aktif'
+? 'rounded-md bg-rose-100 px-2 py-1 text-[10px] font-bold text-rose-700 hover:bg-rose-200'
+: 'rounded-md bg-emerald-100 px-2 py-1 text-[10px] font-bold text-emerald-700 hover:bg-emerald-200';
+statusButton.textContent = accountStatus === 'Aktif' ? 'Nonaktifkan' : 'Aktifkan';
+statusButton.disabled = !volunteer.IDKaryawan;
+statusButton.addEventListener('click', function() {
+const nextStatus = volunteer.StatusAkun === 'Nonaktif' ? 'Aktif' : 'Nonaktif';
+if (nextStatus === 'Nonaktif' && !confirm('Nonaktifkan akun relawan ini? Profil dan riwayat absensinya tetap disimpan.')) return;
+statusButton.disabled = true;
+statusButton.textContent = 'Menyimpan...';
+callSupabaseAction('updateVolunteerStatus', { id: String(volunteer.IDKaryawan), status: nextStatus }, function(result) {
+if (!result || result.status !== 'success') {
+statusButton.disabled = false;
+statusButton.textContent = nextStatus === 'Aktif' ? 'Aktifkan' : 'Nonaktifkan';
+alert('Gagal mengubah status relawan: ' + (result && result.message ? result.message : 'Respons server tidak valid.'));
+return;
+}
+volunteer.StatusAkun = nextStatus;
+accountStatusCell.dataset.exportValue = nextStatus;
+accountStatusCell.textContent = nextStatus;
+accountStatusCell.classList.toggle('text-rose-700', nextStatus === 'Nonaktif');
+statusButton.className = nextStatus === 'Aktif'
+? 'rounded-md bg-rose-100 px-2 py-1 text-[10px] font-bold text-rose-700 hover:bg-rose-200'
+: 'rounded-md bg-emerald-100 px-2 py-1 text-[10px] font-bold text-emerald-700 hover:bg-emerald-200';
+statusButton.textContent = nextStatus === 'Aktif' ? 'Nonaktifkan' : 'Aktifkan';
+statusButton.disabled = false;
+showToast(result.message || 'Status akun relawan diperbarui.');
+}, function(error) {
+statusButton.disabled = false;
+statusButton.textContent = nextStatus === 'Aktif' ? 'Aktifkan' : 'Nonaktifkan';
+alert('Gagal mengubah status relawan: ' + error.message);
+});
+});
+actionsCell.appendChild(statusButton);
+row.append(idCell, nameCell, roleCell, divisionCell, biometricCell, accountStatusCell, actionsCell);
+tbody.appendChild(row);
+});
+}
+function renderAdminAttendanceRows(tbody, records, drafts) {
+const draftById = new Map((drafts || []).map(function(draft) { return [String(draft.IDAbsensi), draft.Data || {}]; }));
+tbody.replaceChildren();
+records.forEach(function(record) {
+const row = document.createElement('tr');
+const idName = document.createElement('td');
+idName.className = 'p-3';
+idName.textContent = [record.IDKaryawan, record.Nama].filter(function(value) { return value != null && value !== ''; }).join(' | ') || '-';
+const date = document.createElement('td');
+date.className = 'p-3';
+date.textContent = record.Tanggal || '-';
+const draft = draftById.get(String(record.IDAbsensi)) || {};
+const timeCell = document.createElement('td');
+timeCell.className = 'p-3';
+const timeInput = document.createElement('input');
+timeInput.type = 'text';
+timeInput.maxLength = 40;
+timeInput.required = true;
+timeInput.value = draft.Jam || record.Masuk || '';
+timeInput.setAttribute('aria-label', 'Jam absensi');
+timeInput.className = 'w-24 rounded-md border border-gray-300 bg-white px-2 py-1 text-xs text-gray-900';
+timeCell.dataset.exportValue = timeInput.value;
+timeInput.addEventListener('input', function() { timeCell.dataset.exportValue = timeInput.value; });
+timeCell.appendChild(timeInput);
+const checkout = document.createElement('td');
+checkout.className = 'p-3';
+checkout.textContent = record.Pulang || '-';
+const statusCell = document.createElement('td');
+statusCell.className = 'p-3';
+const statusSelect = document.createElement('select');
+statusSelect.setAttribute('aria-label', 'Status absensi');
+statusSelect.className = 'rounded-md border border-gray-300 bg-white px-2 py-1 text-xs text-gray-900';
+['Masuk', 'Pulang'].forEach(function(value) {
+const option = document.createElement('option');
+option.value = value;
+option.textContent = value;
+option.selected = (draft['Tipe Absen'] || record.StatusMasuk || 'Masuk') === value;
+statusSelect.appendChild(option);
+});
+statusCell.dataset.exportValue = statusSelect.value;
+statusSelect.addEventListener('change', function() { statusCell.dataset.exportValue = statusSelect.value; });
+statusCell.appendChild(statusSelect);
+const locationCell = document.createElement('td');
+locationCell.className = 'p-3';
+const locationInput = document.createElement('input');
+locationInput.type = 'text';
+locationInput.maxLength = 200;
+locationInput.value = draft.Lokasi != null ? draft.Lokasi : (record.LokasiMasuk || '');
+locationInput.setAttribute('aria-label', 'Lokasi absensi');
+locationInput.className = 'w-36 rounded-md border border-gray-300 bg-white px-2 py-1 text-xs text-gray-900';
+locationCell.dataset.exportValue = locationInput.value;
+locationInput.addEventListener('input', function() { locationCell.dataset.exportValue = locationInput.value; });
+locationCell.appendChild(locationInput);
+const face = document.createElement('td');
+face.className = 'p-3';
+face.textContent = record.FaceTrack || 'Wajah tidak diverifikasi';
+const actions = document.createElement('td');
+actions.className = 'p-3 print:hidden';
+actions.dataset.exportValue = '';
+const actionGroup = document.createElement('div');
+actionGroup.className = 'flex flex-wrap gap-1';
+const save = document.createElement('button');
+save.type = 'button';
+save.className = 'rounded-md bg-emerald-600 px-2 py-1 text-[10px] font-bold text-white hover:bg-emerald-700 disabled:opacity-50';
+save.textContent = 'Simpan';
+const saveDraft = document.createElement('button');
+saveDraft.type = 'button';
+saveDraft.className = 'rounded-md bg-amber-500 px-2 py-1 text-[10px] font-bold text-white hover:bg-amber-600 disabled:opacity-50';
+saveDraft.textContent = 'Draft';
+const remove = document.createElement('button');
+remove.type = 'button';
+remove.className = 'rounded-md bg-rose-600 px-2 py-1 text-[10px] font-bold text-white hover:bg-rose-700 disabled:opacity-50';
+remove.textContent = 'Hapus';
+const hasStableId = Boolean(record.IDAbsensi);
+[save, saveDraft, remove].forEach(function(button) {
+button.disabled = !hasStableId;
+if (!hasStableId) button.title = 'Jalankan migrasi Supabase agar catatan memiliki ID absensi.';
+});
+save.addEventListener('click', function() {
+if (!timeInput.reportValidity()) return;
+save.disabled = true;
+save.textContent = 'Menyimpan...';
+callSupabaseAction('updateAttendanceRecord', {
+id: record.IDAbsensi,
+jam: timeInput.value.trim(),
+status: statusSelect.value,
+lokasi: locationInput.value.trim()
+}, function(result) {
+if (!result || result.status !== 'success') {
+save.disabled = false;
+save.textContent = 'Simpan';
+alert('Gagal menyimpan absensi: ' + (result && result.message ? result.message : 'Respons server tidak valid.'));
+return;
+}
+showToast(result.message || 'Absensi disimpan.');
+tarikDataSupabaseAdmin(null);
+}, function(error) {
+save.disabled = false;
+save.textContent = 'Simpan';
+alert('Gagal menyimpan absensi: ' + error.message);
+});
+});
+saveDraft.addEventListener('click', function() {
+if (!timeInput.reportValidity()) return;
+saveDraft.disabled = true;
+saveDraft.textContent = 'Menyimpan...';
+callSupabaseAction('saveAttendanceDraft', {
+id: record.IDAbsensi,
+jam: timeInput.value.trim(),
+status: statusSelect.value,
+lokasi: locationInput.value.trim()
+}, function(result) {
+if (!result || result.status !== 'success') {
+saveDraft.disabled = false;
+saveDraft.textContent = 'Draft';
+alert('Gagal menyimpan draft: ' + (result && result.message ? result.message : 'Respons server tidak valid.'));
+return;
+}
+showToast(result.message || 'Draft disimpan.');
+tarikDataSupabaseAdmin(null);
+}, function(error) {
+saveDraft.disabled = false;
+saveDraft.textContent = 'Draft';
+alert('Gagal menyimpan draft: ' + error.message);
+});
+});
+remove.addEventListener('click', function() {
+if (!confirm('Hapus catatan absensi ini secara permanen?')) return;
+remove.disabled = true;
+remove.textContent = 'Menghapus...';
+callSupabaseAction('deleteAttendanceRecord', { id: record.IDAbsensi }, function(result) {
+if (!result || result.status !== 'success') {
+remove.disabled = false;
+remove.textContent = 'Hapus';
+alert('Gagal menghapus absensi: ' + (result && result.message ? result.message : 'Respons server tidak valid.'));
+return;
+}
+showToast(result.message || 'Catatan absensi dihapus.');
+tarikDataSupabaseAdmin(null);
+}, function(error) {
+remove.disabled = false;
+remove.textContent = 'Hapus';
+alert('Gagal menghapus absensi: ' + error.message);
+});
+});
+actionGroup.append(save, saveDraft, remove);
+actions.appendChild(actionGroup);
+row.append(idName, date, timeCell, checkout, statusCell, locationCell, face, actions);
 tbody.appendChild(row);
 });
 }
@@ -4644,15 +5092,7 @@ const logAbsen = Array.isArray(data.logAbsen) ? data.logAbsen : [];
 const karyawan = Array.isArray(data.karyawan) ? data.karyawan : [];
 var tbody = document.getElementById('tbodyLogAbsen');
 if (tbody) {
-renderAdminTextRows(tbody, logAbsen, [
-l => [l.IDKaryawan, l.Nama].filter(value => value != null && value !== '').join(' | '),
-l => l.Tanggal,
-l => l.Masuk,
-l => l.Pulang,
-l => l.StatusMasuk,
-l => l.LokasiMasuk,
- l => l.FaceTrack || 'Wajah tidak diverifikasi'
-]);
+renderAdminAttendanceRows(tbody, logAbsen, data.attendanceDrafts);
 }
 document.getElementById('statHadir').textContent = logAbsen.length;
 var tbody2 = document.getElementById('tbodyDataKaryawan');
@@ -5243,6 +5683,8 @@ nama: document.getElementById('registrationFullName').value.trim(),
 idRelawan: document.getElementById('registrationVolunteerId').value.trim(),
 email: document.getElementById('registrationEmail').value.trim(),
 noHp: document.getElementById('registrationPhone').value.trim(),
+role: document.getElementById('registrationRole').value,
+division: document.getElementById('registrationDivision').value,
 pin: pin,
 pinConfirm: pinConfirm,
 turnstileToken: turnstileToken

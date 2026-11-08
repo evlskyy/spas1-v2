@@ -19,6 +19,7 @@ The application frontend is a static site served by Cloudflare Pages. Supabase p
 - The volunteer-registration Edge Function requires the `TURNSTILE_SECRET_KEY` secret in Supabase. Never put this value in frontend code or commit it to Git.
 - Allowed browser origins for the function are configured by `APP_ALLOWED_ORIGINS`; the default includes `https://spas1.my.id`. HTTP(S) localhost origins are also allowed for local development; authenticated actions still require a valid session.
 - Database schema and row-level security setup are documented in `supabase_migration.sql`. Review carefully and back up data before applying it to another project.
+- Volunteer-role registration fields, attendance record IDs/drafts, and administrator edit/delete controls require the matching SQL migration and the updated `volunteer-registration` Edge Function to be deployed before the frontend update is used. Volunteer profiles are deactivated rather than deleted so attendance history is retained.
 
 ### Temporary maintenance mode
 
