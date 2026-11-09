@@ -58,7 +58,7 @@ const maintenancePage = `<!doctype html>
   <main>
     <span class="status">SPAS1 · 503</span>
     <h1>Situs sedang dalam perbaikan</h1>
-    <p>Maaf, domain spas1.my.id sementara tidak tersedia. Silakan coba kembali nanti.</p>
+    <p>Maaf, spas1.my.id sementara tidak bisa di akses. Silakan coba kembali nanti.</p>
     <span class="unavailable" aria-disabled="true">Aplikasi sementara tidak tersedia</span>
   </main>
 </body>
