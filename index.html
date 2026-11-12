@@ -607,15 +607,16 @@ body.app-light-mode #btnProjectInfo.home-project-info-button:active {
 .home-about-button-logo { width: 24px; height: 24px; flex: 0 0 24px; border-radius: 50%; object-fit: cover; }
 .home-about-button-mark { border-radius: 4px; object-fit: contain; }
 .home-about-button-emoji { display: inline-flex; width: 22px; height: 22px; flex: 0 0 22px; align-items: center; justify-content: center; font-size: 18px; line-height: 1; }
+@font-face { font-family: "Pixelify Sans"; src: url("assets/fonts/PixelifySans[wght].ttf") format("truetype"); font-style: normal; font-weight: 400 700; font-display: swap; }
 .sponsor-page { width: min(100%, 1100px); min-height: 520px; padding: 28px; border: 0; border-radius: 24px; background: transparent; box-shadow: none; }
 .sponsor-404 { min-height: 430px; display: grid; place-items: center; text-align: center; }
-.sponsor-404-panel { position: relative; width: min(620px, 92%); padding: 48px 24px; border: 1px solid rgba(34, 211, 238, 0.48); border-radius: 4px; background: rgba(15, 23, 42, 0.62); box-shadow: 0 0 24px rgba(34, 211, 238, 0.16), inset 0 0 24px rgba(34, 211, 238, 0.05); }
+.sponsor-404-panel { position: relative; width: min(528px, 92%); padding: 40px 32px 38px; border: 1px solid rgba(34, 211, 238, 0.48); border-radius: 4px; background: rgba(15, 23, 42, 0.62); box-shadow: 0 0 28px rgba(34, 211, 238, 0.22), inset 0 0 24px rgba(34, 211, 238, 0.05); font-family: Arial, Helvetica, sans-serif; }
 .sponsor-404-close { position: absolute; top: -18px; right: -18px; width: 36px; height: 36px; border: 1px solid rgba(34, 211, 238, 0.7); border-radius: 50%; background: #020617; color: #22D3EE; display: grid; place-items: center; cursor: pointer; box-shadow: 0 0 14px rgba(34, 211, 238, 0.32); transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease; }
 .sponsor-404-close:hover, .sponsor-404-close:focus-visible { transform: rotate(90deg); background: #22D3EE; color: #020617; outline: none; }
-.sponsor-404-code { margin: 0; color: #22D3EE; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(54px, 9vw, 84px); letter-spacing: 0.14em; text-shadow: 0 0 12px rgba(34, 211, 238, 0.9), 0 0 28px rgba(34, 211, 238, 0.45); }
-.sponsor-404-status { margin: 16px 0 28px; color: #22D3EE; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(22px, 4vw, 34px); letter-spacing: 0.16em; text-shadow: 0 0 12px rgba(34, 211, 238, 0.8); }
-.sponsor-404-message { margin: 0; color: #22D3EE; font-size: clamp(16px, 2vw, 22px); line-height: 1.8; text-shadow: 0 0 8px rgba(34, 211, 238, 0.45); }
-.sponsor-404-robot { margin: 0 auto 26px; display: grid; place-items: center; width: 72px; height: 72px; border: 4px solid #22D3EE; color: #22D3EE; font-size: 42px; box-shadow: 0 0 18px rgba(34, 211, 238, 0.55); }
+.sponsor-404-image { display: block; width: 190px; height: 190px; margin: 0 auto 34px; object-fit: contain; image-rendering: pixelated; filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.8)); }
+.sponsor-404-code { margin: 0 0 30px; color: #22D3EE; font-family: "Pixelify Sans", sans-serif; font-size: clamp(42px, 6vw, 72px); font-weight: 700; letter-spacing: 0.1em; line-height: 1; text-shadow: 0 0 12px rgba(34, 211, 238, 0.9), 0 0 28px rgba(34, 211, 238, 0.45); }
+.sponsor-404-status { margin: 0 0 28px; color: #22D3EE; font-family: "Pixelify Sans", sans-serif; font-size: clamp(22px, 3vw, 30px); font-weight: 700; letter-spacing: 0.12em; line-height: 1.2; text-shadow: 0 0 12px rgba(34, 211, 238, 0.8); }
+.sponsor-404-message { margin: 0; color: #22D3EE; font-size: clamp(15px, 2vw, 18px); line-height: 1.9; text-shadow: 0 0 8px rgba(34, 211, 238, 0.45); }
 .sponsor-nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 42px; }
 .sponsor-nav a { color: #22D3EE; font-size: 20px; font-weight: 800; text-decoration: none; }
 .sponsor-nav-links { display: flex; gap: 24px; font-size: 14px; color: #94A3B8; }
@@ -754,6 +755,7 @@ body.app-light-mode .home-footer-powered a[href*="github.com"]:not([href*="featu
 .home-news-launcher .home-news-launcher-arrow { animation: newsArrowNudge 1.2s ease-in-out infinite; }
 .home-news-panel:focus-visible { outline: 3px solid rgba(110, 231, 183, 0.65); outline-offset: 3px; }
 @keyframes newsArrowNudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
+@keyframes posterClickPoint { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
 .home-brand-logos { display: flex; align-items: center; gap: 12px; }
 .home-brand-logo-frame { width: 64px; height: 64px; border-radius: 16px; background: rgba(79, 70, 229, 0.2); border: 1px solid rgba(99, 102, 241, 0.3); display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2); flex: 0 0 64px; }
 .home-brand-logo-frame img { width: 100%; height: 100%; border-radius: 12px; object-fit: cover; }
@@ -783,6 +785,11 @@ body.app-light-mode .home-footer-powered a[href*="github.com"]:not([href*="featu
 .news-archive-card > p { margin: 6px 0 16px; color: #CBD5E1; font-size: 13px; }
 .news-archive-section + .news-archive-section { margin-top: 24px; }
 .news-archive-section h3 { margin: 0 0 10px; color: #A7F3D0; font-size: 16px; font-weight: 800; }
+.poster-click-hint { color: #CBD5E1; font-size: 0.75em; font-weight: 700; }
+.poster-down-pointer { display: inline-block; margin-left: 4px; animation: posterClickPoint 0.9s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .poster-down-pointer { animation: none; }
+}
 .admin-news-form { display: grid; gap: 10px; }
 .admin-news-form label { display: grid; gap: 5px; color: #374151; font-size: 11px; font-weight: 700; }
 .admin-news-form input, .admin-news-form select, .admin-news-form textarea { width: 100%; padding: 9px 10px; border: 1px solid #D1D5DB; border-radius: 9px; color: #111827; font: inherit; font-size: 12px; }
@@ -1112,6 +1119,36 @@ body.app-light-mode #view-admin #adminThemeToggle { border-color: #E5E7EB; backg
 body.app-light-mode #view-admin #adminThemeIcon.text-indigo-500 { color: #6366F1 !important; }
 body.app-light-mode #view-admin #adminThemeIcon.text-amber-500 { color: #D97706 !important; }
 body.app-light-mode #view-admin .site-settings-heading .site-settings-icon { color: #FFFFFF !important; }
+@media (min-width: 1024px) {
+  #view-admin > aside {
+    width: 272px;
+    min-width: 272px;
+    max-width: 272px;
+    flex: 0 0 272px;
+    overflow-x: hidden;
+    padding: 24px 18px;
+  }
+  #view-admin > aside .admin-sidebar-main > div:first-child > div:last-child { min-width: 0; }
+  #view-admin > aside [data-brand-field="sppg"] { line-height: 1.45; overflow-wrap: anywhere; }
+  #view-admin > main {
+    flex: 1 1 0%;
+    min-width: 0;
+    max-width: none;
+    padding: clamp(24px, 2.5vw, 40px);
+  }
+  #view-admin > main > .admin-tab { width: 100%; max-width: 1440px; margin-inline: auto; }
+  #adminNewsForm, #adminMediaForm { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 18px; }
+  #adminNewsForm > label:nth-of-type(n+3),
+  #adminNewsForm > div,
+  #adminMediaForm > h3,
+  #adminMediaForm > label:nth-of-type(n+3),
+  #adminMediaForm > div { grid-column: 1 / -1; }
+  #view-admin .admin-news-form label { font-size: 12px; }
+  #view-admin .admin-news-form input,
+  #view-admin .admin-news-form select,
+  #view-admin .admin-news-form textarea { padding: 11px 12px; font-size: 13px; }
+  #view-admin .admin-news-form textarea { min-height: 140px; }
+}
 @media (max-width: 640px) {
   .sidebar-settings-group { width: max-content; max-width: 82vw; flex: 0 0 auto; }
   .admin-settings-subnav { flex-direction: row; width: max-content; max-width: 82vw; overflow-x: auto; padding: 5px 0 7px; border-top: 1px solid #E5E7EB; border-left: 0; margin-left: 0; }
@@ -1279,8 +1316,12 @@ body.app-light-mode #view-admin .site-settings-heading .site-settings-icon { col
   .sponsor-page { width: 100%; min-height: 0; padding: 0 8px; }
   #view-sponsor { min-height: 100svh !important; padding: 12px !important; }
   .sponsor-404 { min-height: 0; }
-  .sponsor-404-panel { width: calc(100% - 24px); padding: 42px 12px 34px; box-sizing: border-box; }
+  .sponsor-404-panel { width: min(528px, calc(100% - 24px)); padding: 32px 16px 28px; box-sizing: border-box; }
   .sponsor-404-close { top: -16px; right: -16px; }
+  .sponsor-404-image { width: 160px; height: 160px; margin-bottom: 26px; }
+  .sponsor-404-code { margin-bottom: 24px; font-size: clamp(36px, 10vw, 50px); }
+  .sponsor-404-status { margin-bottom: 24px; font-size: clamp(21px, 6vw, 26px); }
+  .sponsor-404-message { font-size: clamp(15px, 4vw, 17px); }
   .about-admin-beneficiary-row { grid-template-columns: 1fr 1fr; }
   .about-admin-beneficiary-row > *:nth-child(4) { grid-column: 1 / -1; }
   .about-admin-table { display: block; min-width: 0; }
@@ -2269,12 +2310,12 @@ gtag('config', 'G-4933FEDV2TW');
 </a>
 <button id="btnSponsor" type="button" onclick="bukaSponsor()" class="home-sponsor-button"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i><span>Sponsor</span></button>
 </div>
- <button class="home-news-panel home-news-launcher" type="button" aria-label="Lihat Info Terbaru" onclick="bukaInfoTerbaru()">
+ <button class="home-news-panel home-news-launcher" type="button" aria-label="Radar Info Terbaru" onclick="bukaInfoTerbaru()">
  <span class="home-utility-icon"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></span>
- <span class="home-utility-content"><span class="home-utility-title">Lihat Info Terbaru</span><span class="home-utility-description">Baca pengumuman, pembaruan, dan informasi terbaru.</span></span>
+ <span class="home-utility-content"><span class="home-utility-title">Radar Info Terbaru</span><span class="home-utility-description">Baca pengumuman, pembaruan, dan informasi terbaru.</span></span>
  <i class="fa-solid fa-arrow-right home-news-launcher-arrow" aria-hidden="true"></i>
  </button>
- <div class="home-footer-copyright"><a href="mailto:hallosky@spas1.my.id" aria-label="Email CraftedSkyy">©2026-CraftedSkyy.With ❤️ for Sungai Pasir 1 Meral</a><span class="home-footer-powered"><span class="home-footer-powered-label">Powered :</span><a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer" aria-label="Visual Studio Code"><img src="assets/powered/visualstudiocode.svg" alt="Visual Studio Code"></a><a href="https://supabase.com/" target="_blank" rel="noopener noreferrer" aria-label="Supabase"><img src="assets/powered/supabase.svg" alt="Supabase"></a><a href="https://www.gatsbyjs.com/" target="_blank" rel="noopener noreferrer" aria-label="Gatsby"><img src="assets/powered/gatsby.svg" alt="Gatsby"></a><a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><img src="assets/powered/github.svg" alt="GitHub"></a><a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" aria-label="GitHub Copilot"><img src="assets/powered/copilot.svg" alt="GitHub Copilot"></a><a href="https://pages.cloudflare.com/" target="_blank" rel="noopener noreferrer" aria-label="Cloudflare Pages"><img src="assets/powered/cloudflare.svg" alt="Cloudflare Pages"></a></span></div>
+ <div class="home-footer-copyright"><a href="mailto:hallosky@spas1.my.id" aria-label="Email CraftedSkyy">©2026-CraftedSkyy.With ❤️ for Sungai Pasir 1 Meral</a><span class="home-footer-powered"><span class="home-footer-powered-label">Powered :</span><a href="https://code.visualstudio.com/" target="_blank" rel="noopener noreferrer" aria-label="Visual Studio Code"><img src="assets/powered/visualstudiocode.svg" alt="Visual Studio Code"></a><a href="https://supabase.com/" target="_blank" rel="noopener noreferrer" aria-label="Supabase"><img src="assets/powered/supabase.svg" alt="Supabase"></a><a href="https://www.gatsbyjs.com/" target="_blank" rel="noopener noreferrer" aria-label="Gatsby"><img src="assets/powered/gatsby.svg" alt="Gatsby"></a><a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><img src="assets/powered/github.svg" alt="GitHub"></a><a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" aria-label="GitHub Copilot"><img src="assets/powered/copilot.svg" alt="GitHub Copilot"></a><a href="https://pages.cloudflare.com/" target="_blank" rel="noopener noreferrer" aria-label="Cloudflare Pages"><img src="assets/cloudflare.svg" alt="Cloudflare Pages"></a></span></div>
  </div>
  </div>
   </div>
@@ -2283,10 +2324,9 @@ gtag('config', 'G-4933FEDV2TW');
   <main class="news-archive-page space-y-4">
   <div class="w-full mb-3 flex justify-start"><button type="button" onclick="kembaliKeHome()" class="btn-kembali-animated px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-xl text-xs font-semibold flex items-center gap-2"><i class="fa-solid fa-arrow-left"></i> Kembali ke Menu Utama</button></div>
   <section class="news-archive-card">
-  <h2><i class="fa-solid fa-bullhorn text-emerald-300" aria-hidden="true"></i> Info Terbaru <span data-brand-field="sppg">SPPG Sungai Pasir 1 Meral</span></h2>
-  <p>Informasi dapur, lowongan kerja, dan pengumuman terbaru.</p>
-  <div class="news-archive-section"><div id="newsArchiveList" class="home-news-list" aria-live="polite"><div class="home-news-empty">Memuat informasi terbaru...</div></div></div>
-  <div class="news-archive-section"><h3>Poster &amp; Info Visual</h3><div id="mediaArchiveList" class="home-news-list" aria-live="polite"><div class="home-news-empty">Memuat poster...</div></div></div>
+  <h2><i class="fa-solid fa-bullhorn text-emerald-300" aria-hidden="true"></i> Radar <span data-brand-field="sppg">SPPG Sungai Pasir 1 Meral</span></h2>
+  <p>Lihat poster yang sedang terbit.</p>
+  <div class="news-archive-section"><h3>Poster &amp; Info Visual <span class="poster-click-hint">( klik untuk detail )</span><span class="poster-down-pointer" aria-hidden="true">👇</span></h3><div id="mediaArchiveList" class="home-news-list" aria-live="polite"><div class="home-news-empty">Memuat poster...</div></div></div>
   </section>
   </main>
   </div>
@@ -2432,10 +2472,10 @@ gtag('config', 'G-4933FEDV2TW');
 <div class="sponsor-404">
 <div class="sponsor-404-panel">
 <button type="button" class="sponsor-404-close" onclick="kembaliKeHome()" aria-label="Tutup halaman Sponsor" title="Tutup"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-<div class="sponsor-404-robot" aria-hidden="true"><i class="fa-solid fa-xmarks-lines"></i></div>
-<h1 class="sponsor-404-code">ERROR404</h1>
-<p class="sponsor-404-status">NOTFOUND</p>
-<p class="sponsor-404-message">Halaman Ini Sedang Dalam Pencarian...😵‍💫<br>Gotchaaa 🤪🤪</p>
+<img class="sponsor-404-image" src="assets/sponsor-error-404-robot-cyan.png" alt="Ilustrasi robot pixel dari gambar Sponsor">
+<h1 class="sponsor-404-code">ERROR 404</h1>
+<p class="sponsor-404-status">NOT FOUND</p>
+<p class="sponsor-404-message">Halaman Ini Sedang Dalam Pencarian.! 😜</p>
 </div>
 </div>
 </main>
@@ -2857,10 +2897,24 @@ gtag('config', 'G-4933FEDV2TW');
 <select id="menuModalDay" class="input-field" onchange="onMenuModalDayChange()">
 <option value="Senin">Senin</option><option value="Selasa">Selasa</option><option value="Rabu">Rabu</option><option value="Kamis">Kamis</option><option value="Jumat">Jumat</option>
 </select>
+<div style="margin-top:14px;padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--card-inner);">
+<label for="recipeBankMenuCategorySelect" style="display:block;margin-bottom:5px;font-size:12px;font-weight:700;">Kategori Bank Menu</label>
+<select id="recipeBankMenuCategorySelect" class="input-field" onchange="onRecipeBankMenuCategoryChange()"><option value="">Memuat kategori...</option></select>
+<label for="recipeBankMenuSelect" style="display:block;margin:10px 0 5px;font-size:12px;font-weight:700;">Pilih Kode / Menu</label>
+<select id="recipeBankMenuSelect" class="input-field" onchange="renderRecipeBankMenuPreview()"><option value="">Memuat Bank Menu...</option></select>
+<div id="recipeBankMenuPreview" role="status" style="margin-top:8px;color:var(--text-muted);font-size:11px;">Pilih menu master untuk melihat komposisi dan kategorinya.</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;">
+<button type="button" class="btn btn-outline" onclick="replaceRecipeMenuFromBankMenu()">🔄 Ganti Menu Hari Ini</button>
+<button type="button" class="btn btn-emerald" onclick="addRecipeMenuFromBankMenu()">➕ Tambah Menu</button>
+</div>
+<div id="recipeBankMenuSelectedList" aria-live="polite" style="display:grid;gap:6px;margin-top:10px;"></div>
+<p style="margin:8px 0 0;color:var(--text-muted);font-size:10px;">Ganti akan menggantikan daftar menu lama. Tambah akan mempertahankan menu yang sudah ada. Menu terpilih disimpan sebagai salinan; perubahan di Bank Menu tidak mengubahnya.</p>
+</div>
 <label for="menuModalText" style="display:block;margin:12px 0 5px;font-size:12px;font-weight:700;">Rincian Menu</label>
 <textarea id="menuModalText" class="input-field" rows="5" style="resize:vertical;" placeholder="Tuliskan menu, satu item per baris"></textarea>
 <label for="menuModalRecipeDetail" style="display:block;margin:12px 0 5px;font-size:12px;font-weight:700;">Standar Resep & Panduan Pengolahan</label>
 <textarea id="menuModalRecipeDetail" class="input-field" rows="6" style="resize:vertical;" placeholder="Tuliskan bahan dan panduan pengolahan"></textarea>
+<div style="margin-top:5px;color:var(--text-muted);font-size:10px;">Draf panduan dasar akan dibuat saat menu Bank Menu ditambahkan atau diganti. Draf dapat diedit; detail bumbu, takaran batch, dan metode khusus tetap perlu disesuaikan dengan resep serta SOP dapur.</div>
 <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px;"><button type="button" class="btn btn-outline" onclick="closeMenuModal()">Batal</button><button type="button" class="btn btn-emerald" onclick="saveMenuModal()">Simpan Resep</button></div>
 </div>
 </div>
@@ -2997,7 +3051,6 @@ gtag('config', 'G-4933FEDV2TW');
 <label for="announcementCategory">Kategori
 <select id="announcementCategory" required>
 <option value="Informasi Dapur">Informasi Dapur</option>
-<option value="Lowongan Kerja">Lowongan Kerja</option>
 <option value="Pengumuman">Pengumuman</option>
 </select>
 </label>
@@ -3020,7 +3073,7 @@ gtag('config', 'G-4933FEDV2TW');
 <label for="mediaCategory">Jenis poster
 <select id="mediaCategory" required>
 <option value="Lowongan Kerja">Poster Lowongan Kerja</option>
-<option value="Poster AKG">Poster AKG</option>
+<option value="Jam Batas Konsumsi">Jam Batas Konsumsi</option>
 <option value="Menu MBG Hari Ini">Menu MBG Hari Ini</option>
 </select>
 </label>
@@ -3028,10 +3081,10 @@ gtag('config', 'G-4933FEDV2TW');
 <input id="mediaDate" type="date" required>
 </label>
 <label for="mediaTitle">Judul
-<input id="mediaTitle" type="text" maxlength="120" placeholder="Contoh: Menu MBG hari ini" required>
+<input id="mediaTitle" type="text" maxlength="120" placeholder="Contoh: Sekolah atau Posyandu" required>
 </label>
-<label for="mediaDescription">Keterangan (opsional)
-<textarea id="mediaDescription" maxlength="500" placeholder="Tambahkan keterangan singkat..."></textarea>
+<label for="mediaDescription">Keterangan (opsional, maksimal 1.500 karakter)
+<textarea id="mediaDescription" maxlength="1500" placeholder="Tambahkan keterangan singkat..." oninput="this.style.height='auto'; this.style.height=this.scrollHeight+'px'"></textarea>
 </label>
 <label for="mediaImage">File poster/foto (maksimal 10 MB)
 <input id="mediaImage" type="file" accept="image/png,image/jpeg,image/webp" required>
@@ -3480,8 +3533,17 @@ window.SPAS1_AUTH_TOKEN = data.access_token;
 return data;
 }
 
+function imageDataUrlToBlob(dataUrl) {
+const match = String(dataUrl || '').match(/^data:(image\/(?:png|jpeg|gif|webp));base64,([A-Za-z0-9+/]+={0,2})$/i);
+if (!match) throw new Error('Data gambar tidak valid atau formatnya tidak didukung.');
+const binary = atob(match[2]);
+const bytes = new Uint8Array(binary.length);
+for (let index = 0; index < binary.length; index++) bytes[index] = binary.charCodeAt(index);
+return new Blob([bytes], { type: match[1].toLowerCase() });
+}
+
 async function uploadSupabaseMedia(payload) {
-const blob = await (await fetch(payload.dataUrl)).blob();
+const blob = imageDataUrlToBlob(payload.dataUrl);
 const extension = (blob.type.split('/')[1] || 'jpg').replace(/[^a-z0-9]/gi, '').toLowerCase();
 const path = 'spas1/' + Date.now() + '-' + Math.random().toString(36).slice(2) + '.' + extension;
 const response = await supabaseStorageRequest('/storage/v1/object/spas1-media/' + path.split('/').map(encodeURIComponent).join('/'), {
@@ -5878,7 +5940,7 @@ alert('Gagal login: ' + err.message);
 window.handleLogout = function() { if (confirm('Kunci kembali portal dapur?')) { const token = window.SPAS1_AUTH_TOKEN; if (token) callSupabaseAction('logout', { authToken: token }); window.SPAS1_AUTH_TOKEN = ''; window.SPAS1_AUTH_ROLE = ''; document.getElementById('loginPortal').style.display = 'flex'; document.getElementById('dashboardActionButtons').style.display = 'none'; document.getElementById('loginUsername').value = ''; document.getElementById('loginPassword').value = ''; setModuleLoginBackground(true); } };
 function checkPortalAuth() { const isAuthed = ['admin', 'persiapan'].indexOf(window.SPAS1_AUTH_ROLE) !== -1 && Boolean(window.SPAS1_AUTH_TOKEN); const moduleActive = !document.getElementById('modul-joblist').classList.contains('hidden'); document.getElementById('loginPortal').style.display = isAuthed ? 'none' : 'flex'; document.getElementById('dashboardActionButtons').style.display = isAuthed ? 'flex' : 'none'; setModuleLoginBackground(!isAuthed && moduleActive); }
 document.addEventListener('visibilitychange', function() { if (document.visibilityState === 'visible') checkPortalAuth(); });
-let currentMainView = 'dashboard'; let pendingTargetView = null; let selectedDay = 'Senin'; let selectedRecipeDay = 'Senin'; let selectedBudgetDay = 'Senin'; let globalTargetPorsi = 2503;
+let currentMainView = 'dashboard'; let pendingTargetView = null; let selectedDay = 'Senin'; let selectedRecipeDay = 'Senin'; let selectedBudgetDay = 'Senin'; let globalTargetPorsi = 2503; let recipeBankMenuLoadPending = false; let menuModalBankSelections = [];
 let porsiBesar = 2000;
 let porsiKecil = 503; let appLogoBase64 = ''; let haccpChecks = {"cold":false,"organo":false,"sanitasi":false,"label":false}; let akgPosters = [];
 let defaultMenus = { "Senin": { "jamKirim": "07:45 WIB | 08:40 WIB | 10:00 WIB", "menuList": "26 OKTOBER 2026 :\n🍚 Nasi\n🍗 Oseng Ayam Taichan\n🫘 Tahu Goreng\n🥦 Acar Timun & Wortel\n🍊 Jeruk", "recipeDetail": "🍗 STANDAR RESEP & PANDUAN PENGOLAHAN :\n1. NASI :\n- Beras dicuci bersih, steamer kapasitas 24 tray. Split Shift Koki : Ivan, Doni, Dendi, Ega" }, "Selasa": { "jamKirim": "07:45 WIB | 08:40 WIB | 10:00 WIB", "menuList": "SELASA, 27 OKTOBER 2026 :\n🍚 Nasi\n🍗 Ayam Goreng Lengkuas\n🫘 Tempe Bacem\n🥣 Sup Buncis Bakso\n🍌 Pisang", "recipeDetail": "🍗 STANDAR RESEP & PANDUAN PENGOLAHAN:\n1. AYAM GORENG LENGKUAS:\n- Ungkep ayam dengan bumbu halus dan parutan lengkuas kaya rempah hingga meresap.\n- Goreng dalam minyak panas hingga keemasan." }, "Rabu": { "jamKirim": "07:45 WIB | 08:40 WIB | 10:00 WIB", "menuList": "RABU, 28 OKTOBER 2026 :\n🍚 Nasi\n🐟 Ikan Fillet Asam Manis\n🥔 Perkedel Kentang\n🥦 Sayur Bayam Jagung Manis\n🍎 Apel", "recipeDetail": "🐟 STANDAR RESEP & PANDUAN PENGOLAHAN:\n1. IKAN FILLET ASAM MANIS:\n- Goreng fillet ikan tepung, siram dengan saus asam manis nanas dan paprika." }, "Kamis": { "jamKirim": "07:45 WIB | 08:40 WIB | 10:00 WIB", "menuList": "KAMIS, 29 OKTOBER 2026 :\n🍚 Nasi\n🥩 Semur Daging Sapi & Kentang\n🫘 Tahu Goreng Kunyit\n🥦 Tumis Kangkung & Taoge\n🍊 Jeruk", "recipeDetail": "🥩 STANDAR RESEP & PANDUAN PENGOLAHAN:\n1. SEMUR DAGING SAPI:\n- Rebus daging hingga empuk, masak dengan bumbu semur, kecap manis, dan rempah." }, "Jumat": { "jamKirim": "07:45 WIB | 08:40 WIB | 10:00 WIB", "menuList": "JUMAT, 30 OKTOBER 2026 :\n🍚 Nasi\n🍗 Ayam Suwir Bumbu Bali\n🫘 Tempe Goreng Tepung\n🥦 Sup Oyong Soun\n🍌 Pepaya", "recipeDetail": "🍳 STANDAR RESEP & PANDUAN PENGOLAHAN:\n1. AYAM SUWIR BUMBU BALI:\n- Rebus ayam, suwir halus, tumis dengan bumbu Bali merah harum." } };
@@ -6167,9 +6229,122 @@ window.closeTabPasswordModal = function() { document.getElementById('tabPassword
 window.verifyTabPassword = function() { const target = pendingTargetView; closeTabPasswordModal(); if (target) switchMainView(target); };
 window.openResetPasswordModal = function() { if (confirm('⚠️ Reset data lokal pada perangkat ini ke awal? Data di Supabase tidak dihapus.')) { try { localStorage.removeItem(STORAGE_KEY); } catch(e) { alert('Gagal menghapus data lokal: ' + e.message); return; } location.reload(); } };
 window.switchMainView = function(viewName) { currentMainView = viewName; ['viewDashboard', 'viewRecipes', 'viewBudget', 'viewAkg'].forEach(id => { document.getElementById(id).style.display = 'none'; }); ['navBtnDashboard', 'navBtnRecipes', 'navBtnBudget', 'navBtnAkg'].forEach(id => { document.getElementById(id).classList.remove('active'); }); if (viewName === 'dashboard') { document.getElementById('viewDashboard').style.display = 'flex'; document.getElementById('navBtnDashboard').classList.add('active'); document.getElementById('dashboardActionButtons').style.display = 'flex'; renderDayTabs(); } else if (viewName === 'recipes') { document.getElementById('viewRecipes').style.display = 'flex'; document.getElementById('navBtnRecipes').classList.add('active'); document.getElementById('dashboardActionButtons').style.display = 'none'; renderRecipeView(); } else if (viewName === 'budget') { document.getElementById('viewBudget').style.display = 'flex'; document.getElementById('navBtnBudget').classList.add('active'); document.getElementById('dashboardActionButtons').style.display = 'none'; renderBudgetTabs(); renderBudgetTable(); } else if (viewName === 'akg') { document.getElementById('viewAkg').style.display = 'flex'; document.getElementById('navBtnAkg').classList.add('active'); document.getElementById('dashboardActionButtons').style.display = 'none'; renderAkgPosters(); } };
-function renderDayTabs() { const container = document.getElementById('dayTabsContainer'); container.innerHTML = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'].map(d => '<button class="day-tab ' + (selectedDay === d ? 'active' : '') + '" onclick="selectDay(\'' + d + '\')">📅 ' + d + '</button>').join(''); document.getElementById('targetPorsiText').textContent = globalTargetPorsi.toLocaleString('id-ID') + " Porsi"; const menuObj = defaultMenus[selectedDay]; if (menuObj) { document.getElementById('distributionScheduleText').textContent = menuObj.jamKirim; document.getElementById('dailyMenuList').textContent = menuObj.menuList; } renderTasks(); }
+function renderDayTabs() { const container = document.getElementById('dayTabsContainer'); container.innerHTML = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'].map(d => '<button class="day-tab ' + (selectedDay === d ? 'active' : '') + '" onclick="selectDay(\'' + d + '\')">📅 ' + d + '</button>').join(''); document.getElementById('targetPorsiText').textContent = globalTargetPorsi.toLocaleString('id-ID') + " Porsi"; const menuObj = defaultMenus[selectedDay]; if (menuObj) { document.getElementById('distributionScheduleText').textContent = menuObj.jamKirim; const bankMenuText = (Array.isArray(menuObj.bankMenuItems) ? menuObj.bankMenuItems : []).map(formatBankMenuSnapshotText).join('\n\n'); document.getElementById('dailyMenuList').textContent = [bankMenuText, menuObj.menuList || ''].filter(Boolean).join('\n\n'); } renderTasks(); }
 window.selectDay = function(d) { selectedDay = d; renderDayTabs(); };
-function renderRecipeView() { const container = document.getElementById('recipeDayTabsContainer'); container.innerHTML = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'].map(d => '<button class="day-tab ' + (selectedRecipeDay === d ? 'active' : '') + '" onclick="selectRecipeDay(\'' + d + '\')">📅 ' + d + '</button>').join(''); document.getElementById('recipeSubtitleInfo').textContent = 'Standar Resep, Bahan Baku, & Instruksi Target: ' + globalTargetPorsi.toLocaleString('id-ID') + ' Porsi'; const menuObj = defaultMenus[selectedRecipeDay]; const area = document.getElementById('recipeContentArea'); if (menuObj) { area.innerHTML = '<div class="recipe-card"><div class="recipe-title">🍽️ Rincian Menu Utama Sekolah & Posyandu (' + selectedRecipeDay + ') - Target: ' + globalTargetPorsi.toLocaleString('id-ID') + ' Porsi</div><div class="recipe-text">' + escapeHtml(menuObj.menuList) + '</div><div class="recipe-section-title" style="margin-top: 14px;">📖 Standar Resep & Panduan Pengolahan</div><div class="recipe-text">' + escapeHtml(menuObj.recipeDetail) + '</div></div>'; } }
+function bankMenuCode(menu) {
+const id = Number(menu && menu.id);
+return Number.isSafeInteger(id) && id > 0 ? '#' + String(id).padStart(3, '0') : '#---';
+}
+function formatBankMenuSnapshotText(menu) {
+const components = [
+['Karbohidrat', menu.karbohidrat],
+['Protein Hewani', menu.proteinHewani],
+['Protein Nabati', menu.proteinNabati],
+['Sayuran', menu.sayuran],
+['Buah', menu.buah]
+].filter(function(entry) { return entry[1] && entry[1].nama; }).map(function(entry) {
+return entry[0] + ': ' + entry[1].nama + ' (' + Number(entry[1].gram || 0).toLocaleString('id-ID') + ' g)';
+});
+const category = [menu.kategori, menu.daerah].filter(Boolean).join(' · ');
+return bankMenuCode(menu) + ' · ' + (menu.nama || 'Menu tanpa nama') + (category ? ' · ' + category : '') +
+(components.length ? '\n' + components.join('\n') : '');
+}
+function snapshotBankMenuItem(menu) {
+const snapshot = {
+id: Number(menu && menu.id) || 0,
+nama: String(menu && menu.nama || ''),
+hari: String(menu && menu.hari || ''),
+kategori: String(menu && menu.kategori || ''),
+daerah: String(menu && menu.daerah || '')
+};
+['karbohidrat', 'proteinHewani', 'proteinNabati', 'sayuran', 'buah'].forEach(function(key) {
+const part = menu && menu[key] || {};
+snapshot[key] = {
+nama: String(part.nama || ''),
+gram: Number.isFinite(Number(part.gram)) ? Number(part.gram) : 0
+};
+});
+return snapshot;
+}
+function generateRecipeGuideFromBankMenus(menus) {
+if (!menus.length) return '';
+const components = [
+['Karbohidrat', 'karbohidrat'],
+['Protein Hewani', 'proteinHewani'],
+['Protein Nabati', 'proteinNabati'],
+['Sayuran', 'sayuran'],
+['Buah', 'buah']
+];
+const hasComponent = function(key) {
+return menus.some(function(menu) { return menu[key] && menu[key].nama; });
+};
+const lines = [
+'Target produksi: ' + globalTargetPorsi.toLocaleString('id-ID') + ' porsi',
+'Komposisi acuan per porsi:'
+];
+menus.forEach(function(menu, index) {
+lines.push((index + 1) + '. ' + bankMenuCode(menu) + ' · ' + (menu.nama || 'Menu tanpa nama') +
+(menu.kategori ? ' · ' + menu.kategori : ''));
+const menuComponents = components.filter(function(entry) {
+return menu[entry[1]] && menu[entry[1]].nama;
+});
+if (!menuComponents.length) {
+lines.push('   Komposisi belum tersedia di Bank Menu.');
+return;
+}
+menuComponents.forEach(function(entry) {
+const item = menu[entry[1]];
+lines.push('   - ' + entry[0] + ': ' + item.nama + ' (' + Number(item.gram || 0).toLocaleString('id-ID') + ' g/porsi)');
+});
+});
+lines.push('', 'Panduan pengolahan dasar:');
+const processingSteps = ['Siapkan dan timbang bahan sesuai gramasi acuan per porsi; sesuaikan kebutuhan batch dengan target produksi.'];
+if (hasComponent('karbohidrat')) processingSteps.push('Karbohidrat: bersihkan bila diperlukan, lalu olah hingga matang sesuai jenis bahan dan SOP dapur.');
+if (hasComponent('proteinHewani')) processingSteps.push('Protein hewani: olah sesuai resep menu hingga matang sempurna; pisahkan alat dan area kerja dari bahan siap santap.');
+if (hasComponent('proteinNabati')) processingSteps.push('Protein nabati: olah hingga matang dan bumbu meresap sesuai resep yang ditetapkan.');
+if (hasComponent('sayuran')) processingSteps.push('Sayuran: cuci dengan air layak, potong sesuai standar, lalu olah secukupnya sesuai jenis menu.');
+if (hasComponent('buah')) processingSteps.push('Buah: cuci, tiriskan, lalu potong atau porsikan dengan alat bersih menjelang penyajian.');
+processingSteps.push('Periksa kebersihan, kematangan, rasa, dan kesesuaian porsi sebelum distribusi.');
+processingSteps.forEach(function(step, index) { lines.push((index + 1) + '. ' + step); });
+lines.push('Catatan: draf ini dibuat dari komposisi Bank Menu; bumbu, waktu, metode khusus, dan takaran produksi perlu mengikuti resep serta SOP dapur.');
+return lines.join('\n');
+}
+function updateRecipeGuideFromBankMenus() {
+const field = document.getElementById('menuModalRecipeDetail');
+if (!field) return;
+const startMarker = '--- DRAF OTOMATIS BANK MENU ---';
+const endMarker = '--- AKHIR DRAF OTOMATIS BANK MENU ---';
+const blockPattern = /(?:^|\r?\n)--- DRAF OTOMATIS BANK MENU ---[\s\S]*?--- AKHIR DRAF OTOMATIS BANK MENU ---/g;
+const manualText = field.value.replace(blockPattern, '').trim();
+const generatedGuide = generateRecipeGuideFromBankMenus(menuModalBankSelections);
+const generatedBlock = generatedGuide ? startMarker + '\n' + generatedGuide + '\n' + endMarker : '';
+field.value = [manualText, generatedBlock].filter(Boolean).join('\n\n');
+}
+function renderRecipeView() {
+const container = document.getElementById('recipeDayTabsContainer');
+container.innerHTML = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'].map(d => '<button class="day-tab ' + (selectedRecipeDay === d ? 'active' : '') + '" onclick="selectRecipeDay(\'' + d + '\')">📅 ' + d + '</button>').join('');
+document.getElementById('recipeSubtitleInfo').textContent = 'Standar Resep, Bahan Baku, & Instruksi Target: ' + globalTargetPorsi.toLocaleString('id-ID') + ' Porsi';
+const menuObj = defaultMenus[selectedRecipeDay];
+const area = document.getElementById('recipeContentArea');
+if (!menuObj) return;
+const selectedMenusHtml = (Array.isArray(menuObj.bankMenuItems) ? menuObj.bankMenuItems : []).map(function(menu) {
+const components = [
+['Karbohidrat', menu.karbohidrat],
+['Protein Hewani', menu.proteinHewani],
+['Protein Nabati', menu.proteinNabati],
+['Sayuran', menu.sayuran],
+['Buah', menu.buah]
+].filter(function(entry) { return entry[1] && entry[1].nama; }).map(function(entry) {
+return escapeHtml(entry[0]) + ': ' + escapeHtml(entry[1].nama) + ' (' + Number(entry[1].gram || 0).toLocaleString('id-ID') + ' g)';
+});
+return '<div class="recipe-text" style="margin-top:8px;"><strong>' + escapeHtml(bankMenuCode(menu) + ' · ' + (menu.nama || 'Menu tanpa nama')) + '</strong><br><span style="color:var(--emerald);">' + escapeHtml(menu.kategori || 'Kategori tidak tersedia') + (menu.daerah ? ' · ' + escapeHtml(menu.daerah) : '') + '</span>' +
+(components.length ? '<br>' + components.join(' · ') : '') + '</div>';
+}).join('');
+const manualMenuHtml = menuObj.menuList ? '<div class="recipe-text" style="margin-top:8px;">' + escapeHtml(menuObj.menuList) + '</div>' : '';
+const menuContent = selectedMenusHtml + manualMenuHtml || '<div class="recipe-text">Belum ada rincian menu.</div>';
+area.innerHTML = '<div class="recipe-card"><div class="recipe-title">🍽️ Rincian Menu Utama Sekolah & Posyandu (' + escapeHtml(selectedRecipeDay) + ') - Target: ' + globalTargetPorsi.toLocaleString('id-ID') + ' Porsi</div>' + menuContent +
+'<div class="recipe-section-title" style="margin-top: 14px;">📖 Standar Resep & Panduan Pengolahan</div><div class="recipe-text">' + escapeHtml(menuObj.recipeDetail || '') + '</div></div>';
+}
 window.selectRecipeDay = function(d) { selectedRecipeDay = d; renderRecipeView(); };
 function renderBudgetTabs() { const container = document.getElementById('budgetDayTabsContainer'); container.innerHTML = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'].map(d => '<button class="day-tab ' + (selectedBudgetDay === d ? 'active' : '') + '" onclick="selectBudgetDay(\'' + d + '\')">📅 ' + d + '</button>').join(''); document.getElementById('budgetSubtitleInfo').textContent = 'Kalkulasi Pagu Anggaran Bahan Baku & Bumbu (Batas Maks. Rp 23.000.000) untuk Target Porsi: ' + globalTargetPorsi.toLocaleString('id-ID') + ' Porsi'; document.getElementById('budgetPerPortionTitleLabel').textContent = 'ESTIMASI BIAYA / OMPRENG (' + globalTargetPorsi.toLocaleString('id-ID') + ' PORSI)'; document.getElementById('tableHeaderTakaranPorsiBesar').textContent = 'Gramasi / Porsi Besar'; document.getElementById('tableHeaderTakaranPorsiKecil').textContent = 'Gramasi / Porsi Kecil'; document.getElementById('tableHeaderTotalKebutuhanBesar').innerHTML = 'Kebutuhan Besar (<span id="porsiBesarLabel">'+porsiBesar.toLocaleString('id-ID')+'</span> Porsi) <button class=\'btn-icon\' style=\'margin-left:4px; font-size:10px;\' onclick=\'editPorsiBesar()\'>✏️</button>'; document.getElementById('tableHeaderTotalKebutuhanKecil').innerHTML = 'Kebutuhan Kecil (<span id="porsiKecilLabel">'+porsiKecil.toLocaleString('id-ID')+'</span> Porsi) <button class=\'btn-icon\' style=\'margin-left:4px; font-size:10px;\' onclick=\'editPorsiKecil()\'>✏️</button>'; }
 window.selectBudgetDay = function(d) { selectedBudgetDay = d; renderBudgetTabs(); renderBudgetTable(); };
@@ -6573,10 +6748,199 @@ setAkgActionBusy(button, false, 'Simpan ke Supabase');
 alert('Gagal menyimpan target porsi: ' + error.message);
 });
 };
+function renderRecipeBankMenuCategories() {
+const categorySelect = document.getElementById('recipeBankMenuCategorySelect');
+if (!categorySelect) return '';
+const selectedCategory = categorySelect.value;
+const categories = Array.from(new Set(MN_MENU_DATA.map(function(menu) {
+return String(menu.kategori || '').trim();
+}).filter(Boolean))).sort(function(a, b) { return a.localeCompare(b, 'id'); });
+categorySelect.replaceChildren();
+const placeholder = document.createElement('option');
+placeholder.value = '';
+placeholder.textContent = MN_MENU_DATA.length ? 'Semua kategori' : recipeBankMenuLoadPending ? 'Memuat kategori...' : 'Kategori belum tersedia';
+categorySelect.appendChild(placeholder);
+categories.forEach(function(category) {
+const option = document.createElement('option');
+option.value = category;
+option.textContent = category;
+categorySelect.appendChild(option);
+});
+categorySelect.disabled = MN_MENU_DATA.length === 0;
+if (selectedCategory && categories.includes(selectedCategory)) categorySelect.value = selectedCategory;
+return categorySelect.value;
+}
+function renderRecipeBankMenuOptions() {
+const select = document.getElementById('recipeBankMenuSelect');
+if (!select) return;
+const selectedCategory = renderRecipeBankMenuCategories();
+const selectedValue = select.value;
+select.replaceChildren();
+const placeholder = document.createElement('option');
+placeholder.value = '';
+const menus = MN_MENU_DATA.slice().sort(function(a, b) { return Number(a.id) - Number(b.id); }).filter(function(menu) {
+return !selectedCategory || String(menu.kategori || '').trim() === selectedCategory;
+});
+placeholder.textContent = !MN_MENU_DATA.length
+? recipeBankMenuLoadPending ? 'Memuat Bank Menu...' : 'Bank Menu belum tersedia'
+: menus.length ? 'Pilih kode menu...' : 'Tidak ada menu pada kategori ini';
+select.appendChild(placeholder);
+menus.forEach(function(menu) {
+const id = Number(menu.id);
+if (!Number.isSafeInteger(id) || id < 1) return;
+const option = document.createElement('option');
+option.value = String(id);
+option.textContent = bankMenuCode(menu) + ' · ' + String(menu.nama || 'Menu tanpa nama');
+select.appendChild(option);
+});
+select.disabled = MN_MENU_DATA.length === 0 || menus.length === 0;
+if (selectedValue && Array.from(select.options).some(function(option) { return option.value === selectedValue; })) select.value = selectedValue;
+}
+window.onRecipeBankMenuCategoryChange = function() {
+document.getElementById('recipeBankMenuSelect').value = '';
+renderRecipeBankMenuOptions();
+window.renderRecipeBankMenuPreview();
+};
+function loadRecipeBankMenuOptions() {
+renderRecipeBankMenuOptions();
+if (MN_MENU_DATA.length || recipeBankMenuLoadPending || !window.SPAS1_SUPABASE_SESSION) return;
+recipeBankMenuLoadPending = true;
+renderRecipeBankMenuOptions();
+callSupabaseAction('fetchBankMenu', {}, function(res) {
+recipeBankMenuLoadPending = false;
+if (!res || res.status !== 'success' || !Array.isArray(res.data)) {
+renderRecipeBankMenuOptions();
+alert('Gagal memuat Bank Menu: ' + (res && res.message || 'Respons data tidak valid.'));
+return;
+}
+if (typeof window.fetchBankMenuFromCloud !== 'function') {
+renderRecipeBankMenuOptions();
+alert('Fungsi pemuatan Bank Menu tidak tersedia.');
+return;
+}
+window.fetchBankMenuFromCloud(null, res.data);
+renderRecipeBankMenuOptions();
+renderRecipeBankMenuPreview();
+}, function(error) {
+recipeBankMenuLoadPending = false;
+renderRecipeBankMenuOptions();
+alert('Gagal memuat Bank Menu: ' + error.message);
+});
+}
+function getSelectedRecipeBankMenu() {
+const id = Number(document.getElementById('recipeBankMenuSelect').value);
+const menu = MN_MENU_DATA.find(function(item) { return Number(item.id) === id; });
+if (!menu) {
+alert('Pilih menu dari Bank Menu terlebih dahulu.');
+return null;
+}
+return snapshotBankMenuItem(menu);
+}
+window.renderRecipeBankMenuPreview = function() {
+const preview = document.getElementById('recipeBankMenuPreview');
+const id = Number(document.getElementById('recipeBankMenuSelect').value);
+const menu = MN_MENU_DATA.find(function(item) { return Number(item.id) === id; });
+if (!preview) return;
+if (!menu) {
+preview.textContent = 'Pilih menu master untuk melihat komposisi dan kategorinya.';
+return;
+}
+const snapshot = snapshotBankMenuItem(menu);
+const components = [
+['Karbohidrat', snapshot.karbohidrat],
+['Protein Hewani', snapshot.proteinHewani],
+['Protein Nabati', snapshot.proteinNabati],
+['Sayuran', snapshot.sayuran],
+['Buah', snapshot.buah]
+].filter(function(entry) { return entry[1].nama; }).map(function(entry) {
+return entry[0] + ': ' + entry[1].nama + ' (' + entry[1].gram.toLocaleString('id-ID') + ' g)';
+});
+preview.textContent = bankMenuCode(snapshot) + ' · ' + snapshot.nama + '\nKategori: ' + (snapshot.kategori || 'Tidak tersedia') +
+(snapshot.daerah ? ' · ' + snapshot.daerah : '') + (components.length ? '\n' + components.join(' | ') : '');
+};
+function renderRecipeBankMenuSelectedList() {
+const container = document.getElementById('recipeBankMenuSelectedList');
+if (!container) return;
+container.replaceChildren();
+if (!menuModalBankSelections.length) {
+const empty = document.createElement('div');
+empty.style.cssText = 'color:var(--text-muted);font-size:10px;';
+empty.textContent = 'Belum ada menu dari Bank Menu yang dipilih.';
+container.appendChild(empty);
+return;
+}
+menuModalBankSelections.forEach(function(menu, index) {
+const row = document.createElement('div');
+row.style.cssText = 'display:flex;align-items:center;justify-content:space-between;gap:8px;padding:7px 9px;border:1px solid var(--border);border-radius:8px;font-size:11px;';
+const label = document.createElement('span');
+label.textContent = bankMenuCode(menu) + ' · ' + menu.nama + ' · ' + (menu.kategori || 'Tanpa kategori');
+const remove = document.createElement('button');
+remove.type = 'button';
+remove.className = 'btn btn-outline';
+remove.style.cssText = 'padding:4px 8px;font-size:10px;';
+remove.textContent = 'Hapus';
+remove.setAttribute('aria-label', 'Hapus ' + bankMenuCode(menu) + ' dari menu hari ini');
+remove.addEventListener('click', function() {
+menuModalBankSelections.splice(index, 1);
+renderRecipeBankMenuSelectedList();
+updateRecipeGuideFromBankMenus();
+});
+row.append(label, remove);
+container.appendChild(row);
+});
+}
+window.replaceRecipeMenuFromBankMenu = function() {
+const menu = getSelectedRecipeBankMenu();
+if (!menu) return;
+menuModalBankSelections = [menu];
+document.getElementById('menuModalText').value = '';
+renderRecipeBankMenuSelectedList();
+updateRecipeGuideFromBankMenus();
+};
+window.addRecipeMenuFromBankMenu = function() {
+const menu = getSelectedRecipeBankMenu();
+if (!menu) return;
+if (menuModalBankSelections.some(function(item) { return Number(item.id) === Number(menu.id); })) {
+alert(bankMenuCode(menu) + ' sudah ada di menu hari ini.');
+return;
+}
+menuModalBankSelections.push(menu);
+renderRecipeBankMenuSelectedList();
+updateRecipeGuideFromBankMenus();
+};
 window.openMenuModal = function() { document.getElementById('menuModalDay').value = selectedRecipeDay; onMenuModalDayChange(); document.getElementById('menuModal').style.display = 'flex'; };
 window.closeMenuModal = function() { document.getElementById('menuModal').style.display = 'none'; };
-window.onMenuModalDayChange = function() { const day = document.getElementById('menuModalDay').value; const m = defaultMenus[day] || {}; document.getElementById('menuModalText').value = m.menuList || ''; document.getElementById('menuModalRecipeDetail').value = m.recipeDetail || ''; };
-window.saveMenuModal = function() { const day = document.getElementById('menuModalDay').value; const listText = document.getElementById('menuModalText').value; const recipeText = document.getElementById('menuModalRecipeDetail').value; const existing = defaultMenus[day] || {}; defaultMenus[day] = Object.assign({}, existing, { menuList: listText, recipeDetail: recipeText, jamKirim: existing.jamKirim || '' }); selectedDay = day; selectedRecipeDay = day; closeMenuModal(); renderDayTabs(); renderRecipeView(); renderBudgetTable(); saveAppDataToCloud(); };
+window.onMenuModalDayChange = function() {
+const day = document.getElementById('menuModalDay').value;
+const menu = defaultMenus[day] || {};
+document.getElementById('menuModalText').value = menu.menuList || '';
+document.getElementById('menuModalRecipeDetail').value = menu.recipeDetail || '';
+document.getElementById('recipeBankMenuCategorySelect').value = '';
+document.getElementById('recipeBankMenuSelect').value = '';
+menuModalBankSelections = Array.isArray(menu.bankMenuItems) ? menu.bankMenuItems.map(snapshotBankMenuItem) : [];
+renderRecipeBankMenuSelectedList();
+loadRecipeBankMenuOptions();
+window.renderRecipeBankMenuPreview();
+};
+window.saveMenuModal = function() {
+const day = document.getElementById('menuModalDay').value;
+const listText = document.getElementById('menuModalText').value;
+const recipeText = document.getElementById('menuModalRecipeDetail').value;
+const existing = defaultMenus[day] || {};
+defaultMenus[day] = Object.assign({}, existing, {
+menuList: listText,
+recipeDetail: recipeText,
+bankMenuItems: menuModalBankSelections.map(snapshotBankMenuItem),
+jamKirim: existing.jamKirim || ''
+});
+selectedDay = day;
+selectedRecipeDay = day;
+closeMenuModal();
+renderDayTabs();
+renderRecipeView();
+renderBudgetTable();
+saveAppDataToCloud();
+};
 window.openScheduleModal = function() { const menu = defaultMenus[selectedDay] || (defaultMenus[selectedDay] = {}); document.getElementById('scheduleInputText').value = menu.jamKirim || ''; document.getElementById('schedSelectedDayLabel').textContent = selectedDay; const dayScope = document.querySelector('input[name="schedScope"][value="day"]'); if (dayScope) dayScope.checked = true; document.getElementById('scheduleModal').style.display = 'flex'; };
 window.closeScheduleModal = function() { document.getElementById('scheduleModal').style.display = 'none'; };
 window.saveScheduleModal = function() { const val = document.getElementById('scheduleInputText').value.trim(); const selectedScope = document.querySelector('input[name="schedScope"]:checked'); const scope = selectedScope ? selectedScope.value : 'day'; const days = scope === 'all' ? ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'] : [selectedDay]; days.forEach(function(day) { defaultMenus[day] = Object.assign({}, defaultMenus[day] || {}, { jamKirim: val }); }); closeScheduleModal(); renderDayTabs(); persistModule4ScheduleChanges('Jadwal distribusi berhasil disimpan ke Supabase.'); };
@@ -6751,6 +7115,29 @@ jamKirim: readText(menu.jamKirim, 'Jadwal menu', 1000),
 menuList: readText(menu.menuList, 'Daftar menu', 10000),
 recipeDetail: readText(menu.recipeDetail, 'Detail resep', 20000)
 };
+if (menu.bankMenuItems !== undefined) {
+if (!Array.isArray(menu.bankMenuItems) || menu.bankMenuItems.length > 100) throw new Error('Daftar menu Bank Menu tidak valid.');
+result.defaultMenus[day].bankMenuItems = menu.bankMenuItems.map(function(item) {
+if (!isRecord(item)) throw new Error('Salinan menu Bank Menu tidak valid.');
+const id = readNumber(item.id, 'Kode menu Bank Menu');
+if (!Number.isInteger(id) || id < 1) throw new Error('Kode menu Bank Menu tidak valid.');
+const snapshot = {
+id: id,
+nama: readText(item.nama, 'Nama menu Bank Menu', 300),
+hari: readText(item.hari, 'Hari menu Bank Menu', 100),
+kategori: readText(item.kategori, 'Kategori menu Bank Menu', 150),
+daerah: readText(item.daerah, 'Daerah menu Bank Menu', 150)
+};
+['karbohidrat', 'proteinHewani', 'proteinNabati', 'sayuran', 'buah'].forEach(function(key) {
+if (!isRecord(item[key])) throw new Error('Komposisi menu Bank Menu tidak valid.');
+snapshot[key] = {
+nama: readText(item[key].nama, 'Nama komposisi menu Bank Menu', 300),
+gram: readNumber(item[key].gram, 'Gramasi menu Bank Menu')
+};
+});
+return snapshot;
+});
+}
 });
 }
 if (Object.prototype.hasOwnProperty.call(data, 'defaultBudget')) {
@@ -7039,6 +7426,7 @@ document.getElementById('view-news-archive').classList.remove('hidden');
 renderNewsArchive();
 window.scrollTo(0, 0);
 }
+if (window.location.hash === '#info-terbaru') bukaInfoTerbaru();
 function formatAnnouncementDate(value) {
 const match = String(value || '').match(/^(\d{4})-(\d{2})-(\d{2})$/);
 if (!match) return String(value || 'Tanggal tidak dicantumkan');
@@ -7140,7 +7528,7 @@ meta.append(category, date);
 const title = document.createElement('h3');
 title.textContent = formatAnnouncementText(item.title);
 details.append(meta, title);
-if (item.description) {
+if (isAdmin && item.description) {
 const description = document.createElement('p');
 description.textContent = formatAnnouncementText(item.description);
 details.appendChild(description);
