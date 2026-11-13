@@ -434,6 +434,11 @@ body.app-light-mode .mn-login-footer, body.app-light-mode .sl-login-footer { col
 .logo-custom-input { display: none; }
 .mn-edit-btn, .sl-edit-btn { position: absolute; top: 8px; right: 8px; width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #F59E0B, #D97706); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 12px; opacity: 0; transform: scale(0.8); transition: all 0.3s; z-index: 10; box-shadow: 0 2px 8px rgba(245,158,11,0.4); }
 .mn-menu-card:hover .mn-edit-btn { opacity: 1; transform: scale(1); }
+.sl-row-actions { display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap; }
+.sl-delete-btn { display:flex;align-items:center;justify-content:center;flex:0 0 32px;width:32px;height:32px;border:0;border-radius:50%;background:linear-gradient(135deg,#EF4444,#DC2626);color:#fff;cursor:pointer;transition:transform .2s,box-shadow .2s; }
+.sl-delete-btn:hover { transform:scale(1.08);box-shadow:0 3px 10px rgba(239,68,68,.4); }
+.mn-period-remove-btn, .mn-master-delete-btn { position: absolute; top: 8px; right: 42px; width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #EF4444, #DC2626); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 11px; opacity: 0; transform: scale(0.8); transition: all 0.3s; z-index: 10; box-shadow: 0 2px 8px rgba(239,68,68,0.35); }
+.mn-menu-card:hover .mn-period-remove-btn, .mn-menu-card:hover .mn-master-delete-btn, .mn-period-remove-btn:focus-visible, .mn-master-delete-btn:focus-visible { opacity: 1; transform: scale(1); }
 .mn-edit-btn:hover, .sl-edit-btn:hover { background: linear-gradient(135deg, #EF4444, #DC2626); transform: scale(1.1); }
 .mn-edit-modal, .sl-edit-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); display: none; align-items: center; justify-content: center; z-index: 99999; padding: 16px; }
 .mn-edit-modal.show, .sl-edit-modal.show { display: flex; }
@@ -469,6 +474,25 @@ body.app-light-mode .mn-stat-label, body.app-light-mode .sl-stat-label { color: 
 body.app-light-mode .mn-search-input, body.app-light-mode .sl-search-input { background: #FFFFFF !important; color: #111827 !important; border-color: #9CA3AF !important; }
 .mn-select, .sl-select { padding: 10px 14px; background: #1C2541; border: 1px solid #3A506B; border-radius: 10px; color: #E0E1DD; font-size: 13px; outline: none; cursor: pointer; min-width: 160px; }
 body.app-light-mode .mn-select, body.app-light-mode .sl-select { background: #FFFFFF !important; color: #111827 !important; border-color: #9CA3AF !important; }
+.mn-period-section { margin: 0 0 20px; padding: 16px; border: 1px solid rgba(16, 185, 129, 0.35); border-radius: 14px; background: rgba(16, 185, 129, 0.06); }
+.mn-period-heading { margin: 0 0 12px; color: #10B981; font-size: 15px; font-weight: 800; }
+.mn-period-controls { display: flex; flex-wrap: wrap; align-items: end; gap: 10px; }
+.mn-period-month-field { display: flex; flex-direction: column; gap: 4px; color: #9CA3AF; font-size: 10px; font-weight: 700; }
+.mn-period-month-field .mn-select { min-width: 150px; }
+.mn-period-status { margin: 10px 0 0; color: #9CA3AF; font-size: 12px; }
+.mn-category-stat-section { margin: 16px 0 14px; }
+.mn-category-stat-title { margin-bottom: 8px; color: #9CA3AF; font-size: 11px; font-weight: 800; }
+.mn-category-stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 20px; }
+.mn-category-stat-card { min-width: 0; padding: 9px 11px; border: 1px solid rgba(58, 80, 107, 0.9); border-radius: 10px; background: rgba(28, 37, 65, 0.72); }
+.mn-category-stat-count { color: #10B981; font-size: 18px; font-weight: 900; }
+.mn-category-stat-name { margin-top: 2px; color: #CBD5E1; font-size: 10px; line-height: 1.4; }
+.mn-master-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 14px 0 12px; }
+.mn-master-toolbar .mn-period-heading { margin: 0; }
+body.app-light-mode .mn-period-section { background: rgba(16, 185, 129, 0.06) !important; border-color: rgba(5, 150, 105, 0.4) !important; }
+body.app-light-mode .mn-period-month-field, body.app-light-mode .mn-period-status { color: #4B5563 !important; }
+body.app-light-mode .mn-category-stat-title { color: #4B5563 !important; }
+body.app-light-mode .mn-category-stat-card { background: #FFFFFF !important; border-color: #D1D5DB !important; }
+body.app-light-mode .mn-category-stat-name { color: #4B5563 !important; }
 .mn-btn-export, .sl-btn-export { padding: 10px 18px; background: linear-gradient(135deg, #F43F5E, #E11D48); color: white; border: none; border-radius: 10px; font-weight: 700; font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s; }
 .mn-btn-export:hover, .sl-btn-export:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(244,63,94,0.4); }
 .mn-menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 14px; }
@@ -1352,10 +1376,17 @@ body.app-light-mode #view-admin .site-settings-heading .site-settings-icon { col
 body { font-size: 14px; }
 .mn-stat-grid, .sl-stat-grid { grid-template-columns: repeat(2, 1fr) !important; }
 .mn-menu-grid { grid-template-columns: 1fr !important; }
+.mn-edit-btn, .mn-period-remove-btn, .mn-master-delete-btn { opacity: 1; transform: none; }
 .mn-akg-grid { grid-template-columns: repeat(3, 1fr); }
 .mn-composition-grid { grid-template-columns: 1fr; }
 .mn-filter-bar, .sl-filter-bar { flex-direction: column !important; align-items: stretch !important; }
 .mn-search-input, .sl-search-input, .mn-select, .sl-select { min-width: 100% !important; }
+.mn-period-controls { align-items: stretch; }
+.mn-period-month-field { width: 100%; }
+.mn-period-controls .mn-btn-export { justify-content: center; }
+.mn-category-stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.mn-master-toolbar { flex-direction: column; align-items: stretch; }
+.mn-master-toolbar .mn-btn-export { justify-content: center; }
 .mn-login-card, .sl-login-card { padding: 24px !important; max-width: 95% !important; }
 .sl-scroll-hint { display: block; }
 .mn-ai-kid-container, .sl-ai-food-container { height: 50px !important; margin-bottom: 4px; }
@@ -1453,6 +1484,13 @@ box-shadow: 0 0 16px rgba(16, 185, 129, 0.8), 0 0 32px rgba(16, 185, 129, 0.5), 
 #spas1-webapp-root .recipe-title { font-size: 14px; font-weight: 900; color: var(--emerald); margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
 #spas1-webapp-root .recipe-section-title { font-size: 11px; font-weight: 800; text-transform: uppercase; color: var(--text-muted); margin-top: 8px; margin-bottom: 4px; }
 #spas1-webapp-root .recipe-text { font-size: 12px; line-height: 1.5; white-space: pre-line; background: var(--card-bg); padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border); }
+#spas1-webapp-root .budget-stock-autocomplete { position: relative; }
+#spas1-webapp-root .budget-stock-suggestions { display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0; z-index: 1000; max-height: 240px; overflow-y: auto; padding: 4px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 12px 28px rgba(0,0,0,.35); }
+#spas1-webapp-root .budget-stock-suggestions.is-open { display: block; }
+#spas1-webapp-root .budget-stock-suggestion { display: block; width: 100%; padding: 8px 10px; border: 0; border-radius: 6px; background: transparent; color: var(--text-main); text-align: left; cursor: pointer; }
+#spas1-webapp-root .budget-stock-suggestion:hover, #spas1-webapp-root .budget-stock-suggestion:focus-visible { background: var(--card-inner); outline: none; }
+#spas1-webapp-root .budget-stock-suggestion small { display: block; margin-top: 2px; color: var(--text-muted); font-size: 10px; }
+#spas1-webapp-root .budget-stock-suggestion-status { padding: 8px 10px; color: var(--text-muted); font-size: 11px; }
 #spas1-webapp-root .budget-table-wrapper { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 10px; border: 1px solid var(--border); border-radius: 10px; }
 #spas1-webapp-root .budget-table { width: 100%; border-collapse: collapse; font-size: 11px; min-width: 650px; }
 #spas1-webapp-root .budget-table th, #spas1-webapp-root .budget-table td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; white-space: nowrap; }
@@ -1752,6 +1790,13 @@ body.app-light-mode #spas1-webapp-root h4 {
   #spas1-webapp-root .footer { font-size: 10px !important; }
 }
 
+.password-toggle-wrap { position: relative; display: block; width: 100%; }
+.password-toggle-wrap > input { padding-right: 44px !important; }
+.password-toggle-btn { position: absolute; top: 50%; right: 8px; display: flex; width: 32px; height: 32px; align-items: center; justify-content: center; transform: translateY(-50%); border: 0; border-radius: 6px; background: transparent; color: #9CA3AF; cursor: pointer; }
+.password-toggle-btn:hover { color: #10B981; }
+.password-toggle-btn:focus-visible { outline: 2px solid #10B981; outline-offset: 1px; }
+body.app-light-mode .password-toggle-btn { color: #64748B; }
+body.app-light-mode .password-toggle-btn:hover { color: #047857; }
 .sync-auth-overlay { display: none; position: fixed; inset: 0; z-index: 100001; align-items: center; justify-content: center; padding: 16px; background: rgba(2, 6, 23, 0.78); }
 .sync-auth-card { width: min(100%, 380px); padding: 22px; border: 1px solid rgba(52, 211, 153, 0.4); border-radius: 18px; background: #111827; color: #E5E7EB; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); }
 .sync-auth-card h2 { display: flex; align-items: center; gap: 9px; margin: 0; color: #6EE7B7; font-size: 17px; font-weight: 800; }
@@ -1945,6 +1990,11 @@ max-height: none !important;
 }
 body.printing-modul-joblist #modul-joblist {
 font-size: 8pt !important;
+}
+body.printing-modul-joblist #modul-joblist .clock-row,
+body.printing-modul-joblist #modul-joblist .nav-tabs-bar {
+display: none !important;
+visibility: hidden !important;
 }
 body.printing-modul-joblist .budget-table {
 width: 100% !important;
@@ -2605,13 +2655,17 @@ gtag('config', 'G-4933FEDV2TW');
 <div class="cloud-sync-indicator" id="mnCloudSync"><span class="cloud-sync-dot"></span><span>Cloud Sync Active</span></div>
 </div>
 <div class="mn-stat-grid">
-<div class="mn-stat-box"><div class="mn-ai-kid-container"><div class="mn-sparkle"></div><div class="mn-sparkle"></div><div class="mn-sparkle">🤴</div><div class="mn-sparkle"></div><div class="mn-heart-float">❤️</div><div class="mn-heart-float">🌮</div><div class="mn-heart-float">🍨</div><svg class="mn-ai-kid-svg bounce" width="60" height="60"><use href="#ai-kid-tk-boy"/></svg></div><div class="mn-stat-num" id="mnStatTotal">500</div><div class="mn-stat-label">Total Paket Menu</div></div>
-<div class="mn-stat-box"><div class="mn-ai-kid-container"><div class="mn-sparkle"></div><div class="mn-sparkle"></div><div class="mn-sparkle">🍡</div><div class="mn-sparkle"></div><div class="mn-heart-float">⭐</div><div class="mn-heart-float">✨</div><div class="mn-heart-float">💸</div><svg class="mn-ai-kid-svg wave" width="60" height="60"><use href="#ai-kid-tk-girl"/></svg></div><div class="mn-stat-num" id="mnStatSenin">100</div><div class="mn-stat-label">Menu Senin</div></div>
-<div class="mn-stat-box"><div class="mn-ai-kid-container"><div class="mn-sparkle"></div><div class="mn-sparkle"></div><div class="mn-sparkle">🍮</div><div class="mn-sparkle"></div><div class="mn-heart-float">📚</div><div class="mn-heart-float">✏️</div><div class="mn-heart-float">🤸</div><svg class="mn-ai-kid-svg float" width="60" height="60"><use href="#ai-kid-sd-boy"/></svg></div><div class="mn-stat-num" id="mnStatSelasa">100</div><div class="mn-stat-label">Menu Selasa</div></div>
-<div class="mn-stat-box"><div class="mn-ai-kid-container"><div class="mn-sparkle"></div><div class="mn-sparkle"></div><div class="mn-sparkle">😋</div><div class="mn-sparkle"></div><div class="mn-heart-float">🍩</div><div class="mn-heart-float">🍄</div><div class="mn-heart-float">🧸</div><svg class="mn-ai-kid-svg glow" width="60" height="60"><use href="#ai-kid-sd-girl"/></svg></div><div class="mn-stat-num" id="mnStatRabu">100</div><div class="mn-stat-label">Menu Rabu</div></div>
-<div class="mn-stat-box"><div class="mn-ai-kid-container"><div class="mn-sparkle"></div><div class="mn-sparkle"></div><div class="mn-sparkle">🍫</div><div class="mn-sparkle"></div><div class="mn-heart-float">🔬</div><div class="mn-heart-float">🍬</div><div class="mn-heart-float">📐</div><svg class="mn-ai-kid-svg jump" width="60" height="60"><use href="#ai-kid-smp-boy"/></svg></div><div class="mn-stat-num" id="mnStatKamis">100</div><div class="mn-stat-label">Menu Kamis</div></div>
-<div class="mn-stat-box"><div class="mn-ai-kid-container"><div class="mn-sparkle"></div><div class="mn-sparkle"></div><div class="mn-sparkle">🍬</div><div class="mn-sparkle"></div><div class="mn-heart-float">🎓</div><div class="mn-heart-float">🍿</div><div class="mn-heart-float">🌭</div><svg class="mn-ai-kid-svg dance" width="60" height="60"><use href="#ai-kid-sma-girl"/></svg></div><div class="mn-stat-num" id="mnStatJumat">100</div><div class="mn-stat-label">Menu Jumat</div></div>
+<div class="mn-stat-box"><div class="mn-ai-kid-container"><div class="mn-sparkle"></div><div class="mn-sparkle"></div><div class="mn-sparkle">🤴</div><div class="mn-sparkle"></div><div class="mn-heart-float">❤️</div><div class="mn-heart-float">🌮</div><div class="mn-heart-float">🍨</div><svg class="mn-ai-kid-svg bounce" width="60" height="60"><use href="#ai-kid-tk-boy"/></svg></div><div class="mn-stat-num" id="mnStatTotal">0</div><div class="mn-stat-label">Total Menu</div></div>
+<div class="mn-stat-box"><div class="mn-ai-kid-container"><div class="mn-sparkle"></div><div class="mn-sparkle"></div><div class="mn-sparkle">🍡</div><div class="mn-sparkle"></div><div class="mn-heart-float">⭐</div><div class="mn-heart-float">✨</div><div class="mn-heart-float">💸</div><svg class="mn-ai-kid-svg wave" width="60" height="60"><use href="#ai-kid-tk-girl"/></svg></div><div class="mn-stat-num" id="mnStatSenin">0</div><div class="mn-stat-label">Menu Senin</div></div>
+<div class="mn-stat-box"><div class="mn-ai-kid-container"><div class="mn-sparkle"></div><div class="mn-sparkle"></div><div class="mn-sparkle">🍮</div><div class="mn-sparkle"></div><div class="mn-heart-float">📚</div><div class="mn-heart-float">✏️</div><div class="mn-heart-float">🤸</div><svg class="mn-ai-kid-svg float" width="60" height="60"><use href="#ai-kid-sd-boy"/></svg></div><div class="mn-stat-num" id="mnStatSelasa">0</div><div class="mn-stat-label">Menu Selasa</div></div>
+<div class="mn-stat-box"><div class="mn-ai-kid-container"><div class="mn-sparkle"></div><div class="mn-sparkle"></div><div class="mn-sparkle">😋</div><div class="mn-sparkle"></div><div class="mn-heart-float">🍩</div><div class="mn-heart-float">🍄</div><div class="mn-heart-float">🧸</div><svg class="mn-ai-kid-svg glow" width="60" height="60"><use href="#ai-kid-sd-girl"/></svg></div><div class="mn-stat-num" id="mnStatRabu">0</div><div class="mn-stat-label">Menu Rabu</div></div>
+<div class="mn-stat-box"><div class="mn-ai-kid-container"><div class="mn-sparkle"></div><div class="mn-sparkle"></div><div class="mn-sparkle">🍫</div><div class="mn-sparkle"></div><div class="mn-heart-float">🔬</div><div class="mn-heart-float">🍬</div><div class="mn-heart-float">📐</div><svg class="mn-ai-kid-svg jump" width="60" height="60"><use href="#ai-kid-smp-boy"/></svg></div><div class="mn-stat-num" id="mnStatKamis">0</div><div class="mn-stat-label">Menu Kamis</div></div>
+<div class="mn-stat-box"><div class="mn-ai-kid-container"><div class="mn-sparkle"></div><div class="mn-sparkle"></div><div class="mn-sparkle">🍬</div><div class="mn-sparkle"></div><div class="mn-heart-float">🎓</div><div class="mn-heart-float">🍿</div><div class="mn-heart-float">🌭</div><svg class="mn-ai-kid-svg dance" width="60" height="60"><use href="#ai-kid-sma-girl"/></svg></div><div class="mn-stat-num" id="mnStatJumat">0</div><div class="mn-stat-label">Menu Jumat</div></div>
 </div>
+</div>
+<div class="mn-category-stat-section">
+<div class="mn-category-stat-title">Rincian Total Menu per Kategori</div>
+<div id="mnCategoryStatGrid" class="mn-category-stat-grid" aria-live="polite"></div>
 </div>
 <div class="mn-filter-bar">
 <input type="text" id="mnSearchInput" class="mn-search-input" placeholder=" Cari menu (nama, karbohidrat, protein...)..." oninput="renderMenuNusantara()">
@@ -2622,15 +2676,34 @@ gtag('config', 'G-4933FEDV2TW');
 <button onclick="syncMenuToCloud(event)" class="mn-btn-export" style="background:linear-gradient(135deg,#10B981,#059669);"><i class="fa-solid fa-cloud-arrow-up"></i> Sync Database</button>
 <button onclick="exportMenuPDF()" class="mn-btn-export"><i class="fa-solid fa-file-pdf"></i> Export PDF</button>
 </div>
+<section class="mn-period-section" aria-labelledby="mnPeriodHeading">
+<h3 id="mnPeriodHeading" class="mn-period-heading">📅 Pilihan Menu per Periode</h3>
+<div class="mn-period-controls">
+<select id="mnPeriodCategory" class="mn-select" aria-label="Kategori menu periode" onchange="renderMenuPeriodControls()"></select>
+<label class="mn-period-month-field">Bulan<input type="month" id="mnPeriodMonth" class="mn-select" aria-label="Bulan periode menu" onchange="renderMenuPeriodMenus()"></label>
+<label class="mn-period-month-field">Hari<select id="mnPeriodDay" class="mn-select" aria-label="Hari periode menu" onchange="renderMenuPeriodMenus()"><option value="Senin">Senin</option><option value="Selasa">Selasa</option><option value="Rabu">Rabu</option><option value="Kamis">Kamis</option><option value="Jumat">Jumat</option></select></label>
+<select id="mnPeriodWeek" class="mn-select" aria-label="Minggu periode menu" onchange="renderMenuPeriodMenus()"><option value="1">Minggu Pertama</option><option value="2">Minggu Kedua</option><option value="3">Minggu Ketiga</option><option value="4">Minggu Keempat</option></select>
+<select id="mnPeriodSourceMenu" class="mn-select" aria-label="Pilih menu master"></select>
+<button type="button" class="mn-btn-export" style="background:linear-gradient(135deg,#10B981,#059669);" onclick="addMenuToPeriod()"><i class="fa-solid fa-plus"></i> Tambahkan ke Periode</button>
+<button type="button" class="mn-btn-export" style="background:linear-gradient(135deg,#8B5CF6,#7C3AED);" onclick="loadBankMenuPeriods(true)"><i class="fa-solid fa-rotate"></i> Muat Ulang Jadwal</button>
+</div>
+<p id="mnPeriodStatus" class="mn-period-status" role="status">Memuat daftar periode menu...</p>
+<div id="mnPeriodMenuContainer" class="mn-menu-grid"></div>
+</section>
+<div class="mn-master-toolbar">
+<h3 class="mn-period-heading">📚 Daftar Menu Master</h3>
+<button id="mnAddMasterMenuButton" type="button" class="mn-btn-export" style="background:linear-gradient(135deg,#10B981,#059669);" onclick="openMnCreateModal()" disabled><i class="fa-solid fa-plus"></i> Tambah Menu Master</button>
+</div>
 <div id="mnMenuContainer" class="mn-menu-grid"></div>
 </div>
 </div>
 <div class="mn-edit-modal" id="mnEditModal">
 <div class="mn-edit-card">
-<h3><i class="fa-solid fa-pen-to-square"></i> Edit Menu Nusantara</h3>
+<h3 id="mnEditModalTitle"><i class="fa-solid fa-pen-to-square"></i> Edit Menu Nusantara</h3>
 <input type="hidden" id="mnEditId">
+<input type="hidden" id="mnEditPeriodId">
 <div class="mn-edit-field"><label>Nama Menu</label><input type="text" id="mnEditNama" placeholder="Contoh: Nasi Putih + Ayam Goreng..."></div>
-<div class="mn-edit-field"><label>Hari</label><select id="mnEditHari"><option value="Senin">Senin</option><option value="Selasa">Selasa</option><option value="Rabu">Rabu</option><option value="Kamis">Kamis</option><option value="Jumat">Jumat</option></select></div>
+<div class="mn-edit-field"><label>Hari</label><select id="mnEditHari"><option value="Senin">Senin</option><option value="Selasa">Selasa</option><option value="Rabu">Rabu</option><option value="Kamis">Kamis</option><option value="Jumat">Jumat</option></select><small id="mnEditHariHelp" style="display:none;">Untuk memindahkan menu, hapus salinan ini lalu tambahkan kembali pada hari tujuan.</small></div>
 <div class="mn-edit-field"><label>Kategori Daerah</label><select id="mnEditKategori"><option value="Tradisional Jawa">Tradisional Jawa</option><option value="Tradisional Sunda">Tradisional Sunda</option><option value="Tradisional Sumatra">Tradisional Sumatra</option><option value="Tradisional Bali">Tradisional Bali</option><option value="Tradisional Kalimantan">Tradisional Kalimantan</option><option value="Tradisional Sulawesi">Tradisional Sulawesi</option><option value="Tradisional Papua">Tradisional Papua</option><option value="SPPG Sungai Pasir1 Meral">SPPG Sungai Pasir1 Meral</option></select></div>
 <div class="mn-edit-field"><label>Karbohidrat (Nama | Gram)</label><input type="text" id="mnEditKarbo" placeholder="Contoh: Nasi Putih | 150"></div>
 <div class="mn-edit-field"><label>Protein Hewani (Nama | Gram)</label><input type="text" id="mnEditProteinH" placeholder="Contoh: Ayam Goreng | 80"></div>
@@ -2640,7 +2713,13 @@ gtag('config', 'G-4933FEDV2TW');
 <div class="mn-edit-field"><label>Kalori (kkal)</label><input type="number" id="mnEditKalori"></div>
 <div class="mn-edit-field"><label>Protein (g)</label><input type="number" id="mnEditProtein"></div>
 <div class="mn-edit-field"><label>Lemak (g)</label><input type="number" id="mnEditLemak"></div>
-<div class="mn-edit-actions"><button class="btn-cancel" onclick="closeMnEditModal()">Batal</button><button class="btn-save" onclick="saveMnEdit()">💾 Simpan</button></div>
+<div class="mn-edit-field"><label>Karbohidrat AKG (g)</label><input type="number" id="mnEditAkgKarbo" min="0" step="0.1"></div>
+<div class="mn-edit-field"><label>Serat (g)</label><input type="number" id="mnEditSerat" min="0" step="0.1"></div>
+<div class="mn-edit-field"><label>Vitamin A (µg)</label><input type="number" id="mnEditVitA" min="0" step="1"></div>
+<div class="mn-edit-field"><label>Vitamin C (mg)</label><input type="number" id="mnEditVitC" min="0" step="0.1"></div>
+<div class="mn-edit-field"><label>Kalsium (mg)</label><input type="number" id="mnEditKalsium" min="0" step="0.1"></div>
+<div class="mn-edit-field"><label>Zat Besi (mg)</label><input type="number" id="mnEditZatBesi" min="0" step="0.1"></div>
+<div class="mn-edit-actions"><button class="btn-cancel" onclick="closeMnEditModal()">Batal</button><button id="mnEditSaveButton" class="btn-save" onclick="saveMnEdit()">💾 Simpan</button></div>
 </div>
 </div>
 <div class="mn-login-overlay" id="mnLoginOverlay">
@@ -2766,7 +2845,7 @@ gtag('config', 'G-4933FEDV2TW');
 <div class="nav-tabs-bar" style="margin-top: 12px;">
 <button class="nav-tab-btn" id="navBtnDashboard" onclick="requestViewSwitch('dashboard')">📝 Dashboard & Joblist</button>
 <button class="nav-tab-btn active" id="navBtnRecipes" onclick="requestViewSwitch('recipes')">📖 Standar Resep</button>
-<button class="nav-tab-btn" id="navBtnBudget" onclick="requestViewSwitch('budget')">💰 Pagu Anggaran PO</button>
+<button class="nav-tab-btn" id="navBtnBudget" onclick="requestViewSwitch('budget')">💰 PO Belanja Harian</button>
 <button class="nav-tab-btn" id="navBtnAkg" onclick="requestViewSwitch('akg')">🥗 Poster Menu AKG</button>
 </div>
 <div class="btn-row" id="dashboardActionButtons" style="display: none;">
@@ -2836,14 +2915,16 @@ gtag('config', 'G-4933FEDV2TW');
 </div>
 <div id="viewBudget" style="display: none; flex-direction: column; gap: 14px;">
 <div class="card">
-<div style="align-items: center; display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; margin-bottom: 12px;"><div><h2 style="font-size: 16px; font-weight: 900;">💰 Anggaran PO Bahan Baku & Bumbu</h2><div id="budgetSubtitleInfo" style="color: var(--text-muted); font-size: 11px;">Pagu Anggaran Bahan Baku & Bumbu (Batas Maks. Rp 23.000.000) untuk Target Porsi: 2.503 Porsi</div></div><button class="btn btn-outline" onclick="openTargetPorsiModal()"> Ubah Porsi</button></div>
+<div style="align-items: center; display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; margin-bottom: 12px;"><div><h2 style="font-size: 16px; font-weight: 900;">💰 PO Belanja Harian</h2><div id="budgetSubtitleInfo" style="color: var(--text-muted); font-size: 11px;">Estimasi belanja bahan baku & bumbu (batas Rp 20.000.000) untuk target porsi: 2.547 porsi</div></div><button class="btn btn-outline" onclick="openTargetPorsiModal()"> Ubah Porsi</button></div>
 <div class="day-tabs" id="budgetDayTabsContainer"><button class="day-tab active" onclick="selectBudgetDay('Senin')">📅 Senin</button><button class="day-tab" onclick="selectBudgetDay('Selasa')"> Selasa</button><button class="day-tab" onclick="selectBudgetDay('Rabu')">📅 Rabu</button><button class="day-tab" onclick="selectBudgetDay('Kamis')">📅 Kamis</button><button class="day-tab" onclick="selectBudgetDay('Jumat')">📅 Jumat</button></div>
 <div class="budget-summary-grid">
-<div class="budget-summary-box budget-alert-warning" id="summaryBoxDaily"><div style="align-items: center; color: var(--text-muted); display: flex; font-size: 9px; font-weight: 800; justify-content: space-between;"><span>TOTAL ANGGARAN HARIAN</span><span id="budgetWarningBadge" style="color: #f43f5e; display: inline; font-weight: 900;">️ MELEBIHI BATAS PAGU MAX Rp 23 JT!</span></div><div id="totalBudgetDailyRp" style="color: var(--emerald); font-size: 18px; font-weight: 900; margin-top: 2px;">Rp 0</div></div>
+<div class="budget-summary-box budget-alert-warning" id="summaryBoxDaily"><div style="align-items: center; color: var(--text-muted); display: flex; font-size: 9px; font-weight: 800; justify-content: space-between;"><span>TOTAL ANGGARAN HARIAN</span><span id="budgetWarningBadge" style="color: #f43f5e; display: inline; font-weight: 900;">️ MELEBIHI BATAS PAGU MAX Rp 20 JT!</span></div><div id="totalBudgetDailyRp" style="color: var(--emerald); font-size: 18px; font-weight: 900; margin-top: 2px;">Rp 0</div></div>
 <div class="budget-summary-box" id="summaryBoxPortion"><div id="budgetPerPortionTitleLabel" style="color: var(--text-muted); font-size: 9px; font-weight: 800;">ESTIMASI BIAYA / OMPRENG (2.503 PORSI)</div><div id="totalBudgetPerPortionRp" style="color: var(--amber); font-size: 18px; font-weight: 900; margin-top: 2px;">Rp 0 / Porsi</div></div>
 </div>
+<div id="budgetEstimateStatus" role="status" aria-live="polite" style="margin-top:8px;color:var(--text-muted);font-size:11px;"></div>
+<div id="budgetAkgSummary" class="recipe-text" style="margin-top:10px;"></div>
 <div class="budget-table-wrapper"><table class="budget-table"><thead><tr><th>Kategori & Nama Bahan</th><th id="tableHeaderTakaranPorsiBesar">Gramasi / Porsi Besar</th><th id="tableHeaderTakaranPorsiKecil">Gramasi / Porsi Kecil</th><th id="tableHeaderTotalKebutuhanBesar">Kebutuhan Besar (2.000 Porsi) <button class="btn-icon" style="margin-left:4px; font-size:10px;" onclick="editPorsiBesar()">✏️</button></th><th id="tableHeaderTotalKebutuhanKecil">Kebutuhan Kecil (503 Porsi) <button class="btn-icon" style="margin-left:4px; font-size:10px;" onclick="editPorsiKecil()">✏️</button></th><th id="tableHeaderSisaStok">Sisa Stok Gudang</th><th>Berat Matang (BDD)</th><th>Berat Mentah</th><th>Harga Satuan (Rp)</th><th>Anggaran (Rp)</th><th>Aksi</th></tr></thead><tbody id="budgetTableBody"></tbody></table></div>
-<div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-start; margin-top: 12px;"><button class="btn btn-emerald" onclick="openAddBudgetItemModal()">➕ Tambah Bahan Baku & Bumbu</button><button class="btn btn-emerald" onclick="printBudgetOnly()">🖨️ Print/Export PDF</button></div>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-start; margin-top: 12px;"><button class="btn btn-emerald" onclick="calculateMenuBudgetForSelectedDay()">🧮 Hitung dari Menu Harian</button><button class="btn btn-outline" onclick="searchCookpadRecipeForSelectedDay()">🔎 Standard Recepi Sky - Cookpad</button><button id="restoreBudgetBackupButton" class="btn btn-outline" style="display:none;" onclick="restoreBudgetBackup()">↩ Pulihkan Pagu Sebelumnya</button><button class="btn btn-emerald" onclick="openAddBudgetItemModal()">➕ Tambah Bahan Baku & Bumbu</button><button class="btn btn-emerald" onclick="printBudgetOnly()">🖨️ Print/Export PDF</button></div>
 </div>
 </div>
 <div id="viewAkg" style="display: none; flex-direction: column; gap: 14px;">
@@ -2922,10 +3003,16 @@ gtag('config', 'G-4933FEDV2TW');
 <div class="modal-card">
 <div class="modal-header"><h2 id="budgetItemModalTitle" style="font-size:16px;font-weight:800;">Edit Anggaran PO</h2><button type="button" class="btn-icon" onclick="closeBudgetItemModal()" aria-label="Tutup">✕</button></div>
 <input type="hidden" id="editBudgetIndex">
+<label for="biMenuId" style="display:block;margin:10px 0 5px;font-size:12px;font-weight:700;">Menu (opsional, untuk rincian resep)</label>
+<select id="biMenuId" class="input-field"><option value="">Bahan umum untuk hari ini</option></select>
 <label for="biCategory" style="display:block;margin:10px 0 5px;font-size:12px;font-weight:700;">Kategori</label>
 <select id="biCategory" class="input-field"><option>Karbohidrat</option><option>Protein Hewani</option><option>Protein Nabati</option><option>Sayuran</option><option>Buah-Buahan / Pelengkap</option><option>Bahan Baku Bumbu & Rempah</option></select>
 <label for="biName" style="display:block;margin:12px 0 5px;font-size:12px;font-weight:700;">Nama Bahan Baku / Bumbu</label>
-<input id="biName" class="input-field" type="text" maxlength="150" placeholder="Nama bahan">
+<div class="budget-stock-autocomplete">
+<input id="biName" class="input-field" type="text" maxlength="150" placeholder="Cari atau pilih bahan dari Stok Logistik" autocomplete="off" aria-autocomplete="list" aria-controls="budgetStockSuggestions" aria-expanded="false" onfocus="showBudgetStockSuggestions()" onclick="handleBudgetStockNameClick()" oninput="renderBudgetStockSuggestions()" onkeydown="handleBudgetStockSuggestionKeydown(event)" onblur="handleBudgetStockNameBlur()" onchange="fillBudgetItemPriceFromStock()">
+<div id="budgetStockSuggestions" class="budget-stock-suggestions" role="listbox" aria-label="Nama bahan dari Stok Logistik"></div>
+</div>
+<button type="button" class="btn btn-outline" style="margin-top:6px;" onclick="fillBudgetItemPriceFromStock()">Ambil harga tertinggi dari Stok Logistik</button>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
 <div><label for="biAmountLarge" style="display:block;margin:12px 0 5px;font-size:12px;font-weight:700;">Gramasi / Porsi Besar</label><input id="biAmountLarge" class="input-field" type="number" min="0" step="any"></div>
 <div><label for="biAmountSmall" style="display:block;margin:12px 0 5px;font-size:12px;font-weight:700;">Gramasi / Porsi Kecil</label><input id="biAmountSmall" class="input-field" type="number" min="0" step="any"></div>
@@ -3252,6 +3339,36 @@ gtag('config', 'G-4933FEDV2TW');
 window.SPAS1_AUTH_TOKEN = '';
 window.SPAS1_AUTH_ROLE = '';
 window.SPAS1_MODULE_LOGO_OVERRIDE = '';
+function initializePasswordVisibilityToggles() {
+document.querySelectorAll('input[type="password"]').forEach(function(input) {
+if (input.dataset.passwordToggleInitialized === 'true' || !input.parentNode) return;
+const wrapper = document.createElement('div');
+wrapper.className = 'password-toggle-wrap';
+input.parentNode.insertBefore(wrapper, input);
+wrapper.appendChild(input);
+const toggle = document.createElement('button');
+toggle.type = 'button';
+toggle.className = 'password-toggle-btn';
+toggle.setAttribute('aria-controls', input.id);
+toggle.setAttribute('aria-label', 'Tampilkan kata sandi');
+toggle.setAttribute('aria-pressed', 'false');
+toggle.title = 'Tampilkan kata sandi';
+const icon = document.createElement('i');
+icon.className = 'fa-solid fa-eye';
+icon.setAttribute('aria-hidden', 'true');
+toggle.appendChild(icon);
+toggle.addEventListener('click', function() {
+const showPassword = input.type === 'password';
+input.type = showPassword ? 'text' : 'password';
+toggle.setAttribute('aria-label', showPassword ? 'Sembunyikan kata sandi' : 'Tampilkan kata sandi');
+toggle.setAttribute('aria-pressed', String(showPassword));
+toggle.title = showPassword ? 'Sembunyikan kata sandi' : 'Tampilkan kata sandi';
+icon.className = showPassword ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye';
+});
+wrapper.appendChild(toggle);
+input.dataset.passwordToggleInitialized = 'true';
+});
+}
 function escapeHtml(value) {
 return String(value).replace(/[&<>"']/g, function(char) {
 return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char];
@@ -3398,9 +3515,10 @@ return {
 }
 
 async function supabaseStorageRequest(path, options, retryAfterRefresh) {
-const requestOptions = Object.assign({}, options || {}, {
-headers: Object.assign(supabaseHeaders(), options && options.headers || {})
-});
+const requestOptions = Object.assign({}, options || {});
+const headers = supabaseHeaders();
+if (requestOptions.body == null) delete headers['Content-Type'];
+requestOptions.headers = Object.assign(headers, requestOptions.headers || {});
 const response = await fetch(window.SPAS1_SUPABASE_URL + path, requestOptions);
 if (response.status === 401 && !retryAfterRefresh && window.SPAS1_SUPABASE_REFRESH_TOKEN) {
 await refreshSupabaseSession();
@@ -3619,7 +3737,8 @@ Sayuran: serializeMenuComposition(menu.sayuran),
 Buah: serializeMenuComposition(menu.buah),
 Kalori: Number(menu.akg && menu.akg.kalori) || 0,
 Protein: Number(menu.akg && menu.akg.protein) || 0,
-Lemak: Number(menu.akg && menu.akg.lemak) || 0
+Lemak: Number(menu.akg && menu.akg.lemak) || 0,
+'AKG Data': menu.akg || {}
 };
 }
 
@@ -3719,6 +3838,7 @@ porsiKecil: Number(payload.porsiKecil) || 0,
 defaultTasks: Array.isArray(payload.defaultTasks) ? payload.defaultTasks : [],
 defaultMenus: payload.defaultMenus && typeof payload.defaultMenus === 'object' ? payload.defaultMenus : {},
 defaultBudget: payload.defaultBudget && typeof payload.defaultBudget === 'object' ? payload.defaultBudget : {},
+defaultBudgetBackup: payload.defaultBudgetBackup && typeof payload.defaultBudgetBackup === 'object' ? payload.defaultBudgetBackup : null,
 haccpChecks: payload.haccpChecks && typeof payload.haccpChecks === 'object' ? payload.haccpChecks : {},
 akgPosters: []
 };
@@ -3902,9 +4022,107 @@ case 'fetchBankMenu': {
 const rows = await supabaseRequest('modul2_bank_menu');
 return { status: 'success', data: rows };
 }
+case 'insertBankMenu': {
+requireSupabaseSession();
+if (!['admin', 'bank_menu'].includes(window.SPAS1_AUTH_ROLE)) throw new Error('Login Bank Menu diperlukan untuk menambahkan menu master.');
+const menu = payload.menu;
+if (!menu || typeof menu !== 'object' || Array.isArray(menu)) throw new Error('Data menu tidak valid.');
+const name = String(menu.nama || '').trim();
+const day = String(menu.hari || '');
+const category = String(menu.kategori || '');
+if (!name || name.length > 300 || !MN_HARI.includes(day) || !MN_KATEGORI.includes(category)) throw new Error('Isi nama menu, hari, dan kategori yang tersedia.');
+const compositionKeys = ['karbohidrat', 'proteinHewani', 'proteinNabati', 'sayuran', 'buah'];
+const invalidComposition = compositionKeys.some(function(key) {
+const item = menu[key];
+return !item || typeof item.nama !== 'string' || !item.nama.trim() || !Number.isSafeInteger(Number(item.gram)) || Number(item.gram) < 1;
+});
+if (invalidComposition) throw new Error('Lengkapi nama dan gramasi semua komponen menu.');
+const nutrientKeys = ['kalori', 'protein', 'lemak', 'karbohidrat', 'serat', 'vitA', 'vitC', 'kalsium', 'zatBesi'];
+if (!menu.akg || nutrientKeys.some(function(key) { return !Number.isFinite(Number(menu.akg[key])) || Number(menu.akg[key]) < 0; }) || Number(menu.akg.kalori) <= 0) {
+throw new Error('Isi nilai gizi yang valid; kalori harus lebih dari nol.');
+}
+const latestRows = await supabaseRequest('modul2_bank_menu', { query: { select: 'ID', order: 'ID.desc', limit: '1' } });
+if (!Array.isArray(latestRows)) throw new Error('Tidak dapat membaca nomor menu terakhir dari Supabase.');
+const latestId = latestRows.length ? Number(latestRows[0].ID) : 0;
+if (!Number.isSafeInteger(latestId) || latestId < 0 || latestId >= Number.MAX_SAFE_INTEGER) throw new Error('Nomor ID Bank Menu di Supabase tidak valid.');
+const nextId = latestId + 1;
+const menuToSave = Object.assign({}, menu, {
+id: nextId,
+nama: name,
+daerah: category.replace('Tradisional ', '')
+});
+const insertedRows = await supabaseRequest('modul2_bank_menu', {
+method: 'POST',
+body: toSupabaseMenuRow(menuToSave, nextId - 1),
+prefer: 'return=representation'
+});
+if (!Array.isArray(insertedRows) || !insertedRows.length || Number(insertedRows[0].ID) !== nextId) throw new Error('Menu belum berhasil dikonfirmasi tersimpan di Supabase.');
+return { status: 'success', menuId: nextId, message: 'Menu berhasil ditambahkan dan disimpan ke Database.' };
+}
+case 'deleteBankMenu': {
+requireSupabaseSession();
+if (!['admin', 'bank_menu'].includes(window.SPAS1_AUTH_ROLE)) throw new Error('Login Bank Menu diperlukan untuk menghapus menu master.');
+const id = Number(payload.id);
+if (!Number.isSafeInteger(id) || id < 1) throw new Error('ID menu master tidak valid.');
+const deletedRows = await supabaseRequest('modul2_bank_menu', {
+method: 'DELETE',
+query: { ID: 'eq.' + id },
+prefer: 'return=representation'
+});
+if (!Array.isArray(deletedRows) || !deletedRows.length) throw new Error('Menu master tidak ditemukan atau tidak dapat dihapus.');
+return { status: 'success', message: 'Menu master berhasil dihapus dari Supabase.' };
+}
 case 'syncBankMenu': {
 await syncSupabaseRows('modul2_bank_menu', (payload.menus || []).map(toSupabaseMenuRow));
 return { status: 'success', message: 'Bank Menu berhasil disinkronkan ke Supabase.' };
+}
+case 'fetchBankMenuPeriods': {
+requireSupabaseSession();
+const rows = await supabaseRequest('modul2_bank_menu_period');
+return { status: 'success', data: rows };
+}
+case 'saveBankMenuPeriod': {
+requireSupabaseSession();
+if (!['admin', 'bank_menu'].includes(window.SPAS1_AUTH_ROLE)) throw new Error('Login Bank Menu diperlukan untuk mengubah menu periode.');
+const record = payload.record || {};
+const id = String(record.id || '');
+const month = String(record.month || '');
+const day = String(record.day || '');
+const week = Number(record.week);
+const sourceMenuId = Number(record.sourceMenuId);
+const menu = record.menu;
+if (!/^\d{4}-(0[1-9]|1[0-2])-W[1-4]-M\d+(?:-D(?:Senin|Selasa|Rabu|Kamis|Jumat))?$/.test(id) || !/^\d{4}-(0[1-9]|1[0-2])$/.test(month) || !MN_HARI.includes(day) || !Number.isInteger(week) || week < 1 || week > 4 || !Number.isSafeInteger(sourceMenuId) || sourceMenuId < 1 || !menu || typeof menu !== 'object' || Array.isArray(menu)) {
+throw new Error('Data menu periode tidak valid. Pilih bulan, hari, minggu, dan menu master yang benar.');
+}
+const savedRows = await supabaseRequest('modul2_bank_menu_period', {
+method: 'POST',
+query: { on_conflict: 'ID' },
+body: {
+ID: id,
+'Periode Bulan': month,
+'Periode Hari': day,
+'Periode Minggu': week,
+Kategori: String(menu.kategori || ''),
+'Menu ID': sourceMenuId,
+'Data Menu': Object.assign({}, menu, { hari: day })
+},
+prefer: 'resolution=merge-duplicates,return=representation'
+});
+if (!Array.isArray(savedRows) || !savedRows.length) throw new Error('Menu periode tidak berhasil disimpan.');
+return { status: 'success', record: savedRows[0], message: 'Menu periode berhasil disimpan.' };
+}
+case 'deleteBankMenuPeriod': {
+requireSupabaseSession();
+if (!['admin', 'bank_menu'].includes(window.SPAS1_AUTH_ROLE)) throw new Error('Login Bank Menu diperlukan untuk mengubah menu periode.');
+const id = String(payload.id || '');
+if (!/^\d{4}-(0[1-9]|1[0-2])-W[1-4]-M\d+(?:-D(?:Senin|Selasa|Rabu|Kamis|Jumat))?$/.test(id)) throw new Error('ID menu periode tidak valid.');
+const deletedRows = await supabaseRequest('modul2_bank_menu_period', {
+method: 'DELETE',
+query: { ID: 'eq.' + id },
+prefer: 'return=representation'
+});
+if (!Array.isArray(deletedRows) || !deletedRows.length) throw new Error('Menu periode tidak ditemukan atau tidak dapat dihapus.');
+return { status: 'success', message: 'Menu dihapus dari periode. Menu master tetap tersimpan.' };
 }
 case 'fetchStokLogistik': {
 const rows = await supabaseRequest('modul3_stok_logistik');
@@ -3913,6 +4131,19 @@ return { status: 'success', data: rows };
 case 'syncStokLogistik': {
 await syncSupabaseRows('modul3_stok_logistik', (payload.items || []).map(toSupabaseStockRow));
 return { status: 'success', message: 'Stok Logistik berhasil disinkronkan ke Supabase.' };
+}
+case 'deleteStokLogistikItem': {
+requireSupabaseSession();
+if (!['admin', 'stok'].includes(window.SPAS1_AUTH_ROLE)) throw new Error('Login Stok Logistik diperlukan untuk menghapus item.');
+const id = Number(payload.id);
+if (!Number.isSafeInteger(id) || id < 1) throw new Error('ID item Stok Logistik tidak valid.');
+const deletedRows = await supabaseRequest('modul3_stok_logistik', {
+method: 'DELETE',
+query: { ID: 'eq.' + id },
+prefer: 'return=representation'
+});
+if (!Array.isArray(deletedRows) || !deletedRows.length) throw new Error('Item Stok Logistik tidak ditemukan atau tidak dapat dihapus.');
+return { status: 'success', message: 'Item Stok Logistik berhasil dihapus dari Supabase.' };
 }
 case 'updateStokLogistikStock': {
 requireSupabaseSession();
@@ -3957,6 +4188,22 @@ requireSupabaseSession();
 if (!Array.isArray(payload.tasks)) throw new Error('Format daftar tugas tidak valid.');
 await saveModuleState('MODUL4_Joblist', payload.tasks);
 return { status: 'success', message: 'Daftar tugas berhasil disimpan ke Supabase.' };
+}
+case 'saveModule4Budget': {
+requireSupabaseSession();
+const validated = validateBackupData({
+defaultBudget: payload.budget,
+defaultBudgetBackup: payload.budgetBackup
+});
+const cloudRows = await supabaseRequest('MODUL4_CloudSync', { query: { select: 'Data', AppKey: 'eq.app-state', limit: '1' } });
+const cloudState = cloudRows[0] && cloudRows[0].Data ? parseModuleData(cloudRows[0].Data, 'MODUL4_CloudSync') : {};
+cloudState.defaultBudget = validated.defaultBudget;
+cloudState.defaultBudgetBackup = validated.defaultBudgetBackup;
+await Promise.all([
+saveModuleState('MODUL4_AnggaranPO', validated.defaultBudget),
+saveModuleState('MODUL4_CloudSync', cloudState)
+]);
+return { status: 'success', message: 'Anggaran PO dan salinan sebelumnya berhasil disimpan ke Supabase.' };
 }
 case 'saveModule4Schedule': {
 requireSupabaseSession();
@@ -4287,8 +4534,15 @@ const MN_PROTEIN_NABATI = ['Tahu Goreng', 'Tahu Bacem', 'Tahu Isi', 'Tahu Tempe 
 const MN_SAYUR = ['Sayur Bayam', 'Sayur Sop', 'Sayur Lodeh', 'Sayur Asem', 'Sayur Nangka', 'Sayur Daun Singkong', 'Sayur Kangkung', 'Sayur Tumis Buncis', 'Sayur Tumis Wortel', 'Sayur Capcay', 'Sayur Gado-Gado', 'Sayur Pecel', 'Sayur Urap', 'Sayur Lalapan', 'Acar Timun', 'Sambal Terasi', 'Sambal Ijo', 'Sambal Matah', 'Sambal Bawang', 'Sambal Tomat'];
 const MN_BUAH = ['Pisang', 'Jeruk', 'Apel', 'Pepaya', 'Semangka', 'Melon', 'Nanas', 'Mangga', 'Salak', 'Rambutan', 'Duku', 'Manggis', 'Jambu Biji', 'Pir', 'Anggur', 'Kiwi', 'Strawberry', 'Blueberry'];
 const MN_MENU_DATA = [];
+const MN_MENU_PERIOD_DATA = [];
 const SL_STOK_DATA = [];
+let mnMenuPeriodsState = 'idle';
+let mnEditingPeriodId = '';
+let mnMenuLoadedFromSupabase = false;
+let mnMenuLoadPending = false;
+let mnCreatingMenu = false;
 let stokLogistikLoadedFromSupabase = false;
+let budgetStockLoadPromise = null;
 let adminAboutTeam = [];
 let adminAboutBeneficiaries = [];
 let adminAboutLoaded = false;
@@ -4352,9 +4606,13 @@ document.getElementById('mnLoginError').classList.remove('show');
 setTimeout(() => document.getElementById('mnLoginUser').focus(), 100);
 return;
 }
-if (MN_MENU_DATA.length === 0) generateMenuNusantara();
+MN_MENU_DATA.splice(0, MN_MENU_DATA.length);
+mnMenuLoadedFromSupabase = false;
 renderMenuNusantara();
+initializeMenuPeriodControls();
+loadBankMenuPeriods();
 loadMnLogo();
+window.fetchBankMenuFromCloud(null);
 }
 if (modulId === 'modul-stok') {
 if (['admin', 'stok'].indexOf(window.SPAS1_AUTH_ROLE) === -1) {
@@ -5301,9 +5559,13 @@ portal.classList.add('portal-enter');
 setTimeout(() => portal.classList.remove('portal-enter'), 260);
 window.requestAnimationFrame(function() {
   setTimeout(function() {
-    if (MN_MENU_DATA.length === 0) generateMenuNusantara();
+    MN_MENU_DATA.splice(0, MN_MENU_DATA.length);
+    mnMenuLoadedFromSupabase = false;
     renderMenuNusantara();
+    initializeMenuPeriodControls();
+    loadBankMenuPeriods();
     loadMnLogo();
+    window.fetchBankMenuFromCloud(null);
   }, 30);
 });
 showToast('🤗️ Selamat datang di Bank Menu!');
@@ -5377,7 +5639,28 @@ akg: { kalori: 550 + Math.floor(Math.random() * 200), protein: 20 + Math.floor(M
 }
 });
 }
+function renderMenuCategoryStats() {
+const total = document.getElementById('mnStatTotal');
+if (total) total.textContent = mnMenuLoadedFromSupabase ? String(MN_MENU_DATA.length) : mnMenuLoadPending ? '...' : '—';
+MN_HARI.forEach(function(day) {
+const count = document.getElementById('mnStat' + day);
+if (count) count.textContent = mnMenuLoadedFromSupabase ? String(MN_MENU_DATA.filter(function(menu) { return menu.hari === day; }).length) : mnMenuLoadPending ? '...' : '—';
+});
+const grid = document.getElementById('mnCategoryStatGrid');
+if (grid) {
+grid.innerHTML = MN_KATEGORI.map(function(category) {
+const count = MN_MENU_DATA.filter(function(menu) { return menu.kategori === category; }).length;
+return '<div class="mn-category-stat-card"><div class="mn-category-stat-count">' + (mnMenuLoadedFromSupabase ? count : mnMenuLoadPending ? '...' : '—') + '</div><div class="mn-category-stat-name">' + escapeHtml(category) + '</div></div>';
+}).join('');
+}
+const addButton = document.getElementById('mnAddMasterMenuButton');
+if (addButton) {
+addButton.disabled = !mnMenuLoadedFromSupabase || mnMenuLoadPending;
+addButton.title = mnMenuLoadedFromSupabase && !mnMenuLoadPending ? 'Tambahkan menu dan simpan langsung ke Supabase' : 'Muat data dari Supabase terlebih dahulu';
+}
+}
 function renderMenuNusantara() {
+renderMenuCategoryStats();
 const container = document.getElementById('mnMenuContainer');
 const search = document.getElementById('mnSearchInput').value.trim().toLowerCase();
 const fHari = document.getElementById('mnFilterHari').value;
@@ -5388,32 +5671,44 @@ const matchHari = fHari === 'all' || m.hari === fHari;
 const matchKat = fKat === 'all' || m.kategori === fKat;
 return matchSearch && matchHari && matchKat;
 });
-if (filtered.length === 0) { cancelHtmlRender(container); container.innerHTML = '<div class="mn-empty-state" style="grid-column: 1/-1;"><i class="fa-solid fa-utensils" style="font-size: 40px; margin-bottom: 10px; opacity: 0.5;"></i><p>Tidak ada menu yang ditemukan.</p></div>'; return; }
-renderHtmlInChunks(container, filtered.slice(0, 100), m => {
-const id = Number(m.id);
-const editButton = Number.isSafeInteger(id) ? '<button class="mn-edit-btn" onclick="openMnEditModal(' + id + ')" title="Edit Menu"><i class="fa-solid fa-pen"></i></button>' : '';
-const text = value => escapeHtml(value);
-return '<div class="mn-menu-card">' + editButton +
-'<div class="mn-menu-header"><div class="mn-menu-id">#' + text(String(m.id).padStart(3, '0')) + '</div></div>' +
-'<div class="mn-menu-name">' + text(m.nama) + '</div><div class="mn-menu-tags">' +
-'<span class="mn-tag mn-tag-hari">📅 ' + text(m.hari) + '</span><span class="mn-tag mn-tag-kategori">🏷️ ' + text(m.kategori) + '</span><span class="mn-tag mn-tag-daerah">📍 ' + text(m.daerah) + '</span></div>' +
-'<div class="mn-composition-grid"><div class="mn-comp-item"><div class="mn-comp-label">🍚 Karbohidrat</div><div class="mn-comp-value">' + text(m.karbohidrat.nama) + ' (' + text(m.karbohidrat.gram) + 'g)</div></div>' +
-'<div class="mn-comp-item"><div class="mn-comp-label">🥩 Protein Hewani</div><div class="mn-comp-value">' + text(m.proteinHewani.nama) + ' (' + text(m.proteinHewani.gram) + 'g)</div></div>' +
-'<div class="mn-comp-item"><div class="mn-comp-label">🫘 Protein Nabati</div><div class="mn-comp-value">' + text(m.proteinNabati.nama) + ' (' + text(m.proteinNabati.gram) + 'g)</div></div>' +
-'<div class="mn-comp-item"><div class="mn-comp-label">Sayuran</div><div class="mn-comp-value">' + text(m.sayuran.nama) + ' (' + text(m.sayuran.gram) + 'g)</div></div>' +
-'<div class="mn-comp-item" style="grid-column: 1/-1;"><div class="mn-comp-label">Buah</div><div class="mn-comp-value">' + text(m.buah.nama) + ' (' + text(m.buah.gram) + 'g)</div></div></div>' +
-'<div class="mn-akg-bar"><div class="mn-akg-title">Komposisi Gizi (AKG per Porsi)</div><div class="mn-akg-grid">' +
-'<div class="mn-akg-item"><div class="mn-akg-val">' + text(m.akg.kalori) + '</div><div class="mn-akg-unit">Kalori</div></div>' +
-'<div class="mn-akg-item"><div class="mn-akg-val">' + text(m.akg.protein) + 'g</div><div class="mn-akg-unit">Protein</div></div>' +
-'<div class="mn-akg-item"><div class="mn-akg-val">' + text(m.akg.lemak) + 'g</div><div class="mn-akg-unit">Lemak</div></div>' +
-'<div class="mn-akg-item"><div class="mn-akg-val">' + text(m.akg.karbohidrat) + 'g</div><div class="mn-akg-unit">Karbo</div></div>' +
-'<div class="mn-akg-item"><div class="mn-akg-val">' + text(m.akg.serat) + 'g</div><div class="mn-akg-unit">Serat</div></div>' +
-'<div class="mn-akg-item"><div class="mn-akg-val">' + text(m.akg.vitA) + 'µg</div><div class="mn-akg-unit">Vit A</div></div>' +
-'<div class="mn-akg-item"><div class="mn-akg-val">' + text(m.akg.vitC) + 'mg</div><div class="mn-akg-unit">Vit C</div></div>' +
-'<div class="mn-akg-item"><div class="mn-akg-val">' + text(m.akg.kalsium) + 'mg</div><div class="mn-akg-unit">Kalsium</div></div>' +
-'<div class="mn-akg-item"><div class="mn-akg-val">' + text(m.akg.zatBesi) + 'mg</div><div class="mn-akg-unit">Zat Besi</div></div>' +
+if (filtered.length === 0) { cancelHtmlRender(container); container.innerHTML = '<div class="mn-empty-state" style="grid-column: 1/-1;"><i class="fa-solid fa-utensils" style="font-size: 40px; margin-bottom: 10px; opacity: 0.5;"></i><p>' + (mnMenuLoadPending ? 'Memuat daftar menu dari Supabase...' : mnMenuLoadedFromSupabase ? 'Tidak ada menu yang ditemukan.' : 'Tarik data dari Supabase untuk menampilkan daftar menu.') + '</p></div>'; return; }
+renderHtmlInChunks(container, filtered.slice(0, 100), menu => renderBankMenuCard(menu), 12);
+}
+function renderBankMenuCard(menu, periodRecordId, periodLabel) {
+const id = Number(menu.id);
+const editAction = Number.isSafeInteger(id)
+? 'openMnEditModal(' + id + (periodRecordId ? ", '" + periodRecordId + "'" : '') + ')'
+: '';
+const text = value => escapeHtml(value == null ? '' : value);
+const editButton = editAction ? '<button class="mn-edit-btn" onclick="' + editAction + '" title="Edit Menu"><i class="fa-solid fa-pen"></i></button>' : '';
+const removeButton = periodRecordId ? '<button class="mn-period-remove-btn" onclick="deleteMenuFromPeriod(\'' + periodRecordId + '\')" title="Hapus dari periode"><i class="fa-solid fa-trash"></i></button>' : '';
+const deleteMasterButton = !periodRecordId && Number.isSafeInteger(id) && id > 0
+? '<button type="button" class="mn-master-delete-btn" onclick="deleteMasterBankMenu(' + id + ', this)" title="Hapus menu master" aria-label="Hapus menu master ' + text(menu.nama) + '"><i class="fa-solid fa-trash"></i></button>'
+: '';
+const estimatedAkg = menu.akg && menu.akg.status === 'estimasi';
+return '<div class="mn-menu-card">' + editButton + removeButton + deleteMasterButton +
+'<div class="mn-menu-header"><div class="mn-menu-id">#' + text(String(menu.id).padStart(3, '0')) + '</div></div>' +
+'<div class="mn-menu-name">' + text(menu.nama) + '</div><div class="mn-menu-tags">' +
+'<span class="mn-tag mn-tag-hari">📅 ' + text(menu.hari) + '</span><span class="mn-tag mn-tag-kategori">🏷️ ' + text(menu.kategori) + '</span><span class="mn-tag mn-tag-daerah">📍 ' + text(menu.daerah) + '</span>' +
+(periodLabel ? '<span class="mn-tag mn-tag-hari">🗓️ ' + text(periodLabel) + '</span>' : '') + '</div>' +
+'<div class="mn-composition-grid"><div class="mn-comp-item"><div class="mn-comp-label">🍚 Karbohidrat</div><div class="mn-comp-value">' + text(menu.karbohidrat && menu.karbohidrat.nama) + ' (' + text(menu.karbohidrat && menu.karbohidrat.gram) + 'g)</div></div>' +
+'<div class="mn-comp-item"><div class="mn-comp-label">🥩 Protein Hewani</div><div class="mn-comp-value">' + text(menu.proteinHewani && menu.proteinHewani.nama) + ' (' + text(menu.proteinHewani && menu.proteinHewani.gram) + 'g)</div></div>' +
+'<div class="mn-comp-item"><div class="mn-comp-label">🫘 Protein Nabati</div><div class="mn-comp-value">' + text(menu.proteinNabati && menu.proteinNabati.nama) + ' (' + text(menu.proteinNabati && menu.proteinNabati.gram) + 'g)</div></div>' +
+'<div class="mn-comp-item"><div class="mn-comp-label">Sayuran</div><div class="mn-comp-value">' + text(menu.sayuran && menu.sayuran.nama) + ' (' + text(menu.sayuran && menu.sayuran.gram) + 'g)</div></div>' +
+'<div class="mn-comp-item" style="grid-column: 1/-1;"><div class="mn-comp-label">Buah</div><div class="mn-comp-value">' + text(menu.buah && menu.buah.nama) + ' (' + text(menu.buah && menu.buah.gram) + 'g)</div></div></div>' +
+'<div class="mn-akg-bar"><div class="mn-akg-title">' + (estimatedAkg ? 'Estimasi AKG per Porsi' : 'Komposisi Gizi (AKG per Porsi)') + '</div>' +
+(estimatedAkg ? '<div style="font-size:10px;color:#FBBF24;margin-bottom:8px;">Perkiraan dari gramasi standar; bukan hasil uji laboratorium.</div>' : '') +
+'<div class="mn-akg-grid">' +
+'<div class="mn-akg-item"><div class="mn-akg-val">' + text(menu.akg && menu.akg.kalori) + '</div><div class="mn-akg-unit">Kalori</div></div>' +
+'<div class="mn-akg-item"><div class="mn-akg-val">' + text(menu.akg && menu.akg.protein) + 'g</div><div class="mn-akg-unit">Protein</div></div>' +
+'<div class="mn-akg-item"><div class="mn-akg-val">' + text(menu.akg && menu.akg.lemak) + 'g</div><div class="mn-akg-unit">Lemak</div></div>' +
+'<div class="mn-akg-item"><div class="mn-akg-val">' + text(menu.akg && menu.akg.karbohidrat) + 'g</div><div class="mn-akg-unit">Karbo</div></div>' +
+'<div class="mn-akg-item"><div class="mn-akg-val">' + text(menu.akg && menu.akg.serat) + 'g</div><div class="mn-akg-unit">Serat</div></div>' +
+'<div class="mn-akg-item"><div class="mn-akg-val">' + text(menu.akg && menu.akg.vitA) + 'µg</div><div class="mn-akg-unit">Vit A</div></div>' +
+'<div class="mn-akg-item"><div class="mn-akg-val">' + text(menu.akg && menu.akg.vitC) + 'mg</div><div class="mn-akg-unit">Vit C</div></div>' +
+'<div class="mn-akg-item"><div class="mn-akg-val">' + text(menu.akg && menu.akg.kalsium) + 'mg</div><div class="mn-akg-unit">Kalsium</div></div>' +
+'<div class="mn-akg-item"><div class="mn-akg-val">' + text(menu.akg && menu.akg.zatBesi) + 'mg</div><div class="mn-akg-unit">Zat Besi</div></div>' +
 '<div class="mn-akg-item"><div class="mn-akg-val">✓</div><div class="mn-akg-unit">MBG OK</div></div></div></div></div>';
-}, 12);
 }
 const htmlRenderIds = new WeakMap();
 function renderHtmlInChunks(container, items, renderItem, batchSize) {
@@ -5459,9 +5754,402 @@ def.style.display = 'none';
 applyModuleLoginLogo('mnLoginLogo', 'mn_logo_custom');
 } catch(err) { console.error('Unable to load Bank Menu logo:', err); }
 }
-function openMnEditModal(menuId) { const menu = MN_MENU_DATA.find(m => m.id === menuId); if (!menu) return; document.getElementById('mnEditId').value = menuId; document.getElementById('mnEditNama').value = menu.nama; document.getElementById('mnEditHari').value = menu.hari; document.getElementById('mnEditKategori').value = menu.kategori; document.getElementById('mnEditKarbo').value = menu.karbohidrat.nama + ' | ' + menu.karbohidrat.gram; document.getElementById('mnEditProteinH').value = menu.proteinHewani.nama + ' | ' + menu.proteinHewani.gram; document.getElementById('mnEditProteinN').value = menu.proteinNabati.nama + ' | ' + menu.proteinNabati.gram; document.getElementById('mnEditSayur').value = menu.sayuran.nama + ' | ' + menu.sayuran.gram; document.getElementById('mnEditBuah').value = menu.buah.nama + ' | ' + menu.buah.gram; document.getElementById('mnEditKalori').value = menu.akg.kalori; document.getElementById('mnEditProtein').value = menu.akg.protein; document.getElementById('mnEditLemak').value = menu.akg.lemak; document.getElementById('mnEditModal').classList.add('show'); }
-function closeMnEditModal() { document.getElementById('mnEditModal').classList.remove('show'); }
-function saveMnEdit() { const id = parseInt(document.getElementById('mnEditId').value); const menu = MN_MENU_DATA.find(m => m.id === id); if (!menu) return; menu.nama = document.getElementById('mnEditNama').value; menu.hari = document.getElementById('mnEditHari').value; menu.kategori = document.getElementById('mnEditKategori').value; menu.daerah = menu.kategori.replace('Tradisional ', ''); const parseField = (val) => { const parts = val.split('|').map(s => s.trim()); return { nama: parts[0] || '', gram: parseInt(parts[1]) || 0 }; }; menu.karbohidrat = parseField(document.getElementById('mnEditKarbo').value); menu.proteinHewani = parseField(document.getElementById('mnEditProteinH').value); menu.proteinNabati = parseField(document.getElementById('mnEditProteinN').value); menu.sayuran = parseField(document.getElementById('mnEditSayur').value); menu.buah = parseField(document.getElementById('mnEditBuah').value); menu.akg.kalori = parseInt(document.getElementById('mnEditKalori').value) || 0; menu.akg.protein = parseInt(document.getElementById('mnEditProtein').value) || 0; menu.akg.lemak = parseInt(document.getElementById('mnEditLemak').value) || 0; closeMnEditModal(); renderMenuNusantara(); syncMenuToCloud(); showToast('✅ Menu berhasil diperbarui!'); }
+const MN_WEEK_LABELS = { 1: 'Minggu Pertama', 2: 'Minggu Kedua', 3: 'Minggu Ketiga', 4: 'Minggu Keempat' };
+function normalizeMenuPeriodRow(row) {
+const id = String(row && row.ID || '');
+const month = String(row && row['Periode Bulan'] || '');
+const week = Number(row && row['Periode Minggu']);
+const sourceMenuId = Number(row && row['Menu ID']);
+let menu = row && row['Data Menu'];
+if (typeof menu === 'string') {
+try { menu = JSON.parse(menu); } catch (error) { throw new Error('Data menu periode tidak dapat dibaca: ' + error.message); }
+}
+const day = String(row && row['Periode Hari'] || menu && menu.hari || 'Senin');
+if (!/^\d{4}-(0[1-9]|1[0-2])-W[1-4]-M\d+(?:-D(?:Senin|Selasa|Rabu|Kamis|Jumat))?$/.test(id) || !/^\d{4}-(0[1-9]|1[0-2])$/.test(month) || !Number.isInteger(week) || week < 1 || week > 4 || !Number.isSafeInteger(sourceMenuId) || sourceMenuId < 1 || !menu || typeof menu !== 'object' || Array.isArray(menu) || !MN_HARI.includes(day)) {
+throw new Error('Ada data menu periode di Supabase dengan format tidak valid.');
+}
+menu = JSON.parse(JSON.stringify(menu));
+menu.id = Number(menu.id) || sourceMenuId;
+menu.hari = day;
+menu.kategori = String(row.Kategori || menu.kategori || '');
+return { id: id, month: month, day: day, week: week, sourceMenuId: sourceMenuId, category: menu.kategori, menu: menu };
+}
+function initializeMenuPeriodControls() {
+const monthInput = document.getElementById('mnPeriodMonth');
+if (monthInput && !monthInput.value) {
+const now = new Date();
+monthInput.value = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0');
+}
+const categorySelect = document.getElementById('mnPeriodCategory');
+if (categorySelect) {
+const selected = MN_KATEGORI.includes(categorySelect.value) ? categorySelect.value : MN_KATEGORI[0];
+categorySelect.innerHTML = MN_KATEGORI.map(function(category) {
+return '<option value="' + escapeHtml(category) + '">' + escapeHtml(category) + '</option>';
+}).join('');
+categorySelect.value = selected;
+}
+renderMenuPeriodControls();
+}
+function renderMenuPeriodControls() {
+const categorySelect = document.getElementById('mnPeriodCategory');
+const sourceSelect = document.getElementById('mnPeriodSourceMenu');
+if (!categorySelect || !sourceSelect) return;
+const selectedCategory = categorySelect.value;
+const availableMenus = MN_MENU_DATA.filter(function(menu) { return menu.kategori === selectedCategory; })
+.slice().sort(function(a, b) { return Number(a.id) - Number(b.id); });
+sourceSelect.innerHTML = '<option value="">Pilih menu master untuk disalin...</option>' + availableMenus.map(function(menu) {
+return '<option value="' + Number(menu.id) + '">#' + escapeHtml(String(menu.id).padStart(3, '0')) + ' · ' + escapeHtml(menu.nama) + '</option>';
+}).join('');
+sourceSelect.disabled = availableMenus.length === 0;
+const addButton = document.querySelector('#modul-menu .mn-period-controls button[onclick="addMenuToPeriod()"]');
+if (addButton) addButton.disabled = availableMenus.length === 0 || mnMenuPeriodsState !== 'loaded';
+renderMenuPeriodMenus();
+}
+function menuPeriodLabel(month, day, week) {
+const parts = month.split('-').map(Number);
+const monthName = new Intl.DateTimeFormat('id-ID', { month: 'long', year: 'numeric' }).format(new Date(parts[0], parts[1] - 1, 1));
+return monthName + ' · ' + day + ' · ' + MN_WEEK_LABELS[week];
+}
+function renderMenuPeriodMenus() {
+const container = document.getElementById('mnPeriodMenuContainer');
+const status = document.getElementById('mnPeriodStatus');
+if (!container || !status) return;
+if (mnMenuPeriodsState === 'loading' || mnMenuPeriodsState === 'idle') {
+cancelHtmlRender(container);
+container.replaceChildren();
+status.textContent = mnMenuPeriodsState === 'loading' ? 'Memuat daftar periode menu dari database...' : 'Masuk ke Portal Bank Menu untuk memuat jadwal periode.';
+return;
+}
+if (mnMenuPeriodsState === 'error') {
+cancelHtmlRender(container);
+container.replaceChildren();
+return;
+}
+const category = document.getElementById('mnPeriodCategory').value;
+const month = document.getElementById('mnPeriodMonth').value;
+const day = document.getElementById('mnPeriodDay').value;
+const week = Number(document.getElementById('mnPeriodWeek').value);
+const records = MN_MENU_PERIOD_DATA.filter(function(record) {
+return record.month === month && record.day === day && record.week === week && record.category === category;
+}).sort(function(a, b) {
+return MN_HARI.indexOf(a.menu.hari) - MN_HARI.indexOf(b.menu.hari) || a.sourceMenuId - b.sourceMenuId;
+});
+status.textContent = records.length
+? records.length + ' menu tersimpan untuk ' + category + ' · ' + menuPeriodLabel(month, day, week) + '.'
+: 'Belum ada menu untuk ' + category + ' · ' + menuPeriodLabel(month, day, week) + '. Pilih menu master di atas untuk menambahkannya.';
+if (!records.length) {
+cancelHtmlRender(container);
+container.innerHTML = '<div class="mn-empty-state" style="grid-column:1/-1;"><i class="fa-solid fa-calendar-plus" style="font-size:30px;margin-bottom:8px;opacity:.5;"></i><p>Belum ada menu pada periode ini.</p></div>';
+return;
+}
+renderHtmlInChunks(container, records, function(record) {
+return renderBankMenuCard(record.menu, record.id, menuPeriodLabel(record.month, record.day, record.week));
+}, 12);
+}
+function loadBankMenuPeriods(forceReload) {
+if (mnMenuPeriodsState === 'loading' || (!forceReload && mnMenuPeriodsState === 'loaded')) return;
+mnMenuPeriodsState = 'loading';
+renderMenuPeriodMenus();
+renderMenuPeriodControls();
+callSupabaseAction('fetchBankMenuPeriods', {}, function(res) {
+if (!res || res.status !== 'success' || !Array.isArray(res.data)) {
+mnMenuPeriodsState = 'error';
+document.getElementById('mnPeriodStatus').textContent = 'Respons jadwal periode dari database tidak valid.';
+renderMenuPeriodControls();
+return;
+}
+const loaded = res.data.map(normalizeMenuPeriodRow);
+MN_MENU_PERIOD_DATA.splice(0, MN_MENU_PERIOD_DATA.length, ...loaded);
+mnMenuPeriodsState = 'loaded';
+renderMenuPeriodControls();
+}, function(error) {
+mnMenuPeriodsState = 'error';
+console.error('Gagal memuat jadwal Bank Menu per periode:', error);
+document.getElementById('mnPeriodStatus').textContent = 'Gagal memuat jadwal periode: ' + error.message + ' Pastikan migrasi tabel modul2_bank_menu_period sudah dijalankan.';
+renderMenuPeriodControls();
+});
+}
+function persistMenuPeriodRecord(record, onSuccess) {
+window.requestSyncAuthorization('bank_menu', function(syncToken) {
+callSupabaseAction('saveBankMenuPeriod', { record: record, authToken: syncToken }, function(res) {
+window.revokeSyncAuthorization(syncToken);
+if (!res || res.status !== 'success') {
+alert('Gagal menyimpan menu periode: ' + (res && res.message || 'Respons server tidak valid.'));
+return;
+}
+onSuccess();
+}, function(error) {
+window.revokeSyncAuthorization(syncToken);
+alert('Gagal menyimpan menu periode: ' + error.message);
+});
+});
+}
+function addMenuToPeriod() {
+if (mnMenuPeriodsState !== 'loaded') {
+alert('Daftar periode belum siap. Muat ulang jadwal dan pastikan migrasi tabel periode sudah dijalankan.');
+return;
+}
+const month = document.getElementById('mnPeriodMonth').value;
+const day = document.getElementById('mnPeriodDay').value;
+const week = Number(document.getElementById('mnPeriodWeek').value);
+const sourceMenuId = Number(document.getElementById('mnPeriodSourceMenu').value);
+const sourceMenu = MN_MENU_DATA.find(function(menu) { return Number(menu.id) === sourceMenuId; });
+if (!/^\d{4}-(0[1-9]|1[0-2])$/.test(month) || !MN_HARI.includes(day) || !Number.isInteger(week) || week < 1 || week > 4 || !sourceMenu) {
+alert('Pilih bulan, hari, minggu, dan menu master sebelum menambahkan ke periode.');
+return;
+}
+const id = month + '-W' + week + '-M' + sourceMenuId + '-D' + day;
+if (MN_MENU_PERIOD_DATA.some(function(record) {
+return record.month === month && record.day === day && record.week === week && record.sourceMenuId === sourceMenuId;
+})) {
+showToast('Menu ini sudah ada pada periode yang dipilih.');
+return;
+}
+if (MN_MENU_PERIOD_DATA.some(function(record) { return record.id === id; })) {
+alert('ID menu periode sudah dipakai oleh salinan lain. Hapus salinan yang bentrok sebelum menambahkan menu ini.');
+return;
+}
+const menu = JSON.parse(JSON.stringify(sourceMenu));
+menu.hari = day;
+const record = {
+id: id,
+month: month,
+day: day,
+week: week,
+sourceMenuId: sourceMenuId,
+category: sourceMenu.kategori,
+menu: menu
+};
+persistMenuPeriodRecord(record, function() {
+MN_MENU_PERIOD_DATA.push(record);
+renderMenuPeriodMenus();
+showToast('Menu berhasil disalin ke ' + menuPeriodLabel(month, day, week) + '. Edit salinan ini tidak mengubah menu master.');
+});
+}
+function deleteMenuFromPeriod(recordId) {
+const record = MN_MENU_PERIOD_DATA.find(function(item) { return item.id === recordId; });
+if (!record || !confirm('Hapus menu ini dari ' + menuPeriodLabel(record.month, record.day, record.week) + '? Menu master tetap tersimpan.')) return;
+window.requestSyncAuthorization('bank_menu', function(syncToken) {
+callSupabaseAction('deleteBankMenuPeriod', { id: record.id, authToken: syncToken }, function(res) {
+window.revokeSyncAuthorization(syncToken);
+if (!res || res.status !== 'success') {
+alert('Gagal menghapus menu periode: ' + (res && res.message || 'Respons server tidak valid.'));
+return;
+}
+const index = MN_MENU_PERIOD_DATA.findIndex(function(item) { return item.id === record.id; });
+if (index !== -1) MN_MENU_PERIOD_DATA.splice(index, 1);
+renderMenuPeriodMenus();
+showToast(res.message);
+}, function(error) {
+window.revokeSyncAuthorization(syncToken);
+alert('Gagal menghapus menu periode: ' + error.message);
+});
+});
+}
+window.deleteMasterBankMenu = function(menuId, button) {
+const id = Number(menuId);
+const menu = MN_MENU_DATA.find(function(item) { return Number(item.id) === id; });
+if (!menu || !Number.isSafeInteger(id) || id < 1) {
+alert('Menu master tidak ditemukan. Tarik data dari database lalu coba lagi.');
+return;
+}
+if (!confirm('Hapus menu master "' + menu.nama + '" dari Supabase? Salinan menu yang sudah tersimpan di periode tidak ikut terhapus.')) return;
+window.requestSyncAuthorization('bank_menu', function(syncToken) {
+const originalLabel = button ? button.innerHTML : '';
+if (button) {
+button.disabled = true;
+button.title = 'Menghapus menu...';
+}
+callSupabaseAction('deleteBankMenu', { id: id, authToken: syncToken }, function(res) {
+window.revokeSyncAuthorization(syncToken);
+if (button) button.disabled = false;
+if (!res || res.status !== 'success') {
+if (button) button.title = 'Hapus menu master';
+alert('Gagal menghapus menu master: ' + (res && res.message || 'Respons Supabase tidak valid.'));
+return;
+}
+const index = MN_MENU_DATA.findIndex(function(item) { return Number(item.id) === id; });
+if (index !== -1) MN_MENU_DATA.splice(index, 1);
+renderMenuNusantara();
+renderMenuPeriodControls();
+showToast('✅ ' + (res.message || 'Menu master berhasil dihapus dari Supabase.'));
+}, function(error) {
+window.revokeSyncAuthorization(syncToken);
+if (button) {
+button.disabled = false;
+button.innerHTML = originalLabel;
+button.title = 'Hapus menu master';
+}
+alert('Gagal menghapus menu master dari Supabase: ' + error.message);
+});
+});
+};
+function openMnCreateModal() {
+if (!mnMenuLoadedFromSupabase || mnMenuLoadPending) {
+alert('Tarik data dari Supabase terlebih dahulu sebelum menambah menu.');
+return;
+}
+mnCreatingMenu = true;
+mnEditingPeriodId = '';
+document.getElementById('mnEditId').value = '';
+document.getElementById('mnEditPeriodId').value = '';
+document.getElementById('mnEditHari').disabled = false;
+document.getElementById('mnEditHariHelp').style.display = 'none';
+document.getElementById('mnEditModalTitle').innerHTML = '<i class="fa-solid fa-plus"></i> Tambah Menu Master';
+const selectedCategory = document.getElementById('mnFilterKategori').value;
+const selectedDay = document.getElementById('mnFilterHari').value;
+document.getElementById('mnEditNama').value = '';
+document.getElementById('mnEditHari').value = MN_HARI.includes(selectedDay) ? selectedDay : 'Senin';
+document.getElementById('mnEditKategori').value = MN_KATEGORI.includes(selectedCategory) ? selectedCategory : 'SPPG Sungai Pasir1 Meral';
+['mnEditKarbo', 'mnEditProteinH', 'mnEditProteinN', 'mnEditSayur', 'mnEditBuah', 'mnEditKalori', 'mnEditProtein', 'mnEditLemak', 'mnEditAkgKarbo', 'mnEditSerat', 'mnEditVitA', 'mnEditVitC', 'mnEditKalsium', 'mnEditZatBesi'].forEach(function(id) {
+document.getElementById(id).value = '';
+});
+document.getElementById('mnEditSaveButton').textContent = 'Simpan ke Supabase';
+document.getElementById('mnEditModal').classList.add('show');
+}
+function openMnEditModal(menuId, periodRecordId) {
+const periodId = String(periodRecordId || '');
+const record = periodId ? MN_MENU_PERIOD_DATA.find(function(item) { return item.id === periodId; }) : null;
+const menu = record ? record.menu : MN_MENU_DATA.find(function(item) { return Number(item.id) === Number(menuId); });
+if (!menu) return;
+mnCreatingMenu = false;
+mnEditingPeriodId = record ? record.id : '';
+document.getElementById('mnEditId').value = menu.id;
+document.getElementById('mnEditPeriodId').value = mnEditingPeriodId;
+document.getElementById('mnEditHari').disabled = Boolean(record);
+document.getElementById('mnEditHariHelp').style.display = record ? 'block' : 'none';
+document.getElementById('mnEditModalTitle').innerHTML = '<i class="fa-solid fa-pen-to-square"></i> ' + (record ? 'Edit Salinan Menu Periode' : 'Edit Menu Nusantara');
+document.getElementById('mnEditNama').value = menu.nama || '';
+document.getElementById('mnEditHari').value = menu.hari || 'Senin';
+document.getElementById('mnEditKategori').value = menu.kategori || MN_KATEGORI[0];
+document.getElementById('mnEditKarbo').value = (menu.karbohidrat && menu.karbohidrat.nama || '') + ' | ' + (menu.karbohidrat && menu.karbohidrat.gram || 0);
+document.getElementById('mnEditProteinH').value = (menu.proteinHewani && menu.proteinHewani.nama || '') + ' | ' + (menu.proteinHewani && menu.proteinHewani.gram || 0);
+document.getElementById('mnEditProteinN').value = (menu.proteinNabati && menu.proteinNabati.nama || '') + ' | ' + (menu.proteinNabati && menu.proteinNabati.gram || 0);
+document.getElementById('mnEditSayur').value = (menu.sayuran && menu.sayuran.nama || '') + ' | ' + (menu.sayuran && menu.sayuran.gram || 0);
+document.getElementById('mnEditBuah').value = (menu.buah && menu.buah.nama || '') + ' | ' + (menu.buah && menu.buah.gram || 0);
+document.getElementById('mnEditKalori').value = menu.akg && menu.akg.kalori || 0;
+document.getElementById('mnEditProtein').value = menu.akg && menu.akg.protein || 0;
+document.getElementById('mnEditLemak').value = menu.akg && menu.akg.lemak || 0;
+document.getElementById('mnEditAkgKarbo').value = menu.akg && menu.akg.karbohidrat || 0;
+document.getElementById('mnEditSerat').value = menu.akg && menu.akg.serat || 0;
+document.getElementById('mnEditVitA').value = menu.akg && menu.akg.vitA || 0;
+document.getElementById('mnEditVitC').value = menu.akg && menu.akg.vitC || 0;
+document.getElementById('mnEditKalsium').value = menu.akg && menu.akg.kalsium || 0;
+document.getElementById('mnEditZatBesi').value = menu.akg && menu.akg.zatBesi || 0;
+document.getElementById('mnEditSaveButton').textContent = 'Simpan';
+document.getElementById('mnEditModal').classList.add('show');
+}
+function closeMnEditModal() {
+document.getElementById('mnEditModal').classList.remove('show');
+document.getElementById('mnEditPeriodId').value = '';
+document.getElementById('mnEditHari').disabled = false;
+document.getElementById('mnEditHariHelp').style.display = 'none';
+mnEditingPeriodId = '';
+mnCreatingMenu = false;
+document.getElementById('mnEditSaveButton').textContent = 'Simpan';
+document.getElementById('mnEditModalTitle').innerHTML = '<i class="fa-solid fa-pen-to-square"></i> Edit Menu Nusantara';
+}
+function applyMnEditFields(menu) {
+menu.nama = document.getElementById('mnEditNama').value.trim();
+menu.hari = document.getElementById('mnEditHari').value;
+menu.kategori = document.getElementById('mnEditKategori').value;
+menu.daerah = menu.kategori.replace('Tradisional ', '');
+const parseField = function(value) {
+const parts = value.split('|').map(function(part) { return part.trim(); });
+return { nama: parts[0] || '', gram: parseInt(parts[1], 10) || 0 };
+};
+menu.karbohidrat = parseField(document.getElementById('mnEditKarbo').value);
+menu.proteinHewani = parseField(document.getElementById('mnEditProteinH').value);
+menu.proteinNabati = parseField(document.getElementById('mnEditProteinN').value);
+menu.sayuran = parseField(document.getElementById('mnEditSayur').value);
+menu.buah = parseField(document.getElementById('mnEditBuah').value);
+menu.akg = Object.assign({}, menu.akg || {}, {
+kalori: parseFloat(document.getElementById('mnEditKalori').value) || 0,
+protein: parseFloat(document.getElementById('mnEditProtein').value) || 0,
+lemak: parseFloat(document.getElementById('mnEditLemak').value) || 0,
+karbohidrat: parseFloat(document.getElementById('mnEditAkgKarbo').value) || 0,
+serat: parseFloat(document.getElementById('mnEditSerat').value) || 0,
+vitA: parseFloat(document.getElementById('mnEditVitA').value) || 0,
+vitC: parseFloat(document.getElementById('mnEditVitC').value) || 0,
+kalsium: parseFloat(document.getElementById('mnEditKalsium').value) || 0,
+zatBesi: parseFloat(document.getElementById('mnEditZatBesi').value) || 0
+});
+return menu;
+}
+function saveMnEdit() {
+const id = Number.parseInt(document.getElementById('mnEditId').value, 10);
+const periodId = document.getElementById('mnEditPeriodId').value;
+if (periodId) {
+const record = MN_MENU_PERIOD_DATA.find(function(item) { return item.id === periodId; });
+if (!record) { alert('Salinan menu periode tidak ditemukan. Muat ulang jadwal lalu coba lagi.'); return; }
+const updatedMenu = applyMnEditFields(JSON.parse(JSON.stringify(record.menu)));
+if (updatedMenu.hari !== record.day) {
+alert('Hari salinan periode tidak dapat diubah dari editor ini. Hapus dan tambahkan kembali menu pada hari tujuan.');
+return;
+}
+const updatedRecord = Object.assign({}, record, { day: updatedMenu.hari, menu: updatedMenu });
+updatedRecord.category = updatedRecord.menu.kategori;
+if (MN_MENU_PERIOD_DATA.some(function(item) {
+return item.id !== record.id && item.month === updatedRecord.month && item.day === updatedRecord.day && item.week === updatedRecord.week && item.sourceMenuId === updatedRecord.sourceMenuId;
+})) {
+alert('Menu ini sudah dijadwalkan pada hari dan minggu tersebut.');
+return;
+}
+persistMenuPeriodRecord(updatedRecord, function() {
+const index = MN_MENU_PERIOD_DATA.findIndex(function(item) { return item.id === updatedRecord.id; });
+if (index !== -1) MN_MENU_PERIOD_DATA[index] = updatedRecord;
+document.getElementById('mnPeriodDay').value = updatedRecord.day;
+closeMnEditModal();
+renderMenuPeriodMenus();
+showToast('Perubahan salinan menu periode berhasil disimpan. Menu master dan periode lain tidak berubah.');
+});
+return;
+}
+if (mnCreatingMenu) {
+const menu = applyMnEditFields({ id: 0, akg: {} });
+const compositions = [menu.karbohidrat, menu.proteinHewani, menu.proteinNabati, menu.sayuran, menu.buah];
+if (!menu.nama || !MN_HARI.includes(menu.hari) || !MN_KATEGORI.includes(menu.kategori) || compositions.some(function(item) { return !item.nama || !Number.isSafeInteger(item.gram) || item.gram < 1; })) {
+alert('Lengkapi nama menu, hari, kategori, dan nama serta gramasi semua komponen.');
+return;
+}
+if (!(menu.akg.kalori > 0) || ['protein', 'lemak', 'karbohidrat', 'serat', 'vitA', 'vitC', 'kalsium', 'zatBesi'].some(function(key) { return !Number.isFinite(menu.akg[key]) || menu.akg[key] < 0; })) {
+alert('Isi kalori di atas nol dan nilai gizi lainnya dengan angka nol atau lebih.');
+return;
+}
+menu.akg.status = 'estimasi';
+menu.akg.metode = 'Nilai gizi dimasukkan manual dan perlu diverifikasi.';
+const saveButton = document.getElementById('mnEditSaveButton');
+saveButton.disabled = true;
+saveButton.textContent = 'Menyimpan...';
+callSupabaseAction('insertBankMenu', { menu: menu, authToken: window.SPAS1_AUTH_TOKEN }, function(res) {
+saveButton.disabled = false;
+if (!res || res.status !== 'success' || !Number.isSafeInteger(Number(res.menuId)) || Number(res.menuId) < 1) {
+saveButton.textContent = 'Simpan ke Supabase';
+alert('Menu belum dapat dikonfirmasi tersimpan. Tarik data dari Supabase untuk memeriksa hasilnya.');
+return;
+}
+menu.id = Number(res.menuId);
+MN_MENU_DATA.push(menu);
+mnMenuLoadedFromSupabase = true;
+closeMnEditModal();
+renderMenuNusantara();
+renderMenuPeriodControls();
+showToast('✅ ' + (res.message || 'Menu berhasil disimpan ke Supabase.'));
+}, function(error) {
+saveButton.disabled = false;
+saveButton.textContent = 'Simpan ke Supabase';
+alert('Gagal menyimpan menu ke Supabase: ' + error.message);
+});
+return;
+}
+const menu = MN_MENU_DATA.find(function(item) { return Number(item.id) === id; });
+if (!menu) return;
+applyMnEditFields(menu);
+closeMnEditModal();
+renderMenuNusantara();
+syncMenuToCloud();
+showToast('✅ Menu berhasil diperbarui!');
+}
 
 // =============================================
 // ✅ PERBAIKAN PRINT - HANYA MODUL AKTIF YANG TERCETAK
@@ -5576,7 +6264,19 @@ document.getElementById('slStatRempah').textContent = rempah.length;
 document.getElementById('slStatRacikan').textContent = racikan.length;
 document.getElementById('slStatLain').textContent = lain.length;
 }
+function renderStokLogistikStats() {
+const mainCategories = ['Bahan Baku Utama', 'Bumbu Dasar', 'Rempah Khas Indonesia', 'Bumbu Racikan'];
+const countCategory = category => SL_STOK_DATA.filter(item => item.kategori === category).length;
+document.getElementById('slStatTotal').textContent = SL_STOK_DATA.length;
+document.getElementById('slStatBahan').textContent = countCategory('Bahan Baku Utama');
+document.getElementById('slStatBumbu').textContent = countCategory('Bumbu Dasar');
+document.getElementById('slStatRempah').textContent = countCategory('Rempah Khas Indonesia');
+document.getElementById('slStatRacikan').textContent = countCategory('Bumbu Racikan');
+document.getElementById('slStatLain').textContent = SL_STOK_DATA.filter(item => !mainCategories.includes(item.kategori)).length;
+}
 function renderStokLogistik() {
+renderStokLogistikStats();
+if (typeof window.refreshBudgetStockSuggestions === 'function') window.refreshBudgetStockSuggestions();
 const tbody = document.getElementById('slTableBody');
 const search = document.getElementById('slSearchInput').value.trim().toLowerCase();
 const fKat = document.getElementById('slFilterKategori').value;
@@ -5587,14 +6287,43 @@ renderHtmlInChunks(tbody, filtered, s => {
 const id = Number(s.id);
 const catClass = catClassMap[s.kategori] || 'sl-cat-bahan';
 const stockClass = Number(s.stok) < 50 ? 'sl-stock-critical' : Number(s.stok) < 150 ? 'sl-stock-low' : 'sl-stock-ok';
-const editButton = Number.isSafeInteger(id) ? '<button class="sl-edit-btn" style="position:static;opacity:1;transform:none;width:32px;height:32px;" onclick="openSlEditModal(' + id + ')" title="Edit Item"><i class="fa-solid fa-pen"></i></button>' : '';
+const validId = Number.isSafeInteger(id) && id > 0;
+const editButton = validId ? '<button class="sl-edit-btn" style="position:static;opacity:1;transform:none;width:32px;height:32px;" onclick="openSlEditModal(' + id + ')" title="Edit Item" aria-label="Edit ' + escapeHtml(s.nama) + '"><i class="fa-solid fa-pen"></i></button>' : '';
+const deleteButton = validId ? '<button class="sl-delete-btn" type="button" onclick="deleteStokLogistikItem(' + id + ', this)" title="Hapus Item" aria-label="Hapus ' + escapeHtml(s.nama) + '"><i class="fa-solid fa-trash"></i></button>' : '';
 return '<tr class="sl-table-row"><td style="font-weight:800;color:#10B981;">' + escapeHtml(s.id) + '</td>' +
 '<td><span class="sl-cat-badge ' + catClass + '">' + escapeHtml(s.kategori) + '</span></td><td style="font-weight:700;">' + escapeHtml(s.nama) + '</td>' +
 '<td style="color:#9CA3AF;">' + escapeHtml(s.satuan) + '</td><td class="' + stockClass + '">' + escapeHtml(s.stok) + '</td>' +
 '<td style="color:#F59E0B;font-weight:700;">Rp ' + escapeHtml(Number(s.harga).toLocaleString('id-ID')) + '</td>' +
-'<td style="color:#9CA3AF;font-size:11px;">' + escapeHtml(s.supplier) + '</td><td>' + editButton + '</td></tr>';
+'<td style="color:#9CA3AF;font-size:11px;">' + escapeHtml(s.supplier) + '</td><td><div class="sl-row-actions">' + editButton + deleteButton + '</div></td></tr>';
 }, 60);
 if (typeof renderBudgetTable === 'function') renderBudgetTable();
+}
+function deleteStokLogistikItem(itemId, button) {
+const item = SL_STOK_DATA.find(stock => Number(stock.id) === Number(itemId));
+if (!item || !Number.isSafeInteger(Number(itemId)) || Number(itemId) < 1) {
+showToast('❌ Item Stok Logistik tidak ditemukan atau ID tidak valid.');
+return;
+}
+if (!confirm('Hapus permanen "' + item.nama + '" dari Stok Logistik? Item ini juga akan dihapus dari Supabase.')) return;
+window.requestSyncAuthorization('stok', function(syncToken) {
+if (button) button.disabled = true;
+callSupabaseAction('deleteStokLogistikItem', { id: Number(itemId), authToken: syncToken }, function(res) {
+window.revokeSyncAuthorization(syncToken);
+if (!res || res.status !== 'success') {
+if (button) button.disabled = false;
+showToast('❌ ' + (res && res.message ? res.message : 'Item gagal dihapus dari Supabase.'));
+return;
+}
+const itemIndex = SL_STOK_DATA.findIndex(stock => Number(stock.id) === Number(itemId));
+if (itemIndex !== -1) SL_STOK_DATA.splice(itemIndex, 1);
+renderStokLogistik();
+showToast('✅ ' + (res.message || 'Item Stok Logistik berhasil dihapus.'));
+}, function(err) {
+window.revokeSyncAuthorization(syncToken);
+if (button) button.disabled = false;
+showToast('❌ Gagal menghapus item: ' + err.message);
+});
+});
 }
 function handleSlLogoUpload(event) {
 const file = event.target.files[0];
@@ -5940,14 +6669,16 @@ alert('Gagal login: ' + err.message);
 window.handleLogout = function() { if (confirm('Kunci kembali portal dapur?')) { const token = window.SPAS1_AUTH_TOKEN; if (token) callSupabaseAction('logout', { authToken: token }); window.SPAS1_AUTH_TOKEN = ''; window.SPAS1_AUTH_ROLE = ''; document.getElementById('loginPortal').style.display = 'flex'; document.getElementById('dashboardActionButtons').style.display = 'none'; document.getElementById('loginUsername').value = ''; document.getElementById('loginPassword').value = ''; setModuleLoginBackground(true); } };
 function checkPortalAuth() { const isAuthed = ['admin', 'persiapan'].indexOf(window.SPAS1_AUTH_ROLE) !== -1 && Boolean(window.SPAS1_AUTH_TOKEN); const moduleActive = !document.getElementById('modul-joblist').classList.contains('hidden'); document.getElementById('loginPortal').style.display = isAuthed ? 'none' : 'flex'; document.getElementById('dashboardActionButtons').style.display = isAuthed ? 'flex' : 'none'; setModuleLoginBackground(!isAuthed && moduleActive); }
 document.addEventListener('visibilitychange', function() { if (document.visibilityState === 'visible') checkPortalAuth(); });
-let currentMainView = 'dashboard'; let pendingTargetView = null; let selectedDay = 'Senin'; let selectedRecipeDay = 'Senin'; let selectedBudgetDay = 'Senin'; let globalTargetPorsi = 2503; let recipeBankMenuLoadPending = false; let menuModalBankSelections = [];
-let porsiBesar = 2000;
-let porsiKecil = 503; let appLogoBase64 = ''; let haccpChecks = {"cold":false,"organo":false,"sanitasi":false,"label":false}; let akgPosters = [];
+let currentMainView = 'dashboard'; let pendingTargetView = null; let selectedDay = 'Senin'; let selectedRecipeDay = 'Senin'; let selectedBudgetDay = 'Senin'; let globalTargetPorsi = 2547; let recipeBankMenuLoadPending = false; let menuModalBankSelections = [];
+let porsiBesar = 1277;
+let porsiKecil = 1270; let appLogoBase64 = ''; let haccpChecks = {"cold":false,"organo":false,"sanitasi":false,"label":false}; let akgPosters = [];
+const MAX_BUDGET_LIMIT = 20000000;
+let defaultBudgetBackup = null;
 let defaultMenus = { "Senin": { "jamKirim": "07:45 WIB | 08:40 WIB | 10:00 WIB", "menuList": "26 OKTOBER 2026 :\n🍚 Nasi\n🍗 Oseng Ayam Taichan\n🫘 Tahu Goreng\n🥦 Acar Timun & Wortel\n🍊 Jeruk", "recipeDetail": "🍗 STANDAR RESEP & PANDUAN PENGOLAHAN :\n1. NASI :\n- Beras dicuci bersih, steamer kapasitas 24 tray. Split Shift Koki : Ivan, Doni, Dendi, Ega" }, "Selasa": { "jamKirim": "07:45 WIB | 08:40 WIB | 10:00 WIB", "menuList": "SELASA, 27 OKTOBER 2026 :\n🍚 Nasi\n🍗 Ayam Goreng Lengkuas\n🫘 Tempe Bacem\n🥣 Sup Buncis Bakso\n🍌 Pisang", "recipeDetail": "🍗 STANDAR RESEP & PANDUAN PENGOLAHAN:\n1. AYAM GORENG LENGKUAS:\n- Ungkep ayam dengan bumbu halus dan parutan lengkuas kaya rempah hingga meresap.\n- Goreng dalam minyak panas hingga keemasan." }, "Rabu": { "jamKirim": "07:45 WIB | 08:40 WIB | 10:00 WIB", "menuList": "RABU, 28 OKTOBER 2026 :\n🍚 Nasi\n🐟 Ikan Fillet Asam Manis\n🥔 Perkedel Kentang\n🥦 Sayur Bayam Jagung Manis\n🍎 Apel", "recipeDetail": "🐟 STANDAR RESEP & PANDUAN PENGOLAHAN:\n1. IKAN FILLET ASAM MANIS:\n- Goreng fillet ikan tepung, siram dengan saus asam manis nanas dan paprika." }, "Kamis": { "jamKirim": "07:45 WIB | 08:40 WIB | 10:00 WIB", "menuList": "KAMIS, 29 OKTOBER 2026 :\n🍚 Nasi\n🥩 Semur Daging Sapi & Kentang\n🫘 Tahu Goreng Kunyit\n🥦 Tumis Kangkung & Taoge\n🍊 Jeruk", "recipeDetail": "🥩 STANDAR RESEP & PANDUAN PENGOLAHAN:\n1. SEMUR DAGING SAPI:\n- Rebus daging hingga empuk, masak dengan bumbu semur, kecap manis, dan rempah." }, "Jumat": { "jamKirim": "07:45 WIB | 08:40 WIB | 10:00 WIB", "menuList": "JUMAT, 30 OKTOBER 2026 :\n🍚 Nasi\n🍗 Ayam Suwir Bumbu Bali\n🫘 Tempe Goreng Tepung\n🥦 Sup Oyong Soun\n🍌 Pepaya", "recipeDetail": "🍳 STANDAR RESEP & PANDUAN PENGOLAHAN:\n1. AYAM SUWIR BUMBU BALI:\n- Rebus ayam, suwir halus, tumis dengan bumbu Bali merah harum." } };
 let defaultBudget = { "Senin": [{ "cat": "Karbohidrat", "name": "Beras Rumah Padang (Nasi Putih)", "amount": 46.0048, "unit": "gram", "price": 110000, "priceUnit": "gram" }, { "cat": "Protein Hewani", "name": "Ayam Dada Fillet (Ayam Taichan)", "amount": 72.0096, "unit": "gram", "price": 46000, "priceUnit": "gram" }, { "cat": "Protein Nabati", "name": "Tahu Putih", "amount": 40, "unit": "gram", "price": 16000, "priceUnit": "gram" }, { "cat": "Sayuran", "name": "Timun", "amount": 18.0144, "unit": "gram", "price": 9500, "priceUnit": "gram" }, { "cat": "Sayuran", "name": "Wortel", "amount": 18.0503, "unit": "gram", "price": 9500, "priceUnit": "gram" }, { "cat": "Buah-Buahan / Pelengkap", "name": "Jeruk Medan", "amount": 80, "unit": "gram", "price": 18000, "priceUnit": "gram" }], "Selasa": [{ "cat": "Karbohidrat", "name": "Beras Premium (Nasi)", "amount": 150, "unit": "gram", "price": 13500, "priceUnit": "kg" }, { "cat": "Protein Hewani", "name": "Ayam Potong Segar", "amount": 90, "unit": "gram", "price": 36000, "priceUnit": "kg" }, { "cat": "Protein Nabati", "name": "Tempe Segar", "amount": 45, "unit": "gram", "price": 12000, "priceUnit": "kg" }, { "cat": "Sayuran", "name": "Buncis & Bakso", "amount": 60, "unit": "gram", "price": 14000, "priceUnit": "kg" }, { "cat": "Buah-Buahan / Pelengkap", "name": "Pisang Cavendish", "amount": 1, "unit": "buah", "price": 1500, "priceUnit": "buah" }], "Rabu": [{ "cat": "Karbohidrat", "name": "Beras Premium (Nasi)", "amount": 150, "unit": "gram", "price": 13500, "priceUnit": "kg" }, { "cat": "Protein Hewani", "name": "Ikan Fillet Kakap/Tenggiri", "amount": 85, "unit": "gram", "price": 45000, "priceUnit": "kg" }, { "cat": "Protein Nabati", "name": "Kentang (Perkedel)", "amount": 50, "unit": "gram", "price": 16000, "priceUnit": "kg" }, { "cat": "Sayuran", "name": "Bayam & Jagung Manis", "amount": 60, "unit": "gram", "price": 9000, "priceUnit": "kg" }, { "cat": "Buah-Buahan / Pelengkap", "name": "Buah Apel", "amount": 1, "unit": "buah", "price": 3000, "priceUnit": "buah" }], "Kamis": [{ "cat": "Karbohidrat", "name": "Beras Premium (Nasi)", "amount": 150, "unit": "gram", "price": 13500, "priceUnit": "kg" }, { "cat": "Protein Hewani", "name": "Daging Sapi Pilihan", "amount": 80, "unit": "gram", "price": 130000, "priceUnit": "kg" }, { "cat": "Protein Nabati", "name": "Tahu Kuning", "amount": 40, "unit": "gram", "price": 11000, "priceUnit": "kg" }, { "cat": "Sayuran", "name": "Kangkung & Taoge", "amount": 60, "unit": "gram", "price": 8000, "priceUnit": "kg" }, { "cat": "Buah-Buahan / Pelengkap", "name": "Jeruk Manis", "amount": 80, "unit": "gram", "price": 18000, "priceUnit": "kg" }], "Jumat": [{ "cat": "Karbohidrat", "name": "Beras Premium (Nasi)", "amount": 150, "unit": "gram", "price": 13500, "priceUnit": "kg" }, { "cat": "Protein Hewani", "name": "Ayam Suwir Bumbu Bali", "amount": 85, "unit": "gram", "price": 36000, "priceUnit": "kg" }, { "cat": "Protein Nabati", "name": "Tempe Goreng Tepung", "amount": 45, "unit": "gram", "price": 12000, "priceUnit": "kg" }, { "cat": "Sayuran", "name": "Oyong & Soun", "amount": 60, "unit": "gram", "price": 10000, "priceUnit": "kg" }, { "cat": "Buah-Buahan / Pelengkap", "name": "Pepaya Potong Segar", "amount": 100, "unit": "gram", "price": 7000, "priceUnit": "kg" }] };
 let defaultTasks = [{ "id": "1", "title": "🥩 Quality Receiving | Penerimaan & Sortir Bahan Baku Segar", "day": "Semua Hari", "category": "Quality & Safety Check", "priority": "Tinggi", "assignee": "Pak Rete & Fathur (16:30 WIB)", "statusDetail": "Belum Dimulai", "done": false }, { "id": "2", "title": "🥬 Pencucian, Sterilisasi & Potong Sayuran & Nabati", "day": "Semua Hari", "category": "Persiapan Bahan", "priority": "Tinggi", "assignee": "Riska & Tim (20:00 WIB)", "statusDetail": "Belum Dimulai", "done": false }, { "id": "3", "title": "🧅 Kupas Bawang, Sortir & Sterilisasi Buah Jeruk", "day": "Senin", "category": "Persiapan Bahan", "priority": "Sedang", "assignee": "Mami & Nanda (03:00 WIB)", "statusDetail": "Belum Dimulai", "done": false }, { "id": "4", "title": "🌶️ Meracik Bumbu, Tumisan, Deep Fry, Marinasi & Saos", "day": "Semua Hari", "category": "Bumbu & Racikan", "priority": "Tinggi", "assignee": "Wawan & Tim (01:00 WIB)", "statusDetail": "Belum Dimulai", "done": false }, { "id": "5", "title": "🍚 Cuci Bersih Beras, Steam Nasi Putih", "day": "Semua Hari", "category": "Persiapan Bahan", "priority": "Tinggi", "assignee": "Ivan, Doni, Dendi, Ega (01:00 WIB)", "statusDetail": "Belum Dimulai", "done": false }, { "id": "6", "title": "🍽️ Sample Food Test (Uji Sensori & Organoleptik)", "day": "Semua Hari", "category": "Quality & Safety Check", "priority": "Tinggi", "assignee": "Wawan & Tim (04:35 WIB)", "statusDetail": "Belum Dimulai", "done": false }, { "id": "7", "title": "❄️ Cek Suhu Cold Storage, Chiller | Gudang Basah & Kering", "day": "Semua Hari", "category": "Quality & Safety Check", "priority": "Tinggi", "assignee": "Pak Rete (16:30 WIB)", "statusDetail": "Belum Dimulai", "done": false }, { "id": "8", "title": "🍱 Pemorsian & Pemasangan Label Jam Batas Aman Konsumsi", "day": "Semua Hari", "category": "Packing & Distribusi Internal", "priority": "Tinggi", "assignee": "Tito & Tim Packing (07:15 WIB)", "statusDetail": "Belum Dimulai", "done": false }, { "id": "9", "title": "🧹 Cleaning & Sanitasi Keseluruhan Area Kerja Dapur", "day": "Semua Hari", "category": "Kebersihan & Sanitasi", "priority": "Sedang", "assignee": "Tim Kitchen (11:00 WIB)", "statusDetail": "Belum Dimulai", "done": false }];
 function saveAppDataToCloud() {
-const data = { globalTargetPorsi, porsiBesar, porsiKecil, defaultTasks, defaultMenus, defaultBudget, appLogoBase64, haccpChecks, akgPosters };
+const data = { globalTargetPorsi, porsiBesar, porsiKecil, defaultTasks, defaultMenus, defaultBudget, defaultBudgetBackup, appLogoBase64, haccpChecks, akgPosters };
 try {
 localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 return true;
@@ -5985,6 +6716,12 @@ return result;
 }, {});
 persistModule4Changes('saveModule4Schedule', { schedules: schedules }, successMessage);
 }
+function persistModule4BudgetChanges(successMessage) {
+persistModule4Changes('saveModule4Budget', {
+budget: JSON.parse(JSON.stringify(defaultBudget)),
+budgetBackup: defaultBudgetBackup ? JSON.parse(JSON.stringify(defaultBudgetBackup)) : null
+}, successMessage);
+}
 function loadAppDataFromCloud() {
 let saved;
 const embeddedBackup = document.getElementById('spas1-embedded-backup');
@@ -6018,6 +6755,7 @@ if (data.porsiKecil !== undefined) porsiKecil = data.porsiKecil;
 if (data.defaultTasks) defaultTasks = data.defaultTasks;
 if (data.defaultMenus) defaultMenus = data.defaultMenus;
 if (data.defaultBudget) defaultBudget = data.defaultBudget;
+if (Object.prototype.hasOwnProperty.call(data, 'defaultBudgetBackup')) defaultBudgetBackup = data.defaultBudgetBackup;
 if (data.akgPosters) akgPosters = data.akgPosters;
 if (data.appLogoBase64 !== undefined) {
 appLogoBase64 = data.appLogoBase64;
@@ -6131,6 +6869,7 @@ porsiKecil: porsiKecil,
 defaultTasks: defaultTasks,
 defaultMenus: defaultMenus,
 defaultBudget: defaultBudget,
+defaultBudgetBackup: defaultBudgetBackup,
 haccpChecks: haccpChecks,
 akgPosters: akgPosters,
 MN_MENU_DATA: MN_MENU_DATA,
@@ -6255,7 +6994,8 @@ id: Number(menu && menu.id) || 0,
 nama: String(menu && menu.nama || ''),
 hari: String(menu && menu.hari || ''),
 kategori: String(menu && menu.kategori || ''),
-daerah: String(menu && menu.daerah || '')
+daerah: String(menu && menu.daerah || ''),
+akg: Object.assign({}, menu && menu.akg || {})
 };
 ['karbohidrat', 'proteinHewani', 'proteinNabati', 'sayuran', 'buah'].forEach(function(key) {
 const part = menu && menu[key] || {};
@@ -6346,11 +7086,320 @@ area.innerHTML = '<div class="recipe-card"><div class="recipe-title">🍽️ Rin
 '<div class="recipe-section-title" style="margin-top: 14px;">📖 Standar Resep & Panduan Pengolahan</div><div class="recipe-text">' + escapeHtml(menuObj.recipeDetail || '') + '</div></div>';
 }
 window.selectRecipeDay = function(d) { selectedRecipeDay = d; renderRecipeView(); };
-function renderBudgetTabs() { const container = document.getElementById('budgetDayTabsContainer'); container.innerHTML = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'].map(d => '<button class="day-tab ' + (selectedBudgetDay === d ? 'active' : '') + '" onclick="selectBudgetDay(\'' + d + '\')">📅 ' + d + '</button>').join(''); document.getElementById('budgetSubtitleInfo').textContent = 'Kalkulasi Pagu Anggaran Bahan Baku & Bumbu (Batas Maks. Rp 23.000.000) untuk Target Porsi: ' + globalTargetPorsi.toLocaleString('id-ID') + ' Porsi'; document.getElementById('budgetPerPortionTitleLabel').textContent = 'ESTIMASI BIAYA / OMPRENG (' + globalTargetPorsi.toLocaleString('id-ID') + ' PORSI)'; document.getElementById('tableHeaderTakaranPorsiBesar').textContent = 'Gramasi / Porsi Besar'; document.getElementById('tableHeaderTakaranPorsiKecil').textContent = 'Gramasi / Porsi Kecil'; document.getElementById('tableHeaderTotalKebutuhanBesar').innerHTML = 'Kebutuhan Besar (<span id="porsiBesarLabel">'+porsiBesar.toLocaleString('id-ID')+'</span> Porsi) <button class=\'btn-icon\' style=\'margin-left:4px; font-size:10px;\' onclick=\'editPorsiBesar()\'>✏️</button>'; document.getElementById('tableHeaderTotalKebutuhanKecil').innerHTML = 'Kebutuhan Kecil (<span id="porsiKecilLabel">'+porsiKecil.toLocaleString('id-ID')+'</span> Porsi) <button class=\'btn-icon\' style=\'margin-left:4px; font-size:10px;\' onclick=\'editPorsiKecil()\'>✏️</button>'; }
+function renderBudgetTabs() {
+const container = document.getElementById('budgetDayTabsContainer');
+container.innerHTML = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'].map(d => '<button class="day-tab ' + (selectedBudgetDay === d ? 'active' : '') + '" onclick="selectBudgetDay(\'' + d + '\')">📅 ' + d + '</button>').join('');
+document.getElementById('budgetSubtitleInfo').textContent = 'Estimasi belanja bahan baku & bumbu (batas Rp ' + MAX_BUDGET_LIMIT.toLocaleString('id-ID') + ') untuk target porsi: ' + globalTargetPorsi.toLocaleString('id-ID') + ' porsi';
+document.getElementById('budgetPerPortionTitleLabel').textContent = 'ESTIMASI BIAYA / OMPRENG (' + globalTargetPorsi.toLocaleString('id-ID') + ' PORSI)';
+document.getElementById('tableHeaderTakaranPorsiBesar').textContent = 'Gramasi / Porsi Besar';
+document.getElementById('tableHeaderTakaranPorsiKecil').textContent = 'Gramasi / Porsi Kecil';
+document.getElementById('tableHeaderTotalKebutuhanBesar').innerHTML = 'Kebutuhan Besar (<span id="porsiBesarLabel">' + porsiBesar.toLocaleString('id-ID') + '</span> Porsi) <button class=\'btn-icon\' style=\'margin-left:4px; font-size:10px;\' onclick=\'editPorsiBesar()\'>✏️</button>';
+document.getElementById('tableHeaderTotalKebutuhanKecil').innerHTML = 'Kebutuhan Kecil (<span id="porsiKecilLabel">' + porsiKecil.toLocaleString('id-ID') + '</span> Porsi) <button class=\'btn-icon\' style=\'margin-left:4px; font-size:10px;\' onclick=\'editPorsiKecil()\'>✏️</button>';
+}
 window.selectBudgetDay = function(d) { selectedBudgetDay = d; renderBudgetTabs(); renderBudgetTable(); };
 function normalizeBudgetStockName(value) {
 return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\([^)]*\)/g, ' ').replace(/\b(daging|ikan|buah|segar|pilihan|potong|fillet)\b/g, ' ').replace(/[^a-z0-9]+/g, ' ').trim().replace(/\s+/g, ' ');
 }
+function getBudgetUnitInfo(value) {
+const unit = String(value || '').trim().toLowerCase();
+const units = {
+gram: { dimension: 'weight', scale: 1, label: 'gram' },
+g: { dimension: 'weight', scale: 1, label: 'gram' },
+kg: { dimension: 'weight', scale: 1000, label: 'kg' },
+kilogram: { dimension: 'weight', scale: 1000, label: 'kg' },
+ml: { dimension: 'volume', scale: 1, label: 'ml' },
+liter: { dimension: 'volume', scale: 1000, label: 'liter' },
+l: { dimension: 'volume', scale: 1000, label: 'liter' },
+buah: { dimension: 'count', scale: 1, label: 'buah' },
+pcs: { dimension: 'count', scale: 1, label: 'pcs' },
+unit: { dimension: 'count', scale: 1, label: 'unit' }
+};
+return units[unit] || null;
+}
+async function ensureBudgetStockLoaded(forceRefresh) {
+if (stokLogistikLoadedFromSupabase && !forceRefresh) return;
+if (!budgetStockLoadPromise) {
+budgetStockLoadPromise = (async function() {
+const result = await callSupabase('fetchStokLogistik', {});
+if (!result || result.status !== 'success' || !Array.isArray(result.data)) {
+throw new Error('Daftar Stok Logistik tidak dapat dimuat.');
+}
+loadStokLogistikRows(result.data);
+})();
+}
+try {
+await budgetStockLoadPromise;
+} finally {
+budgetStockLoadPromise = null;
+}
+}
+window.renderBudgetStockSuggestions = function() {
+const input = document.getElementById('biName');
+const list = document.getElementById('budgetStockSuggestions');
+if (!input || !list) return;
+if (budgetStockLoadPromise) {
+list.innerHTML = '<div class="budget-stock-suggestion-status">Memuat daftar Stok Logistik...</div>';
+list.classList.add('is-open');
+input.setAttribute('aria-expanded', 'true');
+return;
+}
+if (!stokLogistikLoadedFromSupabase) {
+list.innerHTML = '<div class="budget-stock-suggestion-status">Daftar stok belum tersedia. Klik kolom ini untuk mencoba memuat lagi; Anda tetap dapat mengetik nama secara manual.</div>';
+list.classList.add('is-open');
+input.setAttribute('aria-expanded', 'true');
+return;
+}
+const query = input.value.trim().toLocaleLowerCase('id-ID');
+const groupedItems = new Map();
+SL_STOK_DATA.forEach(function(stock) {
+const name = String(stock.nama || '').trim();
+if (!name) return;
+const key = name.toLocaleLowerCase('id-ID');
+if (!groupedItems.has(key)) groupedItems.set(key, { name: name, stockRows: [] });
+groupedItems.get(key).stockRows.push(stock);
+});
+const matches = Array.from(groupedItems.values())
+.filter(function(item) { return !query || item.name.toLocaleLowerCase('id-ID').includes(query); })
+.sort(function(a, b) { return a.name.localeCompare(b.name, 'id-ID'); });
+if (!matches.length) {
+list.innerHTML = '<div class="budget-stock-suggestion-status">' +
+(SL_STOK_DATA.length ? 'Nama tidak ditemukan. Anda tetap dapat mengetik nama bahan secara manual.' : 'Belum ada item di Stok Logistik.') +
+'</div>';
+} else {
+list.innerHTML = matches.map(function(item) {
+const stockSummary = item.stockRows.map(function(stock) {
+return [String(stock.kategori || '').trim(), 'Stok ' + Number(stock.stok || 0).toLocaleString('id-ID') + (stock.satuan ? ' ' + stock.satuan : '')]
+.filter(Boolean).join(' · ');
+}).join(' / ');
+return '<button type="button" class="budget-stock-suggestion" role="option" data-stock-name="' + escapeHtml(item.name) +
+'" onclick="selectBudgetStockSuggestion(this.dataset.stockName)" onmousedown="event.preventDefault()" onkeydown="handleBudgetStockSuggestionKeydown(event)">' +
+'<span>' + escapeHtml(item.name) + '</span><small>' + escapeHtml(stockSummary) + '</small></button>';
+}).join('');
+}
+list.classList.add('is-open');
+input.setAttribute('aria-expanded', 'true');
+};
+window.refreshBudgetStockSuggestions = function() {
+const input = document.getElementById('biName');
+const list = document.getElementById('budgetStockSuggestions');
+if (list && list.classList.contains('is-open')) window.renderBudgetStockSuggestions();
+};
+window.showBudgetStockSuggestions = async function() {
+const input = document.getElementById('biName');
+const list = document.getElementById('budgetStockSuggestions');
+if (!input || !list) return;
+list.innerHTML = '<div class="budget-stock-suggestion-status">Memuat daftar Stok Logistik...</div>';
+list.classList.add('is-open');
+input.setAttribute('aria-expanded', 'true');
+try {
+await ensureBudgetStockLoaded(true);
+if (document.activeElement === input) window.renderBudgetStockSuggestions();
+} catch (error) {
+if (document.activeElement === input) {
+list.innerHTML = '<div class="budget-stock-suggestion-status">Gagal memuat daftar Stok Logistik: ' + escapeHtml(error.message) + '</div>';
+}
+}
+};
+window.handleBudgetStockNameClick = function() {
+if (budgetStockLoadPromise) return;
+if (stokLogistikLoadedFromSupabase) return window.renderBudgetStockSuggestions();
+return window.showBudgetStockSuggestions();
+};
+window.hideBudgetStockSuggestions = function() {
+const input = document.getElementById('biName');
+const list = document.getElementById('budgetStockSuggestions');
+if (list) list.classList.remove('is-open');
+if (input) input.setAttribute('aria-expanded', 'false');
+};
+window.handleBudgetStockNameBlur = function() {
+setTimeout(function() {
+const list = document.getElementById('budgetStockSuggestions');
+if (!list || !list.contains(document.activeElement)) window.hideBudgetStockSuggestions();
+}, 0);
+};
+window.selectBudgetStockSuggestion = function(name) {
+const input = document.getElementById('biName');
+if (!input) return;
+input.value = String(name || '');
+window.hideBudgetStockSuggestions();
+};
+window.handleBudgetStockSuggestionKeydown = function(event) {
+const list = document.getElementById('budgetStockSuggestions');
+const options = list ? Array.from(list.querySelectorAll('button[role="option"]')) : [];
+if (event.key === 'Escape') {
+event.preventDefault();
+window.hideBudgetStockSuggestions();
+document.getElementById('biName').focus();
+return;
+}
+if ((event.key === 'ArrowDown' || event.key === 'ArrowUp') && options.length) {
+event.preventDefault();
+const current = options.indexOf(document.activeElement);
+const next = event.key === 'ArrowDown'
+? (current + 1) % options.length
+: (current <= 0 ? options.length - 1 : current - 1);
+options[next].focus();
+}
+};
+function findHighestStockPrice(itemName, itemUnit) {
+const itemUnitInfo = getBudgetUnitInfo(itemUnit);
+if (!itemUnitInfo) return { price: 0, priceUnit: itemUnit, missing: true };
+const normalizedName = normalizeBudgetStockName(itemName);
+const matches = SL_STOK_DATA.map(function(stock) {
+const stockUnit = getBudgetUnitInfo(stock.satuan);
+const price = Number(stock.harga);
+if (normalizeBudgetStockName(stock.nama) !== normalizedName || !stockUnit || stockUnit.dimension !== itemUnitInfo.dimension || !Number.isFinite(price) || price <= 0) return null;
+return { price: price, priceUnit: stockUnit.label, unitCost: price / stockUnit.scale };
+}).filter(Boolean);
+if (!matches.length) return { price: 0, priceUnit: itemUnitInfo.dimension === 'weight' ? 'kg' : itemUnitInfo.dimension === 'volume' ? 'liter' : 'buah', missing: true };
+matches.sort(function(a, b) { return b.unitCost - a.unitCost; });
+return { price: matches[0].price, priceUnit: matches[0].priceUnit, missing: false };
+}
+function getDailyBankMenuItems(day) {
+const menu = defaultMenus[day];
+return menu && Array.isArray(menu.bankMenuItems) ? menu.bankMenuItems : [];
+}
+function renderBudgetAkgSummary() {
+const container = document.getElementById('budgetAkgSummary');
+if (!container) return;
+const menus = getDailyBankMenuItems(selectedBudgetDay);
+const nutrientKeys = [
+['kalori', 'Kalori', 'kkal'],
+['protein', 'Protein', 'g'],
+['lemak', 'Lemak', 'g'],
+['karbohidrat', 'Karbohidrat', 'g'],
+['serat', 'Serat', 'g'],
+['vitA', 'Vitamin A', 'µg'],
+['vitC', 'Vitamin C', 'mg'],
+['kalsium', 'Kalsium', 'mg'],
+['zatBesi', 'Zat Besi', 'mg']
+];
+const hasAkg = menus.some(function(menu) {
+return menu.akg && nutrientKeys.some(function(entry) { return Number.isFinite(Number(menu.akg[entry[0]])); });
+});
+if (!menus.length) {
+container.textContent = 'AKG akan ditampilkan setelah menu Bank Menu dipilih untuk ' + selectedBudgetDay + '.';
+return;
+}
+if (!hasAkg) {
+container.textContent = 'Data AKG untuk menu ' + selectedBudgetDay + ' belum tersedia.';
+return;
+}
+const totals = nutrientKeys.map(function(entry) {
+return entry[1] + ': ' + menus.reduce(function(sum, menu) {
+return sum + (Number(menu.akg && menu.akg[entry[0]]) || 0);
+}, 0).toLocaleString('id-ID', { maximumFractionDigits: 1 }) + ' ' + entry[2];
+});
+const estimated = menus.some(function(menu) { return !menu.akg || menu.akg.status !== 'terverifikasi'; });
+container.innerHTML = '<strong>AKG gabungan menu ' + escapeHtml(selectedBudgetDay) + ' per porsi:</strong> ' +
+totals.map(escapeHtml).join(' · ') +
+(estimated ? '<br><small>Nilai mengikuti data Bank Menu dan dapat berstatus estimasi; bukan hasil uji laboratorium.</small>' : '');
+}
+window.searchCookpadRecipeForSelectedDay = function() {
+const menuNames = getDailyBankMenuItems(selectedBudgetDay)
+.map(function(menu) { return String(menu.nama || '').replace(/\s+/g, ' ').trim(); })
+.filter(Boolean);
+if (!menuNames.length) {
+alert('Pilih dan simpan menu dari Bank Menu untuk ' + selectedBudgetDay + ' terlebih dahulu.');
+return;
+}
+let selectedName = menuNames[0];
+if (menuNames.length > 1) {
+const options = menuNames.map(function(name, index) { return (index + 1) + '. ' + name; }).join('\n');
+const choice = window.prompt('Pilih menu yang ingin dicari di Cookpad untuk ' + selectedBudgetDay + ':\n' + options, '1');
+if (choice === null) return;
+const selectedIndex = Number(choice) - 1;
+if (!Number.isInteger(selectedIndex) || selectedIndex < 0 || selectedIndex >= menuNames.length) {
+alert('Nomor menu tidak valid. Silakan pilih salah satu nomor yang tertera.');
+return;
+}
+selectedName = menuNames[selectedIndex];
+}
+const searchUrl = new URL('https://cookpad.com/id/cari');
+searchUrl.searchParams.set('q', selectedName);
+window.open(searchUrl.toString(), '_blank', 'noopener,noreferrer');
+};
+window.calculateMenuBudgetForSelectedDay = async function() {
+const menus = getDailyBankMenuItems(selectedBudgetDay);
+if (!menus.length) {
+alert('Pilih dan simpan menu dari Bank Menu pada tab Buku Resep untuk ' + selectedBudgetDay + ' terlebih dahulu.');
+return;
+}
+const components = [
+['Karbohidrat', 'karbohidrat'],
+['Protein Hewani', 'proteinHewani'],
+['Protein Nabati', 'proteinNabati'],
+['Sayuran', 'sayuran'],
+['Buah-Buahan / Pelengkap', 'buah']
+];
+const button = document.querySelector('#viewBudget button[onclick="calculateMenuBudgetForSelectedDay()"]');
+if (button) { button.disabled = true; button.textContent = 'Memuat harga tertinggi...'; }
+try {
+await ensureBudgetStockLoaded();
+const generatedRows = [];
+menus.forEach(function(menu) {
+components.forEach(function(entry) {
+const component = menu[entry[1]];
+const amount = Number(component && component.gram);
+const name = String(component && component.nama || '').trim();
+if (!name || !Number.isFinite(amount) || amount <= 0) return;
+const price = findHighestStockPrice(name, 'gram');
+generatedRows.push({
+cat: entry[0],
+name: name,
+amount: amount,
+amountLarge: amount,
+amountSmall: amount,
+unit: 'gram',
+price: price.price,
+priceUnit: price.priceUnit,
+priceMissing: price.missing,
+fk: 1,
+source: 'bank_menu',
+menuId: Number(menu.id) || 0,
+menuName: String(menu.nama || '')
+});
+});
+});
+if (!generatedRows.length) throw new Error('Komposisi gramasi menu harian belum lengkap di Bank Menu.');
+if (!defaultBudgetBackup) defaultBudgetBackup = JSON.parse(JSON.stringify(defaultBudget));
+const manualRows = (defaultBudget[selectedBudgetDay] || []).filter(function(item) { return item.source === 'manual'; });
+defaultBudget[selectedBudgetDay] = generatedRows.concat(manualRows);
+renderBudgetTable();
+saveAppDataToCloud();
+persistModule4BudgetChanges('Estimasi menu ' + selectedBudgetDay + ' diperbarui memakai harga tertinggi yang cocok di Stok Logistik.');
+} catch (error) {
+alert('Gagal menghitung foodcost: ' + error.message);
+} finally {
+if (button) { button.disabled = false; button.textContent = '🧮 Hitung dari Menu Harian'; }
+}
+};
+window.restoreBudgetBackup = function() {
+if (!defaultBudgetBackup) return;
+if (!confirm('Pulihkan semua rincian Pagu PO dari salinan sebelum perhitungan otomatis?')) return;
+defaultBudget = JSON.parse(JSON.stringify(defaultBudgetBackup));
+defaultBudgetBackup = null;
+renderBudgetTable();
+saveAppDataToCloud();
+persistModule4BudgetChanges('Rincian Pagu PO sebelumnya berhasil dipulihkan.');
+};
+window.fillBudgetItemPriceFromStock = async function() {
+const name = document.getElementById('biName').value.trim();
+if (!name) return;
+try {
+await ensureBudgetStockLoaded();
+const result = findHighestStockPrice(name, document.getElementById('biUnit').value);
+if (result.missing) {
+alert('Harga untuk "' + name + '" tidak ditemukan dengan nama dan satuan yang cocok di Stok Logistik. Masukkan harga secara manual.');
+return;
+}
+document.getElementById('biPrice').value = result.price;
+document.getElementById('biPriceUnit').value = result.priceUnit;
+showToast('Harga tertinggi yang cocok: Rp ' + result.price.toLocaleString('id-ID') + ' / ' + result.priceUnit);
+} catch (error) {
+alert('Gagal memuat harga Stok Logistik: ' + error.message);
+}
+};
 function getBudgetWarehouseStockMarkup(itemName, budgetIndex) {
 const editButton = '<button class="btn-icon no-print" style="margin-left:4px;" onclick="editBudgetWarehouseStockForBudgetItem(' + budgetIndex + ')" title="Cari dan edit sisa stok gudang">EDIT</button>';
 if (!stokLogistikLoadedFromSupabase) return '<span style="color:var(--text-muted);" title="Stok akan dimuat dari Supabase saat EDIT ditekan.">Belum dimuat</span>' + editButton;
@@ -6475,6 +7524,7 @@ const tbody = document.getElementById('budgetTableBody');
 const items = defaultBudget[selectedBudgetDay] || [];
 const categories = Array.from(new Set(items.map(item => item.cat || 'Lainnya')));
 let totalDaily = 0;
+let missingPriceCount = 0;
 let html = '';
 categories.forEach(category => {
 const categoryItems = items.filter(item => (item.cat || 'Lainnya') === category);
@@ -6490,11 +7540,14 @@ const totalMatang = totalLarge + totalSmall;
 const fk = getBudgetConversionFactor(item);
 const totalMentah = totalMatang * fk;
 const cost = calculateBudgetCost(item, totalMentah);
-totalDaily += cost;
+const priceMissing = item.priceMissing === true;
+if (priceMissing) missingPriceCount++;
+else totalDaily += cost;
 const price = Number(item.price) || 0;
 const unit = escapeHtml(item.unit);
 const priceUnit = escapeHtml(item.priceUnit || item.unit);
-html += '<tr><td style="padding-left:18px;font-weight:700;">• ' + escapeHtml(item.name) + '</td>' +
+const menuLabel = item.menuName ? '<br><small style="color:var(--text-muted);">Menu: ' + escapeHtml(item.menuName) + '</small>' : '';
+html += '<tr><td style="padding-left:18px;font-weight:700;">• ' + escapeHtml(item.name) + menuLabel + '</td>' +
 '<td><span style="font-weight:700;color:var(--emerald);">' + amountLarge.toLocaleString('id-ID') + ' ' + unit + '</span><button class="btn-icon" style="margin-left:4px;" onclick="openEditBudgetItemModal(' + index + ')" title="Edit gramasi">✏️</button></td>' +
 '<td><span style="font-weight:700;color:var(--purple);">' + amountSmall.toLocaleString('id-ID') + ' ' + unit + '</span><button class="btn-icon" style="margin-left:4px;" onclick="openEditBudgetItemModal(' + index + ')" title="Edit gramasi">✏️</button></td>' +
 '<td><span style="font-weight:700;color:var(--sky);">' + escapeHtml(formatBudgetTotal(totalLarge, item.unit)) + '</span></td>' +
@@ -6502,8 +7555,8 @@ html += '<tr><td style="padding-left:18px;font-weight:700;">• ' + escapeHtml(i
 '<td>' + getBudgetWarehouseStockMarkup(item.name, index) + '</td>' +
 '<td><span style="font-weight:700;">' + escapeHtml(formatBudgetTotal(totalMatang, item.unit)) + '</span><button class="btn-icon no-print" style="margin-left:4px;" onclick="openEditBudgetItemModal(' + index + ')" title="Edit gramasi matang">✏️</button></td>' +
 '<td><span style="font-weight:800;">' + escapeHtml(formatBudgetTotal(totalMentah, item.unit)) + '<br><small>FK × ' + fk.toLocaleString('id-ID') + '</small></span><button class="btn-icon no-print" style="margin-left:4px;" onclick="openEditBudgetItemModal(' + index + ')" title="Edit faktor konversi berat mentah">✏️</button></td>' +
-'<td><span style="font-weight:700;color:var(--amber);">Rp ' + price.toLocaleString('id-ID') + ' / ' + priceUnit + '</span><button class="btn-icon" style="margin-left:4px;" onclick="openEditBudgetItemModal(' + index + ')" title="Edit harga">💰</button></td>' +
-'<td style="font-weight:800;color:var(--emerald);">Rp ' + Math.round(cost).toLocaleString('id-ID') + '</td>' +
+'<td><span style="font-weight:700;color:var(--amber);">' + (priceMissing ? 'Harga belum ditemukan' : 'Rp ' + price.toLocaleString('id-ID') + ' / ' + priceUnit) + '</span><button class="btn-icon" style="margin-left:4px;" onclick="openEditBudgetItemModal(' + index + ')" title="Edit harga">💰</button></td>' +
+'<td style="font-weight:800;color:var(--emerald);">' + (priceMissing ? '—' : 'Rp ' + Math.round(cost).toLocaleString('id-ID')) + '</td>' +
 '<td><button class="btn-icon" onclick="openEditBudgetItemModal(' + index + ')" title="Edit item">✏️</button><button class="btn-icon" onclick="deleteBudgetItem(' + index + ')" title="Hapus">🗑️</button></td></tr>';
 });
 });
@@ -6511,9 +7564,21 @@ tbody.innerHTML = html;
 document.getElementById('totalBudgetDailyRp').textContent = 'Rp ' + Math.round(totalDaily).toLocaleString('id-ID');
 const totalPortions = porsiBesar + porsiKecil;
 document.getElementById('totalBudgetPerPortionRp').textContent = 'Rp ' + Math.round(totalPortions > 0 ? totalDaily / totalPortions : 0).toLocaleString('id-ID') + ' / Porsi';
-const overLimit = totalDaily > 23000000;
+const overLimit = totalDaily > MAX_BUDGET_LIMIT;
 document.getElementById('summaryBoxDaily').classList.toggle('budget-alert-warning', overLimit);
 document.getElementById('budgetWarningBadge').style.display = overLimit ? 'inline' : 'none';
+const estimateStatus = document.getElementById('budgetEstimateStatus');
+if (estimateStatus) {
+const menuRows = items.filter(function(item) { return item.source === 'bank_menu'; }).length;
+estimateStatus.textContent = missingPriceCount
+? 'Estimasi belum lengkap: ' + missingPriceCount + ' bahan tidak memiliki harga cocok di Stok Logistik. Total hanya menjumlahkan bahan yang memiliki harga.'
+: menuRows
+? 'Estimasi dari ' + menuRows + ' komponen menu menggunakan harga tertinggi yang cocok di Stok Logistik. Tambahkan bumbu/resep khusus melalui “Tambah Bahan Baku & Bumbu”.'
+: 'Rincian Pagu saat ini belum dihitung dari pilihan menu Bank Menu.';
+}
+const restoreButton = document.getElementById('restoreBudgetBackupButton');
+if (restoreButton) restoreButton.style.display = defaultBudgetBackup ? 'inline-flex' : 'none';
+renderBudgetAkgSummary();
 };
 function getBudgetConversionFactor(item) {
 const factor = Number(item && item.fk);
@@ -6529,7 +7594,7 @@ if (unit === 'gram') return (quantity / 1000).toLocaleString('id-ID', { maximumF
 if (unit === 'ml') return (quantity / 1000).toLocaleString('id-ID', { maximumFractionDigits: compact ? 2 : 3 }) + ' liter';
 return quantity.toLocaleString('id-ID', { maximumFractionDigits: compact ? 2 : 3 }) + ' ' + unit;
 }
-function renderBudgetTableLegacy() { const tbody = document.getElementById('budgetTableBody'); const items = defaultBudget[selectedBudgetDay] || []; let totalDaily = 0; const categories = ["Karbohidrat", "Protein Hewani", "Protein Nabati", "Sayuran", "Buah-Buahan / Pelengkap", "Bahan Baku Bumbu & Rempah"]; let html = ''; categories.forEach(cat => { const catItems = items.filter(i => i.cat === cat); if (catItems.length === 0) return; html += '<tr class="cat-header-row"><td colspan="10">📦 KATEGORI: ' + cat.toUpperCase() + '</td></tr>'; catItems.forEach((item) => { const originalIndex = items.indexOf(item); const amountLarge = getBudgetPortionAmount(item, 'large'); const amountSmall = getBudgetPortionAmount(item, 'small'); let totalLargeNum = amountLarge * porsiBesar; let totalSmallNum = amountSmall * porsiKecil; let totalMatangNum = totalLargeNum + totalSmallNum; let totalMentahNum = totalMatangNum * getBudgetConversionFactor(item); let totalKotorNum = totalMentahNum; let itemCost = calculateBudgetCost(item, totalMentahNum); let totalQtyStr = ''; let totalQtyNum = totalMatangNum; if (item.unit === 'gram') { let kgVal = totalQtyNum / 1000; totalQtyStr = kgVal.toLocaleString('id-ID', {maximumFractionDigits:2}) + ' kg (' + totalQtyNum.toLocaleString('id-ID') + ' gram)'; } else if (item.unit === 'ml') { let literVal = totalQtyNum / 1000; totalQtyStr = literVal.toLocaleString('id-ID', {maximumFractionDigits:2}) + ' liter (' + totalQtyNum.toLocaleString('id-ID') + ' ml)'; } else { totalQtyStr = totalQtyNum.toLocaleString('id-ID') + ' ' + item.unit; } totalDaily += itemCost;
+function renderBudgetTableLegacy() { const tbody = document.getElementById('budgetTableBody'); const items = defaultBudget[selectedBudgetDay] || []; let totalDaily = 0; const categories = ["Karbohidrat", "Protein Hewani", "Protein Nabati", "Sayuran", "Buah-Buahan / Pelengkap", "Bahan Baku Bumbu & Rempah"]; let html = ''; categories.forEach(cat => { const catItems = items.filter(i => i.cat === cat); if (catItems.length === 0) return; html += '<tr class="cat-header-row"><td colspan="10">📦 KATEGORI: ' + cat.toUpperCase() + '</td></tr>'; catItems.forEach((item) => { const originalIndex = items.indexOf(item); const amountLarge = getBudgetPortionAmount(item, 'large'); const amountSmall = getBudgetPortionAmount(item, 'small'); let totalLargeNum = amountLarge * porsiBesar; let totalSmallNum = amountSmall * porsiKecil; let totalMatangNum = totalLargeNum + totalSmallNum; let totalMentahNum = totalMatangNum * getBudgetConversionFactor(item); let totalKotorNum = totalMentahNum; let itemCost = calculateBudgetCost(item, totalMentahNum); let totalQtyStr = ''; let totalQtyNum = totalMatangNum; if (item.unit === 'gram') { let kgVal = totalQtyNum / 1000; totalQtyStr = kgVal.toLocaleString('id-ID', {maximumFractionDigits:2}) + ' kg (' + totalQtyNum.toLocaleString('id-ID') + ' gram)'; } else if (item.unit === 'ml') { let literVal = totalQtyNum / 1000; totalQtyStr = (totalQtyNum / 1000).toLocaleString('id-ID', {maximumFractionDigits:2}) + ' liter (' + totalQtyNum.toLocaleString('id-ID') + ' ml)'; } else { totalQtyStr = totalQtyNum.toLocaleString('id-ID') + ' ' + item.unit; } totalDaily += itemCost;
 let totalBesarNum = item.amount * porsiBesar; let totalKecilNum = item.amount * porsiKecil;
 let totalBesarStr = (item.unit === 'gram' || item.unit === 'ml') ? (totalBesarNum / 1000).toLocaleString('id-ID', {maximumFractionDigits:2}) + ' ' + (item.unit === 'gram' ? 'kg' : 'liter') : totalBesarNum.toLocaleString('id-ID') + ' ' + item.unit;
 let totalKecilStr = (item.unit === 'gram' || item.unit === 'ml') ? (totalKecilNum / 1000).toLocaleString('id-ID', {maximumFractionDigits:2}) + ' ' + (item.unit === 'gram' ? 'kg' : 'liter') : totalKecilNum.toLocaleString('id-ID') + ' ' + item.unit;
@@ -6922,7 +7987,7 @@ renderRecipeBankMenuSelectedList();
 loadRecipeBankMenuOptions();
 window.renderRecipeBankMenuPreview();
 };
-window.saveMenuModal = function() {
+window.saveMenuModal = async function() {
 const day = document.getElementById('menuModalDay').value;
 const listText = document.getElementById('menuModalText').value;
 const recipeText = document.getElementById('menuModalRecipeDetail').value;
@@ -6935,11 +8000,19 @@ jamKirim: existing.jamKirim || ''
 });
 selectedDay = day;
 selectedRecipeDay = day;
+selectedBudgetDay = day;
 closeMenuModal();
 renderDayTabs();
 renderRecipeView();
+renderBudgetTabs();
 renderBudgetTable();
 saveAppDataToCloud();
+if (window.SPAS1_SUPABASE_SESSION && getDailyBankMenuItems(day).length) {
+await window.calculateMenuBudgetForSelectedDay();
+} else if (!window.SPAS1_SUPABASE_SESSION && getDailyBankMenuItems(day).length) {
+const status = document.getElementById('budgetEstimateStatus');
+if (status) status.textContent = 'Menu ' + day + ' tersimpan lokal. Masuk ke Modul 4 lalu hitung foodcost setelah terhubung ke Stok Logistik Supabase.';
+}
 };
 window.openScheduleModal = function() { const menu = defaultMenus[selectedDay] || (defaultMenus[selectedDay] = {}); document.getElementById('scheduleInputText').value = menu.jamKirim || ''; document.getElementById('schedSelectedDayLabel').textContent = selectedDay; const dayScope = document.querySelector('input[name="schedScope"][value="day"]'); if (dayScope) dayScope.checked = true; document.getElementById('scheduleModal').style.display = 'flex'; };
 window.closeScheduleModal = function() { document.getElementById('scheduleModal').style.display = 'none'; };
@@ -6949,8 +8022,45 @@ window.openEditTaskModal = function(id) { const t = defaultTasks.find(x => Strin
 window.closeTaskModal = function() { document.getElementById('taskModal').style.display = 'none'; };
 window.saveTaskModal = function() { const id = document.getElementById('editTaskId').value; const title = document.getElementById('taskInputTitle').value.trim(); const day = document.getElementById('taskInputDay').value; const statusDetail = document.getElementById('taskInputStatusDetail').value; const category = document.getElementById('taskInputCategory').value.trim() || 'Persiapan Bahan'; const priority = document.getElementById('taskInputPriority').value; const assignee = document.getElementById('taskInputAssignee').value.trim() || 'Tim Dapur'; if (!title) { alert('Judul tugas tidak boleh kosong.'); document.getElementById('taskInputTitle').focus(); return; } const isDone = statusDetail === 'Selesai'; if (id) { const task = defaultTasks.find(x => String(x.id) === String(id)); if (!task) { alert('Tugas yang akan diedit tidak ditemukan.'); return; } Object.assign(task, { title: title, day: day, statusDetail: statusDetail, category: category, priority: priority, assignee: assignee, done: isDone }); } else { defaultTasks.push({ id: String(Date.now()) + '-' + Math.random().toString(36).slice(2, 8), title: title, day: day, statusDetail: statusDetail, category: category, priority: priority, assignee: assignee, done: isDone }); } closeTaskModal(); renderTasks(); persistModule4JoblistChanges('Tugas berhasil disimpan ke Supabase.'); };
 window.deleteTask = function(id) { if (confirm('Hapus tugas ini?')) { defaultTasks = defaultTasks.filter(x => String(x.id) !== String(id)); renderTasks(); persistModule4JoblistChanges('Tugas berhasil dihapus dari Supabase.'); } };
-window.openAddBudgetItemModal = function() { document.getElementById('budgetItemModalTitle').textContent = '➕ Tambah Bahan Baku / Bumbu'; document.getElementById('editBudgetIndex').value = ''; document.getElementById('biCategory').value = 'Karbohidrat'; document.getElementById('biName').value = ''; document.getElementById('biAmountLarge').value = ''; document.getElementById('biAmountSmall').value = ''; document.getElementById('biUnit').value = 'gram'; document.getElementById('biPrice').value = ''; document.getElementById('biPriceUnit').value = 'kg'; document.getElementById('biFk').value = '1'; document.getElementById('budgetItemModal').style.display = 'flex'; };
-window.openEditBudgetItemModal = function(index) { const items = defaultBudget[selectedBudgetDay] || []; const item = items[index]; if (!item) return; document.getElementById('budgetItemModalTitle').textContent = '✏️ Edit Bahan Baku / Bumbu'; document.getElementById('editBudgetIndex').value = index; document.getElementById('biCategory').value = item.cat; document.getElementById('biName').value = item.name; document.getElementById('biAmountLarge').value = getBudgetPortionAmount(item, 'large'); document.getElementById('biAmountSmall').value = getBudgetPortionAmount(item, 'small'); document.getElementById('biUnit').value = item.unit; document.getElementById('biPrice').value = item.price; document.getElementById('biPriceUnit').value = item.priceUnit || item.unit; document.getElementById('biFk').value = getBudgetConversionFactor(item); document.getElementById('budgetItemModal').style.display = 'flex'; };
+function renderBudgetMenuOptions(selectedId) {
+const select = document.getElementById('biMenuId');
+if (!select) return;
+select.innerHTML = '<option value="">Bahan umum untuk hari ini</option>' + getDailyBankMenuItems(selectedBudgetDay).map(function(menu) {
+return '<option value="' + Number(menu.id) + '">' + escapeHtml(bankMenuCode(menu) + ' · ' + (menu.nama || 'Menu tanpa nama')) + '</option>';
+}).join('');
+select.value = selectedId ? String(selectedId) : '';
+}
+window.openAddBudgetItemModal = function() {
+document.getElementById('budgetItemModalTitle').textContent = '➕ Tambah Bahan Baku / Bumbu';
+document.getElementById('editBudgetIndex').value = '';
+renderBudgetMenuOptions('');
+document.getElementById('biCategory').value = 'Karbohidrat';
+document.getElementById('biName').value = '';
+document.getElementById('biAmountLarge').value = '';
+document.getElementById('biAmountSmall').value = '';
+document.getElementById('biUnit').value = 'gram';
+document.getElementById('biPrice').value = '';
+document.getElementById('biPriceUnit').value = 'kg';
+document.getElementById('biFk').value = '1';
+document.getElementById('budgetItemModal').style.display = 'flex';
+};
+window.openEditBudgetItemModal = function(index) {
+const items = defaultBudget[selectedBudgetDay] || [];
+const item = items[index];
+if (!item) return;
+document.getElementById('budgetItemModalTitle').textContent = '✏️ Edit Bahan Baku / Bumbu';
+document.getElementById('editBudgetIndex').value = index;
+renderBudgetMenuOptions(item.menuId);
+document.getElementById('biCategory').value = item.cat;
+document.getElementById('biName').value = item.name;
+document.getElementById('biAmountLarge').value = getBudgetPortionAmount(item, 'large');
+document.getElementById('biAmountSmall').value = getBudgetPortionAmount(item, 'small');
+document.getElementById('biUnit').value = item.unit;
+document.getElementById('biPrice').value = item.price;
+document.getElementById('biPriceUnit').value = item.priceUnit || item.unit;
+document.getElementById('biFk').value = getBudgetConversionFactor(item);
+document.getElementById('budgetItemModal').style.display = 'flex';
+};
 window.calculateTotalKebutuhan = function() {
 const amount = parseFloat(document.getElementById('biAmount').value) || 0;
 const unit = document.getElementById('biUnit').value;
@@ -6975,8 +8085,58 @@ document.getElementById('biTotalKebutuhanCustom').value = displayTotal;
 window.onCustomTotalKebutuhanInput = function(val) {
 };
 window.closeBudgetItemModal = function() { document.getElementById('budgetItemModal').style.display = 'none'; };
-window.saveBudgetItemModal = function() { const idx = document.getElementById('editBudgetIndex').value; const cat = document.getElementById('biCategory').value; const name = document.getElementById('biName').value.trim(); const amountLarge = parseFloat(document.getElementById('biAmountLarge').value); const amountSmall = parseFloat(document.getElementById('biAmountSmall').value); const unit = document.getElementById('biUnit').value; const price = parseFloat(document.getElementById('biPrice').value); const priceUnit = document.getElementById('biPriceUnit').value || unit; const fk = parseFloat(document.getElementById('biFk').value); const unitDimension = value => ['gram', 'kg'].includes(value) ? 'weight' : ['ml', 'liter'].includes(value) ? 'volume' : ['buah', 'unit'].includes(value) ? 'count' : null; if (!name || !Number.isFinite(amountLarge) || amountLarge < 0 || !Number.isFinite(amountSmall) || amountSmall < 0 || !Number.isFinite(price) || price < 0 || !Number.isFinite(fk) || fk <= 0 || fk > 100) { alert('Isi nama, gramasi kedua porsi, harga, dan faktor konversi (lebih dari 0 sampai 100) dengan angka yang valid.'); return; } if (unitDimension(unit) !== unitDimension(priceUnit)) { alert('Satuan gramasi dan satuan harga harus sejenis (berat, volume, atau hitungan).'); return; } if (!defaultBudget[selectedBudgetDay]) defaultBudget[selectedBudgetDay] = []; const newItem = { cat, name, amount: amountLarge, amountLarge, amountSmall, unit, price, priceUnit, fk }; if (idx !== '') { defaultBudget[selectedBudgetDay][parseInt(idx)] = newItem; } else { defaultBudget[selectedBudgetDay].push(newItem); } closeBudgetItemModal(); renderBudgetTable(); saveAppDataToCloud(); };
-window.deleteBudgetItem = function(index) { if (confirm('Hapus item bahan baku ini?')) { defaultBudget[selectedBudgetDay].splice(index, 1); renderBudgetTable(); saveAppDataToCloud(); } };
+window.saveBudgetItemModal = function() {
+const idx = document.getElementById('editBudgetIndex').value;
+const items = defaultBudget[selectedBudgetDay] || (defaultBudget[selectedBudgetDay] = []);
+const oldItem = idx !== '' ? items[Number(idx)] : null;
+const cat = document.getElementById('biCategory').value;
+const name = document.getElementById('biName').value.trim();
+const amountLarge = parseFloat(document.getElementById('biAmountLarge').value);
+const amountSmall = parseFloat(document.getElementById('biAmountSmall').value);
+const unit = document.getElementById('biUnit').value;
+const price = parseFloat(document.getElementById('biPrice').value);
+const priceUnit = document.getElementById('biPriceUnit').value || unit;
+const fk = parseFloat(document.getElementById('biFk').value);
+if (!name || !Number.isFinite(amountLarge) || amountLarge < 0 || !Number.isFinite(amountSmall) || amountSmall < 0 || !Number.isFinite(price) || price <= 0 || !Number.isFinite(fk) || fk <= 0 || fk > 100) {
+alert('Isi nama, gramasi kedua porsi, harga lebih dari 0, dan faktor konversi (lebih dari 0 sampai 100) dengan angka yang valid.');
+return;
+}
+const unitInfo = getBudgetUnitInfo(unit);
+const priceUnitInfo = getBudgetUnitInfo(priceUnit);
+if (!unitInfo || !priceUnitInfo || unitInfo.dimension !== priceUnitInfo.dimension) {
+alert('Satuan gramasi dan satuan harga harus sejenis (berat, volume, atau hitungan).');
+return;
+}
+const selectedMenuId = Number(document.getElementById('biMenuId').value) || 0;
+const selectedMenu = getDailyBankMenuItems(selectedBudgetDay).find(function(menu) { return Number(menu.id) === selectedMenuId; });
+const newItem = {
+cat: cat,
+name: name,
+amount: amountLarge,
+amountLarge: amountLarge,
+amountSmall: amountSmall,
+unit: unit,
+price: price,
+priceUnit: priceUnit,
+fk: fk,
+source: oldItem && oldItem.source === 'bank_menu' ? 'bank_menu' : 'manual',
+priceMissing: false
+};
+if (selectedMenu) {
+newItem.menuId = selectedMenuId;
+newItem.menuName = String(selectedMenu.nama || '');
+} else if (oldItem && oldItem.menuId) {
+newItem.menuId = oldItem.menuId;
+newItem.menuName = oldItem.menuName || '';
+}
+if (idx !== '') items[Number(idx)] = newItem;
+else items.push(newItem);
+closeBudgetItemModal();
+renderBudgetTable();
+saveAppDataToCloud();
+persistModule4BudgetChanges('Rincian bahan dan harga berhasil disimpan.');
+};
+window.deleteBudgetItem = function(index) { if (confirm('Hapus item bahan baku ini?')) { defaultBudget[selectedBudgetDay].splice(index, 1); renderBudgetTable(); saveAppDataToCloud(); persistModule4BudgetChanges('Bahan berhasil dihapus dari Pagu PO.'); } };
 window.openImportModal = function() { document.getElementById('importModal').style.display = 'flex'; };
 window.closeImportModal = function() { document.getElementById('importModal').style.display = 'none'; };
 window.processImportTasks = function() {
@@ -7030,6 +8190,7 @@ porsiKecil: porsiKecil,
 defaultTasks: defaultTasks,
 defaultMenus: defaultMenus,
 defaultBudget: defaultBudget,
+defaultBudgetBackup: defaultBudgetBackup,
 appLogoBase64: appLogoBase64,
 haccpChecks: haccpChecks,
 akgPosters: akgPosters.map(function(poster) {
@@ -7126,8 +8287,17 @@ id: id,
 nama: readText(item.nama, 'Nama menu Bank Menu', 300),
 hari: readText(item.hari, 'Hari menu Bank Menu', 100),
 kategori: readText(item.kategori, 'Kategori menu Bank Menu', 150),
-daerah: readText(item.daerah, 'Daerah menu Bank Menu', 150)
+daerah: readText(item.daerah, 'Daerah menu Bank Menu', 150),
+akg: {}
 };
+if (item.akg !== undefined) {
+if (!isRecord(item.akg)) throw new Error('Data AKG salinan menu Bank Menu tidak valid.');
+['kalori', 'protein', 'lemak', 'karbohidrat', 'serat', 'vitA', 'vitC', 'kalsium', 'zatBesi'].forEach(function(key) {
+snapshot.akg[key] = readNumber(item.akg[key] === undefined ? 0 : item.akg[key], 'Nilai AKG menu Bank Menu');
+});
+if (item.akg.status !== undefined) snapshot.akg.status = readText(item.akg.status, 'Status AKG menu Bank Menu', 50);
+if (item.akg.metode !== undefined) snapshot.akg.metode = readText(item.akg.metode, 'Metode AKG menu Bank Menu', 500);
+}
 ['karbohidrat', 'proteinHewani', 'proteinNabati', 'sayuran', 'buah'].forEach(function(key) {
 if (!isRecord(item[key])) throw new Error('Komposisi menu Bank Menu tidak valid.');
 snapshot[key] = {
@@ -7157,6 +8327,16 @@ price: readNumber(item.price, 'Harga bahan')
 if (item.amountLarge !== undefined) normalized.amountLarge = readNumber(item.amountLarge, 'Jumlah porsi besar');
 if (item.amountSmall !== undefined) normalized.amountSmall = readNumber(item.amountSmall, 'Jumlah porsi kecil');
 if (item.priceUnit !== undefined) normalized.priceUnit = readText(item.priceUnit, 'Satuan harga', 30);
+if (item.source !== undefined) {
+if (!['manual', 'bank_menu'].includes(item.source)) throw new Error('Sumber item anggaran tidak valid.');
+normalized.source = item.source;
+}
+if (item.menuId !== undefined) normalized.menuId = readNumber(item.menuId, 'Kode menu anggaran');
+if (item.menuName !== undefined) normalized.menuName = readText(item.menuName, 'Nama menu anggaran', 300);
+if (item.priceMissing !== undefined) {
+if (typeof item.priceMissing !== 'boolean') throw new Error('Status harga bahan tidak valid.');
+normalized.priceMissing = item.priceMissing;
+}
 if (item.fk !== undefined) {
 normalized.fk = readNumber(item.fk, 'Faktor konversi');
 if (normalized.fk <= 0 || normalized.fk > 100) throw new Error('Faktor konversi tidak valid.');
@@ -7168,6 +8348,13 @@ if (normalized.bdd <= 0 || normalized.bdd > 100) throw new Error('Persentase BDD
 return normalized;
 });
 });
+}
+if (Object.prototype.hasOwnProperty.call(data, 'defaultBudgetBackup')) {
+if (data.defaultBudgetBackup === null) result.defaultBudgetBackup = null;
+else {
+const normalizedBackup = validateBackupData({ defaultBudget: data.defaultBudgetBackup });
+result.defaultBudgetBackup = normalizedBackup.defaultBudget;
+}
 }
 if (Object.prototype.hasOwnProperty.call(data, 'appLogoBase64')) {
 const logo = data.appLogoBase64;
@@ -7356,7 +8543,7 @@ alert('❌ Gagal mengunduh HTML: ' + error.message);
 function updateClock() { const now = new Date(); const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }; const dateEl = document.getElementById('currentDate'); const clockEl = document.getElementById('currentClock'); if (dateEl) dateEl.textContent = now.toLocaleDateString('id-ID', options); if (clockEl) clockEl.textContent = now.toTimeString().split(' ')[0] + ' WIB'; }
 setInterval(updateClock, 1000);
 function saveHaccpCheck() { haccpChecks = { cold: document.getElementById('haccpCold').checked, organo: document.getElementById('haccpOrgano').checked, sanitasi: document.getElementById('haccpSanitasi').checked, label: document.getElementById('haccpLabel').checked }; saveAppDataToCloud(); }
-function initApp() { loadAppDataFromCloud(); checkPortalAuth(); updateClock(); loadTheme(); let savedTheme = null; let legacyLightTheme = false; try { savedTheme = localStorage.getItem('spas1m_custom_theme'); legacyLightTheme = localStorage.getItem('spas1m_theme') === 'light'; } catch(e){} if (['emerald', 'ocean', 'royal', 'light'].indexOf(savedTheme) !== -1) changeCustomTheme(savedTheme); else if (legacyLightTheme && !savedTheme) changeCustomTheme('light'); loadPublicSiteSettings(); loadPublicSiteContent(); loadPublicAnnouncements(); loadPublicMedia(); renderDayTabs(); renderRecipeView(); renderBudgetTable(); renderAkgPosters(); }
+function initApp() { initializePasswordVisibilityToggles(); loadAppDataFromCloud(); checkPortalAuth(); updateClock(); loadTheme(); let savedTheme = null; let legacyLightTheme = false; try { savedTheme = localStorage.getItem('spas1m_custom_theme'); legacyLightTheme = localStorage.getItem('spas1m_theme') === 'light'; } catch(e){} if (['emerald', 'ocean', 'royal', 'light'].indexOf(savedTheme) !== -1) changeCustomTheme(savedTheme); else if (legacyLightTheme && !savedTheme) changeCustomTheme('light'); loadPublicSiteSettings(); loadPublicSiteContent(); loadPublicAnnouncements(); loadPublicMedia(); renderDayTabs(); renderRecipeView(); renderBudgetTable(); renderAkgPosters(); }
 if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initApp); } else { initApp(); }
 })();
 function formatAnnouncementText(value) {
@@ -7932,7 +9119,7 @@ container.appendChild(card);
 }
 const defaultSiteContent = {
 aboutTitle: 'Tentang Kami',
-aboutDescription: 'SPPG Sungai Pasir 1 Meral mendukung pelaksanaan layanan Makan Bergizi Gratis melalui kolaborasi tim dapur, yayasan, sekolah, dan Posyandu. Informasi pada halaman ini dikelola oleh SUPER ADMIN.',
+aboutDescription: 'Mendukung pelaksanaan layanan Makan Bergizi Gratis melalui kolaborasi tim dapur, yayasan, sekolah, dan Posyandu. Informasi pada halaman ini dikelola oleh SUPER ADMIN.',
 beneficiariesTitle: 'Rincian Penerima Manfaat',
 beneficiariesNote: 'Jumlah per sekolah dan Posyandu hanya ditampilkan setelah diisi dan diverifikasi oleh admin.',
 teamTitle: 'Manajemen SPPG Sungai Pasir 1 Meral',
@@ -8762,24 +9949,49 @@ alert('❌ Gagal sync Bank Menu: ' + err.message);
 };
 window.fetchBankMenuFromCloud = function(clickEvent, providedRows) {
 const btn = clickEvent ? clickEvent.currentTarget : null;
+mnMenuLoadPending = true;
+renderMenuNusantara();
 if (btn) { btn.innerHTML = '⏳ Menarik dari Database...'; btn.disabled = true; }
 const handleRows = function(rows) {
 if (btn) { btn.innerHTML = '📥 Tarik dari Database'; btn.disabled = false; }
 const res = { status: 'success', data: rows };
 if (res && res.status === 'success') {
-if (!Array.isArray(res.data)) { alert('❌ Format data Bank Menu dari server tidak valid.'); return; }
+if (!Array.isArray(res.data)) { mnMenuLoadPending = false; renderMenuNusantara(); alert('❌ Format data Bank Menu dari server tidak valid.'); return; }
 if (res.data.length === 0) {
+mnMenuLoadPending = false;
+mnMenuLoadedFromSupabase = true;
 MN_MENU_DATA.splice(0, MN_MENU_DATA.length);
 renderMenuNusantara();
+renderMenuPeriodControls();
 showToast('ℹ️ Tabel Bank Menu di Supabase kosong; data lokal telah disesuaikan.');
 return;
 }
+try {
 const parseComposition = value => {
 const text = String(value || '');
 const match = text.match(/^(.*?)\s+([\d.]+)\s*g$/i);
 return { nama: match ? match[1] : text, gram: match ? Number(match[2]) : 0 };
 };
 const numberOrZero = value => Number.isFinite(Number(value)) ? Number(value) : 0;
+const parseAkg = row => {
+const values = {
+kalori: numberOrZero(row.Kalori),
+protein: numberOrZero(row.Protein),
+lemak: numberOrZero(row.Lemak),
+karbohidrat: 0,
+serat: 0,
+vitA: 0,
+vitC: 0,
+kalsium: 0,
+zatBesi: 0
+};
+const savedAkg = row['AKG Data'];
+if (savedAkg == null) return values;
+if (typeof savedAkg !== 'object' || Array.isArray(savedAkg)) {
+throw new Error('Format kolom AKG Data tidak valid pada menu ID ' + row.ID + '.');
+}
+return Object.assign(values, savedAkg);
+};
 const loadedMenus = res.data.map((row, index) => ({
 id: Number.isFinite(Number(row.ID)) ? Number(row.ID) : index + 1,
 nama: String(row['Nama Menu'] || ''),
@@ -8791,18 +10003,26 @@ proteinHewani: parseComposition(row['Protein Hewani']),
 proteinNabati: parseComposition(row['Protein Nabati']),
 sayuran: parseComposition(row.Sayuran),
 buah: parseComposition(row.Buah),
-akg: { kalori: numberOrZero(row.Kalori), protein: numberOrZero(row.Protein), lemak: numberOrZero(row.Lemak), karbohidrat: 0, serat: 0, vitA: 0, vitC: 0, kalsium: 0, zatBesi: 0 }
+akg: parseAkg(row)
 }));
 MN_MENU_DATA.splice(0, MN_MENU_DATA.length, ...loadedMenus);
+mnMenuLoadPending = false;
+mnMenuLoadedFromSupabase = true;
 renderMenuNusantara();
+renderMenuPeriodControls();
 showToast('✅ ' + loadedMenus.length + ' data Bank Menu dimuat dari Supabase.');
+} catch (error) {
+mnMenuLoadPending = false;
+renderMenuNusantara();
+alert('❌ Data Bank Menu dari Supabase tidak dapat dibaca: ' + error.message);
+}
 } else { alert('❌ Gagal: ' + (res ? res.message : 'Unknown error')); }
 };
 if (Array.isArray(providedRows)) { handleRows(providedRows); return; }
 callSupabaseAction('fetchBankMenu', {}, function(res) {
-if (!res || res.status !== 'success') { if (btn) { btn.innerHTML = '📥 Tarik dari Database'; btn.disabled = false; } alert('❌ Gagal menarik Bank Menu dari Supabase.'); return; }
+if (!res || res.status !== 'success') { mnMenuLoadPending = false; if (btn) { btn.innerHTML = '📥 Tarik dari Database'; btn.disabled = false; } renderMenuNusantara(); alert('❌ Gagal menarik Bank Menu dari Supabase.'); return; }
 handleRows(res.data);
-}, function(err) { if (btn) { btn.innerHTML = '📥 Tarik dari Database'; btn.disabled = false; } alert('❌ Gagal menarik Bank Menu: ' + err.message); });
+}, function(err) { mnMenuLoadPending = false; if (btn) { btn.innerHTML = '📥 Tarik dari Database'; btn.disabled = false; } renderMenuNusantara(); alert('❌ Gagal menarik Bank Menu: ' + err.message); });
 };
 window.syncStokLogistikToCloud = function(clickEvent) {
 const itemsToSync = SL_STOK_DATA;

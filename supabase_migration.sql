@@ -109,6 +109,8 @@ create unique index if not exists "SPAS1_BENEFICIARIES_ID_app_key"
   on public."SPAS1_BENEFICIARIES" ("ID");
 create unique index if not exists "SPAS1_TEAM_ID_app_key"
   on public."SPAS1_TEAM" ("ID");
+alter table public."modul2_bank_menu"
+  add column if not exists "AKG Data" jsonb;
 create unique index if not exists "modul2_bank_menu_ID_app_key"
   on public."modul2_bank_menu" ("ID");
 create unique index if not exists "modul3_stok_logistik_ID_app_key"
@@ -286,6 +288,42 @@ create policy "Bank menu admin module manage"
 on public."modul2_bank_menu" for all to authenticated
 using ((auth.jwt() -> 'app_metadata' ->> 'role') in ('admin','module'))
 with check ((auth.jwt() -> 'app_metadata' ->> 'role') in ('admin','module'));
+
+create table if not exists public."modul2_bank_menu_period" (
+  "ID" text primary key,
+  "Periode Bulan" text not null check ("Periode Bulan" ~ '^[0-9]{4}-(0[1-9]|1[0-2])$'),
+  "Periode Hari" text not null default 'Senin',
+  "Periode Minggu" smallint not null check ("Periode Minggu" between 1 and 4),
+  "Kategori" text not null,
+  "Menu ID" bigint not null,
+  "Data Menu" jsonb not null
+);
+alter table public."modul2_bank_menu_period"
+  add column if not exists "Periode Hari" text;
+update public."modul2_bank_menu_period"
+set "Periode Hari" = case
+  when ("Data Menu" ->> 'hari') in ('Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat') then "Data Menu" ->> 'hari'
+  else 'Senin'
+end
+where "Periode Hari" is null;
+alter table public."modul2_bank_menu_period"
+  alter column "Periode Hari" set default 'Senin',
+  alter column "Periode Hari" set not null;
+alter table public."modul2_bank_menu_period"
+  drop constraint if exists "modul2_bank_menu_period_day_check";
+alter table public."modul2_bank_menu_period"
+  add constraint "modul2_bank_menu_period_day_check"
+  check ("Periode Hari" in ('Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat'));
+drop index if exists public."modul2_bank_menu_period_schedule_key";
+create unique index if not exists "modul2_bank_menu_period_schedule_day_key"
+  on public."modul2_bank_menu_period" ("Periode Bulan", "Periode Hari", "Periode Minggu", "Menu ID");
+alter table public."modul2_bank_menu_period" enable row level security;
+drop policy if exists "Bank menu period admin module manage" on public."modul2_bank_menu_period";
+create policy "Bank menu period admin module manage"
+on public."modul2_bank_menu_period" for all to authenticated
+using ((auth.jwt() -> 'app_metadata' ->> 'role') in ('admin','module'))
+with check ((auth.jwt() -> 'app_metadata' ->> 'role') in ('admin','module'));
+grant select, insert, update, delete on table public."modul2_bank_menu_period" to authenticated;
 
 drop policy if exists "Stock admin module manage" on public."modul3_stok_logistik";
 create policy "Stock admin module manage"
