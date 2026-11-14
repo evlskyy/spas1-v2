@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>iamSkyy | Portfolio Project </title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+.project-hero { height: 300px; background: linear-gradient(135deg, #10B981, #0EA5E9); display: flex; align-items: center; justify-content: center; font-size: 120px; border-radius: 20px 20px 0 0; background-size: cover; background-position: center; background-repeat: no-repeat; position: relative; overflow: hidden; transition: background-image 0.3s ease; }
+.project-hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 80px; background: linear-gradient(to top, rgba(28, 37, 65, 0.8), transparent); }
+body.light-mode .project-hero::after { background: linear-gradient(to top, rgba(255, 255, 255, 0.8), transparent); }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0B132B; color: #E0E1DD; overflow-x: hidden; }
+body.light-mode { background: #F8FAFC !important; color: #0F172A !important; }
+.gradient-text { background: linear-gradient(135deg, #10B981, #0EA5E9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.glass-card { background: rgba(28, 37, 65, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(58, 80, 107, 0.5); border-radius: 16px; transition: all 0.3s; cursor: pointer; }
+.glass-card:hover { border-color: #10B981; transform: translateY(-8px); box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2); }
+body.light-mode .glass-card { background: rgba(255,255,255,0.8); border-color: rgba(209,213,219,0.5); }
+.btn-primary { background: linear-gradient(135deg, #10B981, #059669); color: white; padding: 12px 24px; border-radius: 12px; font-weight: 700; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; transition: all 0.3s; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4); }
+.btn-outline { background: transparent; color: #10B981; padding: 12px 24px; border-radius: 12px; font-weight: 700; border: 1.5px solid #10B981; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; transition: all 0.3s; }
+.btn-outline:hover { background: #10B981; color: white; transform: translateY(-2px); }
+.page-section { display: none; }
+.page-section.active { display: block; animation: fadeIn 0.5s; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@keyframes floatAndroid { 0%, 100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-10px) translateX(3px); } }
+@keyframes floatIos { 0%, 100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(10px) translateX(-3px); } }
+@keyframes floatJs { 0%, 100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-8px) translateX(2px); } }
+@keyframes floatSponsor { 0%, 100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(10px) translateX(3px); } }
+@keyframes floatTheme { 0%, 100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(8px) translateX(-2px); } }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } }
+@keyframes glitch { 0%, 100% { text-shadow: 0 0 10px #10B981, 0 0 20px #10B981, 0 0 30px #10B981; } 50% { text-shadow: 0 0 15px #10B981, 0 0 30px #10B981, 0 0 45px #10B981, 0 0 60px #059669; } }
+@keyframes scanline { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
+@keyframes hackerGlitch { 0%, 100% { filter: hue-rotate(0deg) brightness(1); } 25% { filter: hue-rotate(90deg) brightness(1.2) contrast(1.2); } 50% { filter: hue-rotate(180deg) brightness(0.8) contrast(1.3); } 75% { filter: hue-rotate(270deg) brightness(1.1) contrast(1.1); } }
+@keyframes scanlineMove { 0% { top: -100%; } 100% { top: 100%; } }
+@keyframes glitchLine { 0%, 100% { opacity: 0; transform: translateX(-100%); } 50% { opacity: 1; transform: translateX(100%); } }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-float-android { animation: floatAndroid 3.5s ease-in-out infinite; animation-delay: 0.5s; }
+.animate-float-ios { animation: floatIos 4s ease-in-out infinite; animation-delay: 1s; }
+.animate-float-js { animation: floatJs 3.8s ease-in-out infinite; animation-delay: 1.5s; }
+.animate-float-sponsor { animation: floatSponsor 3.6s ease-in-out infinite; animation-delay: 0.8s; }
+.animate-float-theme { animation: floatTheme 3s ease-in-out infinite; animation-delay: 1.5s; }
+.nav-link.active { color: #10B981 !important; }
+.profile-container { position: relative; display: inline-block; }
+.hacker-profile-wrapper { position: relative; width: 100%; height: 100%; border-radius: 50%; overflow: hidden; animation: hackerGlitch 4s ease-in-out infinite; }
+.hacker-profile-wrapper::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent); animation: scanlineMove 3s linear infinite; pointer-events: none; z-index: 10; }
+.hacker-profile-wrapper::after { content: ''; position: absolute; inset: -2px; background: linear-gradient(45deg, #10B981, #0EA5E9, #A855F7, #10B981); border-radius: 50%; z-index: -1; animation: hackerGlitch 3s ease-in-out infinite; filter: blur(8px); opacity: 0.7; }
+.hacker-overlay { position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(16, 185, 129, 0.03) 0px, transparent 1px, transparent 2px, rgba(16, 185, 129, 0.03) 3px); pointer-events: none; z-index: 20; animation: scanlineMove 8s linear infinite; }
+.hacker-profile-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) contrast(1.2) brightness(0.9); animation: hackerGlitch 5s ease-in-out infinite; }
+.hacker-glitch-line { position: absolute; width: 100%; height: 2px; background: rgba(16, 185, 129, 0.6); left: 0; animation: glitchLine 2s ease-in-out infinite; pointer-events: none; z-index: 15; box-shadow: 0 0 10px #10B981; }
+.hacker-glitch-line:nth-child(1) { top: 20%; animation-delay: 0s; }
+.hacker-glitch-line:nth-child(2) { top: 50%; animation-delay: 0.5s; }
+.hacker-glitch-line:nth-child(3) { top: 80%; animation-delay: 1s; }
+.badge-item { background: rgba(28, 37, 65, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(58, 80, 107, 0.5); border-radius: 12px; padding: 8px 14px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 6px; white-space: nowrap; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); transition: all 0.3s; cursor: pointer; }
+.badge-item:hover { transform: scale(1.1); border-color: #10B981; box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3); }
+body.light-mode .badge-item { background: rgba(255, 255, 255, 0.95); border-color: rgba(209, 213, 219, 0.5); color: #0F172A; }
+.badge-android { position: absolute; top: -10px; right: -10px; z-index: 10; }
+.badge-android .badge-item { color: #4ADE80; }
+.badge-ios { position: absolute; bottom: -10px; left: -10px; z-index: 10; }
+.badge-ios .badge-item { color: #9CA3AF; }
+.badge-javascript { position: absolute; top: 50%; right: -30px; transform: translateY(-50%); z-index: 10; }
+.badge-javascript .badge-item { color: #FBBF24; }
+.badge-sponsor { position: absolute; top: -10px; left: -10px; z-index: 10; }
+.badge-sponsor .badge-item { color: #F472B6; }
+.theme-toggle { position: absolute; bottom: -10px; right: -10px; z-index: 1000; width: 44px; height: 44px; border-radius: 50%; background: rgba(28, 37, 65, 0.9); border: 1px solid rgba(58, 80, 107, 0.5); color: #E0E1DD; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 18px; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+.theme-toggle:hover { transform: rotate(180deg) scale(1.1); border-color: #10B981; }
+body.light-mode .theme-toggle { background: rgba(255,255,255,0.9); color: #0F172A; border-color: #CBD5E1; }
+.hamburger-btn { display: none; background: none; border: none; color: inherit; font-size: 24px; cursor: pointer; padding: 8px; z-index: 1001; }
+.mobile-menu { display: none; position: fixed; top: 65px; left: 0; right: 0; background: rgba(28, 37, 65, 0.98); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(58, 80, 107, 0.5); padding: 20px; z-index: 999; flex-direction: column; gap: 10px; max-height: calc(100vh - 65px); overflow-y: auto; animation: slideDown 0.3s ease-out; }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+body.light-mode .mobile-menu { background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid rgba(209, 213, 219, 0.5); }
+.mobile-menu.show { display: flex; }
+.mobile-menu a { padding: 12px 16px; border-radius: 10px; font-weight: 600; transition: all 0.3s; text-decoration: none; color: inherit; display: flex; align-items: center; }
+.mobile-menu a:hover, .mobile-menu a.active { background: rgba(16, 185, 129, 0.2); color: #10B981; }
+.mobile-theme-toggle { display: none; align-items: center; justify-content: center; gap: 10px; padding: 12px 16px; border-radius: 10px; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #10B981; font-weight: 700; cursor: pointer; transition: all 0.3s; margin-top: 10px; }
+.mobile-theme-toggle:hover { background: rgba(16, 185, 129, 0.2); }
+body.light-mode .mobile-theme-toggle { background: rgba(5, 150, 105, 0.1); border-color: rgba(5, 150, 105, 0.3); color: #059669; }
+.toast { position: fixed; top: 20px; right: 20px; background: linear-gradient(135deg, #10B981, #059669); color: white; padding: 14px 20px; border-radius: 12px; font-weight: 700; transform: translateX(150%); transition: transform 0.4s; z-index: 9999; }
+.toast.show { transform: translateX(0); }
+.skill-bar { background: rgba(30, 41, 59, 0.5); border-radius: 8px; overflow: hidden; height: 10px; margin-top: 8px; }
+body.light-mode .skill-bar { background: #E2E8F0; }
+.skill-progress { height: 100%; background: linear-gradient(90deg, #10B981, #0EA5E9); border-radius: 8px; transition: width 1.5s; }
+.form-input { width: 100%; padding: 12px 16px; background: rgba(30, 41, 59, 0.5); border: 1.5px solid rgba(58, 80, 107, 0.5); border-radius: 10px; color: #E0E1DD; font-size: 14px; }
+body.light-mode .form-input { background: white; border-color: #CBD5E1; color: #0F172A; }
+.form-input:focus { outline: none; border-color: #10B981; }
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before { content: ''; position: absolute; left: 11px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, #10B981, #0EA5E9, #A855F7); }
+.timeline-item { position: relative; margin-bottom: 32px; padding-left: 24px; }
+.timeline-item::before { content: ''; position: absolute; left: -26px; top: 8px; width: 14px; height: 14px; border-radius: 50%; background: #10B981; border: 3px solid #0B132B; }
+body.light-mode .timeline-item::before { border-color: #F8FAFC; }
+.timeline-item:nth-child(2)::before { background: #0EA5E9; }
+.timeline-item:nth-child(3)::before { background: #A855F7; }
+.timeline-item:nth-child(4)::before { background: #F59E0B; }
+.project-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); z-index: 9999; display: none; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; }
+.project-modal.show { display: flex; }
+.project-modal-content { background: #1C2541; border-radius: 20px; max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; }
+body.light-mode .project-modal-content { background: white; }
+.project-modal-close { position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.1); border: none; color: white; cursor: pointer; font-size: 20px; z-index: 10; }
+body.light-mode .project-modal-close { background: rgba(0,0,0,0.1); color: #0F172A; }
+.project-body { padding: 30px; }
+.project-tag { display: inline-block; padding: 6px 12px; background: rgba(16,185,129,0.2); color: #10B981; border-radius: 8px; font-size: 12px; font-weight: 700; margin-right: 8px; margin-bottom: 8px; }
+.project-stat { background: rgba(16,185,129,0.1); padding: 16px; border-radius: 12px; text-align: center; }
+.project-stat-value { font-size: 24px; font-weight: 900; color: #10B981; }
+.project-stat-label { font-size: 11px; color: #9CA3AF; margin-top: 4px; }
+body.light-mode .project-stat-label { color: #6B7280; }
+.filter-btn { padding: 10px 20px; border-radius: 25px; border: 1.5px solid rgba(58, 80, 107, 0.5); background: transparent; color: #E0E1DD; cursor: pointer; font-weight: 700; transition: all 0.3s; }
+.filter-btn.active { background: #10B981; border-color: #10B981; color: white; }
+.filter-btn:hover { border-color: #10B981; }
+body.light-mode .filter-btn { border-color: #CBD5E1; color: #0F172A; }
+body.light-mode .filter-btn.active { background: #059669; border-color: #059669; color: white; }
+.cert-card { background: rgba(28, 37, 65, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(58, 80, 107, 0.5); border-radius: 16px; padding: 24px; text-align: center; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; }
+.cert-card:hover { border-color: #10B981; transform: translateY(-8px); box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2); }
+body.light-mode .cert-card { background: rgba(255, 255, 255, 0.8); border-color: rgba(209, 213, 219, 0.5); }
+.cert-card::before { content: '🔍 Klik untuk lihat sertifikat'; position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(135deg, #10B981, #0EA5E9); color: white; padding: 8px; font-size: 11px; font-weight: 700; transform: translateY(100%); transition: transform 0.3s; }
+.cert-card:hover::before { transform: translateY(0); }
+.cert-icon-wrapper { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto; font-size: 36px; transition: transform 0.3s; }
+.cert-card:hover .cert-icon-wrapper { transform: scale(1.1) rotate(5deg); }
+.cert-icon-wrapper.google { background: rgba(251, 191, 36, 0.2); color: #FBBF24; }
+.cert-icon-wrapper.aws { background: rgba(59, 130, 246, 0.2); color: #3B82F6; }
+.cert-icon-wrapper.meta { background: rgba(168, 85, 247, 0.2); color: #A855F7; }
+.cert-modal { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); z-index: 10000; display: none; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; }
+.cert-modal.show { display: flex; }
+.cert-modal-content { background: white; border-radius: 12px; max-width: 900px; width: 100%; max-height: 95vh; overflow-y: auto; position: relative; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5); }
+.certificate-viewer { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); padding: 40px; position: relative; min-height: 600px; }
+.certificate-border { border: 3px solid #10B981; padding: 40px; background: white; position: relative; min-height: 520px; }
+.certificate-border::before { content: ''; position: absolute; top: 10px; left: 10px; right: 10px; bottom: 10px; border: 1px solid #10B981; pointer-events: none; }
+.cert-header { text-align: center; margin-bottom: 30px; }
+.cert-logo { font-size: 48px; margin-bottom: 10px; }
+.cert-title { font-size: 14px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }
+.cert-name { font-size: 36px; font-weight: 900; color: #0F172A; margin: 20px 0; }
+.cert-description { font-size: 16px; color: #334155; line-height: 1.6; text-align: center; margin: 20px 0; max-width: 600px; margin-left: auto; margin-right: auto; }
+.cert-footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; }
+.cert-signature { text-align: center; }
+.cert-signature-line { width: 150px; height: 2px; background: #0F172A; margin: 0 auto 8px auto; }
+.cert-signature-name { font-size: 12px; font-weight: 700; color: #0F172A; }
+.cert-signature-title { font-size: 10px; color: #64748b; }
+.cert-seal { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #10B981, #0EA5E9); display: flex; align-items: center; justify-content: center; color: white; font-size: 32px; }
+.cert-id { text-align: center; margin-top: 20px; font-size: 11px; color: #64748b; }
+.cert-id strong { color: #0F172A; }
+.error404-modal { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); z-index: 10000; display: none; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; }
+.error404-modal.show { display: flex; }
+.error404-content { background: linear-gradient(135deg, #050a0f 0%, #0a1520 50%, #051015 100%); border-radius: 12px; max-width: 600px; width: 100%; padding: 40px; text-align: center; box-shadow: 0 0 60px rgba(16, 185, 129, 0.3), 0 0 120px rgba(16, 185, 129, 0.1), inset 0 0 60px rgba(16, 185, 129, 0.05); position: relative; border: 1px solid rgba(16, 185, 129, 0.3); overflow: hidden; }
+.error404-content::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #10B981, transparent); animation: scanline 3s linear infinite; pointer-events: none; }
+.error404-content::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 70%); pointer-events: none; }
+.error404-art { font-family: monospace; font-size: 14px; line-height: 1.2; color: #10B981; margin: 20px 0; white-space: pre; display: inline-block; text-align: left; text-shadow: 0 0 10px #10B981, 0 0 20px rgba(16, 185, 129, 0.5); animation: glitch 2s ease-in-out infinite; position: relative; z-index: 2; }
+.error404-title { font-size: 48px; font-weight: 900; color: #10B981; letter-spacing: 8px; margin: 20px 0 10px 0; font-family: monospace; text-shadow: 0 0 20px #10B981, 0 0 40px rgba(16, 185, 129, 0.6), 0 0 60px rgba(16, 185, 129, 0.3); animation: glitch 2s ease-in-out infinite; position: relative; z-index: 2; }
+.error404-subtitle { font-size: 24px; font-weight: 700; color: #10B981; letter-spacing: 4px; font-family: monospace; text-shadow: 0 0 15px #10B981, 0 0 30px rgba(16, 185, 129, 0.5); position: relative; z-index: 2; }
+.error404-close-btn { position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; border-radius: 50%; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); color: #10B981; cursor: pointer; font-size: 18px; z-index: 10; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+.error404-close-btn:hover { background: rgba(16, 185, 129, 0.3); border-color: #10B981; transform: rotate(90deg); box-shadow: 0 0 20px rgba(16, 185, 129, 0.5); }
+.error404-message { font-size: 18px; color: rgba(16, 185, 129, 0.8); margin-top: 25px; line-height: 1.6; position: relative; z-index: 2; text-shadow: 0 0 10px rgba(16, 185, 129, 0.3); font-weight: 600; }
+.blog-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out, opacity 0.3s ease-out; opacity: 0; }
+.blog-content.expanded { max-height: 2000px; opacity: 1; transition: max-height 0.8s ease-in, opacity 0.5s ease-in; }
+.blog-content p { margin-bottom: 12px; line-height: 1.7; }
+.blog-content h4 { font-weight: 700; margin: 16px 0 8px 0; color: #10B981; }
+.blog-content ul { margin-left: 20px; margin-bottom: 12px; }
+.blog-content li { margin-bottom: 6px; }
+.read-more-btn { cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.3s; background: transparent; border: none; font-family: inherit; }
+.read-more-btn:hover { gap: 10px; }
+.read-more-btn.expanded .arrow-icon { transform: rotate(-90deg); }
+.service-icon { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 16px; }
+.service-icon.android { background: rgba(16,185,129,0.2); color: #10B981; }
+.service-icon.ios { background: rgba(59,130,246,0.2); color: #3B82F6; }
+.service-icon.cloud { background: rgba(168,85,247,0.2); color: #A855F7; }
+.stats-card { background: rgba(28, 37, 65, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(58, 80, 107, 0.5); border-radius: 16px; padding: 24px; text-align: center; transition: all 0.3s; }
+.stats-card:hover { border-color: #10B981; transform: translateY(-4px); }
+body.light-mode .stats-card { background: rgba(255,255,255,0.8); border-color: rgba(209,213,219,0.5); }
+.stats-number { font-size: 48px; font-weight: 900; background: linear-gradient(135deg, #10B981, #0EA5E9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+.stats-label { font-size: 14px; color: #9CA3AF; font-weight: 600; }
+body.light-mode .stats-label { color: #6B7280; }
+.arsip-divider { width: 100%; height: 2px; background: linear-gradient(90deg, transparent, #F59E0B, transparent); margin: 60px 0 40px 0; }
+.arsip-header { text-align: center; margin-bottom: 40px; }
+.arsip-header .arsip-icon { font-size: 48px; margin-bottom: 16px; display: inline-block; animation: float 3s ease-in-out infinite; }
+.arsip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+.arsip-card { background: rgba(28, 37, 65, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(58, 80, 107, 0.5); border-radius: 16px; padding: 24px; cursor: pointer; transition: all 0.3s; position: relative; overflow: hidden; text-align: center; }
+.arsip-card:hover { border-color: #F59E0B; transform: translateY(-6px); box-shadow: 0 20px 40px rgba(245, 158, 11, 0.2); }
+body.light-mode .arsip-card { background: rgba(255, 255, 255, 0.8); border-color: rgba(209, 213, 219, 0.5); }
+.arsip-card-icon { width: 64px; height: 64px; border-radius: 16px; background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(239, 68, 68, 0.2)); display: flex; align-items: center; justify-content: center; margin: 0 auto 16px auto; font-size: 28px; color: #F59E0B; transition: all 0.3s; }
+.arsip-card:hover .arsip-card-icon { transform: scale(1.1) rotate(5deg); }
+.arsip-card-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+.arsip-card-desc { font-size: 12px; opacity: 0.7; margin-bottom: 12px; }
+.arsip-card-lock { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; color: #F59E0B; font-weight: 600; padding: 4px 10px; background: rgba(245, 158, 11, 0.1); border-radius: 20px; }
+.arsip-card-unlock { display: none; align-items: center; gap: 6px; font-size: 11px; color: #10B981; font-weight: 600; padding: 4px 10px; background: rgba(16, 185, 129, 0.1); border-radius: 20px; }
+.arsip-card.unlocked .arsip-card-lock { display: none; }
+.arsip-card.unlocked .arsip-card-unlock { display: inline-flex; }
+.arsip-card.unlocked { border-color: #10B981; }
+.arsip-card.unlocked .arsip-card-icon { background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(14, 165, 233, 0.2)); color: #10B981; }
+.arsip-modal { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); z-index: 10001; display: none; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; }
+.arsip-modal.show { display: flex; }
+.arsip-modal-content { background: #1C2541; border-radius: 20px; max-width: 450px; width: 100%; padding: 40px 30px; position: relative; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5); text-align: center; }
+body.light-mode .arsip-modal-content { background: white; }
+.arsip-modal-icon { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(239, 68, 68, 0.2)); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; font-size: 36px; color: #F59E0B; }
+.arsip-modal-title { font-size: 22px; font-weight: 900; margin-bottom: 8px; }
+.arsip-modal-subtitle { font-size: 13px; opacity: 0.7; margin-bottom: 24px; }
+.arsip-input { width: 100%; padding: 12px 16px; background: rgba(30, 41, 59, 0.5); border: 1.5px solid rgba(58, 80, 107, 0.5); border-radius: 10px; color: #E0E1DD; font-size: 14px; font-family: inherit; margin-bottom: 12px; transition: all 0.3s; }
+.arsip-input:focus { outline: none; border-color: #F59E0B; box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15); }
+body.light-mode .arsip-input { background: #F1F5F9; border-color: #CBD5E1; color: #0F172A; }
+.arsip-error { color: #EF4444; font-size: 12px; margin-bottom: 12px; display: none; font-weight: 600; }
+.arsip-error.show { display: block; }
+.arsip-content-modal { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px); z-index: 10001; display: none; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; }
+.arsip-content-modal.show { display: flex; }
+.arsip-content-box { background: #1C2541; border-radius: 20px; max-width: 800px; width: 100%; max-height: 85vh; overflow-y: auto; position: relative; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5); }
+body.light-mode .arsip-content-box { background: white; }
+.arsip-content-header { padding: 24px 30px; border-bottom: 1px solid rgba(58, 80, 107, 0.3); display: flex; align-items: center; gap: 16px; }
+.arsip-content-icon { width: 50px; height: 50px; border-radius: 12px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(14, 165, 233, 0.2)); display: flex; align-items: center; justify-content: center; font-size: 24px; color: #10B981; flex-shrink: 0; }
+.arsip-content-title { font-size: 20px; font-weight: 900; }
+.arsip-content-body { padding: 30px; line-height: 1.7; font-size: 14px; }
+.arsip-content-body h4 { color: #10B981; font-weight: 700; margin: 16px 0 8px 0; font-size: 15px; }
+.arsip-content-body ul { margin-left: 20px; margin-bottom: 12px; }
+.arsip-content-body li { margin-bottom: 6px; }
+.arsip-content-body p { margin-bottom: 12px; }
+.arsip-content-body blockquote { border-left: 3px solid #10B981; padding-left: 16px; margin: 16px 0; font-style: italic; }
+.arsip-content-footer { padding: 20px 30px; border-top: 1px solid rgba(58, 80, 107, 0.3); display: flex; justify-content: flex-end; gap: 12px; }
+.file-list { list-style: none; padding: 0; margin: 0; }
+.file-item { display: flex; align-items: center; gap: 16px; padding: 16px; margin-bottom: 12px; background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(58, 80, 107, 0.3); border-radius: 12px; transition: all 0.3s; }
+.file-item:hover { background: rgba(30, 41, 59, 0.6); border-color: #10B981; transform: translateX(4px); }
+body.light-mode .file-item { background: rgba(241, 245, 249, 0.5); border-color: rgba(209, 213, 219, 0.5); }
+body.light-mode .file-item:hover { background: rgba(241, 245, 249, 0.8); border-color: #059669; }
+.file-icon { width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+.file-icon.pdf { background: rgba(239, 68, 68, 0.2); color: #EF4444; }
+.file-icon.doc { background: rgba(59, 130, 246, 0.2); color: #3B82F6; }
+.file-icon.img { background: rgba(168, 85, 247, 0.2); color: #A855F7; }
+.file-icon.zip { background: rgba(245, 158, 11, 0.2); color: #F59E0B; }
+.file-icon.sql { background: rgba(16, 185, 129, 0.2); color: #10B981; }
+.file-icon.csv { background: rgba(34, 197, 94, 0.2); color: #22C55E; }
+.file-info { flex-grow: 1; min-width: 0; }
+.file-name { font-weight: 700; font-size: 14px; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.file-desc { font-size: 12px; opacity: 0.7; }
+.file-actions { display: flex; gap: 8px; flex-shrink: 0; }
+.file-btn { padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+.file-btn.view { background: rgba(16, 185, 129, 0.2); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); }
+.file-btn.view:hover { background: #10B981; color: white; }
+.file-btn.download { background: rgba(14, 165, 233, 0.2); color: #0EA5E9; border: 1px solid rgba(14, 165, 233, 0.3); }
+.file-btn.download:hover { background: #0EA5E9; color: white; }
+@media (max-width: 768px) {
+.hamburger-btn { display: block; }
+.desktop-menu { display: none !important; }
+.theme-toggle { width: 40px !important; height: 40px !important; font-size: 16px !important; bottom: -8px !important; right: -8px !important; }
+.mobile-theme-toggle { display: flex !important; }
+.badge-item { padding: 6px 10px; font-size: 11px; }
+.badge-android { top: -8px; right: -8px; }
+.badge-ios { bottom: -8px; left: -8px; }
+.badge-javascript { right: -20px; }
+.badge-sponsor { top: -8px; left: -8px; }
+.stats-number { font-size: 36px; }
+.stats-card { padding: 16px; }
+.project-hero { height: 200px; font-size: 80px; }
+.project-body { padding: 20px; }
+.project-modal-content { margin: 20px auto; }
+.filter-btn { padding: 8px 14px; font-size: 12px; }
+.btn-primary, .btn-outline { padding: 10px 18px; font-size: 13px; }
+.glass-card { border-radius: 12px; }
+.service-icon { width: 48px; height: 48px; font-size: 20px; }
+.certificate-viewer { padding: 20px; }
+.certificate-border { padding: 20px; min-height: auto; }
+.cert-name { font-size: 24px; }
+.cert-description { font-size: 14px; }
+.cert-footer { flex-direction: column; gap: 20px; align-items: center; }
+.error404-content { padding: 20px; }
+.error404-art { font-size: 10px; }
+.error404-title { font-size: 32px; letter-spacing: 4px; }
+.error404-subtitle { font-size: 18px; letter-spacing: 2px; }
+.error404-message { font-size: 14px; }
+.arsip-grid { grid-template-columns: 1fr; }
+.arsip-modal-content { padding: 30px 20px; }
+.arsip-content-header { padding: 20px; flex-direction: column; text-align: center; }
+.arsip-content-body { padding: 20px; }
+.arsip-content-footer { padding: 16px 20px; flex-wrap: wrap; justify-content: center; }
+.file-item { flex-direction: column; align-items: flex-start; }
+.file-actions { width: 100%; justify-content: flex-end; }
+}
+@media (max-width: 480px) {
+.stats-number { font-size: 32px; }
+.project-hero { height: 180px; font-size: 60px; }
+.filter-btn { padding: 6px 12px; font-size: 11px; }
+.btn-primary, .btn-outline { padding: 8px 16px; font-size: 12px; }
+}
+</style>
+</head>
+<body>
+<div class="toast" id="toast"><i class="fa-solid fa-check-circle"></i> <span id="toastMsg">Berhasil!</span></div>
+<nav class="fixed top-0 w-full z-50 glass-card border-b border-gray-800/50" style="border-radius: 0;">
+<div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+<a href="#about" onclick="return showSection('home')" data-show-section="home" class="text-xl font-black gradient-text" style="cursor: pointer;">iamSkyy</a>
+<div class="hidden md:flex gap-6 text-sm font-semibold desktop-menu">
+<a href="#about" onclick="return showSection('home')" data-show-section="home" class="nav-link active" data-section="home">About Me</a>
+<a href="#career" onclick="return showSection('career')" data-show-section="career" class="nav-link" data-section="career">Career</a>
+<a href="#projects" onclick="return showSection('projects')" data-show-section="projects" class="nav-link" data-section="projects">Projects</a>
+<a href="#skills" onclick="return showSection('skills')" data-show-section="skills" class="nav-link" data-section="skills">Skills</a>
+<a href="#blog" onclick="return showSection('blog')" data-show-section="blog" class="nav-link" data-section="blog">Blog</a>
+<a href="#contact" onclick="return showSection('contact')" data-show-section="contact" class="nav-link" data-section="contact">Contact</a>
+</div>
+<button class="hamburger-btn" onclick="toggleMobileMenu()" type="button" aria-label="Menu"><i class="fa-solid fa-bars" id="hamburgerIcon"></i></button>
+</div>
+<div class="mobile-menu" id="mobileMenu">
+<a href="#about" onclick="return showSection('home')" data-show-section="home" class="nav-link active" data-section="home"><i class="fa-solid fa-user mr-2"></i>About Me</a>
+<a href="#career" onclick="return showSection('career')" data-show-section="career" class="nav-link" data-section="career"><i class="fa-solid fa-briefcase mr-2"></i>Karir</a>
+<a href="#projects" onclick="return showSection('projects')" data-show-section="projects" class="nav-link" data-section="projects"><i class="fa-solid fa-folder mr-2"></i>Projects</a>
+<a href="#skills" onclick="return showSection('skills')" data-show-section="skills" class="nav-link" data-section="skills"><i class="fa-solid fa-code mr-2"></i>Skills</a>
+<a href="#blog" onclick="return showSection('blog')" data-show-section="blog" class="nav-link" data-section="blog"><i class="fa-solid fa-pen-nib mr-2"></i>Blog</a>
+<a href="#contact" onclick="return showSection('contact')" data-show-section="contact" class="nav-link" data-section="contact"><i class="fa-solid fa-envelope mr-2"></i>Contact</a>
+<button class="mobile-theme-toggle" onclick="toggleTheme()" type="button"><i class="fa-solid fa-moon" id="mobileThemeIcon"></i><span id="mobileThemeLabel">Ganti Tema</span></button>
+</div>
+</nav>
+
+<!-- HOME SECTION -->
+<section id="section-home" class="page-section active">
+<div class="min-h-screen flex items-center justify-center px-4 pt-24 pb-12">
+<div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+<div>
+<p class="text-emerald-400 font-bold mb-3 tracking-wider text-sm">👋 HALO, SAYA</p>
+<h1 class="text-4xl md:text-6xl font-black mb-4"><span class="gradient-text">Skyy</span></h1>
+<h2 class="text-lg md:text-xl font-bold mb-4">Android SDK & iOS Developer<br><span class="text-emerald-400">Full-Stack Web Engineer</span></h2>
+<p class="mb-6 leading-relaxed text-sm md:text-base opacity-80">Salah satu Cyber@ <a href="https://www.linkedin.com/company/ethicalhack/home/" target="_blank" style="color:#38BDF8;text-decoration:underline;font-weight:700;">Ethical Hacker Indonesia</a>, sebuah komunitas yang awalnya dibuat pada tahun 2018, yang didirikan oleh my bray <a href="https://teguh.co/about/" target="_blank" class="text-emerald-400 underline font-bold">Teguh Aprianto</a>, untuk mengenalkan ethical hacking ke kalangan luas. Saat ini Ethical Hacker Indonesia masih aktif melakukan edukasi dan juga advokasi yang berhubungan dengan ethical hacking dan cybersecurity di Indonesia. <a href="https://periksadata.com/" target="_blank" style="color:#38BDF8;text-decoration:underline;font-weight:700;">periksadata.com</a>, sebuah situs untuk memeriksa kebocoran data Anda, dan <a href="https://osint.sh/" target="_blank" style="color:#38BDF8;text-decoration:underline;font-weight:700;">osint.sh</a>, sebuah situs yang berisi kumpulan tools open source intelligence yang dapat digunakan untuk kebutuhan pengumpulan informasi dan investigasi yang bersumber dari sumber informasi terbuka. Saya juga Membangun Project kecil skala menengah Aplikasi berbasis web apps dan mobile apps <strong class="text-emerald-400">Android  & iOS</strong> , Cloud Sync, dan <strong class="text-emerald-400">UI/UX</strong> modern.</p>
+<div class="flex flex-wrap gap-3">
+<button onclick="showSection('projects')" data-show-section="projects" class="btn-primary" type="button"><i class="fa-solid fa-rocket"></i>Project</button>
+<button onclick="showSection('contact')" data-show-section="contact" class="btn-outline" type="button"><i class="fa-solid fa-envelope"></i>Find Me</button>
+</div>
+<div class="flex gap-3 mt-6">
+<a href="https://github.com/deployskyy" target="_blank" class="w-10 h-10 rounded-full glass-card flex items-center justify-center"><i class="fa-brands fa-github"></i></a>
+<a href="https://periksadata.com/" target="_blank" class="w-10 h-10 rounded-full glass-card flex items-center justify-center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 text-emerald-400"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></a>
+<a href="https://instagram.com/evlskyy" target="_blank" class="w-10 h-10 rounded-full glass-card flex items-center justify-center"><i class="fa-brands fa-instagram"></i></a>
+</div>
+</div>
+<div class="flex justify-center">
+<div class="profile-container">
+<div class="w-72 h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-emerald-500 via-blue-500 to-purple-500 p-1 animate-float">
+<div class="hacker-profile-wrapper">
+<div class="hacker-glitch-line"></div>
+<div class="hacker-glitch-line"></div>
+<div class="hacker-glitch-line"></div>
+<div class="hacker-overlay"></div>
+<img src="https://avatars.githubusercontent.com/u/340723619?v=4" alt="Foto DeploySkyy" class="hacker-profile-img">
+</div>
+</div>
+<div class="badge-android animate-float-android"><div class="badge-item"><i class="fa-brands fa-android text-green-400"></i><span>Android</span></div></div>
+<div class="badge-ios animate-float-ios"><div class="badge-item"><i class="fa-brands fa-apple text-gray-300"></i><span>iOS</span></div></div>
+<div class="badge-javascript animate-float-js"><div class="badge-item"><i class="fa-brands fa-js text-yellow-400"></i><span>JavaScript</span></div></div>
+<div class="badge-sponsor animate-float-sponsor" onclick="openError404Modal()" style="cursor: pointer;" title="Klik untuk lihat Sponsor"><div class="badge-item"><i class="fa-solid fa-handshake text-pink-400"></i><span>Sponsor</span></div></div>
+<button class="theme-toggle animate-float-theme" onclick="toggleTheme()" aria-label="Toggle theme" type="button" title="Ganti Tema"><i class="fa-solid fa-moon" id="themeIcon"></i></button>
+</div>
+</div>
+</div>
+</div>
+<div class="py-16 px-4"><div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="stats-card"><div class="stats-number">5+</div><div class="stats-label">Tahun Pengalaman</div></div>
+<div class="stats-card"><div class="stats-number">20+</div><div class="stats-label">Project Selesai</div></div>
+<div class="stats-card"><div class="stats-number">15+</div><div class="stats-label">Klien Puas</div></div>
+<div class="stats-card"><div class="stats-number">9</div><div class="stats-label">Sertifikasi</div></div>
+</div></div>
+<div class="py-16 px-4"><div class="max-w-4xl mx-auto">
+<div class="text-center mb-12"><p class="text-emerald-400 font-bold text-sm tracking-wider mb-2">Singkat Saja</p><h2 class="text-3xl md:text-4xl font-black gradient-text">Who am i?</h2></div>
+<div class="glass-card p-6 md:p-8">
+<p class="leading-relaxed mb-4 text-sm md:text-base">Layaknya manusia biasa pada umumnya bekerja,terkadang saya mengisi waktu luang dengan berburu <strong class="text-emerald-400">Bug Bounty</strong>. Situs ini berisi informasi tentang saya, tulisan, opini dan dokumentasi untuk saya pribadi ketika sedang belajar atau membagikan sesuatu. Saya adalah <strong class="text-emerald-400">Full-Stack Developer</strong> dengan fokus pada pengembangan aplikasi mobile <strong class="text-emerald-400">( Android SDK & iOS Developer )</strong> dan solusi web berbasis cloud.</p>
+<p class="leading-relaxed mb-4 text-sm md:text-base">Project kecil terbaru yang saya kembangkan saat ini adalah <strong class="text-emerald-400">SPAS1 Version 2.0</strong> - sistem operasional dapur MBG untuk <strong class="text-emerald-400">SPPG Sungai Pasir 1 Meral, Karimun</strong>. Mengintegrasikan Google Apps Script, Cloud Database, AI Face Recognition, 600+ stok logistik dan 500+ paket menu dengan standar AKG (Angka Kecukupan Gizi) dengan perhitungan dan kalkulasi otomatis.</p>
+<p class="leading-relaxed text-sm md:text-base">Saya percaya bahwa teknologi & keamanan sebuah sistem harus <strong class="text-emerald-400">memberikan dampak nyata</strong> bagi masyarakat luas. Jika ingin menghubungi saya, silakan menuju ke halaman <strong class="text-emerald-400">Contact</strong> atau <a href="https://hack.co.id/" target="_blank" style="color:#38BDF8;text-decoration:underline;font-weight:700;">Find Me</a>.</p>
+</div>
+</div></div>
+<div class="py-16 px-4"><div class="max-w-6xl mx-auto">
+<div class="text-center mb-12"><p class="text-emerald-400 font-bold text-sm tracking-wider mb-2">SERVICE</p><h2 class="text-3xl md:text-4xl font-black gradient-text">Apa yang Saya Tawarkan?</h2></div>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="glass-card p-6"><div class="service-icon android"><i class="fa-brands fa-android"></i></div><h3 class="text-xl font-bold mb-2">Android Development</h3><p class="opacity-70 text-sm">Native Android apps dengan Kotlin/Java, Material Design, dan integrasi API modern.</p></div>
+<div class="glass-card p-6"><div class="service-icon ios"><i class="fa-brands fa-apple"></i></div><h3 class="text-xl font-bold mb-2">iOS Development</h3><p class="opacity-70 text-sm">iOS apps dengan Swift/SwiftUI, App Store ready, dan performa optimal.</p></div>
+<div class="glass-card p-6"><div class="service-icon cloud"><i class="fa-solid fa-cloud"></i></div><h3 class="text-xl font-bold mb-2">Cloud Solutions</h3><p class="opacity-70 text-sm">Google Apps Script, Cloud Database, dan integrasi sistem otomatis.</p></div>
+</div>
+</div></div>
+</section>
+
+<!-- CAREER SECTION -->
+<section id="section-career" class="page-section">
+<div class="min-h-screen pt-28 pb-20 px-4"><div class="max-w-4xl mx-auto">
+<div class="text-center mb-16"><p class="text-emerald-400 font-bold text-sm tracking-wider mb-2">PERJALANAN KARIR</p><h1 class="text-4xl md:text-5xl font-black gradient-text mb-4">Timeline Profesional</h1></div>
+<div class="timeline">
+<div class="timeline-item"><div class="glass-card p-6"><div class="flex flex-wrap justify-between items-start mb-3 gap-2"><div><h3 class="text-xl font-bold mb-1">Senior Full-Stack Developer</h3><p class="text-emerald-400 font-semibold text-sm"><a href="https://www.tiket.com/id-id/" target="_blank" style="color:#38BDF8;text-decoration:underline;font-weight:700;">Ticket.com</a></p></div><span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold border border-emerald-500/30">2022 - 2023</span></div><ul class="space-y-2 list-disc list-inside opacity-80 text-sm"><li>Memimpin tim 5 developer untuk aplikasi mobile 50K+ pengguna</li><li>Implementasi CI/CD pipeline dengan GitHub Actions</li><li>Optimasi performa aplikasi hingga 78% lebih cepat</li></ul></div></div>
+<div class="timeline-item"><div class="glass-card p-6"><div class="flex flex-wrap justify-between items-start mb-3 gap-2"><div><h3 class="text-xl font-bold mb-1">Full-Stack Web Developer</h3><p class="text-blue-400 font-semibold text-sm">Freelance & Cybersecurity</p></div><span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-bold border border-blue-500/30">2019 - Sekarang</span></div><ul class="space-y-2 list-disc list-inside opacity-80 text-sm"><li>Membangun <strong class="text-emerald-400">SPAS1 Version 2.0</strong> untuk <strong class="text-emerald-400">SPPG Sungai Pasir 1 Meral</strong></li><li>Integrasi Google Apps Script + Cloud Database</li><li>Cyber Security of Web Applications - <strong class="text-emerald-400">Ethical Hacker Indonesia</strong> - Google Bug Hunter</li></ul></div></div>
+<div class="timeline-item"><div class="glass-card p-6"><div class="flex flex-wrap justify-between items-start mb-3 gap-2"><div><h3 class="text-xl font-bold mb-1">Junior Mobile Developer</h3><p class="text-purple-400 font-semibold text-sm">Startup Digital</p></div><span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 text-xs font-bold border border-purple-500/30">2020 - 2022</span></div><ul class="space-y-2 list-disc list-inside opacity-80 text-sm"><li>Membangun 5 aplikasi Android dari scratch</li><li>Learn fundamental programming & clean architecture</li><li>Mendapat sertifikasi <strong class="text-emerald-400">Android Developer</strong> dari Google</li></ul></div></div>
+<div class="timeline-item"><div class="glass-card p-6"><div class="flex flex-wrap justify-between items-start mb-3 gap-2"><div><h3 class="text-xl font-bold mb-1">Pendidikan & Self-Learning</h3><p class="text-amber-400 font-semibold text-sm">Self Learning & Online Courses</p></div><span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-bold border border-amber-500/30">2012 - 2018</span></div><ul class="space-y-2 list-disc list-inside opacity-80 text-sm"><li><strong class="text-emerald-400">Ethical Hacker Indonesia</strong></li><li>Udemy: Complete <strong class="text-emerald-400">Android Developer </strong> Course</li><li>Coursera: <strong class="text-emerald-400">iOS App Development</strong> with Swift</li></ul></div></div>
+</div>
+</div></div>
+</section>
+
+<!-- PROJECTS SECTION -->
+<section id="section-projects" class="page-section">
+<div class="min-h-screen pt-28 pb-20 px-4"><div class="max-w-6xl mx-auto">
+<div class="text-center mb-16"><p class="text-emerald-400 font-bold text-sm tracking-wider mb-2">PROJECT</p><h1 class="text-4xl md:text-5xl font-black gradient-text mb-4">Crafted</h1><p class="max-w-2xl mx-auto opacity-70 text-sm">Klik project untuk melihat detail lengkap</p></div>
+<div class="flex flex-wrap justify-center gap-3 mb-12">
+<button type="button" class="filter-btn active" onclick="handleFilterClick(this, 'all')">Semua</button>
+<button type="button" class="filter-btn" onclick="handleFilterClick(this, 'web')">Web App</button>
+<button type="button" class="filter-btn" onclick="handleFilterClick(this, 'mobile')">Mobile</button>
+<button type="button" class="filter-btn" onclick="handleFilterClick(this, 'cloud')">Cloud</button>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="projectGrid"></div>
+<p id="portfolioDataNotice" class="hidden mt-5 text-center text-amber-400 text-sm" role="status"></p>
+</div></div>
+</section>
+
+<!-- SKILLS SECTION -->
+<section id="section-skills" class="page-section">
+<div class="min-h-screen pt-28 pb-20 px-4"><div class="max-w-6xl mx-auto">
+<div class="text-center mb-16"><p class="text-emerald-400 font-bold text-sm tracking-wider mb-2">KEAHLIAN</p><h1 class="text-4xl md:text-5xl font-black gradient-text mb-4">Tech Stack & Skills</h1></div>
+<div class="mb-16"><h2 class="text-xl md:text-2xl font-bold mb-6 flex items-center gap-3"><i class="fa-solid fa-code text-emerald-400"></i> Programming Languages</h2>
+<div class="grid md:grid-cols-2 gap-4">
+<div class="glass-card p-5"><div class="flex justify-between mb-2"><span class="font-bold text-sm"><i class="fa-brands fa-js text-yellow-400 mr-2"></i>JavaScript</span><span class="text-emerald-400 font-bold text-sm">95%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 95%"></div></div></div>
+<div class="glass-card p-5"><div class="flex justify-between mb-2"><span class="font-bold text-sm"><i class="fa-brands fa-java text-red-400 mr-2"></i>Java / Kotlin</span><span class="text-emerald-400 font-bold text-sm">90%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 90%"></div></div></div>
+<div class="glass-card p-5"><div class="flex justify-between mb-2"><span class="font-bold text-sm"><i class="fa-brands fa-swift text-orange-400 mr-2"></i>Swift</span><span class="text-emerald-400 font-bold text-sm">85%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div></div>
+<div class="glass-card p-5"><div class="flex justify-between mb-2"><span class="font-bold text-sm"><i class="fa-brands fa-google text-blue-400 mr-2"></i>Google Apps Script</span><span class="text-emerald-400 font-bold text-sm">95%</span></div><div class="skill-bar"><div class="skill-progress" style="width: 95%"></div></div></div>
+</div></div>
+<div><h2 class="text-xl md:text-2xl font-bold mb-6 flex items-center gap-3"><i class="fa-solid fa-certificate text-amber-400"></i> Sertifikasi</h2>
+<div class="grid md:grid-cols-3 gap-6">
+<div class="cert-card" onclick="openCertModal('google')"><div class="cert-icon-wrapper google"><i class="fa-brands fa-google"></i></div><h3 class="font-bold mb-1">Associate Android Developer</h3><p class="text-xs opacity-60">Google • 2021</p><p class="text-[10px] text-emerald-400 mt-2 font-semibold">🔍 Klik untuk lihat sertifikat</p></div>
+<div class="cert-card" onclick="openCertModal('aws')"><div class="cert-icon-wrapper aws"><i class="fa-brands fa-aws"></i></div><h3 class="font-bold mb-1">AWS Cloud Practitioner</h3><p class="text-xs opacity-60">Amazon • 2022</p><p class="text-[10px] text-emerald-400 mt-2 font-semibold"> Klik untuk lihat sertifikat</p></div>
+<div class="cert-card" onclick="openCertModal('meta')"><div class="cert-icon-wrapper meta"><i class="fa-solid fa-code"></i></div><h3 class="font-bold mb-1">Meta Front-End Developer</h3><p class="text-xs opacity-60">Meta • 2024</p><p class="text-[10px] text-emerald-400 mt-2 font-semibold"> Klik untuk lihat sertifikat</p></div>
+</div></div>
+</div></div>
+</section>
+
+<!-- BLOG SECTION -->
+<section id="section-blog" class="page-section">
+<div class="min-h-screen pt-28 pb-20 px-4"><div class="max-w-6xl mx-auto">
+<div class="text-center mb-16"><p class="text-emerald-400 font-bold text-sm tracking-wider mb-2">BLOG PRIBADI SAYA</p><h1 class="text-4xl md:text-5xl font-black gradient-text mb-4">Tulisan & Artikel</h1><p class="max-w-2xl mx-auto opacity-70 text-sm">Menuangkan ide, Berbagi pemikiran, Tutorial, dan Pengalaman seputar <strong class="text-emerald-400">cybersecurity</strong>, mobile development, dan teknologi.</p></div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+<article class="glass-card overflow-hidden flex flex-col h-full"><div class="h-48 bg-gradient-to-br from-emerald-500/20 to-blue-500/20 flex items-center justify-center text-6xl">🛡️</div><div class="p-6 flex flex-col flex-grow">
+<div class="flex items-center gap-2 text-xs opacity-60 mb-3"><span><i class="fa-regular fa-calendar mr-1"></i> 25 Okt 2020</span><span>•</span><span>5 min read</span></div>
+<h3 class="text-xl font-bold mb-3">Memahami Keamanan Siber: Cara Melindungi Data Pribadi di Era Digital</h3>
+<p class="opacity-70 text-sm mb-4">Di era di mana data adalah aset paling berharga, memahami dasar-dasar keamanan siber bukan lagi pilihan melainkan keharusan. Artikel kecil saya ini membahas langkah praktis/Tips untuk mengamankan perangkat Anda.</p>
+<button class="read-more-btn text-emerald-400 font-bold text-sm hover:underline mt-auto inline-flex items-center gap-2" onclick="toggleBlogArticle('article1', this)" type="button"><span class="read-more-text">Baca Selengkapnya</span><i class="fa-solid fa-arrow-right arrow-icon"></i></button>
+<div class="blog-content mt-4 pt-4 border-t border-gray-700/30" id="article1">
+<p>Keamanan siber (cybersecurity) adalah praktik melindungi sistem, jaringan, dan program dari serangan digital. Serangan ini biasanya bertujuan untuk mengakses, mengubah, atau menghancurkan informasi sensitif, memeras uang dari pengguna, atau mengganggu proses bisnis normal.</p>
+<h4>🔐 Langkah Praktis Melindungi Data Pribadi:</h4>
+<ul><li><strong>Gunakan Password yang Kuat:</strong> Kombinasi huruf besar, kecil, angka, dan simbol minimal 12 karakter.</li><li><strong>Aktifkan Two-Factor Authentication (2FA):</strong> Tambahkan lapisan keamanan ekstra pada akun penting.</li><li><strong>Update Software Secara Berkala:</strong> Patch keamanan sering dirilis untuk menutup celah vulnerabilitas.</li><li><strong>Hati-hati dengan Phishing:</strong> Jangan klik link mencurigakan dari email atau SMS yang tidak dikenal.</li><li><strong>Gunakan VPN:</strong> Enkripsi koneksi internet Anda, terutama saat menggunakan WiFi publik.</li><li><strong>Backup Data Secara Rutin:</strong> Simpan salinan data penting di tempat terpisah (cloud atau hard drive eksternal).</li></ul>
+<h4>🛡️ Tools Rekomendasi:</h4>
+<ul><li>Password Manager: Bitwarden, 1Password</li><li>Antivirus: Malwarebytes, Windows Defender</li><li>VPN: ProtonVPN, Mullvad</li><li>Cek Kebocoran Data: <a href="https://periksadata.com/" target="_blank" class="text-emerald-400 underline">periksadata.com</a></li></ul>
+<p>Dengan menerapkan langkah-langkah di atas, Anda dapat significantly mengurangi risiko menjadi korban kejahatan siber. Ingat, keamanan adalah proses berkelanjutan, bukan tujuan akhir.</p>
+</div></div></article>
+<article class="glass-card overflow-hidden flex flex-col h-full"><div class="h-48 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center text-6xl">⚙️</div><div class="p-6 flex flex-col flex-grow">
+<div class="flex items-center gap-2 text-xs opacity-60 mb-3"><span><i class="fa-regular fa-calendar mr-1"></i> 18 Oct 2026</span><span>•</span><span>8 min read</span></div>
+<h3 class="text-xl font-bold mb-3">Membangun Sistem Operasional dengan Google Apps Script</h3>
+<p class="opacity-70 text-sm mb-4">Bagaimana saya membangun sebuah aplikasi berbasis web apps tanpa membeli domain? <strong class="text-emerald-400">SPAS1 Version 2.0</strong> untuk mengelola 500+ paket menu, stok logistik, dan absensi relawan secara real-time tanpa server mahal.</p>
+<button class="read-more-btn text-emerald-400 font-bold text-sm hover:underline mt-auto inline-flex items-center gap-2" onclick="toggleBlogArticle('article2', this)" type="button"><span class="read-more-text">Baca Selengkapnya</span><i class="fa-solid fa-arrow-right arrow-icon"></i></button>
+<div class="blog-content mt-4 pt-4 border-t border-gray-700/30" id="article2">
+<p>Google Apps Script adalah platform scripting berbasis cloud yang memungkinkan Anda mengotomatisasi tugas di berbagai produk Google. Dalam project <strong class="text-emerald-400">SPAS1 Version 2.0</strong>, saya memanfaatkan Apps Script sebagai backend untuk mengelola seluruh operasional dapur MBG. Tak hanya itu, Google Apps Script juga bisa kita manfaatkan sebagai backend untuk aplikasi keuangan inventaris, shopping dan portfolio. Seperti yang kamu lihat sekarang ini, situs blog saya ini menggunakan Google Apps Script sepenuhnya sebagai backend.</p>
+<h4>️ Arsitektur Sistem:</h4>
+<ul><li><strong>Frontend:</strong> HTML + Tailwind CSS + JavaScript (single page application)</li><li><strong>Backend:</strong> Google Apps Script (doGet, doPost, fungsi kustom)</li><li><strong>Database:</strong> Google Sheets (multi-sheet terstruktur)</li><li><strong>Hosting:</strong> Google Apps Script Web App (gratis)</li></ul>
+<h4>📦 Modul yang Dibangun:</h4>
+<ul><li><strong>MODUL 1 - Absensi Smart AI:</strong> GPS Live & AI Face Track Biometrik untuk 55+ relawan</li><li><strong>MODUL 2 - Bank Menu & Gizi:</strong> 500 paket menu standar MBG dengan kalkulasi AKG otomatis</li><li><strong>MODUL 3 - Stok Logistik:</strong> 600 item bahan baku & bumbu dengan tracking real-time</li><li><strong>MODUL 4 - Persiapan & Distribusi:</strong> Joblist harian, jadwal distribusi, dan HACCP checklist</li></ul>
+<h4>💡 Keunggulan Menggunakan Apps Script:</h4>
+<ul><li>✅ Gratis 100% (tanpa biaya server)</li><li>✅ Terintegrasi langsung dengan Google Sheets</li><li>✅ Bisa diakses dari mana saja via URL</li><li>✅ Real-time sync antar perangkat</li><li>✅ Mudah di-maintain tanpa DevOps kompleks</li></ul>
+<p>Project kecil ini membuktikan bahwa solusi teknologi tidak harus mahal. Dengan kreativitas dan pemahaman yang tepat, <strong class="text-emerald-400">Google Apps Script</strong> bisa menjadi backbone aplikasi operasional skala menengah.</p>
+</div></div></article>
+<article class="glass-card overflow-hidden flex flex-col h-full"><div class="h-48 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center text-6xl">📱</div><div class="p-6 flex flex-col flex-grow">
+<div class="flex items-center gap-2 text-xs opacity-60 mb-3"><span><i class="fa-regular fa-calendar mr-1"></i> 05 Des 2023</span><span>•</span><span>6 min read</span></div>
+<h3 class="text-xl font-bold mb-3">Tips Optimasi Performa Aplikasi Android untuk Pemula</h3>
+<p class="opacity-70 text-sm mb-4">Aplikasi yang lambat akan ditinggalkan pengguna. Pelajari teknik dasar seperti lazy loading, manajemen memori, dan penggunaan background threads untuk membuat aplikasi Android Anda berjalan mulus.</p>
+<button class="read-more-btn text-emerald-400 font-bold text-sm hover:underline mt-auto inline-flex items-center gap-2" onclick="toggleBlogArticle('article3', this)" type="button"><span class="read-more-text">Baca Selengkapnya</span><i class="fa-solid fa-arrow-right arrow-icon"></i></button>
+<div class="blog-content mt-4 pt-4 border-t border-gray-700/30" id="article3">
+<p>Performa aplikasi adalah faktor kunci dalam menentukan apakah pengguna akan tetap menggunakan aplikasi Anda atau menghapusnya. Riset menunjukkan bahwa 53% pengguna akan meninggalkan aplikasi yang membutuhkan lebih dari 3 detik untuk load.</p>
+<h4>⚡ Teknik Optimasi Dasar:</h4>
+<ul><li><strong>Lazy Loading:</strong> Load data/gambar hanya ketika dibutuhkan, bukan sekaligus di awal.</li><li><strong>Image Compression:</strong> Gunakan format WebP, kompresi gambar, dan load sesuai ukuran layar.</li><li><strong>RecyclerView Optimization:</strong> Gunakan ViewHolder pattern dan hindari nested scrolling.</li><li><strong>Background Threads:</strong> Pindahkan operasi berat (network, database) ke Coroutine/Worker.</li></ul>
+<h4> Manajemen Memori:</h4>
+<ul><li>Hindari memory leak dengan proper lifecycle management</li><li>Gunakan LeakCanary untuk deteksi leak saat development</li><li>Release resource di onDestroy() dan onStop()</li><li>Gunakan WeakReference untuk object yang tidak critical</li></ul>
+<h4> Tools Profiling:</h4>
+<ul><li><strong>Android Profiler:</strong> Monitor CPU, Memory, Network real-time</li><li><strong>Systrace:</strong> Analisis frame rendering dan jank</li><li><strong>Lint:</strong> Static code analysis untuk detect performance issue</li><li><strong>Baseline Profiles:</strong> Optimasi startup time dengan AOT compilation</li></ul>
+<h4>🎯 Best Practices:</h4>
+<ul><li>Target 60 FPS untuk smooth scrolling</li><li>Startup time &lt; 2 detik untuk cold start</li><li>APK size &lt; 50MB (gunakan App Bundle)</li><li>Minimize battery consumption dengan JobScheduler</li></ul>
+<p>Dengan menerapkan teknik-teknik di atas, aplikasi Android Anda akan memiliki performa yang jauh lebih baik dan user experience yang lebih menyenangkan. Ingat, optimasi adalah proses iteratif - selalu profile, analyze, dan improve!</p>
+</div></div></article>
+<article class="glass-card overflow-hidden flex flex-col h-full"><div class="h-48 bg-gradient-to-br from-red-500/20 to-orange-500/20 flex items-center justify-center text-6xl">🚚</div><div class="p-6 flex flex-col flex-grow">
+<div class="flex items-center gap-2 text-xs opacity-60 mb-3"><span><i class="fa-regular fa-calendar mr-1"></i> 15 Jan 2021</span><span>•</span><span>10 min read</span></div>
+<h3 class="text-xl font-bold mb-3">Membongkar Modus Penipuan Aplikasi Kurir dan Informasi Terduga Pelaku</h3>
+<p class="opacity-70 text-sm mb-4">Investigasi mendalam tentang modus penipuan berkedok aplikasi kurir yang meresahkan. Pelajari cara mengidentifikasi dan melindungi diri dari scam ini.</p>
+<button class="read-more-btn text-emerald-400 font-bold text-sm hover:underline mt-auto inline-flex items-center gap-2" onclick="toggleBlogArticle('article4', this)" type="button"><span class="read-more-text">Baca Selengkapnya</span><i class="fa-solid fa-arrow-right arrow-icon"></i></button>
+<div class="blog-content mt-4 pt-4 border-t border-gray-700/30" id="article4">
+<p>Dalam beberapa bulan terakhir, muncul gelombang penipuan baru yang mengatasnamakan aplikasi kurir/logistik. Modus ini semakin canggih dan banyak korban yang terjebak.</p>
+<h4>🎯 Modus Operandi:</h4>
+<ul><li><strong>Link Phishing:</strong> Korban menerima SMS/WA dengan link download aplikasi palsu</li><li><strong>Permission Berbahaya:</strong> Aplikasi meminta akses berlebihan (SMS, kontak, lokasi)</li><li><strong>Data Theft:</strong> Pencurian data pribadi dan informasi perbankan</li><li><strong>OTP Interception:</strong> Pencurian kode OTP melalui akses SMS</li></ul>
+<h4>🔍 Ciri-Ciri Aplikasi Palsu:</h4>
+<ul><li>Tidak terdaftar di Play Store/App Store resmi</li><li>Developer tidak jelas atau nama mencurigakan</li><li>Permission tidak relevan dengan fungsi kurir</li><li>UI/UX berkualitas rendah</li><li>Domain website tidak resmi</li></ul>
+<h4>🛡️ Cara Melindungi Diri:</h4>
+<ul><li>Hanya download dari official store</li><li>Periksa permission dengan teliti</li><li>Verifikasi URL website resmi</li><li>Jangan klik link dari nomor tidak dikenal</li><li>Gunakan antivirus mobile</li><li>Aktifkan 2FA di semua akun penting</li></ul>
+<p>Jika Anda menjadi korban, segera laporkan ke pihak berwajib dan blokir semua akses akun Anda.</p>
+</div></div></article>
+<article class="glass-card overflow-hidden flex flex-col h-full"><div class="h-48 bg-gradient-to-br from-green-500/20 to-teal-500/20 flex items-center justify-center text-6xl">🦠</div><div class="p-6 flex flex-col flex-grow">
+<div class="flex items-center gap-2 text-xs opacity-60 mb-3"><span><i class="fa-regular fa-calendar mr-1"></i> 22 Feb 2024</span><span>•</span><span>12 min read</span></div>
+<h3 class="text-xl font-bold mb-3">Cara Mandiri Memeriksa Apakah HP Kamu Terinfeksi Pegasus Spyware</h3>
+<p class="opacity-70 text-sm mb-4">Panduan lengkap untuk mendeteksi spyware canggih seperti Pegasus di perangkat Anda tanpa perlu tools forensik mahal.</p>
+<button class="read-more-btn text-emerald-400 font-bold text-sm hover:underline mt-auto inline-flex items-center gap-2" onclick="toggleBlogArticle('article5', this)" type="button"><span class="read-more-text">Baca Selengkapnya</span><i class="fa-solid fa-arrow-right arrow-icon"></i></button>
+<div class="blog-content mt-4 pt-4 border-t border-gray-700/30" id="article5">
+<p>Pegasus adalah salah satu spyware paling canggih yang pernah ada, mampu menginfeksi perangkat tanpa interaksi user (zero-click exploit).</p>
+<h4> Tanda-Tanda Infeksi:</h4>
+<ul><li><strong>Baterai Cepat Habis:</strong> Spyware berjalan 24/7 di background</li><li><strong>Data Usage Melonjak:</strong> Pengiriman data terus-menerus ke server C2</li><li><strong>HP Panas:</strong> CPU bekerja keras meski idle</li><li><strong>Strange Behavior:</strong> Restart sendiri, app crash, lag</li></ul>
+<h4> Metode Deteksi Manual:</h4>
+<ul><li>Settings → Battery → Battery Usage (Cari app dengan usage tinggi)</li><li>Settings → Network → Data Usage (Lihat app yang menggunakan data background besar)</li><li>Settings → Apps → See all apps (Cari app dengan nama system yang mencurigakan)</li></ul>
+<h4>🛠️ Tools Deteksi:</h4>
+<ul><li><strong>MVT (Mobile Verification Toolkit):</strong> Tool dari Amnesty International</li><li><strong>iMazing:</strong> Untuk extract dan analyze iOS backup</li><li><strong>ADB Logcat:</strong> Monitor system logs secara real-time</li></ul>
+<p>Ingat: Pegasus biasanya menargetkan jurnalis, aktivis, dan politisi. Jika Anda bukan target spesifik, risiko infeksi sangat kecil. Namun, tetap penting untuk maintain good security hygiene.</p>
+</div></div></article>
+<article class="glass-card overflow-hidden flex flex-col h-full"><div class="h-48 bg-gradient-to-br from-yellow-500/20 to-red-500/20 flex items-center justify-center text-6xl"></div><div class="p-6 flex flex-col flex-grow">
+<div class="flex items-center gap-2 text-xs opacity-60 mb-3"><span><i class="fa-regular fa-calendar mr-1"></i> 10 Mar 2024</span><span>•</span><span>15 min read</span></div>
+<h3 class="text-xl font-bold mb-3">Konfigurasi Router Tambahan Untuk Mengatasi Masalah Throttling Indihome</h3>
+<p class="opacity-70 text-sm mb-4">Solusi teknis untuk mengatasi throttling bandwidth Indihome dengan konfigurasi router advanced dan QoS optimization.</p>
+<button class="read-more-btn text-emerald-400 font-bold text-sm hover:underline mt-auto inline-flex items-center gap-2" onclick="toggleBlogArticle('article6', this)" type="button"><span class="read-more-text">Baca Selengkapnya</span><i class="fa-solid fa-arrow-right arrow-icon"></i></button>
+<div class="blog-content mt-4 pt-4 border-t border-gray-700/30" id="article6">
+<p>Throttling adalah praktik ISP membatasi bandwidth user secara sengaja, terutama pada jam-jam sibuk. Berikut solusi teknis untuk mengatasinya.</p>
+<h4>🔧 Solusi 1: Router Tambahan dengan Custom Firmware</h4>
+<ul><li>Gunakan router compatible dengan DD-WRT/OpenWRT</li><li>Enable QoS (Quality of Service) untuk prioritasi traffic</li><li>Disable UPnP untuk bypass ISP detection</li></ul>
+<h4>🔧 Solusi 2: VPN Tunneling</h4>
+<p>VPN mengenkripsi semua traffic, membuat ISP tidak bisa melakukan DPI (Deep Packet Inspection):</p>
+<ul><li>Setup OpenVPN atau Wireguard di router</li><li>Set routing policy untuk bypass VPN (split tunneling)</li><li>Enable kill switch</li></ul>
+<h4>🔧 Solusi 3: DNS over HTTPS (DoH)</h4>
+<p>Prevent DNS-based throttling dengan mengenkripsi query DNS Anda menggunakan Cloudflare atau Google DoH di level router.</p>
+<p><strong>Catatan:</strong> Pastikan untuk check ToS ISP Anda. Gunakan dengan bijak dan bertanggung jawab.</p>
+</div></div></article>
+<article class="glass-card overflow-hidden flex flex-col h-full"><div class="h-48 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 flex items-center justify-center text-6xl">💻</div><div class="p-6 flex flex-col flex-grow">
+<div class="flex items-center gap-2 text-xs opacity-60 mb-3"><span><i class="fa-regular fa-calendar mr-1"></i> 05 Apr 2024</span><span>•</span><span>10 min read</span></div>
+<h3 class="text-xl font-bold mb-3">Digital Forensics: Signal Desktop App for MacOS</h3>
+<p class="opacity-70 text-sm mb-4">Analisis forensik mendalam terhadap aplikasi Signal Desktop di MacOS untuk investigasi dan security auditing.</p>
+<button class="read-more-btn text-emerald-400 font-bold text-sm hover:underline mt-auto inline-flex items-center gap-2" onclick="toggleBlogArticle('article7', this)" type="button"><span class="read-more-text">Baca Selengkapnya</span><i class="fa-solid fa-arrow-right arrow-icon"></i></button>
+<div class="blog-content mt-4 pt-4 border-t border-gray-700/30" id="article7">
+<p>Signal adalah messenger paling secure, tapi bagaimana data disimpan di lokal? Artikel ini membahas struktur data Signal Desktop untuk keperluan forensik digital.</p>
+<h4>📂 Lokasi Data Signal di MacOS:</h4>
+<pre style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; margin: 12px 0; overflow-x: auto; color: #10B981;">~/Library/Application Support/Signal/
+├── config.json
+├── databases/sql.db
+├── logs/
+└── media/</pre>
+<h4>🔍 Database Analysis:</h4>
+<ul><li>Database dienkripsi menggunakan SQLCipher</li><li>Message Encryption menggunakan Signal Protocol (Double Ratchet)</li><li>Key Storage tersimpan di MacOS Keychain</li></ul>
+<h4>⚠️ Legal & Ethical Considerations:</h4>
+<p>Hanya untuk investigasi legal (court order, consent). Privacy rights harus dihormati dan chain of custody harus dijaga.</p>
+<p><strong>Disclaimer:</strong> Artikel ini untuk tujuan edukasi dan forensic investigation yang legal. Penyalahgunaan informasi ini untuk akses unauthorized adalah tindak pidana.<strong class="text-emerald-400">"DoYourOwnRisk"</strong> </p>
+</div></div></article>
+<article class="glass-card overflow-hidden flex flex-col h-full"><div class="h-48 bg-gradient-to-br from-orange-500/20 to-red-500/20 flex items-center justify-center text-6xl">😤</div><div class="p-6 flex flex-col flex-grow">
+<div class="flex items-center gap-2 text-xs opacity-60 mb-3"><span><i class="fa-regular fa-calendar mr-1"></i> 20 Apr 2024</span><span>•</span><span>8 min read</span></div>
+<h3 class="text-xl font-bold mb-3">Derita Pelanggan Indihome, Sudah Bayar Datanya Malah Dicuri</h3>
+<p class="opacity-70 text-sm mb-4">Investigasi kasus bandwidth stealing dan unauthorized access pada jaringan Indihome yang merugikan pelanggan.</p>
+<button class="read-more-btn text-emerald-400 font-bold text-sm hover:underline mt-auto inline-flex items-center gap-2" onclick="toggleBlogArticle('article8', this)" type="button"><span class="read-more-text">Baca Selengkapnya</span><i class="fa-solid fa-arrow-right arrow-icon"></i></button>
+<div class="blog-content mt-4 pt-4 border-t border-gray-700/30" id="article8">
+<p>Banyak pelanggan mengeluh speed internet lambat padahal sudah bayar paket tinggi. Investigasi menunjukkan kemungkinan bandwidth dicuri atau digunakan tanpa izin.</p>
+<h4> Modus Bandwidth Stealing:</h4>
+<ul><li><strong>WiFi Neighbor Leeching:</strong> Tetangga crack WPA2 password</li><li><strong>MAC Address Spoofing:</strong> Attacker clone MAC address device Anda</li><li><strong>DNS Hijacking:</strong> Router DNS diganti attacker</li></ul>
+<h4>️ Cara Deteksi & Solusi:</h4>
+<ul><li>Check DHCP Client List di router (192.168.1.1)</li><li>Install GlassWire atau NetLimiter untuk monitor bandwidth per device</li><li>Ganti password WiFi (min 20 karakter, random)</li><li>Disable WPS dan enable WPA3 jika router support</li><li>Enable Guest Network untuk tamu dan isolate IoT devices</li></ul>
+<p>Jika menemukan indikasi kuat bandwidth dicuri, dokumentasikan evidence dan hubungi Indihome 147 untuk check line.</p>
+</div></div></article>
+<article class="glass-card overflow-hidden flex flex-col h-full"><div class="h-48 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center text-6xl">🎯</div><div class="p-6 flex flex-col flex-grow">
+<div class="flex items-center gap-2 text-xs opacity-60 mb-3"><span><i class="fa-regular fa-calendar mr-1"></i> 01 Mei 2025</span><span>•</span><span>7 min read</span></div>
+<h3 class="text-xl font-bold mb-3">Wednesday Challenge: Publicly Accessible GIT Directory</h3>
+<p class="opacity-70 text-sm mb-4">Challenge mingguan tentang security vulnerability: exposed GIT directory dan cara exploit serta mitigasinya.</p>
+<button class="read-more-btn text-emerald-400 font-bold text-sm hover:underline mt-auto inline-flex items-center gap-2" onclick="toggleBlogArticle('article9', this)" type="button"><span class="read-more-text">Baca Selengkapnya</span><i class="fa-solid fa-arrow-right arrow-icon"></i></button>
+<div class="blog-content mt-4 pt-4 border-t border-gray-700/30" id="article9">
+<p>Banyak developer tidak sengaja mengupload folder .git ke production server. Ini adalah goldmine untuk attacker karena berisi source code, commit history, dan hardcoded secrets.</p>
+<h4> Cara Mendeteksi:</h4>
+<pre style="background: rgba(0,0,0,0.3); padding: 12px; border-radius: 8px; margin: 12px 0; overflow-x: auto; color: #10B981;">curl http://target.com/.git/HEAD
+# Jika return "ref: refs/heads/main" berarti VULNERABLE!</pre>
+<h4>🛠️ Exploitation:</h4>
+<p>Gunakan tools seperti <code>git-dumper</code> untuk mendownload seluruh repository dan menganalisis commit history untuk mencari password atau API keys yang pernah di-commit.</p>
+<h4>️ Mitigation:</h4>
+<ul><li>Apache: <code>&lt;FilesMatch "^\."> Deny from all &lt;/FilesMatch></code></li><li>Nginx: <code>location ~ /\.git { deny all; return 404; }</code></li><li>Gunakan <code>git archive</code> untuk export code, bukan copy folder working directory.</li></ul>
+<p><strong>⚠️ DISCLAIMER:</strong> Challenge ini hanya untuk educational purpose. Jangan pernah scan atau exploit website tanpa izin tertulis dari owner.</p>
+</div></div></article>
+<article class="glass-card overflow-hidden flex flex-col h-full"><div class="h-48 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 flex items-center justify-center text-6xl">👁️</div><div class="p-6 flex flex-col flex-grow">
+<div class="flex items-center gap-2 text-xs opacity-60 mb-3"><span><i class="fa-regular fa-calendar mr-1"></i> 15 April 2021</span><span>•</span><span>11 min read</span></div>
+<h3 class="text-xl font-bold mb-3">Self-Hosted & Serverless Blind XSS Hunter Menggunakan Cloudflare Workers</h3>
+<p class="opacity-70 text-sm mb-4">Membangun Blind XSS detection system yang powerful, gratis, dan serverless menggunakan Cloudflare Workers untuk bug bounty hunting.</p>
+<button class="read-more-btn text-emerald-400 font-bold text-sm hover:underline mt-auto inline-flex items-center gap-2" onclick="toggleBlogArticle('article10', this)" type="button"><span class="read-more-text">Baca Selengkapnya</span><i class="fa-solid fa-arrow-right arrow-icon"></i></button>
+<div class="blog-content mt-4 pt-4 border-t border-gray-700/30" id="article10">
+<p>Blind XSS adalah vulnerability yang payload XSS-nya tidak langsung terlihat di response, tapi tersimpan di database dan dieksekusi di tempat lain (admin panel, log viewer, dll).</p>
+<h4>🔧 Arsitektur System:</h4>
+<p>Payload → Target Website → Stored in DB → Admin Access → XSS Triggered → Callback to Worker → Alert to You</p>
+<h4>📝 Setup Cloudflare Workers XSS Hunter:</h4>
+<ul><li>Buat Worker Script untuk menangkap parameter URL (cookie, domain, userAgent)</li><li>Kirim alert otomatis ke Telegram Bot API</li><li>Deploy menggunakan Wrangler CLI</li></ul>
+<h4>🎯 Testing Locations:</h4>
+<p>Inject payload di Contact form, Comment section, Profile fields, Support tickets, Product reviews, dan HTTP headers (User-Agent, Referer).</p>
+<p><strong>Security & Ethics:</strong> Hanya test di program yang Anda ikuti (Bug bounty programs, VDP). Jangan gunakan untuk illegal activity. Responsible disclosure adalah kunci.</p>
+</div></div></article>
+</div>
+
+<!-- ===== ARSIP SECTION ===== -->
+<div class="arsip-divider"></div>
+<div class="arsip-header">
+<div class="arsip-icon">🗄️</div>
+<p class="text-amber-400 font-bold text-sm tracking-wider mb-2">Arsip Skyy</p>
+<h2 class="text-3xl md:text-4xl font-black gradient-text mb-4">Folder Terkunci</h2>
+<p class="max-w-2xl mx-auto opacity-70 text-sm">7 folder <strong class="text-emerald-400">Arsip Saya</strong> terenkripsi. Masukkan username & password untuk mengakses isi folder ini atas izin <strong class="text-emerald-400">Skyy</strong>.</p>
+</div>
+<div class="arsip-grid">
+<div class="arsip-card" onclick="openArsipModal(1)"><div class="arsip-card-icon"><i class="fa-solid fa-file-lines"></i></div><div class="arsip-card-title">Dokumen Pribadi</div><div class="arsip-card-desc">CV, identitas, ijazah, dan dokumen penting lainnya.</div><div class="arsip-card-lock"><i class="fa-solid fa-lock"></i> Terkunci</div><div class="arsip-card-unlock"><i class="fa-solid fa-lock-open"></i> Terbuka</div></div>
+<div class="arsip-card" onclick="openArsipModal(2)"><div class="arsip-card-icon"><i class="fa-solid fa-code"></i></div><div class="arsip-card-title">Secret Project</div><div class="arsip-card-desc">Source code & dokumentasi proyek internal.</div><div class="arsip-card-lock"><i class="fa-solid fa-lock"></i> Terkunci</div><div class="arsip-card-unlock"><i class="fa-solid fa-lock-open"></i> Terbuka</div></div>
+<div class="arsip-card" onclick="openArsipModal(3)"><div class="arsip-card-icon"><i class="fa-solid fa-book"></i></div><div class="arsip-card-title">Catatan Teknis</div><div class="arsip-card-desc">Tutorial, snippet code, dan learning notes.</div><div class="arsip-card-lock"><i class="fa-solid fa-lock"></i> Terkunci</div><div class="arsip-card-unlock"><i class="fa-solid fa-lock-open"></i> Terbuka</div></div>
+<div class="arsip-card" onclick="openArsipModal(4)"><div class="arsip-card-icon"><i class="fa-solid fa-award"></i></div><div class="arsip-card-title">Sertifikat Internal</div><div class="arsip-card-desc">Sertifikat pelatihan & penghargaan pribadi.</div><div class="arsip-card-lock"><i class="fa-solid fa-lock"></i> Terkunci</div><div class="arsip-card-unlock"><i class="fa-solid fa-lock-open"></i> Terbuka</div></div>
+<div class="arsip-card" onclick="openArsipModal(5)"><div class="arsip-card-icon"><i class="fa-solid fa-images"></i></div><div class="arsip-card-title">Foto & Media</div><div class="arsip-card-desc">Galeri foto kegiatan & dokumentasi project.</div><div class="arsip-card-lock"><i class="fa-solid fa-lock"></i> Terkunci</div><div class="arsip-card-unlock"><i class="fa-solid fa-lock-open"></i> Terbuka</div></div>
+<div class="arsip-card" onclick="openArsipModal(6)"><div class="arsip-card-icon"><i class="fa-solid fa-database"></i></div><div class="arsip-card-title">Backup Data</div><div class="arsip-card-desc">Backup konfigurasi & data penting sistem.</div><div class="arsip-card-lock"><i class="fa-solid fa-lock"></i> Terkunci</div><div class="arsip-card-unlock"><i class="fa-solid fa-lock-open"></i> Terbuka</div></div>
+<div class="arsip-card" onclick="openArsipModal(7)"><div class="arsip-card-icon"><i class="fa-solid fa-box-archive"></i></div><div class="arsip-card-title">Arsip Lama</div><div class="arsip-card-desc">Dokumentasi lama & history project terdahulu.</div><div class="arsip-card-lock"><i class="fa-solid fa-lock"></i> Terkunci</div><div class="arsip-card-unlock"><i class="fa-solid fa-lock-open"></i> Terbuka</div></div>
+</div>
+<!-- ===== END ARSIP ===== -->
+</div></div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="section-contact" class="page-section">
+<div class="min-h-screen pt-28 pb-20 px-4"><div class="max-w-4xl mx-auto">
+<div class="text-center mb-16"><p class="text-emerald-400 font-bold text-sm tracking-wider mb-2">FIND ME</p><h1 class="text-4xl md:text-5xl font-black gradient-text mb-4">Mari Berinteraksi</h1></div>
+<div class="grid md:grid-cols-2 gap-6">
+<div class="space-y-3">
+<div class="glass-card p-4 flex items-center gap-3" onclick="window.location.href='mailto:hallosky@spas1.my.id'" style="cursor: pointer;"><div class="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center text-lg text-emerald-400"><i class="fa-solid fa-envelope"></i></div><div><div class="text-xs opacity-60 font-bold">EMAIL</div><div class="font-bold text-sm">iamskyy@cloud.com</div></div></div>
+<div class="glass-card p-4 flex items-center gap-3" onclick="window.open('https://wa.me/6281378004808', '_blank')" style="cursor: pointer;"><div class="w-10 h-10 rounded-xl bg-blue-500/20 flex items-center justify-center text-lg text-blue-400"><i class="fa-brands fa-whatsapp"></i></div><div><div class="text-xs opacity-60 font-bold">WHATSAPP</div><div class="font-bold text-sm">+62 813-7800-4808</div></div></div>
+<div class="glass-card p-4 flex items-center gap-3" onclick="window.open('https://maps.google.com/?q=Surabaya,Indonesia', '_blank')" style="cursor: pointer;"><div class="w-10 h-10 rounded-xl bg-purple-500/20 flex items-center justify-center text-lg text-purple-400"><i class="fa-solid fa-location-dot"></i></div><div><div class="text-xs opacity-60 font-bold">LOKASI</div><div class="font-bold text-sm">Surabaya, Indonesia</div></div></div>
+</div>
+<div class="glass-card p-4">
+<form id="contactForm" onsubmit="handleContactSubmit(event)">
+<div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;"><label>Website<input type="text" id="contactWebsite" tabindex="-1" autocomplete="off"></label></div>
+<div class="mb-3"><label class="block text-xs font-bold opacity-70 mb-1">NAMA LENGKAP</label><input type="text" id="contactName" class="form-input" placeholder="Jokowi" required></div>
+<div class="mb-3"><label class="block text-xs font-bold opacity-70 mb-1">EMAIL</label><input type="email" id="contactEmail" class="form-input" placeholder="jokowi@example.com" required></div>
+<div class="mb-3"><label class="block text-xs font-bold opacity-70 mb-1">SUBJEK</label><input type="text" id="contactSubject" class="form-input" placeholder="Project Collaboration" required></div>
+<div class="mb-3"><label class="block text-xs font-bold opacity-70 mb-1">PESAN</label><textarea id="contactMessage" class="form-input" rows="4" placeholder="Ceritakan tentang project seperti apa yang Anda inginkan?..." required></textarea></div>
+<button type="submit" id="submitBtn" class="btn-primary w-full justify-center"><i class="fa-solid fa-paper-plane"></i> Kirim Pesan</button>
+</form>
+</div>
+</div>
+</div></div>
+</section>
+
+<!-- PROJECT DETAIL MODAL -->
+<div class="project-modal" id="projectModal"><div class="project-modal-content">
+<button type="button" class="project-modal-close" onclick="closeProjectModal()" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
+<div class="project-hero" id="modalHero"></div>
+<div class="project-body">
+<div class="mb-4" id="modalTags"></div>
+<h2 class="text-2xl md:text-3xl font-black mb-4" id="modalTitle">Project Title</h2>
+<p class="text-base md:text-lg opacity-80 mb-6" id="modalDescription">Project description goes here...</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6" id="modalStats"></div>
+<div class="mb-6"><h3 class="text-lg md:text-xl font-bold mb-3"><i class="fa-solid fa-list-check text-emerald-400 mr-2"></i>Fitur Utama</h3><ul class="space-y-2" id="modalFeatures"></ul></div>
+<div class="mb-6"><h3 class="text-lg md:text-xl font-bold mb-3"><i class="fa-solid fa-code text-blue-400 mr-2"></i>Tech Stack</h3><div id="modalTechStack"></div></div>
+<div class="mb-6"><h3 class="text-lg md:text-xl font-bold mb-3"><i class="fa-solid fa-trophy text-amber-400 mr-2"></i>Pencapaian</h3><p id="modalAchievements" class="opacity-80 text-sm"></p></div>
+<div class="flex flex-wrap gap-3 pt-4 border-t border-gray-700/30">
+<a href="#" id="modalLiveLink" target="_blank" class="btn-primary"><i class="fa-solid fa-external-link-alt"></i>liveLink</a>
+<a href="#" id="modalGithubLink" target="_blank" class="btn-outline"><i class="fa-brands fa-github"></i> Source Code</a>
+</div>
+</div></div></div>
+
+<!-- CERTIFICATE MODAL -->
+<div class="cert-modal" id="certModal"><div class="cert-modal-content">
+<button type="button" class="project-modal-close" onclick="closeCertModal()" style="background: rgba(0,0,0,0.7); color: white;" aria-label="Close certificate"><i class="fa-solid fa-xmark"></i></button>
+<div class="certificate-viewer" id="certificateViewer"></div>
+<div style="padding: 20px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; background: #f8fafc;">
+<button onclick="printCertificate()" class="btn-primary" style="padding: 10px 20px; font-size: 13px;" type="button"><i class="fa-solid fa-print"></i> Cetak / Simpan PDF</button>
+<a href="#" id="certVerifyLink" target="_blank" class="btn-outline" style="padding: 10px 20px; font-size: 13px;"><i class="fa-solid fa-external-link-alt"></i> Verifikasi Resmi</a>
+<button onclick="closeCertModal()" class="btn-outline" style="padding: 10px 20px; font-size: 13px; border-color: #64748b; color: #64748b;" type="button"><i class="fa-solid fa-xmark"></i> Tutup</button>
+</div>
+</div></div>
+
+<!-- ERROR 404 MODAL - DARK WEB THEME -->
+<div class="error404-modal" id="error404Modal">
+<div class="error404-content">
+<button type="button" class="error404-close-btn" onclick="closeError404Modal()" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+<div class="error404-art">    .  .
+.-----.
+| x x |
+|  ^  |
+| '-' |
+'-----'
+-   -
+|___|</div>
+<div class="error404-title">ERROR404</div>
+<div class="error404-subtitle">NOTFOUND</div>
+<p class="error404-message">Halaman sponsor sedang dalam pencairan...<br>Gotchaaa...🤑</p>
+</div>
+</div>
+
+<!-- ARSIP PASSWORD MODAL -->
+<div class="arsip-modal" id="arsipModal">
+<div class="arsip-modal-content">
+<button type="button" class="project-modal-close" onclick="closeArsipModal()" style="background: rgba(0,0,0,0.5); color: white; top: 12px; right: 12px;" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+<div class="arsip-modal-icon"><i class="fa-solid fa-lock"></i></div>
+<div class="arsip-modal-title" id="arsipModalTitle">Folder Terkunci</div>
+<div class="arsip-modal-subtitle" id="arsipLoginSubtitle">Masuk dengan akun SUPER ADMIN SPAS1 untuk mengakses folder ini.</div>
+<input type="text" id="arsipUsername" class="arsip-input" placeholder="Username SUPER ADMIN" autocomplete="username">
+<input type="password" id="arsipPassword" class="arsip-input" placeholder="Password SUPER ADMIN" autocomplete="current-password">
+<div class="arsip-error" id="arsipError">❌ Username atau password salah!</div>
+<button onclick="checkArsipPassword(this)" class="btn-primary w-full justify-center" type="button" style="margin-top: 8px;"><i class="fa-solid fa-unlock"></i> Buka Folder</button>
+<p style="margin-top: 16px; font-size: 11px; opacity: 0.5;">Hak Akses Terbatas Oleh Skyy</p>
+</div>
+</div>
+
+<!-- ARSIP CONTENT MODAL -->
+<div class="arsip-content-modal" id="arsipContentModal">
+<div class="arsip-content-box">
+<button type="button" class="project-modal-close" onclick="closeArsipContentModal()" style="background: rgba(0,0,0,0.5); color: white; top: 12px; right: 12px;" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+<div class="arsip-content-header">
+<div class="arsip-content-icon" id="arsipContentIcon"><i class="fa-solid fa-folder-open"></i></div>
+<div class="arsip-content-title" id="arsipContentTitle">Judul Folder</div>
+</div>
+<div class="arsip-content-body" id="arsipContentBody"></div>
+<div class="arsip-content-footer">
+<button onclick="closeArsipContentModal()" class="btn-outline" type="button" style="padding: 10px 20px; font-size: 13px;"><i class="fa-solid fa-xmark"></i> Tutup</button>
+</div>
+</div>
+</div>
+
+<footer class="py-8 px-4 border-t border-gray-800/50"><div class="max-w-6xl mx-auto text-center">
+<div class="gradient-text font-black text-xl mb-2">CraftedSkyy</div>
+<p class="opacity-60 text-sm mb-2">© 2021-2026 DeploySkyy. Made with ❤️ using HTML + Tailwind CSS + JavaScript</p>
+<div class="flex justify-center gap-4 mt-4">
+<a href="https://github.com/deployskyy" target="_blank" class="opacity-60 hover:opacity-100"><i class="fa-brands fa-github text-xl"></i></a>
+<a href="https://periksadata.com/" target="_blank" class="opacity-60 hover:opacity-100"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></a>
+<a href="https://instagram.com/evlskyy" target="_blank" class="opacity-60 hover:opacity-100"><i class="fa-brands fa-instagram text-xl"></i></a>
+</div>
+</div></footer>
+
+<script>
+// Project Data
+let projectsData = [
+{id: 1, title: 'SPAS1 Version 2.0', category: ['web', 'cloud'], icon: '🍽️', screenshot: '', shortDesc: 'Sistem operasional dapur MBG untuk SPPG Sungai Pasir 1 Meral', fullDesc: 'Aplikasi web komprehensif untuk mengelola operasional dapur MBG (Makanan Bergizi Gratis) di <strong class="text-emerald-400">SPPG Sungai Pasir 1 Meral, Karimun</strong>. Mengintegrasikan absensi AI, manajemen menu, stok logistik, dan distribusi.', tags: ['Web App', 'Cloud', 'AI', 'Google Apps Script'], stats: [{ value: '500+', label: 'Paket Menu' }, { value: '600+', label: 'Item Stok' }, { value: '55+', label: 'Relawan' }, { value: '2.5K', label: 'Porsi/Hari' }], features: ['Absensi dengan AI Face Recognition & GPS Live', 'Bank Menu 500+ paket dengan standar AKG', 'Manajemen stok logistik 600+ item', 'Joblist & tracking tugas harian', 'Sinkronisasi cloud 2 arah', 'Dashboard admin real-time'], techStack: ['Google Apps Script', 'JavaScript', 'Tailwind CSS', 'HTML5', 'Cloud Database'], achievements: 'Digunakan oleh 55+ relawan dapur setiap hari, mengelola 2.500+ porsi makanan bergizi untuk anak sekolah.', liveLink: 'https://sites.google.com/view/spas1v2/portal', githubLink: '#'},
+{id: 2, title: 'EduLearn Mobile', category: ['mobile'], icon: '📱', screenshot: '', shortDesc: 'Aplikasi pembelajaran interaktif untuk siswa SD-SMA', fullDesc: 'Platform pembelajaran mobile yang menggabungkan gamifikasi, progress tracking, dan konten interaktif untuk meningkatkan engagement siswa dalam belajar.', tags: ['Android', 'iOS', 'Education', 'Gamification'], stats: [{ value: '10K+', label: 'Pengguna' }, { value: '500+', label: 'Materi' }, { value: '4.8', label: 'Rating' }, { value: '50+', label: 'Sekolah' }], features: ['Gamifikasi dengan sistem poin & badge', 'Progress tracking real-time', 'Konten interaktif & quiz', 'Offline mode', 'Parent dashboard', 'Multi-platform (Android & iOS)'], techStack: ['Kotlin', 'Swift', 'Firebase', 'REST API', 'Material Design'], achievements: 'Diadopsi oleh 50+ sekolah di Indonesia dengan rating 4.8 di Play Store.', liveLink: '#', githubLink: '#'},
+{id: 3, title: 'Cloud Analytics Dashboard', category: ['web', 'cloud'], icon: '📊', screenshot: '', shortDesc: 'Real-time dashboard untuk monitoring data operasional', fullDesc: 'Dashboard analitik real-time yang memvisualisasikan data operasional bisnis dengan chart interaktif, filtering, dan export capabilities.', tags: ['Dashboard', 'Analytics', 'Real-time', 'Visualization'], stats: [{ value: '1M+', label: 'Data Points' }, { value: '<1s', label: 'Latency' }, { value: '15+', label: 'Chart Types' }, { value: '24/7', label: 'Uptime' }], features: ['Real-time data visualization', '15+ jenis chart interaktif', 'Custom dashboard builder', 'Export PDF/Excel', 'Alert & notification system', 'Multi-user access control'], techStack: ['React', 'D3.js', 'Node.js', 'PostgreSQL', 'WebSocket'], achievements: 'Memproses 1M+ data points dengan latency <1 detik, digunakan oleh 10+ perusahaan.', liveLink: '#', githubLink: '#'},
+{id: 4, title: 'TokoOnline Pro', category: ['web'], icon: '🛒', screenshot: '', shortDesc: 'Platform e-commerce lengkap dengan payment gateway', fullDesc: 'Solusi e-commerce full-stack dengan fitur lengkap termasuk payment gateway, inventory management, dan admin panel yang powerful.', tags: ['E-Commerce', 'Payment', 'Inventory', 'Admin Panel'], stats: [{ value: '5K+', label: 'Produk' }, { value: '10K+', label: 'Transaksi' }, { value: '99.9%', label: 'Uptime' }, { value: '<2s', label: 'Load Time' }], features: ['Multi-payment gateway', 'Inventory management otomatis', 'Admin panel dengan analytics', 'Mobile responsive', 'SEO optimized', 'Order tracking real-time'], techStack: ['Next.js', 'Node.js', 'MongoDB', 'Stripe', 'Tailwind CSS'], achievements: 'Menangani 10K+ transaksi dengan uptime 99.9% dan load time <2 detik.', liveLink: '#', githubLink: '#'},
+{id: 5, title: 'HealthTrack iOS', category: ['mobile'], icon: '❤️', screenshot: '', shortDesc: 'Aplikasi tracking kesehatan dengan Apple HealthKit', fullDesc: 'Aplikasi iOS untuk monitoring kesehatan harian dengan integrasi Apple HealthKit, reminder obat, dan laporan kesehatan komprehensif.', tags: ['iOS', 'Health', 'HealthKit', 'SwiftUI'], stats: [{ value: '5K+', label: 'Users' }, { value: '4.9', label: 'Rating' }, { value: '50+', label: 'Metrics' }, { value: '24/7', label: 'Tracking' }], features: ['Apple HealthKit integration', 'Medication reminder', 'Health reports & analytics', 'Doctor consultation feature', 'Family sharing', 'Privacy-first design'], techStack: ['Swift', 'SwiftUI', 'HealthKit', 'CoreData', 'CloudKit'], achievements: 'Rating 4.9 di App Store dengan 5K+ pengguna aktif harian.', liveLink: '#', githubLink: '#'},
+{id: 6, title: 'AI Customer Service', category: ['web', 'cloud'], icon: '🤖', screenshot: '', shortDesc: 'Chatbot AI untuk customer service dengan NLP', fullDesc: 'Sistem chatbot AI canggih untuk customer service dengan natural language processing, integrasi WhatsApp Business API, dan learning capabilities.', tags: ['AI', 'Chatbot', 'NLP', 'WhatsApp'], stats: [{ value: '100K+', label: 'Messages' }, { value: '95%', label: 'Accuracy' }, { value: '<3s', label: 'Response' }, { value: '24/7', label: 'Available' }], features: ['Natural Language Processing', 'WhatsApp Business API', 'Auto-learning dari interaksi', 'Multi-language support', 'Human handoff feature', 'Analytics dashboard'], techStack: ['Python', 'OpenAI API', 'Node.js', 'WhatsApp API', 'PostgreSQL'], achievements: 'Menangani 100K+ pesan dengan akurasi 95% dan response time <3 detik.', liveLink: '#', githubLink: '#'}
+];
+let certData = {
+google: { issuer: 'Google', issuerLogo: ' Google', title: 'Associate Android Developer', recipientName: 'Sky', recipientBrand: 'DeploySkyy', recipientRole: 'Android SDK & iOS Developer | Kotlin/JavaScript Engineer', description: 'Telah berhasil menyelesaikan dan lulus ujian sertifikasi Associate Android Developer yang membuktikan kompetensi dalam pengembangan aplikasi Android menggunakan Kotlin, Material Design, dan arsitektur modern. ( Ini bukan yang sebenarnya hanya visualisasi,jika kamu butuh terkait yang relevan ada pada section Blog didalam folder arsip terenkripsi ).', date: '2021', certId: 'GAD-2021-DEPLOYSKYY-001', verifyUrl: 'https://developers.google.com/certification/associate-android-developer', color: '#FBBF24', seal: '🇬 Google' },
+aws: { issuer: 'Amazon Web Services', issuerLogo: 'Amazon🛒🛍', title: 'AWS Cloud Practitioner', recipientName: 'Sky', recipientBrand: 'DeploySkyy', recipientRole: 'Cloud Solutions Architect | Full-Stack Developer', description: 'Telah berhasil menyelesaikan dan lulus ujian sertifikasi AWS Cloud Practitioner yang membuktikan pemahaman mendalam tentang cloud computing, arsitektur AWS, keamanan, dan best practices. ( Ini bukan yang sebenarnya hanya visualisasi,jika kamu butuh terkait yang relevan ada pada section Blog didalam folder arsip terenkripsi ).', date: '2022', certId: 'AWS-CP-2022-DEPLOYSKYY-002', verifyUrl: 'https://aws.amazon.com/certification/certified-cloud-practitioner/', color: '#3B82F6', seal: '' },
+meta: { issuer: 'Meta (Facebook)', issuerLogo: '️♾️', title: 'Meta Front-End Developer', recipientName: 'Sky', recipientBrand: 'DeploySkyy', recipientRole: 'Front-End Engineer | React & JavaScript Specialist', description: 'Telah berhasil menyelesaikan dan lulus program sertifikasi Meta Front-End Developer yang membuktikan kompetensi dalam React, JavaScript, HTML/CSS, dan pengembangan UI/UX modern.( Ini bukan yang sebenarnya hanya visualisasi,jika kamu butuh terkait yang relevan ada pada section Blog didalam folder arsip terenkripsi ).', date: '2024', certId: 'META-FE-2024-DEPLOYSKYY-003', verifyUrl: 'https://www.coursera.org/professional-certificates/meta-front-end-developer', color: '#A855F7', seal: '♾️' }
+};
+
+const ABOUTSKY_SUPABASE_URL = 'https://ysvxtbupzhubxkbvtzmo.supabase.co';
+const ABOUTSKY_SUPABASE_KEY = 'sb_publishable_hIWf_cDeHXet-Y_j0PGA_8LwWDjK_';
+
+function escapeHtml(value) {
+return String(value == null ? '' : value).replace(/[&<>"']/g, function(character) {
+return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character];
+});
+}
+
+function isAllowedExternalUrl(value) {
+if (typeof value !== 'string' || value.trim() === '') return false;
+if (value === '#') return true;
+try {
+var url = new URL(value, window.location.href);
+return ['http:', 'https:'].indexOf(url.protocol) !== -1;
+} catch (error) {
+return false;
+}
+}
+
+function safeExternalUrl(value) {
+if (!isAllowedExternalUrl(value)) return '#';
+if (value === '#') return '#';
+try {
+return new URL(value, window.location.href).href;
+} catch (error) {
+console.error('URL konten AboutSky tidak valid:', error);
+return '#';
+}
+}
+
+function isStringArray(value) {
+return Array.isArray(value) && value.every(function(item) { return typeof item === 'string'; });
+}
+
+function isProjectPayload(value) {
+return Array.isArray(value) && value.every(function(project) {
+return project && Number.isInteger(project.id) &&
+typeof project.title === 'string' && Array.isArray(project.category) &&
+isStringArray(project.category) && typeof project.icon === 'string' &&
+typeof project.screenshot === 'string' && typeof project.shortDesc === 'string' &&
+typeof project.fullDesc === 'string' && isStringArray(project.tags) &&
+Array.isArray(project.stats) && project.stats.every(function(stat) {
+return stat && typeof stat.value === 'string' && typeof stat.label === 'string';
+}) && isStringArray(project.features) && isStringArray(project.techStack) &&
+typeof project.achievements === 'string' &&
+typeof project.liveLink === 'string' && isAllowedExternalUrl(project.liveLink) &&
+typeof project.githubLink === 'string' && isAllowedExternalUrl(project.githubLink) &&
+(project.screenshot === '' || isAllowedExternalUrl(project.screenshot));
+});
+}
+
+function isCertPayload(value) {
+return value && typeof value === 'object' &&
+Object.keys(certData).every(function(key) {
+var cert = value[key];
+return cert && typeof cert.issuer === 'string' &&
+typeof cert.issuerLogo === 'string' && typeof cert.title === 'string' &&
+typeof cert.recipientName === 'string' && typeof cert.recipientBrand === 'string' &&
+typeof cert.recipientRole === 'string' && typeof cert.description === 'string' &&
+typeof cert.date === 'string' && typeof cert.certId === 'string' &&
+typeof cert.verifyUrl === 'string' && isAllowedExternalUrl(cert.verifyUrl) &&
+typeof cert.color === 'string' &&
+typeof cert.seal === 'string';
+});
+}
+
+async function loadAboutSkyPublicContent() {
+var notice = document.getElementById('portfolioDataNotice');
+try {
+var response = await fetch(ABOUTSKY_SUPABASE_URL +
+'/rest/v1/aboutsky_public_content?select=content_key,payload&published=eq.true', {
+headers: {
+'apikey': ABOUTSKY_SUPABASE_KEY,
+'Authorization': 'Bearer ' + ABOUTSKY_SUPABASE_KEY
+},
+cache: 'no-store'
+});
+if (!response.ok) throw new Error('HTTP ' + response.status);
+var rows = await response.json();
+if (!Array.isArray(rows)) throw new Error('Format data portofolio tidak valid.');
+
+var received = { projects: false, certifications: false };
+rows.forEach(function(row) {
+if (row.content_key === 'projects' && isProjectPayload(row.payload)) {
+projectsData = row.payload;
+received.projects = true;
+}
+if (row.content_key === 'certifications' && isCertPayload(row.payload)) {
+certData = row.payload;
+received.certifications = true;
+}
+});
+renderProjects();
+if (received.projects && received.certifications) {
+notice.classList.add('hidden');
+} else {
+notice.textContent = 'Sebagian konten Supabase belum tersedia; konten bawaan tetap ditampilkan.';
+notice.classList.remove('hidden');
+}
+} catch (error) {
+console.error('Gagal memuat konten AboutSky dari Supabase:', error);
+notice.textContent = 'Konten Supabase tidak dapat dimuat; konten bawaan tetap ditampilkan.';
+notice.classList.remove('hidden');
+}
+}
+
+// File arsip dan metadata hanya dapat dimuat melalui fungsi server setelah autentikasi admin.
+let currentArsipId = null;
+let currentAboutSkyArchiveToken = '';
+
+function getFileIcon(type) {
+var icons = { pdf: 'fa-file-pdf', doc: 'fa-file-word', img: 'fa-file-image', zip: 'fa-file-archive', sql: 'fa-database', csv: 'fa-file-csv' };
+return icons[type] || 'fa-file';
+}
+
+function renderProjects(filter) {
+filter = filter || 'all';
+var grid = document.getElementById('projectGrid');
+var filtered = filter === 'all' ? projectsData : projectsData.filter(function(p) { return p.category.indexOf(filter) !== -1; });
+grid.innerHTML = filtered.map(function(project) {
+var screenshot = safeExternalUrl(project.screenshot);
+var coverStyle = project.screenshot
+? 'background-image: url(&quot;' + escapeHtml(screenshot) + '&quot;); background-size: cover; background-position: center;'
+: 'background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(14,165,233,0.2));';
+return '<div class="glass-card p-4 md:p-6" onclick="openProjectModal(' + project.id + ')"><div class="w-full h-40 md:h-48 rounded-xl mb-3 md:mb-4 flex items-center justify-center text-5xl md:text-6xl overflow-hidden" style="' + coverStyle + '">' + (!project.screenshot ? escapeHtml(project.icon) : '') + '</div><div class="flex flex-wrap gap-2 mb-2 md:mb-3">' + project.tags.slice(0, 2).map(function(tag) { return '<span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 rounded text-xs font-bold">' + escapeHtml(tag) + '</span>'; }).join('') + '</div><h3 class="text-lg md:text-xl font-bold mb-2">' + escapeHtml(project.title) + '</h3><p class="opacity-70 text-xs md:text-sm mb-3 md:mb-4">' + escapeHtml(project.shortDesc) + '</p><div class="flex items-center text-emerald-400 text-xs md:text-sm font-bold"><span>Klik untuk detail</span><i class="fa-solid fa-arrow-right ml-2"></i></div></div>';
+}).join('');
+}
+
+function handleFilterClick(btnElement, category) {
+document.querySelectorAll('.filter-btn').forEach(function(btn) { btn.classList.remove('active'); });
+if (btnElement) { btnElement.classList.add('active'); }
+renderProjects(category);
+}
+
+function openProjectModal(projectId) {
+var project = projectsData.find(function(p) { return p.id === projectId; });
+if (!project) return;
+var modalHero = document.getElementById('modalHero');
+modalHero.innerHTML = '';
+if (project.screenshot) {
+modalHero.style.backgroundImage = 'url("' + safeExternalUrl(project.screenshot) + '")';
+modalHero.style.backgroundSize = 'cover';
+modalHero.style.backgroundPosition = 'center';
+} else {
+modalHero.textContent = project.icon;
+modalHero.style.fontSize = '120px';
+modalHero.style.backgroundImage = '';
+}
+document.getElementById('modalTitle').textContent = project.title;
+document.getElementById('modalDescription').textContent = project.fullDesc;
+document.getElementById('modalAchievements').textContent = project.achievements;
+document.getElementById('modalLiveLink').href = safeExternalUrl(project.liveLink);
+document.getElementById('modalGithubLink').href = safeExternalUrl(project.githubLink);
+document.getElementById('modalTags').innerHTML = project.tags.map(function(tag) { return '<span class="project-tag">' + escapeHtml(tag) + '</span>'; }).join('');
+document.getElementById('modalStats').innerHTML = project.stats.map(function(stat) { return '<div class="project-stat"><div class="project-stat-value">' + escapeHtml(stat.value) + '</div><div class="project-stat-label">' + escapeHtml(stat.label) + '</div></div>'; }).join('');
+document.getElementById('modalFeatures').innerHTML = project.features.map(function(feature) { return '<li class="flex items-start gap-2"><i class="fa-solid fa-check-circle text-emerald-400 mt-1"></i><span class="opacity-80">' + escapeHtml(feature) + '</span></li>'; }).join('');
+document.getElementById('modalTechStack').innerHTML = project.techStack.map(function(tech) { return '<span class="project-tag" style="background: rgba(14,165,233,0.2); color: #0EA5E9;">' + escapeHtml(tech) + '</span>'; }).join('');
+document.getElementById('projectModal').classList.add('show');
+document.body.style.overflow = 'hidden';
+}
+
+function closeProjectModal() {
+document.getElementById('projectModal').classList.remove('show');
+document.body.style.overflow = 'auto';
+}
+
+document.getElementById('projectModal').addEventListener('click', function(e) {
+if (e.target === this) closeProjectModal();
+});
+
+function openCertModal(certType) {
+var cert = certData[certType];
+if (!cert) return;
+var color = /^#[0-9A-F]{6}$/i.test(cert.color) ? cert.color : '#10B981';
+var verifyUrl = safeExternalUrl(cert.verifyUrl);
+var viewer = document.getElementById('certificateViewer');
+viewer.innerHTML = '<div class="certificate-border"><div class="cert-header"><div class="cert-logo">' + escapeHtml(cert.issuerLogo) + '</div><div class="cert-title">Certificate of Achievement</div><h2 style="font-size: 28px; font-weight: 900; color: #0F172A; margin: 10px 0;">' + escapeHtml(cert.title) + '</h2><p style="font-size: 14px; color: #64748b;">This is to certify that</p></div><div style="text-align: center; margin: 20px 0;"><div class="cert-name">' + escapeHtml(cert.recipientName) + '</div><div style="font-size: 18px; font-weight: 700; color: ' + color + '; margin-bottom: 4px;">' + escapeHtml(cert.recipientBrand) + '</div><div style="font-size: 13px; color: #64748b;">' + escapeHtml(cert.recipientRole) + '</div></div><div class="cert-description">' + escapeHtml(cert.description) + '</div><div style="text-align: center; margin: 20px 0;"><div style="font-size: 12px; color: #64748b; text-transform: uppercase; letter-spacing: 1px;">Date of Certification</div><div style="font-size: 20px; font-weight: 900; color: #0F172A;">' + escapeHtml(cert.date) + '</div></div><div class="cert-footer"><div class="cert-signature"><div class="cert-signature-line"></div><div class="cert-signature-name">' + escapeHtml(cert.issuer) + '</div><div class="cert-signature-title">Certification Authority</div></div><div class="cert-seal">' + escapeHtml(cert.seal) + '</div><div class="cert-signature"><div class="cert-signature-line"></div><div class="cert-signature-name">' + escapeHtml(cert.recipientName) + '</div><div class="cert-signature-title">Certificate Holder</div></div></div><div class="cert-id">Certificate ID: <strong>' + escapeHtml(cert.certId) + '</strong><br>Verify at: <a href="' + escapeHtml(verifyUrl) + '" target="_blank" rel="noopener noreferrer" style="color: ' + color + '; text-decoration: none; font-weight: 700;">' + escapeHtml(verifyUrl) + '</a></div></div>';
+document.getElementById('certVerifyLink').href = verifyUrl;
+document.getElementById('certModal').classList.add('show');
+document.body.style.overflow = 'hidden';
+}
+
+function closeCertModal() {
+document.getElementById('certModal').classList.remove('show');
+document.body.style.overflow = 'auto';
+}
+
+function printCertificate() {
+var certContent = document.getElementById('certificateViewer').innerHTML;
+var printWindow = window.open('', '_blank');
+printWindow.document.write('<html><head><title>Sertifikat - DeploySkyy</title><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"><style>body { font-family: \'Plus Jakarta Sans\', sans-serif; margin: 0; padding: 20px; }.certificate-viewer { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); padding: 40px; }.certificate-border { border: 3px solid #10B981; padding: 40px; background: white; position: relative; min-height: 520px; }.cert-header { text-align: center; margin-bottom: 30px; }.cert-logo { font-size: 48px; margin-bottom: 10px; }.cert-title { font-size: 14px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }.cert-name { font-size: 36px; font-weight: 900; color: #0F172A; margin: 20px 0; }.cert-description { font-size: 16px; color: #334155; line-height: 1.6; text-align: center; margin: 20px 0; max-width: 600px; margin-left: auto; margin-right: auto; }.cert-footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; }.cert-signature { text-align: center; }.cert-signature-line { width: 150px; height: 2px; background: #0F172A; margin: 0 auto 8px auto; }.cert-signature-name { font-size: 12px; font-weight: 700; color: #0F172A; }.cert-signature-title { font-size: 10px; color: #64748b; }.cert-seal { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #10B981, #0EA5E9); display: flex; align-items: center; justify-content: center; color: white; font-size: 32px; }.cert-id { text-align: center; margin-top: 20px; font-size: 11px; color: #64748b; }.cert-id strong { color: #0F172A; }@media print { body { padding: 0; } }</style></head><body>' + certContent + '</body></html>');
+printWindow.document.close();
+setTimeout(function() { printWindow.print(); }, 500);
+showToast('️ Membuka dialog cetak/simpan PDF...');
+}
+
+document.getElementById('certModal').addEventListener('click', function(e) {
+if (e.target === this) closeCertModal();
+});
+
+function openError404Modal() {
+document.getElementById('error404Modal').classList.add('show');
+document.body.style.overflow = 'hidden';
+}
+function closeError404Modal() {
+document.getElementById('error404Modal').classList.remove('show');
+document.body.style.overflow = 'auto';
+}
+document.getElementById('error404Modal').addEventListener('click', function(e) {
+if (e.target === this) closeError404Modal();
+});
+
+// ===== ARSIP FUNCTIONS - SERVER-SIDE AUTHENTICATION =====
+function openArsipModal(folderId) {
+currentArsipId = folderId;
+var folderTitles = {
+1: 'Dokumen Pribadi', 2: 'Secret Project', 3: 'Catatan Teknis',
+4: 'Sertifikat Internal', 5: 'Foto & Media', 6: 'Backup Data', 7: 'Arsip Lama'
+};
+document.getElementById('arsipModalTitle').textContent = folderTitles[folderId] || 'Folder Terkunci';
+if (!currentAboutSkyArchiveToken) {
+document.getElementById('arsipUsername').value = '';
+document.getElementById('arsipPassword').value = '';
+}
+setArchiveAdminSession(currentAboutSkyArchiveToken);
+document.getElementById('arsipError').classList.remove('show');
+document.getElementById('arsipModal').classList.add('show');
+document.body.style.overflow = 'hidden';
+if (!currentAboutSkyArchiveToken) {
+setTimeout(function() { document.getElementById('arsipUsername').focus(); }, 100);
+}
+}
+
+function setArchiveAdminSession(token) {
+currentAboutSkyArchiveToken = token || '';
+var hasSession = Boolean(currentAboutSkyArchiveToken);
+document.getElementById('arsipUsername').style.display = hasSession ? 'none' : '';
+document.getElementById('arsipPassword').style.display = hasSession ? 'none' : '';
+document.getElementById('arsipLoginSubtitle').textContent = hasSession
+? 'Sesi SUPER ADMIN aktif. Buka folder privat dengan aman.'
+: 'Masuk dengan akun SUPER ADMIN SPAS1 untuk mengakses folder ini.';
+}
+
+async function signInAboutSkyAdmin(username, password) {
+var identity = username.indexOf('@') === -1
+? username + '@admin.spas1.local'
+: username;
+var response = await fetch(ABOUTSKY_SUPABASE_URL + '/auth/v1/token?grant_type=password', {
+method: 'POST',
+cache: 'no-store',
+credentials: 'omit',
+headers: {
+'apikey': ABOUTSKY_SUPABASE_KEY,
+'Content-Type': 'application/json'
+},
+body: JSON.stringify({ email: identity, password: password })
+});
+var result;
+try {
+result = await response.json();
+} catch (error) {
+throw new Error('Supabase Auth mengembalikan respons yang tidak valid.');
+}
+if (!response.ok || !result || typeof result.access_token !== 'string') {
+var loginError = new Error('Login SUPER ADMIN gagal. Periksa kembali kredensial.');
+loginError.status = response.status;
+throw loginError;
+}
+return result.access_token;
+}
+
+async function requestAboutSkyArchive(folderId, accessToken) {
+var response = await fetch(ABOUTSKY_SUPABASE_URL + '/functions/v1/aboutsky-archive', {
+method: 'POST',
+cache: 'no-store',
+credentials: 'omit',
+headers: {
+'apikey': ABOUTSKY_SUPABASE_KEY,
+'Authorization': 'Bearer ' + accessToken,
+'Content-Type': 'application/json'
+},
+body: JSON.stringify({ folderId: folderId })
+});
+var result;
+try {
+result = await response.json();
+} catch (error) {
+throw new Error('Backend arsip Supabase mengembalikan respons yang tidak valid.');
+}
+if (!response.ok) {
+var archiveError = new Error(result && result.error ? result.error : 'Folder arsip gagal dimuat.');
+archiveError.status = response.status;
+throw archiveError;
+}
+if (!result || result.success !== true || !result.folder || !Array.isArray(result.files)) {
+throw new Error('Format data arsip dari server tidak valid.');
+}
+return result;
+}
+
+async function submitAboutSkyContact(payload) {
+var response = await fetch(ABOUTSKY_SUPABASE_URL + '/functions/v1/aboutsky-contact', {
+method: 'POST',
+headers: {
+'apikey': ABOUTSKY_SUPABASE_KEY,
+'Authorization': 'Bearer ' + ABOUTSKY_SUPABASE_KEY,
+'Content-Type': 'application/json'
+},
+body: JSON.stringify(payload)
+});
+var result;
+try {
+result = await response.json();
+} catch (error) {
+throw new Error('Backend Supabase mengembalikan respons yang tidak valid.');
+}
+if (!response.ok) {
+throw new Error(result && result.error ? result.error : 'Pesan gagal dikirim.');
+}
+return result;
+}
+
+function checkArsipPassword(btn) {
+var username = document.getElementById('arsipUsername').value.trim();
+var password = document.getElementById('arsipPassword').value;
+var errorEl = document.getElementById('arsipError');
+btn = btn || document.querySelector('#arsipModal .btn-primary');
+if (btn.disabled) return;
+
+if (!currentAboutSkyArchiveToken && (!username || !password)) {
+errorEl.textContent = 'Username dan password wajib diisi.';
+errorEl.classList.add('show');
+return;
+}
+
+var originalText = btn.innerHTML;
+btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Memverifikasi...';
+btn.disabled = true;
+errorEl.classList.remove('show');
+
+var login = currentAboutSkyArchiveToken
+? Promise.resolve(currentAboutSkyArchiveToken)
+: signInAboutSkyAdmin(username, password);
+login.then(function(token) {
+setArchiveAdminSession(token);
+return requestAboutSkyArchive(currentArsipId, token);
+}).then(function(response) {
+btn.innerHTML = originalText;
+btn.disabled = false;
+
+errorEl.classList.remove('show');
+document.getElementById('arsipModal').classList.remove('show');
+document.body.style.overflow = 'auto';
+
+var cards = document.querySelectorAll('.arsip-card');
+if (cards[currentArsipId - 1]) {
+cards[currentArsipId - 1].classList.add('unlocked');
+}
+
+showToast(response.message || 'Akses arsip diberikan.');
+
+setTimeout(function() {
+renderArsipContentFromServer(response);
+}, 500);
+}).catch(function(error) {
+btn.innerHTML = originalText;
+btn.disabled = false;
+if (error.status === 401 || error.status === 403) {
+setArchiveAdminSession('');
+document.getElementById('arsipPassword').value = '';
+}
+errorEl.textContent = error.message || 'Folder arsip gagal dimuat.';
+errorEl.classList.add('show');
+var modal = document.querySelector('.arsip-modal-content');
+modal.style.animation = 'shake 0.5s';
+setTimeout(function() { modal.style.animation = ''; }, 500);
+});
+}
+
+function renderArsipContentFromServer(response) {
+var folder = response.folder;
+var files = response.files;
+document.getElementById('arsipContentTitle').textContent = folder.title;
+var folderIcon = /^fa-[a-z0-9-]+$/.test(folder.icon) ? folder.icon : 'fa-folder-open';
+var icon = document.createElement('i');
+icon.className = 'fa-solid ' + folderIcon;
+document.getElementById('arsipContentIcon').replaceChildren(icon);
+
+var contentBody = document.getElementById('arsipContentBody');
+contentBody.replaceChildren();
+var summary = document.createElement('p');
+summary.style.marginBottom = '20px';
+summary.style.opacity = '0.8';
+summary.textContent = 'Folder ' + folder.title + ' berisi ' + files.length + ' file.';
+contentBody.appendChild(summary);
+
+var fileList = document.createElement('ul');
+fileList.className = 'file-list';
+files.forEach(function(file) {
+if (!file || typeof file.name !== 'string') return;
+var fileType = ['pdf', 'doc', 'img', 'zip', 'sql', 'csv'].indexOf(file.type) !== -1
+? file.type
+: 'doc';
+var fileUrl = safeArchiveFileUrl(file.link);
+var item = document.createElement('li');
+item.className = 'file-item';
+var fileIcon = document.createElement('div');
+fileIcon.className = 'file-icon ' + fileType;
+var fileIconGlyph = document.createElement('i');
+fileIconGlyph.className = 'fa-solid ' + getFileIcon(fileType);
+fileIcon.appendChild(fileIconGlyph);
+item.appendChild(fileIcon);
+
+var fileInfo = document.createElement('div');
+fileInfo.className = 'file-info';
+var fileName = document.createElement('div');
+fileName.className = 'file-name';
+fileName.textContent = file.name;
+var fileDescription = document.createElement('div');
+fileDescription.className = 'file-desc';
+fileDescription.textContent = (typeof file.desc === 'string' ? file.desc : '') +
+  (file.size ? ' • ' + file.size : '');
+fileInfo.appendChild(fileName);
+fileInfo.appendChild(fileDescription);
+item.appendChild(fileInfo);
+
+var actions = document.createElement('div');
+actions.className = 'file-actions';
+var downloadUrl = safeArchiveFileUrl(file.downloadLink);
+if (fileUrl || downloadUrl) {
+[
+{ label: 'View', icon: 'fa-eye', className: 'view' },
+{ label: 'Download', icon: 'fa-download', className: 'download' }
+].forEach(function(action) {
+var actionUrl = action.className === 'download' ? downloadUrl : fileUrl;
+if (!actionUrl) return;
+var link = document.createElement('a');
+link.href = actionUrl;
+link.target = '_blank';
+link.rel = 'noopener noreferrer';
+link.className = 'file-btn ' + action.className;
+var glyph = document.createElement('i');
+glyph.className = 'fa-solid ' + action.icon;
+link.appendChild(glyph);
+link.appendChild(document.createTextNode(' ' + action.label));
+actions.appendChild(link);
+});
+}
+item.appendChild(actions);
+fileList.appendChild(item);
+});
+contentBody.appendChild(fileList);
+
+var notice = document.createElement('p');
+notice.style.marginTop = '20px';
+notice.style.padding = '16px';
+notice.style.background = 'rgba(16,185,129,0.1)';
+notice.style.borderLeft = '3px solid #10B981';
+notice.style.borderRadius = '8px';
+notice.style.fontSize = '12px';
+var noticeIcon = document.createElement('i');
+noticeIcon.className = 'fa-solid fa-shield-halved';
+notice.appendChild(noticeIcon);
+notice.appendChild(document.createTextNode(' Aman: Tautan privat berlaku selama 10 menit.'));
+contentBody.appendChild(notice);
+
+document.getElementById('arsipContentModal').classList.add('show');
+document.body.style.overflow = 'hidden';
+}
+
+function safeArchiveFileUrl(value) {
+try {
+var url = new URL(value);
+if (url.protocol === 'https:' && url.origin === new URL(ABOUTSKY_SUPABASE_URL).origin) {
+return url.href;
+}
+} catch (error) {
+return '';
+}
+return '';
+}
+
+function closeArsipModal() {
+document.getElementById('arsipModal').classList.remove('show');
+document.body.style.overflow = 'auto';
+currentArsipId = null;
+resetAllArsipCards();
+}
+
+function closeArsipContentModal() {
+document.getElementById('arsipContentModal').classList.remove('show');
+document.body.style.overflow = 'auto';
+currentArsipId = null;
+resetAllArsipCards();
+}
+
+function resetAllArsipCards() {
+var cards = document.querySelectorAll('.arsip-card');
+for (var i = 0; i < cards.length; i++) {
+cards[i].classList.remove('unlocked');
+}
+}
+
+document.getElementById('arsipModal').addEventListener('click', function(e) {
+if (e.target === this) closeArsipModal();
+});
+
+document.getElementById('arsipContentModal').addEventListener('click', function(e) {
+if (e.target === this) closeArsipContentModal();
+});
+
+document.addEventListener('keydown', function(e) {
+if (e.key === 'Enter' && document.getElementById('arsipModal').classList.contains('show')) {
+checkArsipPassword();
+}
+});
+
+function toggleBlogArticle(articleId, btnElement) {
+var article = document.getElementById(articleId);
+var isExpanded = article.classList.contains('expanded');
+if (isExpanded) {
+article.classList.remove('expanded');
+btnElement.classList.remove('expanded');
+btnElement.querySelector('.read-more-text').textContent = 'Baca Selengkapnya';
+} else {
+article.classList.add('expanded');
+btnElement.classList.add('expanded');
+btnElement.querySelector('.read-more-text').textContent = 'Tutup Artikel';
+}
+}
+
+function toggleTheme() {
+document.body.classList.toggle('light-mode');
+var isLight = document.body.classList.contains('light-mode');
+var icon = document.getElementById('themeIcon');
+if (icon) icon.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+var mobileIcon = document.getElementById('mobileThemeIcon');
+var mobileLabel = document.getElementById('mobileThemeLabel');
+if (mobileIcon) mobileIcon.className = isLight ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+if (mobileLabel) mobileLabel.textContent = isLight ? 'Tema Terang' : 'Tema Gelap';
+try { localStorage.setItem('portfolio_theme', isLight ? 'light' : 'dark'); } catch(e) {}
+}
+
+(function() {
+try {
+if (localStorage.getItem('portfolio_theme') === 'light') {
+document.body.classList.add('light-mode');
+var icon = document.getElementById('themeIcon');
+if (icon) icon.className = 'fa-solid fa-sun';
+var mobileIcon = document.getElementById('mobileThemeIcon');
+if (mobileIcon) mobileIcon.className = 'fa-solid fa-sun';
+var mobileLabel = document.getElementById('mobileThemeLabel');
+if (mobileLabel) mobileLabel.textContent = 'Tema Terang';
+}
+} catch(e) {}
+})();
+
+function toggleMobileMenu() {
+var menu = document.getElementById('mobileMenu');
+var icon = document.getElementById('hamburgerIcon');
+menu.classList.toggle('show');
+if (menu.classList.contains('show')) { icon.className = 'fa-solid fa-xmark'; }
+else { icon.className = 'fa-solid fa-bars'; }
+}
+function closeMobileMenu() {
+var menu = document.getElementById('mobileMenu');
+var icon = document.getElementById('hamburgerIcon');
+menu.classList.remove('show');
+icon.className = 'fa-solid fa-bars';
+}
+
+function showSection(sectionId) {
+document.querySelectorAll('.page-section').forEach(function(s) { s.classList.remove('active'); });
+var targetSection = document.getElementById('section-' + sectionId);
+if (!targetSection) return false;
+targetSection.classList.add('active');
+document.querySelectorAll('.nav-link').forEach(function(link) {
+link.classList.remove('active');
+if (link.dataset.section === sectionId) link.classList.add('active');
+});
+window.scrollTo({ top: 0, behavior: 'smooth' });
+closeMobileMenu();
+return false;
+}
+
+document.addEventListener('click', function(event) {
+var navigationLink = event.target.closest('[data-show-section]');
+if (!navigationLink) return;
+event.preventDefault();
+showSection(navigationLink.dataset.showSection);
+});
+
+(function() {
+var initialSection = window.location.hash.replace('#', '');
+if (['home', 'about', 'career', 'projects', 'skills', 'blog', 'contact'].indexOf(initialSection) !== -1) {
+showSection(initialSection === 'about' ? 'home' : initialSection);
+}
+})();
+
+function showToast(msg) {
+var toast = document.getElementById('toast');
+document.getElementById('toastMsg').textContent = msg;
+toast.classList.add('show');
+setTimeout(function() { toast.classList.remove('show'); }, 3500);
+}
+
+function handleContactSubmit(e) {
+e.preventDefault();
+var btn = document.getElementById('submitBtn');
+var originalText = btn.innerHTML;
+var payload = {
+name: document.getElementById('contactName').value,
+email: document.getElementById('contactEmail').value,
+subject: document.getElementById('contactSubject').value,
+message: document.getElementById('contactMessage').value,
+website: document.getElementById('contactWebsite').value
+};
+btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim...';
+btn.disabled = true;
+submitAboutSkyContact(payload).then(function(response) {
+if (!response || response.status !== 'success') throw new Error(response && response.message ? response.message : 'Pesan gagal dikirim.');
+showToast('✅ Pesan berhasil dikirim!');
+document.getElementById('contactForm').reset();
+}).catch(function(error) {
+showToast('❌ Gagal: ' + error.message);
+}).finally(function() {
+btn.innerHTML = originalText;
+btn.disabled = false;
+});
+}
+
+document.addEventListener('keydown', function(e) {
+if (e.key === 'Escape') { closeProjectModal(); closeCertModal(); closeError404Modal(); closeMobileMenu(); closeArsipModal(); closeArsipContentModal(); }
+});
+
+// ===== SECURITY HARDENING =====
+document.addEventListener('contextmenu', function(e) {
+e.preventDefault();
+showToast('⚠️ Right-click dinonaktifkan');
+return false;
+});
+
+document.addEventListener('keydown', function(e) {
+if (e.key === 'F12') { e.preventDefault(); showToast('️ DevTools dinonaktifkan'); return false; }
+if (e.ctrlKey && e.shiftKey && e.key === 'I') { e.preventDefault(); return false; }
+if (e.ctrlKey && e.shiftKey && e.key === 'J') { e.preventDefault(); return false; }
+if (e.ctrlKey && e.key === 'u') { e.preventDefault(); return false; }
+});
+
+console.log('%c️ STOP!', 'color: red; font-size: 50px; font-weight: bold;');
+console.log('%cAplikasi ini dilindungi dengan server-side authentication.', 'color: yellow; font-size: 16px;');
+console.log('%cSemua aktivitas dicatat di server.', 'color: orange; font-size: 14px;');
+
+renderProjects();
+loadAboutSkyPublicContent();
+</script>
+</body>
+</html>

@@ -8,7 +8,7 @@ update to the latest version!
 | ------- | ------------------ |
 | 5.1.x   | :x: |
 | 2.1.2   | upcoming :white_check_mark: |
-| 2.1.x   | support :white_check_mark: |
+| 2.1.1   | support :white_check_mark: |
 | 2.0.x   | :x: not support |
 | < 1.0   | :x: not support |
 

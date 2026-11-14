@@ -85,9 +85,16 @@ function isSpas1Hostname(hostname) {
     hostname.endsWith(".spas1.pages.dev");
 }
 
-function addSecurityHeaders(response) {
+function addSecurityHeaders(response, pathname) {
   const headers = new Headers(response.headers);
-  headers.set("Content-Security-Policy", contentSecurityPolicy);
+  let responseCsp = contentSecurityPolicy;
+  if (pathname === "/aboutsky.html") {
+    responseCsp = responseCsp.replace(
+      "img-src 'self' data: blob: https://ysvxtbupzhubxkbvtzmo.supabase.co",
+      "img-src 'self' data: blob: https://ysvxtbupzhubxkbvtzmo.supabase.co https://avatars.githubusercontent.com"
+    );
+  }
+  headers.set("Content-Security-Policy", responseCsp);
   headers.set("X-Content-Type-Options", "nosniff");
   headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
   return new Response(response.body, {
@@ -98,13 +105,14 @@ function addSecurityHeaders(response) {
 }
 
 export async function onRequest({ request, env, next }) {
-  const hostname = new URL(request.url).hostname.toLowerCase();
+  const requestUrl = new URL(request.url);
+  const hostname = requestUrl.hostname.toLowerCase();
   if (!isSpas1Hostname(hostname)) return next();
 
   const maintenanceMode = env?.MAINTENANCE_MODE;
   const maintenanceEnabled = maintenanceMode === undefined ||
     String(maintenanceMode).trim().toLowerCase() !== "false";
-  if (!maintenanceEnabled) return addSecurityHeaders(await next());
+  if (!maintenanceEnabled) return addSecurityHeaders(await next(), requestUrl.pathname);
 
   return addSecurityHeaders(new Response(maintenancePage, {
     status: 503,
@@ -112,5 +120,5 @@ export async function onRequest({ request, env, next }) {
       "Content-Type": "text/html; charset=utf-8",
       "Cache-Control": "no-store"
     }
-  }));
+  }), requestUrl.pathname);
 }

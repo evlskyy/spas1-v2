@@ -1560,6 +1560,13 @@ body.app-light-mode #view-admin #adminThemeToggle { border-color: #E5E7EB; backg
 body.app-light-mode #view-admin #adminThemeIcon.text-indigo-500 { color: #6366F1 !important; }
 body.app-light-mode #view-admin #adminThemeIcon.text-amber-500 { color: #D97706 !important; }
 body.app-light-mode #view-admin .site-settings-heading .site-settings-icon { color: #FFFFFF !important; }
+#view-admin { position: relative; }
+#view-admin > .admin-about-skyy-link {
+  position: absolute;
+  left: 16px;
+  bottom: 16px;
+  width: min(236px, calc(100vw - 32px));
+}
 @media (min-width: 1024px) {
   #view-admin > aside {
     width: 272px;
@@ -1589,6 +1596,19 @@ body.app-light-mode #view-admin .site-settings-heading .site-settings-icon { col
   #view-admin .admin-news-form select,
   #view-admin .admin-news-form textarea { padding: 11px 12px; font-size: 13px; }
   #view-admin .admin-news-form textarea { min-height: 140px; }
+}
+@media (max-width: 767px) {
+  #view-admin > .admin-about-skyy-link {
+    position: fixed;
+    inset-inline-start: max(12px, env(safe-area-inset-left));
+    inset-block-end: max(12px, env(safe-area-inset-bottom));
+    z-index: 1000;
+    width: max-content;
+    max-width: calc(100vw - 24px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+  #view-admin > main { padding-bottom: 5.5rem; }
+  #view-admin .admin-sidebar-logout { border-top: 0; padding-top: 0; }
 }
 @media (max-width: 640px) {
   .sidebar-settings-group { width: max-content; max-width: 82vw; flex: 0 0 auto; }
@@ -3213,7 +3233,6 @@ gtag('config', 'G-4933FEDV2TW');
 </div>
 <div class="home-project-info-links">
 <a data-social-key="github" href="https://github.com/evlskyy/spas1-v2" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i><span data-social-label>GitHub · @evlskyy</span></a>
-<a data-social-key="aboutskyy" href="https://sites.google.com/view/deployskyy/about" target="_blank" rel="noopener noreferrer" aria-label="About Skyy"><img class="custom-social-icon" src="assets/aboutskyy.png" alt="" width="16" height="16" decoding="async"><span data-social-label>About Skyy</span></a>
 <a data-social-key="developerEmail" href="mailto:hallosky@spas1.my.id"><i class="fa-solid fa-envelope" aria-hidden="true"></i><span data-social-label>hallosky@spas1.my.id</span></a>
 <a data-social-key="trakteer" href="https://trakteer.id/evlskyy/tip" target="_blank" rel="noopener noreferrer" aria-label="Trakteer evlskyy"><img src="https://edge-cdn.trakteer.id/images/embed/trbtn-icon.png?v=14-05-2025" alt="" class="project-info-trakteer-icon"><span data-social-label>Trakteer · evlskyy</span></a>
 <a data-social-key="developerInstagram" href="https://www.instagram.com/evlskyy/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i><span data-social-label>Instagram · @evlskyy</span></a>
@@ -3921,7 +3940,7 @@ gtag('config', 'G-4933FEDV2TW');
 </div>
 </div>
 </nav>
-<div class="admin-sidebar-logout order-4 md:order-3 border-t border-gray-200 pt-3">
+<div class="admin-sidebar-logout order-2 md:order-3 border-t border-gray-200 pt-3">
 <button type="button" onclick="keluarAdminPortal()" class="w-full px-3 py-2.5 bg-red-50 hover:bg-red-100 text-red-700 rounded-xl text-xs font-bold flex items-center justify-center md:justify-start gap-2 transition"><i class="fa-solid fa-right-from-bracket"></i><span>Logout Admin</span></button>
 </div>
 <div id="superAksesGroup" class="sidebar-settings-group order-5 md:order-4">
@@ -3957,6 +3976,11 @@ gtag('config', 'G-4933FEDV2TW');
 </div>
 </div>
 </aside>
+<a class="admin-about-skyy-link flex items-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-3 py-2.5 text-xs font-bold text-emerald-300 transition hover:bg-emerald-500/20" href="https://spas1.my.id/aboutsky.html" target="_blank" rel="noopener noreferrer" aria-label="Buka About Skyy di tab baru">
+<img src="assets/aboutskyy.png" alt="" width="24" height="24" class="shrink-0 rounded-full object-cover" decoding="async">
+<span>About Skyy</span>
+<i class="fa-solid fa-arrow-up-right-from-square ml-auto text-[10px]" aria-hidden="true"></i>
+</a>
 <main class="flex-grow p-4 sm:p-6 space-y-6 overflow-y-auto">
 <section id="tab-audit" class="admin-tab space-y-4 hidden">
 <section class="sl-audit-section" id="slStockAuditSection">
@@ -6123,8 +6147,8 @@ Diperbarui: new Date().toISOString()
 } });
 }));
 await Promise.all([
-supabaseRequest('SPAS1_SETTINGS', { method: 'POST', prefer: 'resolution=merge-duplicates,return=minimal', body: { Pengaturan: 'totalBeneficiaries', Nilai: String(payload.totalBeneficiaries || 0), Diperbarui: new Date().toISOString() } }),
-supabaseRequest('SPAS1_SETTINGS', { method: 'POST', prefer: 'resolution=merge-duplicates,return=minimal', body: { Pengaturan: 'volunteerCount', Nilai: String(payload.volunteerCount || 0), Diperbarui: new Date().toISOString() } })
+supabaseRequest('SPAS1_SETTINGS', { method: 'POST', query: { on_conflict: 'Pengaturan' }, prefer: 'resolution=merge-duplicates,return=minimal', body: { Pengaturan: 'totalBeneficiaries', Nilai: String(payload.totalBeneficiaries || 0), Diperbarui: new Date().toISOString() } }),
+supabaseRequest('SPAS1_SETTINGS', { method: 'POST', query: { on_conflict: 'Pengaturan' }, prefer: 'resolution=merge-duplicates,return=minimal', body: { Pengaturan: 'volunteerCount', Nilai: String(payload.volunteerCount || 0), Diperbarui: new Date().toISOString() } })
 ]);
 return { status: 'success', message: 'Data Tentang Kami berhasil disimpan ke Supabase.' };
 }
@@ -12208,12 +12232,18 @@ return;
 }
 const button = document.getElementById('announcementSubmit');
 if (button.disabled) return;
+const form = document.getElementById('adminNewsForm');
+if (form && typeof form.reportValidity === 'function' && !form.reportValidity()) return;
 const payload = {
-category: document.getElementById('announcementCategory').value,
+category: document.getElementById('announcementCategory').value.trim(),
 date: document.getElementById('announcementDate').value,
 title: document.getElementById('announcementTitle').value.trim(),
 content: document.getElementById('announcementContent').value.trim()
 };
+if (!payload.category || !payload.date || !payload.title || !payload.content) {
+alert('Lengkapi kategori, tanggal, judul, dan isi info sebelum menerbitkan.');
+return;
+}
 const posterFile = document.getElementById('announcementPoster').files[0];
 button.disabled = true;
 button.innerHTML = '<i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i> Menerbitkan...';
@@ -12468,6 +12498,7 @@ card.innerHTML = '<div class="flex items-center gap-3">' + avatar + '<div class=
 container.appendChild(card);
 });
 }
+const ABOUTSKY_PUBLIC_URL = 'https://spas1.my.id/aboutsky.html';
 const defaultSiteContent = {
 aboutTitle: 'Tentang Kami',
 aboutDescription: 'Mendukung pelaksanaan layanan Makan Bergizi Gratis melalui kolaborasi tim dapur, yayasan, sekolah, dan Posyandu. Informasi pada halaman ini dikelola oleh SUPER ADMIN.',
@@ -12486,7 +12517,7 @@ socials: [
 {key:'instagram',label:'Instagram',url:'https://www.instagram.com/sppgsungaipasir1',iconUrl:'',enabled:true},
 {key:'email',label:'Email',url:'mailto:sppgmeralseipasirsatu@gmail.com',iconUrl:'',enabled:true},
 {key:'youtube',label:'YouTube',url:'https://www.youtube.com/@channel_anda',iconUrl:'',enabled:true},
-{key:'aboutskyy',label:'About Skyy',url:'https://sites.google.com/view/deployskyy/about',iconUrl:'',enabled:true},
+{key:'aboutskyy',label:'About Skyy',url:ABOUTSKY_PUBLIC_URL,iconUrl:'',enabled:true},
 {key:'github',label:'GitHub · @evlskyy',url:'https://github.com/evlskyy/spas1-v2',iconUrl:'',enabled:true},
 {key:'developerInstagram',label:'Instagram · @evlskyy',url:'https://www.instagram.com/evlskyy/',iconUrl:'',enabled:true},
 {key:'developerEmail',label:'hallosky@spas1.my.id',url:'mailto:hallosky@spas1.my.id',iconUrl:'',enabled:true},
@@ -12498,6 +12529,13 @@ const defaultSocialIcons = new WeakMap();
 function applySiteContent(content) {
 if (!content || typeof content !== 'object') return;
 currentSiteContent = Object.assign({}, currentSiteContent, content);
+if (Array.isArray(currentSiteContent.socials)) {
+currentSiteContent.socials = currentSiteContent.socials.map(function(item) {
+return item && item.key === 'aboutskyy'
+? Object.assign({}, item, { url: ABOUTSKY_PUBLIC_URL })
+: item;
+});
+}
 document.querySelectorAll('[data-content-key]').forEach(function(element) {
 const value = currentSiteContent[element.dataset.contentKey];
 if (typeof value === 'string') element.textContent = value;

@@ -1,2 +1,8 @@
 [functions.volunteer-registration]
 verify_jwt = false
+
+[functions.aboutsky-contact]
+verify_jwt = false
+
+[functions.aboutsky-archive]
+verify_jwt = false
