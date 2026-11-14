@@ -70,7 +70,7 @@ const contentSecurityPolicy = [
   "object-src 'none'",
   "frame-ancestors 'self'",
   "form-action 'self'",
-  "script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://www.googletagmanager.com https://challenges.cloudflare.com https://xss.spas1.my.id",
+  "script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://challenges.cloudflare.com https://xss.spas1.my.id",
   "style-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://fonts.googleapis.com",
   "font-src 'self' data: https://cdnjs.cloudflare.com https://fonts.gstatic.com",
   "img-src 'self' data: blob: https://ysvxtbupzhubxkbvtzmo.supabase.co https://blogger.googleusercontent.com https://edge-cdn.trakteer.id https://www.google-analytics.com https://stats.g.doubleclick.net",
