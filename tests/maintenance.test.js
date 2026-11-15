@@ -36,7 +36,7 @@ test('maintenance middleware serves the standalone page with HTTP 503', async fu
 
 test('maintenance middleware lets the maintenance page image assets load normally', async function() {
   for (const [pathname, contentType] of [
-    ['/assets/maintenance-children.jpg', 'image/jpeg'],
+    ['/assets/maintenance-children.svg', 'image/svg+xml'],
     ['/assets/spas1-mark.png', 'image/png']
   ]) {
     const response = await context.onRequest({
@@ -54,8 +54,13 @@ test('maintenance middleware lets the maintenance page image assets load normall
 });
 
 test('maintenance page uses the supplied licensed vector and SPAS1 logo assets', function() {
-  assert.match(maintenanceHtml, /src="assets\/maintenance-children\.jpg"/);
-  assert.ok(fs.existsSync(path.join(root, 'assets', 'maintenance-children.jpg')));
+  const vectorPath = path.join(root, 'assets', 'maintenance-children.svg');
+  const vector = fs.readFileSync(vectorPath, 'utf8');
+  assert.match(maintenanceHtml, /src="assets\/maintenance-children\.svg"/);
+  assert.ok(fs.existsSync(vectorPath));
+  assert.match(vector, /<svg\b[^>]*viewBox="0 0 1376 768"/);
+  assert.match(vector, /<image width="1376" height="768" href="data:image\/png;base64,/);
+  assert.doesNotMatch(vector, /<rect\b/);
   assert.match(maintenanceHtml, /src="assets\/spas1-mark\.png"/);
   assert.doesNotMatch(maintenanceHtml, /anak-mbg\.png|googleusercontent\.com/);
   assert.match(maintenanceHtml, /prefers-reduced-motion/);

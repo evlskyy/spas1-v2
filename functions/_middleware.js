@@ -14,7 +14,7 @@ const contentSecurityPolicy = [
 ].join("; ");
 
 const maintenanceAssets = new Set([
-  "/assets/maintenance-children.jpg",
+  "/assets/maintenance-children.svg",
   "/assets/spas1-mark.png"
 ]);
 
