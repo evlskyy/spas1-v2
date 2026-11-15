@@ -113,6 +113,28 @@ test('AboutSky private archives authenticate with Supabase and use private signe
   assert.ok(migration.includes('revoke all on public.aboutsky_archive_files from public, anon, authenticated'));
 });
 
+test('AboutSky reuses SPAS1 Supabase key and serves the supplied profile photo locally', function() {
+  const page = fs.readFileSync(path.join(root, 'aboutsky.html'), 'utf8');
+  const app = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  const pageKey = page.match(/const ABOUTSKY_SUPABASE_KEY = '([^']+)'/);
+  const appKey = app.match(/window\.SPAS1_SUPABASE_ANON_KEY = '([^']+)'/);
+  assert.ok(pageKey);
+  assert.ok(appKey);
+  assert.equal(pageKey[1], appKey[1]);
+  assert.ok(page.includes('<img src="/assets/aboutsky-profile.jpeg" alt="Foto Skyy"'));
+  assert.ok(fs.existsSync(path.join(root, 'assets', 'aboutsky-profile.jpeg')));
+  assert.ok(page.includes('@keyframes profileGlitch'));
+  assert.ok(page.includes('@keyframes profileGlitchMain'));
+  assert.ok(!page.includes('.hacker-profile-wrapper::before'));
+  assert.ok(!page.includes('rgba(139, 92, 246, 0.4), rgba(244, 114, 182, 0.42)'));
+  assert.ok(!page.includes('@keyframes profileScanline'));
+  assert.ok(!page.includes('.hacker-profile-wrapper::after'));
+  assert.ok(!page.includes('repeating-linear-gradient(to bottom'));
+  assert.ok(page.includes('class="hacker-profile-img hacker-profile-main"'));
+  assert.equal((page.match(/class="hacker-profile-img hacker-glitch-layer/g) || []).length, 2);
+  assert.ok(!page.includes('grayscale(100%)'));
+});
+
 test('archive rendering treats file metadata as text and rejects external links', function() {
   const html = fs.readFileSync(path.join(root, 'aboutsky.html'), 'utf8');
   const start = html.indexOf('function renderArsipContentFromServer(response) {');
@@ -216,4 +238,17 @@ test('archive importer accepts only supported file types and the Storage size li
   });
   assert.throws(() => getFileMetadata('/archive/unknown.exe', 1024), /Tipe file tidak didukung/);
   assert.throws(() => getFileMetadata('/archive/large.pdf', 100 * 1024 * 1024 + 1), /melebihi 100 MB/);
+});
+
+test('AboutSky inline script does not trigger Live Server closing-body injection', function() {
+  const html = fs.readFileSync(path.join(root, 'aboutsky.html'), 'utf8');
+  const scriptStart = html.lastIndexOf('<script>');
+  const scriptEnd = html.indexOf('</script>', scriptStart);
+  assert.notEqual(scriptStart, -1);
+  assert.notEqual(scriptEnd, -1);
+
+  const inlineScript = html.slice(scriptStart + '<script>'.length, scriptEnd);
+  assert.ok(!inlineScript.includes('</body>'));
+  assert.ok(!inlineScript.includes('</html>'));
+  assert.doesNotThrow(() => new vm.Script(inlineScript));
 });

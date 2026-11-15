@@ -25,19 +25,16 @@ body.light-mode .glass-card { background: rgba(255,255,255,0.8); border-color: r
 .page-section { display: none; }
 .page-section.active { display: block; animation: fadeIn 0.5s; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 @keyframes floatAndroid { 0%, 100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-10px) translateX(3px); } }
 @keyframes floatIos { 0%, 100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(10px) translateX(-3px); } }
 @keyframes floatJs { 0%, 100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(-8px) translateX(2px); } }
 @keyframes floatSponsor { 0%, 100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(10px) translateX(3px); } }
 @keyframes floatTheme { 0%, 100% { transform: translateY(0) translateX(0); } 50% { transform: translateY(8px) translateX(-2px); } }
+@keyframes profileGlitch { 0%, 91%, 100% { opacity: 0; transform: translate(0); clip-path: inset(0); } 92% { opacity: 0.75; transform: translate(-4px, 1px); clip-path: inset(14% 0 72%); } 93% { opacity: 0.6; transform: translate(4px, -1px); clip-path: inset(52% 0 30%); } 94% { opacity: 0; transform: translate(0); clip-path: inset(0); } }
+@keyframes profileGlitchMain { 0%, 91%, 100% { filter: none; transform: translate(0) scale(1); clip-path: inset(0); } 92% { filter: hue-rotate(24deg) contrast(1.25) saturate(1.35); transform: translate(3px, -1px) scale(1.02); clip-path: inset(14% 0 72%); } 93% { filter: hue-rotate(-18deg) contrast(1.2); transform: translate(-3px, 1px) scale(1.01); clip-path: inset(52% 0 30%); } 94% { filter: none; transform: translate(0) scale(1); clip-path: inset(0); } }
 @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } }
 @keyframes glitch { 0%, 100% { text-shadow: 0 0 10px #10B981, 0 0 20px #10B981, 0 0 30px #10B981; } 50% { text-shadow: 0 0 15px #10B981, 0 0 30px #10B981, 0 0 45px #10B981, 0 0 60px #059669; } }
 @keyframes scanline { 0% { transform: translateY(-100%); } 100% { transform: translateY(100%); } }
-@keyframes hackerGlitch { 0%, 100% { filter: hue-rotate(0deg) brightness(1); } 25% { filter: hue-rotate(90deg) brightness(1.2) contrast(1.2); } 50% { filter: hue-rotate(180deg) brightness(0.8) contrast(1.3); } 75% { filter: hue-rotate(270deg) brightness(1.1) contrast(1.1); } }
-@keyframes scanlineMove { 0% { top: -100%; } 100% { top: 100%; } }
-@keyframes glitchLine { 0%, 100% { opacity: 0; transform: translateX(-100%); } 50% { opacity: 1; transform: translateX(100%); } }
-.animate-float { animation: float 3s ease-in-out infinite; }
 .animate-float-android { animation: floatAndroid 3.5s ease-in-out infinite; animation-delay: 0.5s; }
 .animate-float-ios { animation: floatIos 4s ease-in-out infinite; animation-delay: 1s; }
 .animate-float-js { animation: floatJs 3.8s ease-in-out infinite; animation-delay: 1.5s; }
@@ -45,15 +42,15 @@ body.light-mode .glass-card { background: rgba(255,255,255,0.8); border-color: r
 .animate-float-theme { animation: floatTheme 3s ease-in-out infinite; animation-delay: 1.5s; }
 .nav-link.active { color: #10B981 !important; }
 .profile-container { position: relative; display: inline-block; }
-.hacker-profile-wrapper { position: relative; width: 100%; height: 100%; border-radius: 50%; overflow: hidden; animation: hackerGlitch 4s ease-in-out infinite; }
-.hacker-profile-wrapper::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent); animation: scanlineMove 3s linear infinite; pointer-events: none; z-index: 10; }
-.hacker-profile-wrapper::after { content: ''; position: absolute; inset: -2px; background: linear-gradient(45deg, #10B981, #0EA5E9, #A855F7, #10B981); border-radius: 50%; z-index: -1; animation: hackerGlitch 3s ease-in-out infinite; filter: blur(8px); opacity: 0.7; }
-.hacker-overlay { position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(16, 185, 129, 0.03) 0px, transparent 1px, transparent 2px, rgba(16, 185, 129, 0.03) 3px); pointer-events: none; z-index: 20; animation: scanlineMove 8s linear infinite; }
-.hacker-profile-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) contrast(1.2) brightness(0.9); animation: hackerGlitch 5s ease-in-out infinite; }
-.hacker-glitch-line { position: absolute; width: 100%; height: 2px; background: rgba(16, 185, 129, 0.6); left: 0; animation: glitchLine 2s ease-in-out infinite; pointer-events: none; z-index: 15; box-shadow: 0 0 10px #10B981; }
-.hacker-glitch-line:nth-child(1) { top: 20%; animation-delay: 0s; }
-.hacker-glitch-line:nth-child(2) { top: 50%; animation-delay: 0.5s; }
-.hacker-glitch-line:nth-child(3) { top: 80%; animation-delay: 1s; }
+.hacker-profile-wrapper { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 50%; }
+.hacker-profile-img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hacker-profile-main { animation: profileGlitchMain 4.2s steps(1, end) infinite; }
+.hacker-glitch-layer { position: absolute; inset: 0; z-index: 3; opacity: 0; pointer-events: none; animation: profileGlitch 4.2s steps(1, end) infinite; }
+.hacker-glitch-cyan { filter: sepia(1) saturate(5) hue-rotate(135deg); mix-blend-mode: screen; }
+.hacker-glitch-magenta { filter: sepia(1) saturate(5) hue-rotate(270deg); mix-blend-mode: screen; animation-delay: 2.1s; }
+@media (prefers-reduced-motion: reduce) {
+  .hacker-profile-main, .hacker-glitch-layer { animation: none; }
+}
 .badge-item { background: rgba(28, 37, 65, 0.9); backdrop-filter: blur(12px); border: 1px solid rgba(58, 80, 107, 0.5); border-radius: 12px; padding: 8px 14px; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 6px; white-space: nowrap; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); transition: all 0.3s; cursor: pointer; }
 .badge-item:hover { transform: scale(1.1); border-color: #10B981; box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3); }
 body.light-mode .badge-item { background: rgba(255, 255, 255, 0.95); border-color: rgba(209, 213, 219, 0.5); color: #0F172A; }
@@ -326,13 +323,11 @@ body.light-mode .file-item:hover { background: rgba(241, 245, 249, 0.8); border-
 </div>
 <div class="flex justify-center">
 <div class="profile-container">
-<div class="w-72 h-72 md:w-80 md:h-80 rounded-full bg-gradient-to-br from-emerald-500 via-blue-500 to-purple-500 p-1 animate-float">
+<div class="w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border border-slate-600 shadow-lg">
 <div class="hacker-profile-wrapper">
-<div class="hacker-glitch-line"></div>
-<div class="hacker-glitch-line"></div>
-<div class="hacker-glitch-line"></div>
-<div class="hacker-overlay"></div>
-<img src="https://avatars.githubusercontent.com/u/340723619?v=4" alt="Foto DeploySkyy" class="hacker-profile-img">
+<img src="/assets/aboutsky-profile.jpeg" alt="Foto Skyy" class="hacker-profile-img hacker-profile-main">
+<img src="/assets/aboutsky-profile.jpeg" alt="" aria-hidden="true" class="hacker-profile-img hacker-glitch-layer hacker-glitch-cyan">
+<img src="/assets/aboutsky-profile.jpeg" alt="" aria-hidden="true" class="hacker-profile-img hacker-glitch-layer hacker-glitch-magenta">
 </div>
 </div>
 <div class="badge-android animate-float-android"><div class="badge-item"><i class="fa-brands fa-android text-green-400"></i><span>Android</span></div></div>
@@ -726,7 +721,7 @@ meta: { issuer: 'Meta (Facebook)', issuerLogo: '️♾️', title: 'Meta Front-E
 };
 
 const ABOUTSKY_SUPABASE_URL = 'https://ysvxtbupzhubxkbvtzmo.supabase.co';
-const ABOUTSKY_SUPABASE_KEY = 'sb_publishable_hIWf_cDeHXet-Y_j0PGA_8LwWDjK_';
+const ABOUTSKY_SUPABASE_KEY = 'sb_publishable_hIWf_cDeFeHXet-Y_j0PGA_8LwWDjK_';
 
 function escapeHtml(value) {
 return String(value == null ? '' : value).replace(/[&<>"']/g, function(character) {
@@ -916,7 +911,7 @@ document.body.style.overflow = 'auto';
 function printCertificate() {
 var certContent = document.getElementById('certificateViewer').innerHTML;
 var printWindow = window.open('', '_blank');
-printWindow.document.write('<html><head><title>Sertifikat - DeploySkyy</title><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"><style>body { font-family: \'Plus Jakarta Sans\', sans-serif; margin: 0; padding: 20px; }.certificate-viewer { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); padding: 40px; }.certificate-border { border: 3px solid #10B981; padding: 40px; background: white; position: relative; min-height: 520px; }.cert-header { text-align: center; margin-bottom: 30px; }.cert-logo { font-size: 48px; margin-bottom: 10px; }.cert-title { font-size: 14px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }.cert-name { font-size: 36px; font-weight: 900; color: #0F172A; margin: 20px 0; }.cert-description { font-size: 16px; color: #334155; line-height: 1.6; text-align: center; margin: 20px 0; max-width: 600px; margin-left: auto; margin-right: auto; }.cert-footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; }.cert-signature { text-align: center; }.cert-signature-line { width: 150px; height: 2px; background: #0F172A; margin: 0 auto 8px auto; }.cert-signature-name { font-size: 12px; font-weight: 700; color: #0F172A; }.cert-signature-title { font-size: 10px; color: #64748b; }.cert-seal { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #10B981, #0EA5E9); display: flex; align-items: center; justify-content: center; color: white; font-size: 32px; }.cert-id { text-align: center; margin-top: 20px; font-size: 11px; color: #64748b; }.cert-id strong { color: #0F172A; }@media print { body { padding: 0; } }</style></head><body>' + certContent + '</body></html>');
+printWindow.document.write('<html><head><title>Sertifikat - DeploySkyy</title><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"><style>body { font-family: \'Plus Jakarta Sans\', sans-serif; margin: 0; padding: 20px; }.certificate-viewer { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); padding: 40px; }.certificate-border { border: 3px solid #10B981; padding: 40px; background: white; position: relative; min-height: 520px; }.cert-header { text-align: center; margin-bottom: 30px; }.cert-logo { font-size: 48px; margin-bottom: 10px; }.cert-title { font-size: 14px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; }.cert-name { font-size: 36px; font-weight: 900; color: #0F172A; margin: 20px 0; }.cert-description { font-size: 16px; color: #334155; line-height: 1.6; text-align: center; margin: 20px 0; max-width: 600px; margin-left: auto; margin-right: auto; }.cert-footer { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; }.cert-signature { text-align: center; }.cert-signature-line { width: 150px; height: 2px; background: #0F172A; margin: 0 auto 8px auto; }.cert-signature-name { font-size: 12px; font-weight: 700; color: #0F172A; }.cert-signature-title { font-size: 10px; color: #64748b; }.cert-seal { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #10B981, #0EA5E9); display: flex; align-items: center; justify-content: center; color: white; font-size: 32px; }.cert-id { text-align: center; margin-top: 20px; font-size: 11px; color: #64748b; }.cert-id strong { color: #0F172A; }@media print { body { padding: 0; } }</style></head><body>' + certContent + '<' + '/body><' + '/html>');
 printWindow.document.close();
 setTimeout(function() { printWindow.print(); }, 500);
 showToast('️ Membuka dialog cetak/simpan PDF...');

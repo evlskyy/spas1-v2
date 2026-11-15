@@ -32,7 +32,7 @@ tanpa izin tertulis dari pemilik hak cipta, kecuali jika diizinkan hukum.
 ::selection { color: #172033; background: #FACC15; }
 ::-moz-selection { color: #172033; background: #FACC15; }
 </style>
-<title>SPAS1 Version 2.1.1 | Aplikasi Operasional MBG SPPG Sungai Pasir 1 Meral</title>
+<title>SPAS1 Version 2.1.2 Release App | Aplikasi Operasional MBG SPPG Sungai Pasir 1 Meral</title>
 <link rel="canonical" href="https://spas1.my.id/">
 <link rel="icon" type="image/png" href="assets/spas1-mark.png">
 <link rel="apple-touch-icon" href="assets/spas1-mark.png">
@@ -45,7 +45,7 @@ tanpa izin tertulis dari pemilik hak cipta, kecuali jika diizinkan hukum.
       "@id": "https://spas1.my.id/#website",
       "url": "https://spas1.my.id/",
       "name": "SPAS1",
-      "alternateName": "SPAS1 Version 2.1.1",
+      "alternateName": "SPAS1 Version 2.1.2 Release App",
       "description": "Aplikasi operasional dapur Makan Bergizi Gratis di SPPG Sungai Pasir 1 Meral, Karimun, menggunakan Supabase untuk backend dan Cloudflare Pages untuk publikasi frontend.",
       "inLanguage": "id-ID",
       "publisher": {"@id": "https://spas1.my.id/#organization"}
@@ -60,14 +60,14 @@ tanpa izin tertulis dari pemilik hak cipta, kecuali jika diizinkan hukum.
     {
       "@type": "SoftwareApplication",
       "@id": "https://spas1.my.id/#software",
-      "name": "SPAS1 Version 2.1.1",
+      "name": "SPAS1 Version 2.1.2 Release App",
       "alternateName": "Sistem Administrasi Sungai Pasir 1",
       "url": "https://spas1.my.id/",
       "description": "Aplikasi web untuk mengelola operasional dan distribusi harian MBG. Supabase menyediakan autentikasi, database, dan penyimpanan media; frontend dipublikasikan melalui Cloudflare Pages.",
       "applicationCategory": "BusinessApplication",
       "applicationSubCategory": "Operational management for MBG nutrition programs",
       "operatingSystem": "Web",
-      "softwareVersion": "2.1.1",
+      "softwareVersion": "2.1.2",
       "inLanguage": "id-ID",
       "image": "https://spas1.my.id/assets/spas1-mark.png",
       "featureList": [
@@ -376,6 +376,7 @@ body.app-light-mode #view-home .text-emerald-400, body.app-light-mode #view-home
 body.app-light-mode #view-home .text-gray-400, body.app-light-mode #view-home .text-gray-500 { color: #4B5563 !important; }
 body.app-light-mode #view-home .text-indigo-400 { color: #4F46E5 !important; }
 body.app-light-mode #view-home .text-indigo-300 { color: #4338CA !important; }
+#view-home .dark-card:hover .home-module-icon--attendance { background-color: #4F46E5 !important; color: #FFFFFF !important; }
 body.module-login-background #view-home { display: flex !important; filter: blur(6px); transform: scale(1.01); transition: filter 0.2s ease, transform 0.2s ease; pointer-events: none; user-select: none; }
 body.module-login-background #view-home { position: fixed; inset: 0; z-index: 1; overflow: hidden; }
 body.module-login-background #modul-absensi { position: fixed; inset: 0; z-index: 99998; min-height: 100vh; overflow-y: auto; background: rgba(11, 19, 43, 0.38); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
@@ -1267,7 +1268,7 @@ body.app-light-mode .home-news-panel h2, body.app-light-mode .home-news-item h3 
 body.app-light-mode .home-news-panel h3 { color: #111827 !important; }
 body.app-light-mode .home-news-panel > p, body.app-light-mode .home-news-item p { color: #4B5563 !important; }
 body.app-light-mode .home-news-item { border-color: #E5E7EB; background: #F8FAFC; }
-body.app-light-mode .home-news-launcher { border-color: #A7F3D0; background: #ECFDF5; color: #047857; }
+body.app-light-mode .home-news-launcher { border-color: #D1D5DB; background: #FFFFFF; color: #047857; }
 body.app-light-mode .news-archive-card { border-color: #D1D5DB; background: #FFFFFF; }
 body.app-light-mode .news-archive-card h2 { color: #111827; }
 body.app-light-mode .news-archive-card > p { color: #4B5563; }
@@ -1296,8 +1297,8 @@ body.app-light-mode .admin-news-row { border-color: #E5E7EB; }
 body.app-light-mode .admin-news-row h3 { color: #111827 !important; }
 body.app-light-mode .admin-news-row p { color: #4B5563 !important; }
 body.app-light-mode #view-home #btnSuperAdminLogin {
-  border-color: #A5B4FC !important;
-  background: #E0E7FF !important;
+  border-color: #D1D5DB !important;
+  background: #FFFFFF !important;
   color: #3730A3 !important;
 }
 body.app-light-mode #view-home #btnProjectInfo {
@@ -2198,6 +2199,21 @@ body.app-light-mode #spas1-webapp-root h4 {
   #view-project-info .home-project-info-features i { margin-top: 3px; }
   #view-project-info .home-project-info-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
   #view-project-info .home-project-info-links a { justify-content: center; min-width: 0; padding: 9px 7px; font-size: 11px; text-align: center; }
+  #projectIdentityTitle .project-tutorial-button { flex: 1 1 100%; max-width: 100%; min-width: 0; min-height: 44px; margin-left: 0; padding: 10px 12px; border-radius: 14px; font-size: 12px; line-height: 1.4; white-space: normal; }
+  #view-tutorial { width: 100%; min-width: 0; align-items: stretch; padding: 8px !important; }
+  #view-tutorial .project-info-page-inner { width: 100%; max-width: 100%; min-width: 0; margin: 0; }
+  #view-tutorial .project-tutorial-back { max-width: 100%; min-height: 40px; margin-bottom: 8px; padding: 8px 10px !important; font-size: 12px !important; line-height: 1.35; white-space: normal; }
+  #view-tutorial .home-project-info-content { width: 100%; min-width: 0; margin-top: 4px; padding: 14px; overflow-wrap: anywhere; }
+  #view-tutorial .home-project-info-heading { align-items: center; flex-wrap: wrap; gap: 10px; }
+  #view-tutorial .home-project-info-mark { width: 48px; height: 48px; flex-basis: 48px; border-radius: 12px; }
+  #view-tutorial .home-project-info-heading h2 { flex: 1 1 calc(100% - 60px); font-size: clamp(20px, 5.2vw, 24px); line-height: 1.25; }
+  #view-tutorial .home-project-info-content > p,
+  #view-tutorial .home-project-info-section > p { font-size: 13px; line-height: 1.65; }
+  #view-tutorial .home-project-info-section { margin-top: 18px; padding-top: 14px; }
+  #view-tutorial .home-project-info-section h3 { font-size: clamp(16px, 4.4vw, 18px); line-height: 1.4; overflow-wrap: anywhere; }
+  #view-tutorial .project-tutorial-list { padding-left: 1.25rem; }
+  #view-tutorial .project-tutorial-list li { margin-bottom: 10px; padding-left: 2px; font-size: 14px; line-height: 1.65; overflow-wrap: anywhere; }
+  #view-tutorial .home-project-info-note { margin-top: 12px !important; padding: 12px; font-size: 12px !important; line-height: 1.6; }
   .home-footer-layout > .home-footer-left-actions > #btnProjectInfo,
   .home-footer-layout > .home-footer-left-actions > .home-live-demo-button,
   .home-footer-layout > .home-footer-trakteer > .trakteer-link,
@@ -2840,10 +2856,10 @@ gtag('config', 'G-4933FEDV2TW');
 <body class="min-h-screen flex flex-col justify-between home-screen-active">
 <noscript>
   <main>
-    <h1>SPAS1 Version 2.1.1 - Aplikasi Operasional MBG</h1>
+    <h1>SPAS1 Version 2.1.2 Release App - Aplikasi Operasional MBG</h1>
     <p>SPAS1 adalah aplikasi web komprehensif yang dirancang dan dikembangkan oleh iamsky (evlskyy) untuk membantu pengelolaan operasional, produksi, dan distribusi harian Makan Bergizi Gratis di SPPG Sungai Pasir 1 Meral, Karimun.</p>
     <p>SPAS1 berada di bawah naungan Yayasan Bidadari Indonesia Gemilang. Instagram pengembang: <a href="https://instagram.com/evlskyy">@evlskyy</a>.</p>
-    <h2>Modul dan fitur SPAS1 Version 2.1.1</h2>
+    <h2>Modul dan fitur SPAS1 Version 2.1.2 Release App</h2>
     <ul>
       <li>Absensi PIN relawan dengan pengelolaan akun dan data kehadiran.</li>
       <li>Bank Menu dan Gizi untuk mengelola paket menu standar MBG.</li>
@@ -2861,7 +2877,7 @@ gtag('config', 'G-4933FEDV2TW');
   <div class="version-welcome-card">
     <div class="version-welcome-icon" aria-hidden="true"><img src="assets/spas1-mark.png" alt=""></div>
     <h2 id="versionWelcomeTitle">SPAS1 Sungai Pasir 1</h2>
-    <p>Welcome to spas1 version 2.1.1 - Ready To Use!</p>
+    <p>SPAS1 Version 2.1.2 Release App siap digunakan.</p>
     <button class="version-welcome-button" id="versionWelcomeButton" type="button">Gotchaa!!</button>
   </div>
 </div>
@@ -2870,7 +2886,7 @@ gtag('config', 'G-4933FEDV2TW');
   const overlay = document.getElementById('versionWelcomeOverlay');
   const button = document.getElementById('versionWelcomeButton');
   if (!overlay || !button) return;
-  const welcomeStorageKey = 'spas1-version-welcome-2.1.1-seen';
+  const welcomeStorageKey = 'spas1-version-welcome-2.1.2-seen';
 
   function closeVersionWelcome() {
     overlay.classList.remove('show');
@@ -3022,7 +3038,7 @@ gtag('config', 'G-4933FEDV2TW');
 <p id="homeBrandSppg" data-brand-field="sppg" class="text-xs font-semibold text-emerald-400 tracking-wider">SPPG SUNGAI PASIR 1 MERAL, KARIMUN</p>
 <div class="inline-flex items-center gap-2 mt-1 px-3 py-0.5 rounded-full bg-emerald-600/20 border border-emerald-500/40 text-[10px] font-bold">
 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-<span class="text-emerald-300">SPAS1 Version 2.1.1</span>
+<span class="text-emerald-300">SPAS1 Version 2.1.2 Release App</span>
 </div>
 </div>
 </div>
@@ -3030,7 +3046,7 @@ gtag('config', 'G-4933FEDV2TW');
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 <div onclick="bukaModul('modul-absensi')" class="dark-card p-5 rounded-2xl hover:border-indigo-500 cursor-pointer transition transform hover:-translate-y-1 shadow-lg group">
 <div class="flex items-center space-x-4">
-<div class="w-12 h-12 bg-indigo-600/20 text-indigo-400 rounded-xl flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition"><i class="fa-solid fa-camera-rotate"></i></div>
+<div class="home-module-icon--attendance w-12 h-12 bg-indigo-600/20 text-indigo-400 rounded-xl flex items-center justify-center text-2xl group-hover:bg-indigo-600 group-hover:text-white transition"><i class="fa-solid fa-camera-rotate"></i></div>
 <div><span class="text-[10px] font-bold text-indigo-400 uppercase tracking-wider">MODUL 1</span><h3 class="font-bold text-sm text-white group-hover:text-indigo-300 transition">Absensi PIN</h3><p class="text-[11px] text-gray-400 mt-0.5">PIN relawan; GPS dan wajah tidak diverifikasi</p></div>
 </div>
 </div>
@@ -3125,11 +3141,11 @@ gtag('config', 'G-4933FEDV2TW');
 <div class="project-info-page-inner space-y-4">
 <div class="w-full mb-3 flex justify-start"><button type="button" onclick="kembaliKeHome()" class="btn-kembali-animated px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-xl text-xs font-semibold flex items-center gap-2"><i class="fa-solid fa-arrow-left"></i> Kembali ke Menu Utama</button></div>
 <div class="home-project-info-content">
-<div class="home-project-info-heading"><img data-spas1-logo="true" src="assets/spas1-mark.png" alt="Logo SPAS1" class="home-project-info-mark"><h2 id="projectInfoTitle" data-content-key="projectTitle">SPAS1 Version 2.1.1</h2></div>
+<div class="home-project-info-heading"><img data-spas1-logo="true" src="assets/spas1-mark.png" alt="Logo SPAS1" class="home-project-info-mark"><h2 id="projectInfoTitle" data-content-key="projectTitle">SPAS1 Version 2.1.2 Release App</h2></div>
 <p id="projectInfoSummary" data-content-key="projectSummary">Aplikasi operasional MBG untuk SPPG Sungai Pasir 1 Meral, Karimun, dengan Supabase sebagai backend dan Cloudflare Pages untuk publikasi frontend.</p>
 <section class="home-project-info-section" aria-labelledby="projectOverviewTitle">
 <h3 id="projectOverviewTitle"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Tentang Project</h3>
-<p><strong>SPAS1 Version 2.1.1</strong> membantu mengelola menu, stok logistik, absensi relawan, persiapan, distribusi, dan informasi SPPG. Alur backend telah bermigrasi dari Apps Script dan Spreadsheet ke Supabase.</p>
+<p><strong>SPAS1 Version 2.1.2 Release App</strong> membantu mengelola menu, stok logistik, absensi relawan, persiapan, distribusi, dan informasi SPPG. Alur backend telah bermigrasi dari Apps Script dan Spreadsheet ke Supabase.</p>
 <p><strong>Supabase</strong> menjadi backend aplikasi untuk autentikasi, PostgreSQL, kebijakan akses, dan penyimpanan media. Tombol Sinkronisasi Database dan Tarik dari Database menggunakan adapter Supabase pada modul yang terhubung, mengikuti sesi login dan kebijakan akses tiap tabel.</p>
 <p><strong>Cloudflare Pages</strong> menyajikan frontend statis. Kode sumber dapat dikelola di GitHub dan diterbitkan melalui integrasi deployment yang dikonfigurasi untuk repository tersebut. Cloudflare Workers hanya digunakan untuk fungsi edge bila memang dikonfigurasi; Worker bukan pengganti database Supabase.</p>
 <ul class="home-project-info-features">
@@ -3138,9 +3154,13 @@ gtag('config', 'G-4933FEDV2TW');
 </ul>
 </section>
 <section class="home-project-info-section" aria-labelledby="projectChangelogTitle">
-<h3 id="projectChangelogTitle"><i class="fa-solid fa-code-branch" aria-hidden="true"></i> <span id="projectUpdateTitle" data-content-key="projectUpdateTitle">Pembaruan Versi 2.0 ke 2.1.1 · TERUPDATE</span></h3>
-<p id="projectUpdateSummary" data-content-key="projectUpdateSummary">Alur backend aplikasi beralih dari Apps Script dan Spreadsheet ke Supabase untuk autentikasi, database, sinkronisasi, dan media. Frontend statis dipublikasikan melalui Cloudflare Pages; deployment mengikuti konfigurasi repository GitHub.</p>
+<h3 id="projectChangelogTitle"><i class="fa-solid fa-code-branch" aria-hidden="true"></i> <span id="projectUpdateTitle" data-content-key="projectUpdateTitle">Pembaruan Versi 2.1.2 · RELEASE APP</span></h3>
+<p id="projectUpdateSummary" data-content-key="projectUpdateSummary">Rilis ini menyelaraskan identitas versi aplikasi, menyempurnakan tampilan modul dan panduan penggunaan di ponsel, serta memperbarui pengalaman halaman pemeliharaan. Fitur operasional yang sudah tersedia tetap dipertahankan; halaman LIVE DEMO tidak diubah.</p>
 <ul class="home-project-info-features">
+<li><i class="fa-solid fa-tags" aria-hidden="true"></i><span><strong>Rilis aplikasi 2.1.2:</strong> Versi ini sudah sepenuhnya mendukung untuk Android Aplikasi, untuk iOS belum didukung untuk file IPA,(Alternatif menggunakan Safari Browser).</span></li>
+<li><i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i><span><strong>Panduan yang lebih nyaman di ponsel:</strong> Tutorial Penggunaan Aplikasi diperbarui agar lebih mudah dibaca pada layar kecil dan memuat alur modul serta fitur aplikasi terkini.</span></li>
+<li><i class="fa-solid fa-palette" aria-hidden="true"></i><span><strong>Penyempurnaan tampilan modul:</strong> kartu pada mode terang diselaraskan dan ikon Modul 1 mempertahankan blok biru solid saat diarahkan kursor.</span></li>
+<li><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i><span><strong>Halaman pemeliharaan:</strong> halaman status pemeliharaan Cloudflare menampilkan informasi yang jelas dan tautan WhatsApp untuk menghubungi admin.</span></li>
 <li><i class="fa-solid fa-bullhorn" aria-hidden="true"></i><span><strong>Info SPPG di halaman depan:</strong> admin dapat menerbitkan informasi dapur, lowongan kerja, dan pengumuman yang dapat dibaca pengguna.</span></li>
 <li><i class="fa-solid fa-image" aria-hidden="true"></i><span><strong>Poster dan foto:</strong> mendukung poster lowongan, AKG, menu MBG harian, serta foto lampiran pengumuman. File dan metadata dikelola melalui Supabase Storage dan database.</span></li>
 <li><i class="fa-solid fa-sliders" aria-hidden="true"></i><span><strong>Pengaturan identitas oleh SUPER ADMIN:</strong> pengelola dapat mengubah nama yayasan, nama SPPG, dan logo global untuk identitas lintas halaman. Logo khusus modul tetap dapat digunakan.</span></li>
@@ -3243,8 +3263,7 @@ gtag('config', 'G-4933FEDV2TW');
 <p>Update to the latest version!</p>
 <ul class="home-project-versions">
 <li><span>5.1</span><span class="home-project-version-status home-project-version-unsupported">Belum didukung ❌</span></li>
-<li><span>2.1.2</span><span class="home-project-version-status home-project-version-supported">Upcoming ✅</span></li>
-<li><span>2.1.1</span><span class="home-project-version-status home-project-version-supported">Didukung ✅</span></li>
+<li><span>2.1.2</span><span class="home-project-version-status home-project-version-supported">Didukung ✅</span></li>
 <li><span>2.0</span><span class="home-project-version-status home-project-version-unsupported">Tidak lagi didukung ❌</span></li>
 <li><span>&lt; 1.0</span><span class="home-project-version-status home-project-version-unsupported">Tidak lagi didukung ❌</span></li>
 </ul>
@@ -3261,13 +3280,13 @@ gtag('config', 'G-4933FEDV2TW');
 <div class="w-full mb-3 flex justify-start"><button type="button" onclick="bukaInfoProyek()" class="btn-kembali-animated project-tutorial-back px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 rounded-xl text-xs font-semibold flex items-center gap-2"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Kembali ke Read Info Project</button></div>
 <article class="home-project-info-content">
 <div class="home-project-info-heading"><img data-spas1-logo="true" src="assets/spas1-mark.png" alt="Logo SPAS1" class="home-project-info-mark"><h2>Tutorial Penggunaan Aplikasi</h2></div>
-<p>Panduan langkah demi langkah untuk menggunakan SPAS1 Version 2.1.1. Menu dan tindakan yang tersedia dapat berbeda sesuai akun, hak akses, serta konfigurasi ke Database.</p>
+<p>Panduan SPAS1 Version 2.1.2 Release App ini dirancang agar nyaman dibaca di ponsel maupun komputer. Menu dan tindakan yang tersedia dapat berbeda sesuai akun, hak akses, koneksi, serta konfigurasi database.</p>
 <section class="home-project-info-section" aria-labelledby="tutorialStartTitle">
 <h3 id="tutorialStartTitle"><i class="fa-solid fa-circle-play" aria-hidden="true"></i> 1. Mulai menggunakan aplikasi</h3>
 <ol class="project-tutorial-list">
-<li>Buka aplikasi melalui browser yang terhubung ke internet. Gunakan tombol <strong>Kembali ke Menu Utama</strong> bila sedang berada di halaman lain.</li>
+<li>Buka aplikasi melalui browser yang terhubung ke internet. Di ponsel, gulir halaman untuk membaca seluruh isi; gunakan tombol kembali yang tersedia di halaman, bukan tombol kembali browser saat sedang mengisi data.</li>
 <li>Pilih kartu modul pada halaman utama: <strong>Absensi PIN</strong>, <strong>Bank Menu &amp; Gizi</strong>, <strong>Stok Logistik</strong>, atau <strong>Persiapan &amp; Distribusi</strong>.</li>
-<li>Halaman publik seperti <strong>Read Info Project</strong>, <strong>Tentang Kami</strong>, dan <strong>Radar Info Terbaru</strong> dapat dibuka tanpa masuk ke portal admin.</li>
+<li>Halaman publik seperti <strong>Read Info Project</strong>, <strong>Tentang Kami</strong>, <strong>Radar Info Terbaru</strong>, dan <strong>AboutSky</strong> dapat dibuka tanpa masuk ke portal admin. Mode terang/gelap dapat diubah dari kontrol tema di halaman utama.</li>
 <li>Untuk mengelola data, gunakan akun dengan peran yang telah diberikan. Jika diminta login, masukkan kredensial portal yang benar; jangan membagikan kata sandi atau PIN.</li>
 </ol>
 </section>
@@ -3275,10 +3294,10 @@ gtag('config', 'G-4933FEDV2TW');
 <h3 id="tutorialAttendanceTitle"><i class="fa-solid fa-fingerprint" aria-hidden="true"></i> 2. Modul Absensi Relawan ( HAK AKSES TERBATAS )</h3>
 <ol class="project-tutorial-list">
 <li><strong>Relawan baru:</strong> pilih <strong>Registrasi</strong>, isi nama lengkap, ID Relawan, email aktif, nomor HP, role/divisi, lalu buat dan ulangi PIN minimal 8 karakter. Selesaikan verifikasi keamanan dan kirim formulir.</li>
-<li>Tunggu pemeriksaan dan persetujuan SUPER ADMIN. Email tidak diverifikasi dengan OTP secara otomatis; pastikan data yang dimasukkan benar.</li>
+<li>Tunggu pemeriksaan dan persetujuan SUPER ADMIN. Email tidak diverifikasi dengan OTP secara otomatis; pastikan data yang dimasukkan benar. Admin dapat memeriksa pendaftaran dan mengelola akun relawan dari menu <strong>SUPER AKSES</strong>.</li>
 <li><strong>Login:</strong> masukkan ID Relawan dan PIN, lalu tekan <strong>Verifikasi &amp; Masuk</strong>.</li>
 <li>Pilih <strong>Absen Masuk</strong>, <strong>Istirahat</strong>, <strong>Selesai Istirahat</strong>, atau <strong>Absen Pulang</strong> sesuai kegiatan. Ikuti petunjuk pemindaian dan lokasi, pilih/ambil foto bila diminta, lalu tekan <strong>Catat Kehadiran dengan PIN</strong>.</li>
-<li>Periksa pesan hasil pencatatan. Setelah selesai, tekan <strong>Keluar</strong>. Jika kamera atau GPS tidak tersedia, izinkan akses browser bila diperlukan atau gunakan pilihan foto yang tersedia.</li>
+<li>Periksa pesan hasil pencatatan. Setelah selesai, tekan <strong>Keluar</strong>. Jika kamera atau GPS tidak tersedia, izinkan akses browser bila diperlukan atau gunakan pilihan foto yang tersedia. Admin dapat mengoreksi atau menonaktifkan akun sesuai hak akses; akun yang dinonaktifkan tetap menyimpan riwayat absensinya.</li>
 </ol>
 <p class="home-project-info-note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Animasi/pemindaian visual bukan pencocokan wajah atau verifikasi identitas. GPS bergantung pada izin browser dan ketersediaan perangkat.</p>
 </section>
@@ -3295,10 +3314,11 @@ gtag('config', 'G-4933FEDV2TW');
 <section class="home-project-info-section" aria-labelledby="tutorialStockTitle">
 <h3 id="tutorialStockTitle"><i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i> 4. Modul Stok Logistik ( HAK AKSES TERBATAS )</h3>
 <ol class="project-tutorial-list">
-<li>Pilih hari kerja pada tab hari di bagian atas. Daftar belanja menunjukkan transaksi pembelian untuk hari yang dipilih; gunakan pencarian untuk menemukan bahan tertentu.</li>
-<li>Pilih <strong>Belanja Harian</strong> untuk melihat pembelian, atau <strong>Pemakaian Koki</strong> untuk mencatat pemakaian utama dan pecahan. Sisa dihitung setara otomatis; SUPER ADMIN dapat mengembalikan seluruh sisa yang tercatat ke stok gudang sebagai transaksi masuk.</li>
+<li>Pilih hari kerja pada tab hari di bagian atas. <strong>Belanja Harian</strong> hanya menampilkan pembelian untuk hari kerja yang dipilih pada minggu berjalan; gunakan pencarian untuk menemukan bahan tertentu.</li>
+<li>Di <strong>Pemakaian Koki</strong>, pilih transaksi pengeluaran gudang lalu catat pemakaian harian, termasuk satuan utama dan pecahan jika tersedia. Sisa di dapur dihitung otomatis; tekan <strong>Simpan</strong> untuk mencatat jumlah yang dipakai dan catatan.</li>
+<li>Sisa pemakaian tersimpan sebagai stok dapur dan tidak otomatis menambah stok gudang. SUPER ADMIN dapat menekan <strong>Kembalikan sisa</strong> untuk mencatat sisa tersebut kembali sebagai transaksi masuk gudang.</li>
 <li>Untuk mencatat pembelian atau stok keluar gudang, petugas berwenang membuka <strong>SUPER ADMIN → Akuntan → Stok &amp; Nota</strong>. Pilih tindakan yang sesuai, masukkan bahan/jumlah dan catatan yang diminta, isi lokasi, lampirkan foto nota/bukti, lalu tekan <strong>Simpan Transaksi</strong>.</li>
-<li>Foto nota/bukti wajib untuk transaksi Stok &amp; Nota. Lokasi GPS opsional; jika GPS tidak tersedia, isi lokasi secara manual. Catat beberapa bahan dari satu nota dalam satu transaksi. Transaksi uji nyata memengaruhi stok; gunakan <strong>Batalkan Nota</strong> dari Audit untuk membalikkan stok, bukan menghapus riwayat.</li>
+<li>Foto nota/bukti wajib untuk transaksi Stok &amp; Nota. Lokasi GPS opsional; jika GPS tidak tersedia, isi lokasi secara manual. Catat beberapa bahan dari satu nota dalam satu transaksi. Transaksi yang disimpan memengaruhi stok aktif; gunakan pembatalan dari Audit untuk membalikkan stok tanpa menghapus riwayat.</li>
 <li>Gunakan <strong>Muat Ulang</strong> untuk mengambil data terbaru. Pemakaian koki mengurangi sisa di dapur dan tidak menambah stok gudang.</li>
 </ol>
 </section>
@@ -3316,10 +3336,9 @@ gtag('config', 'G-4933FEDV2TW');
 <section class="home-project-info-section" aria-labelledby="tutorialAdminTitle">
 <h3 id="tutorialAdminTitle"><i class="fa-solid fa-user-shield" aria-hidden="true"></i> 6. SUPER ADMIN dan SUPER AKSES ( HAK AKSES TERBATAS )</h3>
 <ol class="project-tutorial-list">
-<li>Dari halaman utama pilih <strong>SUPER ADMIN</strong>, masukkan kredensial admin, lalu tekan tombol login. Setelah berhasil, menu admin muncul di sidebar. Tekan <strong>Logout Admin</strong> setelah selesai.</li>
+<li>Dari halaman utama pilih <strong>SUPER ADMIN</strong>, masukkan kredensial admin, lalu tekan tombol login. Pada login pertama di browser, layar <strong>Welcome to SUPER SPAS1</strong> menampilkan pertanyaan sambutan; jawabannya hanya hiburan dan tidak mengubah hak akses. Setelah masuk, menu admin muncul di sidebar. Tekan <strong>Logout Admin</strong> setelah selesai.</li>
 <li><strong>Pengaturan</strong> memuat pengelolaan identitas aplikasi, Tentang Kami, dan Info SPPG. Simpan perubahan dengan tombol aksi pada halaman terkait.</li>
-<li><strong>SUPER AKSES → Konten &amp; Tautan Situs:</strong> ubah teks Tentang Kami/Read Info Project, tautan media sosial, dan tombol WhatsApp; simpan konten situs setelah mengedit.</li>
-<li><strong>SUPER AKSES → Laporan:</strong> pilih/sinkronkan data absensi, lalu gunakan ekspor PDF/CSV atau Print. <strong>Relawan</strong> untuk meninjau/mengelola akun; <strong>Registrasi</strong> untuk memeriksa permohonan baru dan menyetujui atau menolaknya.</li>
+<li>Grup <strong>SUPER AKSES</strong> pada sidebar berisi <strong>Konten &amp; Tautan Situs</strong>, <strong>Laporan</strong>, <strong>Relawan</strong>, dan <strong>Registrasi</strong>. Gunakan Konten &amp; Tautan Situs untuk mengubah teks Tentang Kami/Read Info Project, tautan media sosial, dan tombol WhatsApp, lalu simpan perubahan. Laporan menyediakan sinkronisasi/ekspor data absensi; Relawan untuk mengelola akun; Registrasi untuk meninjau dan menyetujui atau menolak permohonan.</li>
 <li><strong>SUPER GIZI → Kalkulator AKG:</strong> isi nama/kategori bahan, berat bahan dalam satu porsi, serta data gizi per 100 g dari sumber yang sudah diverifikasi. Kalkulator memperbarui donat energi, kartu makronutrien, batang capaian target, dan tiga kontribusi tertinggi secara otomatis. Isi target AKG yang sesuai penerima; target energi awal 2.150 kkal hanya ilustrasi dari contoh. Data tersimpan lokal di browser yang sama, dapat diekspor sebagai CSV atau dicetak.</li>
 <li>Perubahan hanya dapat dilakukan sesuai hak admin. Periksa kembali data sebelum menyimpan atau memublikasikan, terutama nama/foto personel dan informasi yang dilihat publik.</li>
 </ol>
@@ -3327,13 +3346,13 @@ gtag('config', 'G-4933FEDV2TW');
 <section class="home-project-info-section" aria-labelledby="tutorialAccountantTitle">
 <h3 id="tutorialAccountantTitle"><i class="fa-solid fa-calculator" aria-hidden="true"></i> 7. Menu Akuntan: Audit, Stok &amp; Nota, LPDH, dan LPJ ( HAK AKSES TERBATAS )</h3>
 <ol class="project-tutorial-list">
-<li><strong>Audit &amp; Riwayat Transaksi Stok:</strong> pilih tanggal audit lalu tekan <strong>Tampilkan</strong> untuk memuat transaksi yang tersimpan pada hari tersebut.</li>
+<li><strong>Audit &amp; Riwayat Transaksi Stok:</strong> pilih tanggal audit lalu tekan <strong>Tampilkan</strong> untuk memuat transaksi pada hari tersebut. Ringkasan membandingkan stok masuk dan keluar menurut satuan; transaksi yang dibatalkan tidak dihitung. Pembatalan tersedia sesuai izin dan tetap menyisakan jejak audit.</li>
 <li><strong>Stok &amp; Nota:</strong> pilih input nota/stok masuk atau catat stok keluar gudang. Lengkapi barang, jumlah, pemasok/catatan, lokasi, dan foto bukti yang diwajibkan sebelum menyimpan. Riwayat transaksi dan pembatalan tersedia di Audit sesuai izin.</li>
-<li><strong>LPDH Harian:</strong> pilih tanggal dan tekan <strong>Muat Laporan</strong>. Isi identitas SPPG/periode, porsi penerima manfaat, saldo awal, top-up, serta plafon operasional jika berlaku. Tambahkan rincian transaksi, pilih kategori, isi uraian/volume/harga/pemasok, dan lampirkan nota.</li>
+<li><strong>LPDH Harian:</strong> pilih tanggal dan tekan <strong>Muat Laporan</strong>. Isi identitas SPPG/periode, porsi penerima manfaat, saldo awal, top-up, serta plafon operasional jika berlaku. Tambahkan rincian transaksi, pilih kategori, isi uraian/volume/harga/pemasok, dan lampirkan nota; bukti disimpan secara privat.</li>
 <li>Tinjau ringkasan total biaya, dana tersedia, pengeluaran, saldo kas akhir, dan status plafon. Isi nama Kepala SPPG/Akuntan; tanda tangan dapat digambar pada area tanda tangan. Tekan <strong>Simpan LPDH</strong> sebelum ekspor.</li>
 <li><strong>LPJ:</strong> pilih tanggal laporan agar data tanggal tersebut dimuat, lengkapi identitas, lalu isi delapan lembar: identitas, Buku Kas Umum, LRA, biaya bahan pangan, kartu stok, BAST distribusi, rekap hadir/insentif, serta SPTJM/pemeriksaan kas.</li>
 <li>Tambahkan baris sesuai kebutuhan, tinjau perhitungan otomatis, edit nama bawaan <strong>Anonymous</strong> bila diperlukan, lalu gambar tanda tangan pihak terkait. Tekan <strong>Simpan LPJ</strong>; ekspor memakai <strong>Excel 8 Lembar</strong> atau <strong>PDF / Print</strong>.</li>
-<li>Buka <strong>Akuntan → Folder LPDH &amp; LPJ</strong> untuk melihat arsip per tanggal. Klik folder kuning untuk memilih laporan LPDH atau LPJ, lalu pilih laporan yang ingin dibuka. Folder diperbarui otomatis setelah laporan berhasil disimpan.</li>
+<li>Buka <strong>Akuntan → Folder LPDH &amp; LPJ</strong> untuk melihat arsip per tanggal. Pilih folder tanggal, kemudian pilih laporan LPDH atau LPJ yang ingin dibuka. Arsip diperbarui setelah laporan berhasil disimpan.</li>
 </ol>
 <p class="home-project-info-note"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Tanda tangan di LPDH/LPJ adalah gambar tanda tangan untuk dokumen, bukan tanda tangan elektronik tersertifikasi. Gunakan tanggal laporan yang benar dan pastikan skema Supabase/migrasi fitur sudah diterapkan sebelum menyimpan data.</p>
 </section>
@@ -3343,7 +3362,8 @@ gtag('config', 'G-4933FEDV2TW');
 <li>Tombol <strong>PDF</strong> biasanya membuka dialog cetak browser. Pilih <strong>Save as PDF</strong> jika ingin menyimpan berkas, atau pilih printer untuk mencetak.</li>
 <li>Untuk laporan lebar seperti LPJ dan Audit Stok, biarkan ukuran/orientasi halaman mengikuti pengaturan cetak aplikasi (A4 landscape). Periksa pratinjau, margin, dan tujuan cetak sebelum menyimpan.</li>
 <li>Jika data belum muncul, pastikan tanggal benar, tekan tombol muat ulang, periksa koneksi internet dan status login, lalu coba lagi. Jangan mengirim laporan berulang kali ketika proses simpan masih berjalan.</li>
-<li>Jika unggahan nota, sinkronisasi, atau penyimpanan gagal, periksa koneksi dan izin akses akun. Hubungi admin bila pesan gagal berulang; jangan membagikan kata sandi, PIN, token login, atau tautan bukti pribadi.</li>
+<li>Data operasional tersimpan di Supabase, sedangkan draf/backup lokal dan data Kalkulator AKG mengikuti keterangan masing-masing modul dan dapat terikat ke browser/perangkat. Pastikan migrasi database dan fungsi terkait sudah diterapkan jika fitur baru belum tersedia.</li>
+<li>Jika unggahan nota, sinkronisasi, atau penyimpanan gagal, periksa koneksi dan izin akses akun. Hubungi admin bila pesan gagal berulang; jangan membagikan kata sandi, PIN, token login, atau tautan bukti pribadi. Foto publik dapat dilihat siapa pun yang memiliki tautannya.</li>
 </ol>
 </section>
 </article>
@@ -3648,7 +3668,7 @@ gtag('config', 'G-4933FEDV2TW');
 <span class="food-orbit-item food-4" title="Buah-buahan">🍇</span>
 <span class="food-orbit-item food-5" title="Susu">🍼</span>
 </div>
-<h2 style="font-size: 18px; font-weight: 900; margin-bottom: 4px; color: var(--text-main);">SPAS1 V2.1.1 LOGIN</h2>
+<h2 style="font-size: 18px; font-weight: 900; margin-bottom: 4px; color: var(--text-main);">SPAS1 V2.1.2 RELEASE APP LOGIN</h2>
 <div style="color: var(--text-muted); font-size: 11px; font-weight: 700; margin-bottom: 16px;"><span data-brand-field="sppg">SPPG Sungai Pasir 1 Meral</span> • Karimun</div>
 <div class="form-group" style="text-align: left;"><label class="form-label">Username</label><input class="input-field" id="loginUsername" onkeydown="if(event.key==='Enter') handleLogin()" placeholder="Masukkan Username Brayy..." type="text" /></div>
 <div class="form-group" style="text-align: left;"><label class="form-label">Kata Sandi Portal</label><input class="input-field" id="loginPassword" onkeydown="if(event.key==='Enter') handleLogin()" placeholder="Masukkan Sandi Brayy..." type="password" /></div>
@@ -3665,7 +3685,7 @@ gtag('config', 'G-4933FEDV2TW');
 <button class="btn btn-emerald" onclick="syncToSupabase(event)" style="font-size: 11px; padding: 4px 8px;">🔁 Sinkronisasi Database</button>
 <button class="btn btn-outline" onclick="fetchFromSupabase(event)" style="font-size: 11px; padding: 4px 8px;">📥 Tarik dari Database</button>
 <button class="btn btn-outline" onclick="handleLogout()" style="font-size: 11px; padding: 4px 8px;">🔒Lock Portal</button>
-<button class="btn btn-emerald" onclick="downloadCurrentHtml()">Download SPAS1 2.1.1 HTML ➜]</button>
+<button class="btn btn-emerald" onclick="downloadCurrentHtml()">Unduh SPAS1 2.1.2 Release App HTML ➜</button>
 </div>
 </div>
 <div class="card">
@@ -3675,7 +3695,7 @@ gtag('config', 'G-4933FEDV2TW');
 <div class="logo-badge" id="logoBadgeContainer" onclick="openLogoModal()" title="Klik jika ingin memilih foto logo"><img alt="Logo" id="brandLogoImg" data-brand-logo="true" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJYzPk2Xea4JAccvonUAeQSs-3E69THE8bVeyXD7m-yyTN78e60a09u-TS_v99dJcbPCtfJNJ9vNMPflbA1sx3jSi0T-BYBSP-_vDNefVbO-z2FVazjn6fktuCFRfZhOodqLqQRSaJIZS0dG1xkP3kbD4NmWbMuIvDSDKL3HdBP1XLgjS3aagtRyK88cHu/s1600/image.png" style="display: block;" /></div>
 <div class="module-mark-badge"><img data-spas1-logo="true" src="assets/spas1-mark.png" alt="Logo SPAS1"></div>
 </div>
-<div class="title-box"><h1 data-brand-field="sppg">SPPG SUNGAI PASIR 1 MERAL</h1><div class="sub-title" data-brand-field="foundation">YAYASAN BIDADARI INDONESIA GEMILANG</div><div class="badge badge-emerald" style="margin-top: 3px;">SPAS1 Version 2.1.1</div></div>
+<div class="title-box"><h1 data-brand-field="sppg">SPPG SUNGAI PASIR 1 MERAL</h1><div class="sub-title" data-brand-field="foundation">YAYASAN BIDADARI INDONESIA GEMILANG</div><div class="badge badge-emerald" style="margin-top: 3px;">SPAS1 Version 2.1.2 Release App</div></div>
 </div>
 <div style="display: flex; flex-wrap: wrap; gap: 6px;"><button class="btn btn-outline" onclick="openLogoModal()">🎨 Ubah Logo</button></div>
 </div>
@@ -3807,7 +3827,7 @@ gtag('config', 'G-4933FEDV2TW');
 <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:16px;"><button type="button" class="btn btn-outline" onclick="closeAkgDetailModal()">Batal</button><button id="akgEditSaveButton" type="button" class="btn btn-emerald" onclick="saveAkgEditModal()">Simpan Perubahan</button></div>
 </div>
 </div>
-<div class="footer"><div><strong>SPAS1 Version 2.1.1 Realtime Cloud Edition</strong> - <span data-brand-field="foundation">Yayasan Bidadari Indonesia Gemilang</span></div><div>Sistem Operasional Dapur MBG <span data-brand-field="sppg">SPPG Sungai Pasir 1 Meral</span> • Karimun, Kepulauan Riau</div><div style="margin-top: 6px; opacity: 0.7;">2026©/CraftedSkyy.With ❤️ Using Tailwind CSS + HTML 5 + Javascript</div></div>
+<div class="footer"><div><strong>SPAS1 Version 2.1.2 Release App · Realtime Cloud Edition</strong> - <span data-brand-field="foundation">Yayasan Bidadari Indonesia Gemilang</span></div><div>Sistem Operasional Dapur MBG <span data-brand-field="sppg">SPPG Sungai Pasir 1 Meral</span> • Karimun, Kepulauan Riau</div><div style="margin-top: 6px; opacity: 0.7;">2026©/CraftedSkyy.With ❤️ Using Tailwind CSS + HTML 5 + Javascript</div></div>
 </div>
 <div id="menuModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="menuModalTitle" onclick="if(event.target===this) closeMenuModal()">
 <div class="modal-card">
@@ -4292,11 +4312,11 @@ gtag('config', 'G-4933FEDV2TW');
 <label for="contentTeamNote">Keterangan nama/foto personel<textarea id="contentTeamNote" maxlength="500" required></textarea></label>
 </div>
 <div class="light-card admin-news-form p-4 rounded-2xl shadow-sm">
-<h3 class="text-sm font-bold text-gray-900">READ INFO PROJECT · Versi 2.1.1</h3>
+<h3 class="text-sm font-bold text-gray-900">READ INFO PROJECT · Version 2.1.2 Release App</h3>
 <label for="contentProjectTitle">Judul proyek<input id="contentProjectTitle" type="text" maxlength="120" required></label>
 <label for="contentProjectSummary">Deskripsi proyek<textarea id="contentProjectSummary" maxlength="1200" required></textarea></label>
 <label for="contentProjectUpdateTitle">Judul pembaruan (label TERUPDATE dapat diubah)<input id="contentProjectUpdateTitle" type="text" maxlength="160" required></label>
-<label for="contentProjectUpdateSummary">Ringkasan pembaruan versi 2.1.1<textarea id="contentProjectUpdateSummary" maxlength="2000" required></textarea></label>
+<label for="contentProjectUpdateSummary">Ringkasan pembaruan versi 2.1.2<textarea id="contentProjectUpdateSummary" maxlength="2000" required></textarea></label>
 </div>
 <div class="light-card p-4 rounded-2xl shadow-sm space-y-3">
 <h3 class="text-sm font-bold text-gray-900">Tautan Media Sosial</h3>
@@ -11908,7 +11928,7 @@ backupNode.textContent = JSON.stringify(backup).replace(/</g, '\\u003c');
 html.querySelector('head').appendChild(backupNode);
 const persisted = saveAppDataToCloud();
 const blob = new Blob(['<!DOCTYPE html>\n' + html.outerHTML], { type: 'text/html;charset=utf-8' });
-downloadBlob(blob, 'SPAS1_v2.1.1_SPPG_Sungai_Pasir_AutoLock.html');
+downloadBlob(blob, 'SPAS1_v2.1.2_Release_App_SPPG_Sungai_Pasir_AutoLock.html');
 if (persisted) showToast('✅ HTML berhasil diunduh dengan snapshot data Modul 4.');
 else alert('⚠️ HTML berhasil diunduh dengan snapshot data, tetapi penyimpanan lokal browser gagal.');
 } catch(error) {
@@ -12506,10 +12526,10 @@ beneficiariesTitle: 'Rincian Penerima Manfaat',
 beneficiariesNote: 'Jumlah per sekolah dan Posyandu hanya ditampilkan setelah diisi dan diverifikasi oleh admin.',
 teamTitle: 'Manajemen SPPG Sungai Pasir 1 Meral',
 teamNote: 'Nama dan foto personel hanya ditampilkan jika admin telah menyatakan memperoleh persetujuan publikasi.',
-projectTitle: 'SPAS1 Version 2.1.1',
+projectTitle: 'SPAS1 Version 2.1.2 Release App',
 projectSummary: 'Aplikasi operasional MBG untuk SPPG Sungai Pasir 1 Meral, Karimun, dengan Supabase sebagai backend dan Cloudflare Pages untuk publikasi frontend.',
-projectUpdateTitle: 'Pembaruan Versi 2.1.1 · Kalkulasi Pagu PO, LPDH, LPJ & AKG',
-projectUpdateSummary: 'Pembaruan kalkulasi Pagu Anggaran PO, ringkasan LPDH, serapan LPJ, dan perhitungan zat gizi per porsi pada Kalkulator AKG.',
+projectUpdateTitle: 'Pembaruan Versi 2.1.2 · RELEASE APP',
+projectUpdateSummary: 'Rilis ini menyelaraskan identitas versi aplikasi, menyempurnakan tampilan modul dan panduan penggunaan di ponsel, serta memperbarui pengalaman halaman pemeliharaan. Fitur operasional yang sudah tersedia tetap dipertahankan; halaman LIVE DEMO tidak diubah.',
 whatsappEnabled: true,
 whatsappPhone: '6281378004808',
 socials: [
@@ -12524,11 +12544,23 @@ socials: [
 {key:'trakteer',label:'Trakteer · evlskyy',url:'https://trakteer.id/evlskyy/tip',iconUrl:'',enabled:true}
 ]
 };
+const previousProjectContentPatterns = {
+projectTitle: /^SPAS1 Version \d+\.\d+\.\d+$/,
+projectUpdateTitle: /^Pembaruan Versi \d+\.\d+\.\d+ · Kalkulasi Pagu PO, LPDH, LPJ & AKG$/,
+projectUpdateSummary: /^Pembaruan kalkulasi Pagu Anggaran PO, ringkasan LPDH, serapan LPJ, dan perhitungan zat gizi per porsi pada Kalkulator AKG\.$/
+};
 let currentSiteContent = JSON.parse(JSON.stringify(defaultSiteContent));
 const defaultSocialIcons = new WeakMap();
 function applySiteContent(content) {
 if (!content || typeof content !== 'object') return;
-currentSiteContent = Object.assign({}, currentSiteContent, content);
+const normalizedContent = Object.assign({}, content);
+Object.keys(previousProjectContentPatterns).forEach(function(key) {
+const pattern = previousProjectContentPatterns[key];
+if (typeof normalizedContent[key] === 'string' && pattern.test(normalizedContent[key])) {
+normalizedContent[key] = defaultSiteContent[key];
+}
+});
+currentSiteContent = Object.assign({}, currentSiteContent, normalizedContent);
 if (Array.isArray(currentSiteContent.socials)) {
 currentSiteContent.socials = currentSiteContent.socials.map(function(item) {
 return item && item.key === 'aboutskyy'
@@ -13069,7 +13101,7 @@ element.textContent = currentSiteSettings.foundationName;
 document.querySelectorAll('[data-brand-field="sppg"]').forEach(function(element) {
 element.textContent = currentSiteSettings.sppgName;
 });
-document.title = 'SPAS1 Version 2.1.1 - ' + currentSiteSettings.foundationName;
+document.title = 'SPAS1 Version 2.1.2 Release App - ' + currentSiteSettings.foundationName;
 const globalLogoUrl = currentSiteSettings.logoUrl || DEFAULT_SITE_LOGO_URL;
 document.querySelectorAll('[data-brand-logo="true"]').forEach(function(image) {
 image.src = globalLogoUrl;
