@@ -40,7 +40,7 @@ export async function onRequest({ request, env, next }) {
     String(maintenanceMode).trim().toLowerCase() !== "false";
   if (!maintenanceEnabled) return addSecurityHeaders(await next());
 
-  const maintenanceRequest = new Request(new URL("/maintenance.html", request.url));
+  const maintenanceRequest = new Request(new URL("/maintenance", request.url));
   const page = await next(maintenanceRequest);
   const headers = new Headers(page.headers);
   headers.set("Content-Type", "text/html; charset=utf-8");

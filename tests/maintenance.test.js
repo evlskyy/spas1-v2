@@ -25,7 +25,7 @@ test('maintenance middleware serves the standalone page with HTTP 503', async fu
     }
   });
 
-  assert.equal(forwardedUrl.pathname, '/maintenance.html');
+  assert.equal(forwardedUrl.pathname, '/maintenance');
   assert.equal(response.status, 503);
   assert.equal(response.statusText, 'Service Unavailable');
   assert.equal(response.headers.get('Cache-Control'), 'no-store');
