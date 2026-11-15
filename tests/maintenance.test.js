@@ -34,6 +34,25 @@ test('maintenance middleware serves the standalone page with HTTP 503', async fu
   assert.match(await response.text(), /Sistem Sedang Dalam Pemeliharaan/);
 });
 
+test('maintenance middleware lets the maintenance page image assets load normally', async function() {
+  for (const [pathname, contentType] of [
+    ['/assets/maintenance-children.jpg', 'image/jpeg'],
+    ['/assets/spas1-mark.png', 'image/png']
+  ]) {
+    const response = await context.onRequest({
+      request: new Request('https://spas1.my.id' + pathname),
+      env: { MAINTENANCE_MODE: 'true' },
+      next: async () => new Response('image data', {
+        headers: { 'Content-Type': contentType }
+      })
+    });
+
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get('Content-Type'), contentType);
+    assert.equal(await response.text(), 'image data');
+  }
+});
+
 test('maintenance page uses the supplied licensed vector and SPAS1 logo assets', function() {
   assert.match(maintenanceHtml, /src="assets\/maintenance-children\.jpg"/);
   assert.ok(fs.existsSync(path.join(root, 'assets', 'maintenance-children.jpg')));

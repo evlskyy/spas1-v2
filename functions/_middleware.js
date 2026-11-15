@@ -13,6 +13,11 @@ const contentSecurityPolicy = [
   "upgrade-insecure-requests"
 ].join("; ");
 
+const maintenanceAssets = new Set([
+  "/assets/maintenance-children.jpg",
+  "/assets/spas1-mark.png"
+]);
+
 function isSpas1Hostname(hostname) {
   return hostname === "spas1.my.id" ||
     hostname === "spas1.pages.dev" ||
@@ -38,6 +43,10 @@ export async function onRequest({ request, env, next }) {
   const maintenanceMode = env?.MAINTENANCE_MODE;
   const maintenanceEnabled = maintenanceMode === undefined ||
     String(maintenanceMode).trim().toLowerCase() !== "false";
+  const pathname = new URL(request.url).pathname;
+  if (maintenanceEnabled && maintenanceAssets.has(pathname)) {
+    return addSecurityHeaders(await next());
+  }
   if (!maintenanceEnabled) return addSecurityHeaders(await next());
 
   const maintenanceRequest = new Request(new URL("/maintenance", request.url));
