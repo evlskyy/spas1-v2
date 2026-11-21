@@ -71,6 +71,37 @@ test('maintenance page uses the supplied licensed vector and SPAS1 logo assets',
   assert.doesNotMatch(maintenanceHtml, /mailto:/);
 });
 
+test('security middleware blocks repository files and adds browser hardening headers', async function() {
+  for (const pathname of ['/README.md', '/.gitignore', '/.env', '/supabase_migration.sql', '/.git/config']) {
+    const response = await context.onRequest({
+      request: new Request('https://spas1.my.id' + pathname),
+      env: { MAINTENANCE_MODE: 'false' },
+      next: async () => new Response('should not be reached')
+    });
+    assert.equal(response.status, 404);
+  }
+
+  const response = await context.onRequest({
+    request: new Request('https://spas1.my.id/index.html'),
+    env: { MAINTENANCE_MODE: 'false' },
+    next: async () => new Response('<html></html>')
+  });
+  assert.equal(response.headers.get('Strict-Transport-Security'), 'max-age=31536000; includeSubDomains; preload');
+  assert.equal(response.headers.get('X-Frame-Options'), 'DENY');
+  assert.equal(response.headers.get('Permissions-Policy'), 'camera=(), geolocation=(), microphone=(), payment=(), usb=()');
+  assert.equal(response.headers.get('Cross-Origin-Opener-Policy'), 'same-origin');
+  assert.equal(response.headers.get('Cross-Origin-Embedder-Policy'), 'credentialless');
+  assert.equal(response.headers.get('Cross-Origin-Resource-Policy'), 'same-origin');
+});
+
+test('index uses pinned external assets and retains the custom XSS origin', function() {
+  const indexHtml = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  assert.match(indexHtml, /https:\/\/xss\.spas1\.my\.id/);
+  assert.match(indexHtml, /src="https:\/\/cdn\.jsdelivr\.net\/[^"]+"[^>]*integrity="sha384-/);
+  assert.match(indexHtml, /href="https:\/\/cdnjs\.cloudflare\.com\/ajax\/libs\/font-awesome\/[^"]+"[^>]*integrity="sha384-/);
+  assert.match(indexHtml, /src="https:\/\/cdn\.tailwindcss\.com"[^>]*integrity="sha384-/);
+});
+
 test('maintenance middleware bypasses the static page when disabled', async function() {
   const request = new Request('https://spas1.my.id/dashboard');
   const response = await context.onRequest({

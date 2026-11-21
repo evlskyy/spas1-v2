@@ -13,6 +13,26 @@ const contentSecurityPolicy = [
   "upgrade-insecure-requests"
 ].join("; ");
 
+const blockedPathPrefixes = [
+  "/.git/",
+  "/.env",
+  "/.vscode/",
+  "/.wrangler/",
+  "/supabase/.temp/",
+  "/functions/"
+];
+
+const blockedPathnames = new Set([
+  "/readme.md",
+  "/.gitignore",
+  "/.env",
+  "/.env.example",
+  "/SECURITY.md",
+  "/supabase_migration.sql",
+  "/supabase_stock_conversion_migration.sql",
+  "/supabase_bank_menu_sppg_import.sql"
+]);
+
 const maintenanceAssets = new Set([
   "/assets/maintenance-children.svg",
   "/assets/spas1-mark.png"
@@ -29,6 +49,12 @@ function addSecurityHeaders(response) {
   headers.set("Content-Security-Policy", contentSecurityPolicy);
   headers.set("X-Content-Type-Options", "nosniff");
   headers.set("Referrer-Policy", "strict-origin-when-cross-origin");
+  headers.set("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload");
+  headers.set("X-Frame-Options", "DENY");
+  headers.set("Permissions-Policy", "camera=(), geolocation=(), microphone=(), payment=(), usb=()");
+  headers.set("Cross-Origin-Opener-Policy", "same-origin");
+  headers.set("Cross-Origin-Embedder-Policy", "credentialless");
+  headers.set("Cross-Origin-Resource-Policy", "same-origin");
   return new Response(response.body, {
     status: response.status,
     statusText: response.statusText,
@@ -44,6 +70,19 @@ export async function onRequest({ request, env, next }) {
   const maintenanceEnabled = maintenanceMode === undefined ||
     String(maintenanceMode).trim().toLowerCase() !== "false";
   const pathname = new URL(request.url).pathname;
+  let normalizedPath = pathname;
+  try {
+    normalizedPath = decodeURIComponent(pathname).toLowerCase();
+  } catch (_) {
+    normalizedPath = pathname.toLowerCase();
+  }
+  if (blockedPathnames.has(normalizedPath) ||
+      blockedPathPrefixes.some((prefix) => normalizedPath.startsWith(prefix))) {
+    return addSecurityHeaders(new Response("Not Found", {
+      status: 404,
+      headers: { "Content-Type": "text/plain; charset=utf-8" }
+    }));
+  }
   if (maintenanceEnabled && maintenanceAssets.has(pathname)) {
     return addSecurityHeaders(await next());
   }
