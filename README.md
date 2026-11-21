@@ -51,7 +51,7 @@ Frontend merupakan situs statis yang disajikan melalui Cloudflare Pages. Supabas
 
 ### AboutSky
 
-Halaman Tentang Saya [iamSkyy](https://www.instagram.com/iamskyy/) tersedia di [`aboutsky.html`](https://spas1.my.id/aboutsky.html).
+Halaman Tentang Saya [iamSkyy](https://www.instagram.com/iamskyy/)
 
 
 ### Stok dan pemakaian dapur
