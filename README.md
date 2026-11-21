@@ -7,7 +7,7 @@
 <h1 align="center">SPAS1 Version 2.1.2</h1>
 
 <p align="center">
-  Aplikasi operasional harian dapur Makan Bergizi Gratis untuk SPPG Sungai Pasir 1, Meral, Karimun.
+  Aplikasi operasional harian dapur Makan Bergizi Gratis untuk SPPG Sungai Pasir 1 Meral, Karimun.
 </p>
 
 <p align="center">
