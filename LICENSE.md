@@ -25,7 +25,6 @@ implied, to the extent permitted by applicable law.
 
 ---
 
-
 PROYEK SPAS1 - HAK CIPTA DILINDUNGI
 
 Hak Cipta (c) 2026 [iamsky](https://www.instagram.com/evlskyy/) (SPAS1 Project)
@@ -52,5 +51,4 @@ pada ketentuan atau hak yang terpisah.
 
 Materi disediakan "APA ADANYA", tanpa jaminan dalam bentuk apa pun, baik
 tersurat maupun tersirat, sejauh diizinkan oleh hukum yang berlaku.
-
 
