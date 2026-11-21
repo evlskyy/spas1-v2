@@ -1,8 +1,34 @@
-# SPAS1 Version 2.1.2 Release App
+<p align="center">
+  <a href="https://spas1.my.id/">
+    <img src="./assets/spas1-mark.png" alt="Logo SPAS1" width="112">
+  </a>
+</p>
 
-SPAS1 membantu operasional harian dapur MBG di SPPG Sungai Pasir 1, Meral, Karimun.
+<h1 align="center">SPAS1 Version 2.1.2</h1>
 
-## Fitur aplikasi
+<p align="center">
+  Aplikasi operasional harian dapur Makan Bergizi Gratis untuk SPPG Sungai Pasir 1, Meral, Karimun.
+</p>
+
+<p align="center">
+  <a href="https://spas1.my.id/"><img src="https://img.shields.io/badge/Live%20App-spas1.my.id-0ea5a4?style=for-the-badge" alt="Buka aplikasi SPAS1"></a>
+  <a href="https://spas1.my.id/demo.html"><img src="https://img.shields.io/badge/Demo-data%20simulasi-2563eb?style=for-the-badge" alt="Coba demo SPAS1"></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/evlskyy/spas1-v2/stargazers"><img src="https://img.shields.io/github/stars/evlskyy/spas1-v2?style=social" alt="GitHub stars"></a>
+  <a href="https://github.com/evlskyy/spas1-v2/network/members"><img src="https://img.shields.io/github/forks/evlskyy/spas1-v2?style=social" alt="GitHub forks"></a>
+</p>
+
+<p align="center">
+  <strong>Cloudflare Pages</strong> · <strong>Supabase</strong> · <strong>HTML, CSS &amp; JavaScript</strong>
+</p>
+
+---
+
+SPAS1 menyatukan alur menu dan gizi, stok logistik, absensi relawan, persiapan, distribusi, serta administrasi dalam satu aplikasi web. Frontend statis berjalan di Cloudflare Pages, sementara autentikasi dan data operasional menggunakan Supabase.
+
+## Fitur utama
 
 - Perencanaan menu harian dan Bank Menu.
 - Registrasi relawan, persetujuan admin, login, dan pencatatan absensi.
@@ -64,6 +90,10 @@ Halaman mandiri `aboutsky.html` disajikan di `https://spas1.my.id/aboutsky.html`
 Middleware Cloudflare Pages di `functions/_middleware.js` membaca variabel lingkungan `MAINTENANCE_MODE`. Saat pemeliharaan aktif, middleware menyajikan [`maintenance.html`](./maintenance.html) dengan HTTP 503 untuk permintaan ke `spas1.my.id`. Halaman menggunakan logo SPAS1 dan ilustrasi anak berlisensi yang disediakan di folder `assets/`.
 
 Atur `MAINTENANCE_MODE` menjadi `false` pada environment produksi project Cloudflare Pages untuk menonaktifkan pemeliharaan. Atur menjadi `true` atau hapus variabel tersebut untuk mengaktifkannya. Deploy project setelah mengubah variabel agar pengaturan baru berlaku.
+
+## Lisensi
+
+Repository ini bukan open source. Penggunaan, penyalinan, modifikasi, atau distribusi kode memerlukan izin tertulis terlebih dahulu. Lihat [`LICENSE.md`](./LICENSE.md) atau hubungi [iamsky](mailto:hallosky@spas1.my.id) untuk meminta izin.
 
 ## Pengembang
 

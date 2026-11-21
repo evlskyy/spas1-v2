@@ -2366,6 +2366,98 @@ body.app-light-mode .version-welcome-card {
 }
 body.app-light-mode .version-welcome-card h2 { color: #111827; }
 body.app-light-mode .version-welcome-card p { color: #475569; }
+#versionWelcomeOverlay .version-welcome-card {
+  width: min(620px, calc(100vw - 40px));
+  max-height: calc(100vh - 32px);
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 28px clamp(22px, 5vw, 40px) 24px;
+}
+#versionWelcomeOverlay .version-welcome-icon {
+  width: 112px;
+  height: 120px;
+  margin: 0 auto 10px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+#versionWelcomeOverlay .version-welcome-icon img { border-radius: 0; object-fit: contain; }
+#versionWelcomeOverlay .version-welcome-card h2 {
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.28);
+  font-size: clamp(24px, 3vw, 30px);
+}
+#versionWelcomeOverlay .version-welcome-card > p {
+  margin: 14px 0 18px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.65;
+}
+.version-welcome-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 440px;
+  margin: 0 auto 12px;
+}
+.version-welcome-link {
+  display: inline-flex;
+  min-width: 0;
+  min-height: 40px;
+  overflow: hidden;
+  align-items: stretch;
+  border-radius: 6px;
+  color: #FFFFFF;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+.version-welcome-link-label,
+.version-welcome-link-value { display: grid; place-items: center; padding: 0 10px; }
+.version-welcome-link-label {
+  background: #4B5563;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+.version-welcome-link-value {
+  flex: 1;
+  background: #0F9F9A;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+}
+.version-welcome-link-demo .version-welcome-link-value { background: #2563EB; }
+.version-welcome-link:hover,
+.version-welcome-link:focus-visible { filter: brightness(1.12); outline: 2px solid rgba(110, 231, 183, 0.75); outline-offset: 2px; }
+.version-welcome-community { display: flex; justify-content: center; gap: 8px; margin: 0 0 10px; }
+.version-welcome-community a {
+  padding: 4px 8px;
+  border-radius: 5px;
+  background: #E5E7EB;
+  color: #111827;
+  font-size: 11px;
+  font-weight: 800;
+  text-decoration: none;
+}
+.version-welcome-community a:hover,
+.version-welcome-community a:focus-visible { background: #FFFFFF; outline: 2px solid #34D399; outline-offset: 1px; }
+#versionWelcomeOverlay .version-welcome-stack {
+  margin: 8px 0 16px;
+  color: #9CA3AF;
+  font-size: 13px;
+  font-weight: 800;
+}
+.version-welcome-about { padding-top: 14px; border-top: 1px solid rgba(148, 163, 184, 0.24); text-align: left; }
+#versionWelcomeOverlay .version-welcome-about > p { margin: 0 0 14px; color: #CBD5E1; font-size: 14px; line-height: 1.65; }
+#versionWelcomeOverlay .version-welcome-about h3 { margin: 10px 0 8px; color: #A7F3D0; font-size: 18px; font-weight: 800; }
+#versionWelcomeOverlay .version-welcome-features { margin: 0 0 18px; padding-left: 20px; color: #D1D5DB; font-size: 13px; line-height: 1.65; }
+body.app-light-mode #versionWelcomeOverlay .version-welcome-about { border-color: #E5E7EB; }
+body.app-light-mode #versionWelcomeOverlay .version-welcome-about > p { color: #475569; }
+body.app-light-mode #versionWelcomeOverlay .version-welcome-about h3 { color: #047857; }
+body.app-light-mode #versionWelcomeOverlay .version-welcome-features { color: #334155; }
+#versionWelcomeOverlay .version-welcome-button { position: sticky; bottom: 0; z-index: 1; margin-top: 4px; }
 .admin-welcome-role-list { display: grid; gap: 8px; margin: 16px 0; text-align: left; }
 .admin-welcome-role { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 8px; padding: 9px 10px; border: 1px solid #334155; border-radius: 10px; background: rgba(15, 23, 42, .55); }
 .admin-welcome-role strong { color: #F8FAFC; font-size: 12px; }
@@ -2424,6 +2516,14 @@ body.app-light-mode .admin-welcome-status { color: #047857 !important; }
   .version-welcome-icon { width: 58px; height: 58px; border-radius: 15px; font-size: 30px; }
   .version-welcome-card h2 { font-size: 21px; }
   .version-welcome-card p { font-size: 12px; }
+  #versionWelcomeOverlay .version-welcome-card { width: calc(100vw - 24px); max-height: calc(100vh - 20px); max-height: calc(100dvh - 20px); padding: 22px 18px 18px; }
+  #versionWelcomeOverlay .version-welcome-icon { width: 92px; height: 98px; }
+  #versionWelcomeOverlay .version-welcome-card h2 { font-size: 22px; }
+  #versionWelcomeOverlay .version-welcome-actions { grid-template-columns: 1fr; gap: 8px; }
+  #versionWelcomeOverlay .version-welcome-link { width: min(100%, 340px); margin: 0 auto; }
+  #versionWelcomeOverlay .version-welcome-community a { font-size: 10px; }
+  #versionWelcomeOverlay .version-welcome-about > p { font-size: 13px; }
+  #versionWelcomeOverlay .version-welcome-features { font-size: 12px; }
   .admin-welcome-role { grid-template-columns: minmax(0, 1fr) auto; gap: 5px; padding: 8px; }
   .admin-welcome-answer { min-width: 54px; padding: 6px 7px; }
 }
@@ -2873,11 +2973,35 @@ gtag('config', 'G-4933FEDV2TW');
     </ul>
   </main>
 </noscript>
-<div class="version-welcome-overlay" id="versionWelcomeOverlay" role="dialog" aria-modal="true" aria-labelledby="versionWelcomeTitle" aria-hidden="true">
+<div class="version-welcome-overlay" id="versionWelcomeOverlay" role="dialog" aria-modal="true" aria-labelledby="versionWelcomeTitle" aria-hidden="true" tabindex="-1">
   <div class="version-welcome-card">
     <div class="version-welcome-icon" aria-hidden="true"><img src="assets/spas1-mark.png" alt=""></div>
-    <h2 id="versionWelcomeTitle">SPAS1 Sungai Pasir 1</h2>
-    <p>SPAS1 Version 2.1.2 Release App siap digunakan.</p>
+    <h2 id="versionWelcomeTitle">SPAS1 Version 2.1.2</h2>
+    <p>Aplikasi operasional harian dapur Makan Bergizi Gratis untuk SPPG Sungai Pasir 1, Meral, Karimun. Crafted Sky with ❤️</p>
+    <div class="version-welcome-actions" aria-label="Tautan aplikasi">
+      <a class="version-welcome-link" href="https://spas1.my.id/" target="_blank" rel="noopener noreferrer">
+        <span class="version-welcome-link-label">LIVE APP</span><strong class="version-welcome-link-value">SPAS1.MY.ID</strong>
+      </a>
+      <a class="version-welcome-link version-welcome-link-demo" href="https://spas1.my.id/demo.html" target="_blank" rel="noopener noreferrer">
+        <span class="version-welcome-link-label">DEMO</span><strong class="version-welcome-link-value">DATA SIMULASI</strong>
+      </a>
+    </div>
+    <div class="version-welcome-community" aria-label="Repository GitHub">
+      <a href="https://github.com/evlskyy/spas1-v2/stargazers" target="_blank" rel="noopener noreferrer">GitHub Stars</a>
+      <a href="https://github.com/evlskyy/spas1-v2/network/members" target="_blank" rel="noopener noreferrer">GitHub Forks</a>
+    </div>
+    <p class="version-welcome-stack">Cloudflare Pages · Supabase · HTML, CSS &amp; JavaScript</p>
+    <div class="version-welcome-about">
+      <p>SPAS1 menyatukan alur menu dan gizi, stok logistik, absensi relawan, persiapan, distribusi, serta administrasi dalam satu aplikasi web.</p>
+      <h3>Fitur utama</h3>
+      <ul class="version-welcome-features">
+        <li>Perencanaan menu dan informasi gizi.</li>
+        <li>Absensi dan administrasi relawan.</li>
+        <li>Pengelolaan stok serta logistik dapur.</li>
+        <li>Persiapan, distribusi, anggaran, dan HACCP.</li>
+        <li>Pelaporan LPDH dan LPJ.</li>
+      </ul>
+    </div>
     <button class="version-welcome-button" id="versionWelcomeButton" type="button">Gotchaa!!</button>
   </div>
 </div>
@@ -2904,7 +3028,7 @@ gtag('config', 'G-4933FEDV2TW');
     window.setTimeout(function() {
       overlay.classList.add('show');
       overlay.setAttribute('aria-hidden', 'false');
-      button.focus();
+      overlay.focus({ preventScroll: true });
     }, 350);
   });
 })();
