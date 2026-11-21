@@ -99,7 +99,8 @@ test('index uses pinned external assets and retains the custom XSS origin', func
   assert.match(indexHtml, /https:\/\/xss\.spas1\.my\.id/);
   assert.match(indexHtml, /src="https:\/\/cdn\.jsdelivr\.net\/[^"]+"[^>]*integrity="sha384-/);
   assert.match(indexHtml, /href="https:\/\/cdnjs\.cloudflare\.com\/ajax\/libs\/font-awesome\/[^"]+"[^>]*integrity="sha384-/);
-  assert.match(indexHtml, /src="https:\/\/cdn\.tailwindcss\.com"[^>]*integrity="sha384-/);
+  assert.doesNotMatch(indexHtml, /src="https:\/\/cdn\.tailwindcss\.com"[^>]*(?:integrity|crossorigin)=/);
+  assert.match(indexHtml, /src="https:\/\/cdn\.tailwindcss\.com"/);
 });
 
 test('maintenance middleware bypasses the static page when disabled', async function() {
