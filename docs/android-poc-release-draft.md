@@ -1,6 +1,6 @@
-# SPAS1 Android Release App 2.1.2 — GitHub Release Draft
+# SPAS1 Android Release App 2.1.2 — GitHub Release
 
-> Draft only. Do not publish until the APK is built, tested, and approved.
+> Published on 2026-11-21: [v2.1.2-android](https://github.com/evlskyy/spas1-v2/releases/tag/v2.1.2-android).
 
 ## WebToApp build settings
 
@@ -15,7 +15,7 @@
 | Version code | `1` |
 | Browser engine | System WebView |
 
-Keep the application ID and signing key unchanged for future APK updates. Create and back up the signing key securely; never commit it or include it in a GitHub Release. Use default WebView settings for the first POC. Do not enable offline packaging, resource encryption, proxy, CORS bypass, or background services.
+Keep the application ID and signing identity unchanged for future APK updates; increase the version code for each update. Create and back up the signing key securely; never commit it or include it in a GitHub Release. Use default WebView settings for the first POC. Do not enable offline packaging, resource encryption, proxy, CORS bypass, or background services.
 
 The wrapper loads the live website and requires an internet connection. Updates to the live site can appear without reinstalling the APK; native wrapper changes require a newly signed APK.
 
@@ -25,17 +25,23 @@ On 2026-11-15, the production home page and icon URL responded successfully. The
 
 ## POC test record
 
-- Device model: _pending_
-- Android version: _pending_
+- Device model: Samsung Galaxy S9+
+- Android version: 15
 - WebToApp version: _pending_
-- APK version code/name: _pending_
-- APK SHA-256: _pending_
+- APK version code/name: `1` / `2.1.2`
+- APK package: `spas1.app`
+- APK size: `9,247,590 bytes` (about `8.8 MiB`)
+- Minimum / target Android API: `24` / `35`
+- APK SHA-256: `85c8a001a0245cc4d8632ead471e7b58fc0c5435cc2defc4840ef441168a1783`
+- Build summary reports signature schemes `v1+v2+v3`.
+- The owner confirms the APK's declared permissions are required by implemented app features; do not remove them without approval.
+- Test result for this exact APK: installed and tested on Samsung Galaxy S9+ running Android 15 (owner-reported); detailed test cases were not individually recorded
 
 Use an approved test account and test environment. Do not create test attendance, stock, or accounting transactions in production.
 
-### Acceptance checklist
+### Additional validation checklist
 
-- [ ] APK installs and launches on the recorded Android device.
+- [x] APK installs and launches on the recorded Android device (owner-reported).
 - [ ] The app opens the SPAS1 production URL over HTTPS and renders its home page.
 - [ ] Public pages and module navigation work; back navigation returns to the expected page.
 - [ ] Login and read-only Supabase data loading work with an authorized test account.
@@ -45,22 +51,25 @@ Use an approved test account and test environment. Do not create test attendance
 - [ ] A network interruption and the site's maintenance page do not leave the app blank or frozen.
 - [ ] After a Cloudflare Pages update, relaunching the app shows the updated website without reinstalling.
 
-## Proposed GitHub Release
+## Published GitHub Release
 
 - Release title: `SPAS1 Android Release App 2.1.2`
 - Tag: `v2.1.2-android`
-- Type: Keep as a GitHub draft until approved.
-- Asset: `SPAS1-Android-2.1.2.apk`
+- Status: Published publicly on 2026-11-21.
+- URL: https://github.com/evlskyy/spas1-v2/releases/tag/v2.1.2-android
+- Asset: `spas1_v2.1.2.APK`
 
-### Release notes draft
+### Published release notes
 
-This is the Android WebView release app for SPAS1 Version 2.1.2.
+Android WebView release app for SPAS1 Version 2.1.2.
 
-- Opens `https://spas1.my.id/`; an internet connection is required.
-- Android application ID: `spas1.app`; app version: `2.1.2`.
-- Includes the 2.1.2 version labels, refreshed mobile tutorial, aligned light-mode module cards, and updated maintenance page.
-- The separate LIVE DEMO page is unchanged.
-- This APK is not an iOS app and does not provide offline access to Supabase data.
-- Test status, device details, and APK SHA-256 will be added after the POC test.
+- Application ID: `spas1.app`; version: `2.1.2` (version code `1`).
+- Opens `https://spas1.my.id/`; an internet connection is required. Website updates appear after deployment.
+- Owner-reported device test: Samsung Galaxy S9+ running Android 15.
+- The APK declares permissions for camera, location (including background location), media/files, contacts/accounts, notifications/background services, and system settings. Review Android permission prompts before granting access.
+- This is an Android APK, not an iOS app, and it does not provide offline access to Supabase data.
+- Review `LICENSE.md` for the project code-use terms.
 
-Attach only the signed APK and the completed test details. Do not attach the signing keystore, passwords, production credentials, or private user data.
+APK SHA-256: `85c8a001a0245cc4d8632ead471e7b58fc0c5435cc2defc4840ef441168a1783`.
+
+Never commit or distribute the signing keystore, passwords, production credentials, or private user data.
