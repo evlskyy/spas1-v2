@@ -51,13 +51,8 @@ Frontend merupakan situs statis yang disajikan melalui Cloudflare Pages. Supabas
 
 ### AboutSky
 
-Halaman mandiri `aboutsky.html` disajikan di `https://spas1.my.id/aboutsky.html` dan menggunakan project Supabase yang sama untuk konten publik, kiriman kontak, serta arsip privat.
+Halaman Tentang Saya [iamSkyy](https://www.instagram.com/iamskyy/) tersedia di [`aboutsky.html`](https://spas1.my.id/aboutsky.html).
 
-- Jalankan `supabase/aboutsky_migration.sql` melalui SQL Editor, lalu deploy fungsi `aboutsky-contact` dan `aboutsky-archive` menggunakan Supabase CLI.
-- Atur `ABOUTSKY_ALLOWED_ORIGINS` jika halaman menggunakan origin lain.
-- Akses arsip memerlukan pengguna Supabase dengan `app_metadata.role` bernilai `admin`. Edge Function memeriksa token pengguna dan memberikan tautan Storage privat yang kedaluwarsa setelah 10 menit. Simpan service-role key hanya di sisi server.
-- Untuk impor lokal, ekspor berkas ke subfolder bernomor `1` sampai `7`, atur `SUPABASE_URL` dan `SUPABASE_SERVICE_ROLE_KEY` hanya di terminal lokal tepercaya, lalu jalankan `node scripts/import-aboutsky-archive.js <folder-ekspor>`.
-- Importer menerima PDF, Word, gambar, ZIP, SQL, dan CSV hingga 100 MB, melewati berkas yang sudah terdaftar, dan tidak mengirim service-role key ke browser. Berkas arsip dan riwayat kontak lama di Google Sheets tidak dipindahkan oleh migrasi SQL; pindahkan secara terpisah.
 
 ### Stok dan pemakaian dapur
 

@@ -6,6 +6,11 @@ const vm = require('node:vm');
 
 const root = path.join(__dirname, '..');
 
+test('AboutSky iamSkyy navbar link opens the requested Instagram profile', function() {
+  const html = fs.readFileSync(path.join(root, 'aboutsky.html'), 'utf8');
+  assert.match(html, /href="https:\/\/www\.instagram\.com\/iamskyy\/" target="_blank" rel="noopener noreferrer" class="text-xl font-black gradient-text"[^>]*>iamSkyy<\/a>/);
+});
+
 test('AboutSky database content is escaped before rendering', function() {
   const html = fs.readFileSync(path.join(root, 'aboutsky.html'), 'utf8');
   const start = html.indexOf('let projectsData = [');
