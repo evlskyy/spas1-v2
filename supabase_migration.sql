@@ -29,6 +29,14 @@ alter table public."SPAS1_MEDIA" replica identity full;
 alter table public."MODUL1_PendaftaranRelawan" replica identity full;
 alter table public."MODUL1_DataRelawan" replica identity full;
 alter table public."MODUL1_Absensi" replica identity full;
+alter table public."MODUL4_AnggaranPO" replica identity full;
+alter table public."MODUL4_CloudSync" replica identity full;
+alter table public."MODUL4_HACCP" replica identity full;
+alter table public."MODUL4_JadwalDistribusi" replica identity full;
+alter table public."MODUL4_Joblist" replica identity full;
+alter table public."MODUL4_PosterAKG" replica identity full;
+alter table public."MODUL4_Resep" replica identity full;
+alter table public."MODUL4_TargetPorsi" replica identity full;
 
 alter table public."MODUL1_PendaftaranRelawan"
   add column if not exists "Auth User ID" uuid;
