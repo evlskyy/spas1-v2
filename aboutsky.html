@@ -143,8 +143,9 @@ body.light-mode .cert-card { background: rgba(255, 255, 255, 0.8); border-color:
 .error404-content::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, #10B981, transparent); animation: scanline 3s linear infinite; pointer-events: none; }
 .error404-content::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.08) 0%, transparent 70%); pointer-events: none; }
 .error404-art { font-family: monospace; font-size: 14px; line-height: 1.2; color: #10B981; margin: 20px 0; white-space: pre; display: inline-block; text-align: left; text-shadow: 0 0 10px #10B981, 0 0 20px rgba(16, 185, 129, 0.5); animation: glitch 2s ease-in-out infinite; position: relative; z-index: 2; }
-.error404-title { font-size: 48px; font-weight: 900; color: #10B981; letter-spacing: 8px; margin: 20px 0 10px 0; font-family: monospace; text-shadow: 0 0 20px #10B981, 0 0 40px rgba(16, 185, 129, 0.6), 0 0 60px rgba(16, 185, 129, 0.3); animation: glitch 2s ease-in-out infinite; position: relative; z-index: 2; }
-.error404-subtitle { font-size: 24px; font-weight: 700; color: #10B981; letter-spacing: 4px; font-family: monospace; text-shadow: 0 0 15px #10B981, 0 0 30px rgba(16, 185, 129, 0.5); position: relative; z-index: 2; }
+.error404-title { font-size: 48px; font-weight: 900; color: #10B981; letter-spacing: 0; margin: 20px 0 10px 0; font-family: monospace; text-transform: none; text-shadow: 0 0 20px #10B981, 0 0 40px rgba(16, 185, 129, 0.6), 0 0 60px rgba(16, 185, 129, 0.3); animation: glitch 2s ease-in-out infinite; position: relative; z-index: 2; }
+.error404-subtitle { font-size: 24px; font-weight: 700; color: #10B981; letter-spacing: 0; font-family: monospace; text-transform: none; text-shadow: 0 0 15px #10B981, 0 0 30px rgba(16, 185, 129, 0.5); position: relative; z-index: 2; }
+.error404-art-output { width: 100%; margin: 20px auto 0; color: #10B981; font-family: monospace; font-size: 5px; font-weight: 700; line-height: 1; white-space: pre; text-align: center; text-indent: 0; text-shadow: 0 0 10px #10B981; overflow: hidden; }
 .error404-close-btn { position: absolute; top: 10px; right: 10px; width: 40px; height: 40px; border-radius: 50%; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); color: #10B981; cursor: pointer; font-size: 18px; z-index: 10; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
 .error404-close-btn:hover { background: rgba(16, 185, 129, 0.3); border-color: #10B981; transform: rotate(90deg); box-shadow: 0 0 20px rgba(16, 185, 129, 0.5); }
 .error404-message { font-size: 18px; color: rgba(16, 185, 129, 0.8); margin-top: 25px; line-height: 1.6; position: relative; z-index: 2; text-shadow: 0 0 10px rgba(16, 185, 129, 0.3); font-weight: 600; }
@@ -257,8 +258,8 @@ body.light-mode .file-item:hover { background: rgba(241, 245, 249, 0.8); border-
 .cert-footer { flex-direction: column; gap: 20px; align-items: center; }
 .error404-content { padding: 20px; }
 .error404-art { font-size: 10px; }
-.error404-title { font-size: 32px; letter-spacing: 4px; }
-.error404-subtitle { font-size: 18px; letter-spacing: 2px; }
+.error404-title { font-size: 32px; letter-spacing: 0; }
+.error404-subtitle { font-size: 18px; letter-spacing: 0; }
 .error404-message { font-size: 14px; }
 .arsip-grid { grid-template-columns: 1fr; }
 .arsip-modal-content { padding: 30px 20px; }
@@ -658,9 +659,37 @@ body.light-mode .file-item:hover { background: rgba(241, 245, 249, 0.8); border-
 '-----'
 -   -
 |___|</div>
-<div class="error404-title">ERROR404</div>
-<div class="error404-subtitle">NOTFOUND</div>
-<p class="error404-message">Halaman sponsor sedang dalam pencairan...<br>Gotchaaa...🤑</p>
+<pre class="error404-art-output"> $$$$$$\   $$$$$$\   $$$$$$\   $$$$$$\   $$$$$$\  
+$$  __$$\ $$  __$$\ $$  __$$\ $$  __$$\ $$  __$$\ 
+$$$$$$$$ |$$ |  \__|$$ |  \__|$$ /  $$ |$$ |  \__|
+$$   ____|$$ |      $$ |      $$ |  $$ |$$ |      
+\$$$$$$$\ $$ |      $$ |      \$$$$$$  |$$ |      
+ \_______|\__|      \__|       \______/ \__|      
+                                                  
+$$\   $$\  $$$$$$\  $$\   $$\ 
+$$ |  $$ |$$$ __$$\ $$ |  $$ |
+$$ |  $$ |$$$$\ $$ |$$ |  $$ |
+$$$$$$$$ |$$\$$\$$ |$$$$$$$$ |
+\_____$$ |$$ \$$$$ |\_____$$ |
+      $$ |$$ |\$$$ |      $$ |
+      $$ |\$$$$$$  /      $$ |
+      \__| \______/       \__|
+                     $$\     
+                     $$ |    
+$$$$$$$\   $$$$$$\ $$$$$$\   
+$$  __$$\ $$  __$$\\_$$  _|  
+$$ |  $$ |$$ /  $$ | $$ |    
+$$ |  $$ |$$ |  $$ | $$ |$$\ 
+$$ |  $$ |\$$$$$$  | \$$$$  |
+\__|  \__| \______/   \____/ 
+ $$$$$$\                                     $$\ 
+$$  __$$\                                    $$ |
+$$ /  \__|$$$$$$\  $$\   $$\ $$$$$$$\   $$$$$$$ |
+$$$$\    $$  __$$\ $$ |  $$ |$$  __$$\ $$  __$$ |
+$$  _|   $$ /  $$ |$$ |  $$ |$$ |  $$ |$$ /  $$ |
+$$ |     $$ |  $$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |
+$$ |     \$$$$$$  |\$$$$$$  |$$ |  $$ |\$$$$$$$ |
+\__|      \______/  \______/ \__|  \__| \_______|</pre>
 </div>
 </div>
 

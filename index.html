@@ -964,8 +964,9 @@ body.app-light-mode #btnProjectInfo.home-project-info-button:active {
 .sponsor-404-close { position: absolute; top: -18px; right: -18px; width: 36px; height: 36px; border: 1px solid rgba(34, 211, 238, 0.7); border-radius: 50%; background: #020617; color: #22D3EE; display: grid; place-items: center; cursor: pointer; box-shadow: 0 0 14px rgba(34, 211, 238, 0.32); transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease; }
 .sponsor-404-close:hover, .sponsor-404-close:focus-visible { transform: rotate(90deg); background: #22D3EE; color: #020617; outline: none; }
 .sponsor-404-image { display: block; width: 190px; height: 190px; margin: 0 auto 34px; object-fit: contain; image-rendering: pixelated; filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.8)); }
-.sponsor-404-code { margin: 0 0 30px; color: #22D3EE; font-family: "Pixelify Sans", sans-serif; font-size: clamp(42px, 6vw, 72px); font-weight: 700; letter-spacing: 0.1em; line-height: 1; text-shadow: 0 0 12px rgba(34, 211, 238, 0.9), 0 0 28px rgba(34, 211, 238, 0.45); }
-.sponsor-404-status { margin: 0 0 28px; color: #22D3EE; font-family: "Pixelify Sans", sans-serif; font-size: clamp(22px, 3vw, 30px); font-weight: 700; letter-spacing: 0.12em; line-height: 1.2; text-shadow: 0 0 12px rgba(34, 211, 238, 0.8); }
+.sponsor-404-code { margin: 0 0 30px; color: #22D3EE; font-family: "Pixelify Sans", sans-serif; font-size: clamp(42px, 6vw, 72px); font-weight: 700; letter-spacing: 0; line-height: 1; text-transform: none; text-shadow: 0 0 12px rgba(34, 211, 238, 0.9), 0 0 28px rgba(34, 211, 238, 0.45); }
+.sponsor-404-status { margin: 0 0 28px; color: #22D3EE; font-family: "Pixelify Sans", sans-serif; font-size: clamp(22px, 3vw, 30px); font-weight: 700; letter-spacing: 0; line-height: 1.2; text-transform: none; text-shadow: 0 0 12px rgba(34, 211, 238, 0.8); }
+.sponsor-404-art { width: 100%; margin: 0 auto; color: #22D3EE; font-family: monospace; font-size: 6px; font-weight: 700; line-height: 1; white-space: pre; text-align: center; text-indent: 0; text-shadow: 0 0 8px rgba(34, 211, 238, 0.45); overflow: hidden; }
 .sponsor-404-message { margin: 0; color: #22D3EE; font-size: clamp(15px, 2vw, 18px); line-height: 1.9; text-shadow: 0 0 8px rgba(34, 211, 238, 0.45); }
 .sponsor-nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 42px; }
 .sponsor-nav a { color: #22D3EE; font-size: 20px; font-weight: 800; text-decoration: none; }
@@ -3501,9 +3502,37 @@ gtag('config', 'G-4933FEDV2TW');
 <div class="sponsor-404-panel">
 <button type="button" class="sponsor-404-close" onclick="kembaliKeHome()" aria-label="Tutup halaman Sponsor" title="Tutup"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
 <img class="sponsor-404-image" src="assets/sponsor-error-404-robot-cyan.png" alt="Ilustrasi robot pixel dari gambar Sponsor">
-<h1 class="sponsor-404-code">ERROR 404</h1>
-<p class="sponsor-404-status">NOT FOUND</p>
-<p class="sponsor-404-message">Halaman Ini Sedang Dalam Pencarian.! 😜</p>
+<pre class="sponsor-404-art"> $$$$$$\   $$$$$$\   $$$$$$\   $$$$$$\   $$$$$$\  
+$$  __$$\ $$  __$$\ $$  __$$\ $$  __$$\ $$  __$$\ 
+$$$$$$$$ |$$ |  \__|$$ |  \__|$$ /  $$ |$$ |  \__|
+$$   ____|$$ |      $$ |      $$ |  $$ |$$ |      
+\$$$$$$$\ $$ |      $$ |      \$$$$$$  |$$ |      
+ \_______|\__|      \__|       \______/ \__|      
+                                                  
+$$\   $$\  $$$$$$\  $$\   $$\ 
+$$ |  $$ |$$$ __$$\ $$ |  $$ |
+$$ |  $$ |$$$$\ $$ |$$ |  $$ |
+$$$$$$$$ |$$\$$\$$ |$$$$$$$$ |
+\_____$$ |$$ \$$$$ |\_____$$ |
+      $$ |$$ |\$$$ |      $$ |
+      $$ |\$$$$$$  /      $$ |
+      \__| \______/       \__|
+                     $$\     
+                     $$ |    
+$$$$$$$\   $$$$$$\ $$$$$$\   
+$$  __$$\ $$  __$$\\_$$  _|  
+$$ |  $$ |$$ /  $$ | $$ |    
+$$ |  $$ |$$ |  $$ | $$ |$$\ 
+$$ |  $$ |\$$$$$$  | \$$$$  |
+\__|  \__| \______/   \____/ 
+ $$$$$$\                                     $$\ 
+$$  __$$\                                    $$ |
+$$ /  \__|$$$$$$\  $$\   $$\ $$$$$$$\   $$$$$$$ |
+$$$$\    $$  __$$\ $$ |  $$ |$$  __$$\ $$  __$$ |
+$$  _|   $$ /  $$ |$$ |  $$ |$$ |  $$ |$$ /  $$ |
+$$ |     $$ |  $$ |$$ |  $$ |$$ |  $$ |$$ |  $$ |
+$$ |     \$$$$$$  |\$$$$$$  |$$ |  $$ |\$$$$$$$ |
+\__|      \______/  \______/ \__|  \__| \_______|</pre>
 </div>
 </div>
 </main>
