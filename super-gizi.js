@@ -22,6 +22,22 @@
     { key: 'calcium', label: 'Kalsium', unit: 'mg' },
     { key: 'iron', label: 'Zat besi', unit: 'mg' }
   ];
+  const INGREDIENT_REFERENCE = [
+    { name: 'Ayam Dada Fillet', category: 'Protein Hewani', grams: 40, energy: 120, protein: 22.5, fat: 2.6, carbs: 0, fiber: 0, vitaminA: 13, vitaminC: 0, calcium: 11, iron: 0.7 },
+    { name: 'Ayam Potong Segar', category: 'Protein Hewani', grams: 40, energy: 158, protein: 18.2, fat: 9.3, carbs: 0, fiber: 0, vitaminA: 48, vitaminC: 0, calcium: 11, iron: 1.2 },
+    { name: 'Daging Sapi', category: 'Protein Hewani', grams: 40, energy: 250, protein: 26.1, fat: 15, carbs: 0, fiber: 0, vitaminA: 0, vitaminC: 0, calcium: 18, iron: 2.6 },
+    { name: 'Telur Ayam', category: 'Protein Hewani', grams: 50, energy: 143, protein: 12.6, fat: 9.5, carbs: 0.7, fiber: 0, vitaminA: 140, vitaminC: 0, calcium: 56, iron: 1.8 },
+    { name: 'Ikan Kakap', category: 'Protein Hewani', grams: 40, energy: 107, protein: 20.9, fat: 2.1, carbs: 0, fiber: 0, vitaminA: 30, vitaminC: 0, calcium: 20, iron: 0.9 },
+    { name: 'Nasi Putih Matang', category: 'Karbohidrat', grams: 100, energy: 130, protein: 2.4, fat: 0.2, carbs: 28.2, fiber: 0.4, vitaminA: 0, vitaminC: 0, calcium: 3, iron: 0.4 },
+    { name: 'Beras Premium', category: 'Karbohidrat', grams: 40, energy: 360, protein: 6.8, fat: 0.7, carbs: 78.9, fiber: 0.5, vitaminA: 0, vitaminC: 0, calcium: 10, iron: 0.8 },
+    { name: 'Tempe', category: 'Protein Nabati', grams: 40, energy: 192, protein: 20.3, fat: 10.8, carbs: 13.5, fiber: 6, vitaminA: 0, vitaminC: 0, calcium: 129, iron: 4 },
+    { name: 'Tahu Putih', category: 'Protein Nabati', grams: 40, energy: 68, protein: 7.4, fat: 4.2, carbs: 1.8, fiber: 1.1, vitaminA: 1, vitaminC: 0, calcium: 92, iron: 1.3 },
+    { name: 'Wortel', category: 'Sayuran', grams: 40, energy: 41, protein: 0.9, fat: 0.2, carbs: 9.6, fiber: 2.8, vitaminA: 835, vitaminC: 5.9, calcium: 33, iron: 0.3 },
+    { name: 'Buncis', category: 'Sayuran', grams: 40, energy: 31, protein: 1.8, fat: 0.2, carbs: 7, fiber: 3.4, vitaminA: 35, vitaminC: 12.2, calcium: 37, iron: 1 },
+    { name: 'Bayam', category: 'Sayuran', grams: 40, energy: 23, protein: 2.9, fat: 0.4, carbs: 3.6, fiber: 2.2, vitaminA: 469, vitaminC: 28.1, calcium: 99, iron: 2.7 },
+    { name: 'Pisang', category: 'Buah-Buahan', grams: 100, energy: 89, protein: 1.1, fat: 0.3, carbs: 22.8, fiber: 2.6, vitaminA: 3, vitaminC: 8.7, calcium: 5, iron: 0.3 },
+    { name: 'Jeruk Medan', category: 'Buah-Buahan', grams: 80, energy: 47, protein: 0.9, fat: 0.1, carbs: 11.8, fiber: 2.4, vitaminA: 11, vitaminC: 53.2, calcium: 40, iron: 0.1 }
+  ];
   const DEFAULT_STATE = {
     ingredients: [],
     targets: { energy: 2150 }
@@ -102,6 +118,35 @@
 
   function formatAmount(value, digits) {
     return new Intl.NumberFormat('id-ID', { maximumFractionDigits: digits === undefined ? 2 : digits }).format(value);
+  }
+
+  function normalizeIngredientName(value) {
+    return String(value || '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, ' ')
+      .trim();
+  }
+
+  function findIngredientReference(value) {
+    const normalized = normalizeIngredientName(value);
+    if (!normalized) return null;
+    return INGREDIENT_REFERENCE.find(function(reference) {
+      return normalizeIngredientName(reference.name) === normalized;
+    }) || null;
+  }
+
+  function fillIngredientReference(form, reference, onlyWhenBlank) {
+    if (!form || !reference) return;
+    const nameInput = form.elements.namedItem('name');
+    if (nameInput) nameInput.value = reference.name;
+    const categoryInput = form.elements.namedItem('category');
+    if (categoryInput) categoryInput.value = reference.category;
+    const gramsInput = form.elements.namedItem('grams');
+    if (gramsInput && (!onlyWhenBlank || !gramsInput.value)) gramsInput.value = String(reference.grams);
+    NUTRIENTS.forEach(function(nutrient) {
+      const input = form.elements.namedItem(nutrient.key + 'Per100');
+      if (input && (!onlyWhenBlank || !input.value)) input.value = String(reference[nutrient.key] === undefined ? 0 : reference[nutrient.key]);
+    });
   }
 
   function renderIngredientRows(state) {
@@ -255,6 +300,9 @@
   function addIngredient(state) {
     const form = document.getElementById('sgIngredientForm');
     if (!form) return;
+    const nameInput = form.elements.namedItem('name');
+    const reference = findIngredientReference(nameInput ? nameInput.value : '');
+    if (reference) fillIngredientReference(form, reference, false);
     const formData = new FormData(form);
     const ingredient = {
       name: String(formData.get('name') || '').trim(),
@@ -367,10 +415,23 @@
       });
     });
     const form = document.getElementById('sgIngredientForm');
-    if (form) form.addEventListener('submit', function(event) {
-      event.preventDefault();
-      addIngredient(state);
-    });
+    if (form) {
+      const nameInput = form.elements.namedItem('name');
+      if (nameInput) {
+        nameInput.addEventListener('change', function() {
+          const reference = findIngredientReference(nameInput.value);
+          if (reference) fillIngredientReference(form, reference, true);
+        });
+        nameInput.addEventListener('input', function() {
+          const reference = findIngredientReference(nameInput.value);
+          if (reference) fillIngredientReference(form, reference, true);
+        });
+      }
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        addIngredient(state);
+      });
+    }
     const rows = document.getElementById('sgIngredientRows');
     if (rows) rows.addEventListener('click', function(event) {
       const target = event.target.closest('[data-remove-ingredient], [data-edit-ingredient]');
@@ -423,5 +484,11 @@
     renderSummary(state);
   }
 
-  window.SuperGizi = { calculate: calculate, init: init, nutrients: NUTRIENTS };
+  window.SuperGizi = {
+    calculate: calculate,
+    init: init,
+    nutrients: NUTRIENTS,
+    findIngredientReference: findIngredientReference,
+    ingredientReference: INGREDIENT_REFERENCE
+  };
 })();

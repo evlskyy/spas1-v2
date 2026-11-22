@@ -4535,7 +4535,7 @@ $$ |     \$$$$$$  |\$$$$$$  |$$ |  $$ |\$$$$$$$ |
 <div class="no-print flex flex-wrap gap-2"><button id="sgExportButton" type="button" class="rounded-lg bg-emerald-600 px-3 py-2 text-xs font-bold text-white"><i class="fa-solid fa-file-csv"></i> Ekspor CSV</button><button type="button" onclick="printAdminSection('gizi')" class="rounded-lg bg-indigo-600 px-3 py-2 text-xs font-bold text-white"><i class="fa-solid fa-print"></i> Cetak / PDF</button><button id="sgResetButton" type="button" class="rounded-lg bg-red-100 px-3 py-2 text-xs font-bold text-red-700">Reset</button></div>
 </div>
 <div class="light-card no-print rounded-xl border border-amber-300 bg-amber-50 p-3 text-xs text-amber-900">
-<strong>Catatan acuan:</strong> sistem menghitung otomatis dari angka yang dimasukkan, tetapi tidak memiliki basis data komposisi pangan bawaan. Gunakan sumber yang sudah diverifikasi ahli gizi. Nilai energi awal 2.150 kkal mengikuti contoh yang diberikan dan hanya ilustrasi; sesuaikan target untuk kelompok penerima. Persentase adalah kontribusi menu per porsi terhadap target yang diisi, bukan klaim kecukupan harian.
+<strong>Catatan acuan:</strong> beberapa bahan dapat terisi otomatis dari referensi komposisi pangan bawaan. Nilai referensi dapat diperiksa atau diubah admin sebelum ditambahkan. Gunakan sumber yang sudah diverifikasi ahli gizi. Nilai energi awal 2.150 kkal mengikuti contoh yang diberikan dan hanya ilustrasi; sesuaikan target untuk kelompok penerima. Persentase adalah kontribusi menu per porsi terhadap target yang diisi, bukan klaim kecukupan harian.
 </div>
 <section class="light-card no-print rounded-xl border border-gray-200 p-4">
 <div class="flex flex-wrap items-start justify-between gap-2"><div><h3 class="font-bold text-gray-900">Target AKG pembanding</h3><p class="mt-1 text-[11px] text-gray-500">Isi target yang sesuai kelompok penerima. Target kosong atau 0 tidak menghasilkan persentase.</p></div><span id="sgSaveStatus" class="text-[11px] text-gray-500">Tersimpan di browser ini</span></div>
@@ -4571,8 +4571,24 @@ $$ |     \$$$$$$  |\$$$$$$  |$$ |  $$ |\$$$$$$$ |
 <h3 class="font-bold text-gray-900">Tambah bahan untuk satu porsi</h3>
 <p class="mt-1 text-[11px] text-gray-500">Angka per 100 g harus sesuai bahan dan kondisinya (mentah/matang). Jika suatu zat gizi tidak tercantum pada sumber, verifikasi nilainya sebelum memasukkan 0.</p>
 <form id="sgIngredientForm" class="mt-3 space-y-3">
+<datalist id="sgIngredientReferenceList">
+<option value="Ayam Dada Fillet"></option>
+<option value="Ayam Potong Segar"></option>
+<option value="Daging Sapi"></option>
+<option value="Telur Ayam"></option>
+<option value="Ikan Kakap"></option>
+<option value="Nasi Putih Matang"></option>
+<option value="Beras Premium"></option>
+<option value="Tempe"></option>
+<option value="Tahu Putih"></option>
+<option value="Wortel"></option>
+<option value="Buncis"></option>
+<option value="Bayam"></option>
+<option value="Pisang"></option>
+<option value="Jeruk Medan"></option>
+</datalist>
 <div class="grid grid-cols-1 gap-3 sm:grid-cols-3">
-<label class="text-xs font-semibold">Nama bahan<input name="name" type="text" maxlength="120" required class="mt-1 w-full rounded-lg border border-gray-300 p-2 text-sm" placeholder="Contoh: Nasi putih matang"></label>
+<label class="text-xs font-semibold">Nama bahan<input name="name" type="text" list="sgIngredientReferenceList" maxlength="120" required class="mt-1 w-full rounded-lg border border-gray-300 p-2 text-sm" placeholder="Contoh: Nasi putih matang"></label>
 <label class="text-xs font-semibold">Kategori<select id="sgCategory" name="category" class="mt-1 w-full rounded-lg border border-gray-300 p-2 text-sm"><option>Karbohidrat</option><option>Protein Hewani</option><option>Protein Nabati</option><option>Sayuran</option><option>Susu</option><option>Buah-Buahan</option><option>Pelengkap</option></select></label>
 <label class="text-xs font-semibold">Berat per porsi (g)<input name="grams" type="number" min="0" step="any" required class="mt-1 w-full rounded-lg border border-gray-300 p-2 text-sm" placeholder="gram"></label>
 </div>

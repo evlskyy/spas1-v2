@@ -43,3 +43,13 @@ test('invalid negative nutrient entries do not produce negative totals', functio
   assert.equal(result.totals.energy, 0);
   assert.equal(result.totals.protein, 4);
 });
+
+test('ingredient reference returns Ayam Dada Fillet defaults for automatic filling', function() {
+  const findIngredientReference = context.window.SuperGizi.findIngredientReference;
+  const reference = findIngredientReference('Ayam Dada Fillet');
+
+  assert.equal(reference.category, 'Protein Hewani');
+  assert.equal(reference.grams, 40);
+  assert.equal(reference.energy, 120);
+  assert.equal(reference.protein, 22.5);
+});
